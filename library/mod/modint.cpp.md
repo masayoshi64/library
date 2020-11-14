@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/mod/modint.cpp\"\ntemplate <int mod>\nstruct modint\
@@ -64,7 +64,7 @@ data:
   path: library/mod/modint.cpp
   requiredBy: []
   timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
 documentation_of: library/mod/modint.cpp
