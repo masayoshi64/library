@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/math/combination.cpp
     title: Combination(P, C, H, Stirling number, Bell number)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G
@@ -97,36 +97,37 @@ data:
     \u4E0A\uFF09\n    // \u3082\u3057\u304F\u306F\u3001k\u500B\u4EE5\u4E0B\u306E\u7389\
     \u306E\u4E00\u500B\u4EE5\u4E0A\u5165\u3063\u305F\u30B0\u30EB\u30FC\u30D7\u306B\
     \u5206\u3051\u308B\u3068\u8003\u3048\u3066\u3082\u3044\u3044\n    T Bell(int n,\
-    \ int k) {\n        vector<T> sm(k + 1);\n        sm[0] = 1;\n        rep(j, 1,\
-    \ k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j]; }\n        T res\
-    \ = 0;\n        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i] * sm[k - i];\
-    \ }\n        return res;\n    }\n};\n#line 1 \"library/mod/modint.cpp\"\ntemplate\
-    \ <int mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long\
-    \ long y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n    modint& operator+=(const\
-    \ modint& p) {\n        if ((x += p.x) >= mod) x -= mod;\n        return *this;\n\
-    \    }\n\n    modint& operator-=(const modint& p) {\n        if ((x += mod - p.x)\
-    \ >= mod) x -= mod;\n        return *this;\n    }\n\n    modint& operator*=(const\
-    \ modint& p) {\n        x = (int)(1LL * x * p.x % mod);\n        return *this;\n\
-    \    }\n\n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n\
-    \        return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
-    \ }\n\n    modint operator+(const modint& p) const { return modint(*this) += p;\
-    \ }\n\n    modint operator-(const modint& p) const { return modint(*this) -= p;\
-    \ }\n\n    modint operator*(const modint& p) const { return modint(*this) *= p;\
-    \ }\n\n    modint operator/(const modint& p) const { return modint(*this) /= p;\
-    \ }\n\n    bool operator==(const modint& p) const { return x == p.x; }\n\n   \
-    \ bool operator!=(const modint& p) const { return x != p.x; }\n\n    modint inverse()\
-    \ const {\n        int a = x, b = mod, u = 1, v = 0, t;\n        while (b > 0)\
-    \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
-    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
-    \ n) const {\n        modint ret(1), mul(x);\n        while (n > 0) {\n      \
-    \      if (n & 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n\
-    \        }\n        return ret;\n    }\n\n    friend ostream& operator<<(ostream&\
-    \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
-    \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
-    \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n};\n#line 7 \"verify/aoj-DPL_5_G.test.cpp\"\n#define mod 1000000007ll\n\
-    using mint = modint<mod>;\nint main() {\n    int n, k;\n    cin >> n >> k;\n \
-    \   Combination<mint> comb(n);\n    print(comb.Bell(n, k));\n    return 0;\n}\n"
+    \ int k) {\n        if (n < k) k = n;\n        vector<T> sm(k + 1);\n        sm[0]\
+    \ = 1;\n        rep(j, 1, k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j];\
+    \ }\n        T res = 0;\n        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i]\
+    \ * sm[k - i]; }\n        return res;\n    }\n};\n#line 1 \"library/mod/modint.cpp\"\
+    \ntemplate <int mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\n\
+    \    modint(long long y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\
+    \n    modint& operator+=(const modint& p) {\n        if ((x += p.x) >= mod) x\
+    \ -= mod;\n        return *this;\n    }\n\n    modint& operator-=(const modint&\
+    \ p) {\n        if ((x += mod - p.x) >= mod) x -= mod;\n        return *this;\n\
+    \    }\n\n    modint& operator*=(const modint& p) {\n        x = (int)(1LL * x\
+    \ * p.x % mod);\n        return *this;\n    }\n\n    modint& operator/=(const\
+    \ modint& p) {\n        *this *= p.inverse();\n        return *this;\n    }\n\n\
+    \    modint operator-() const { return modint(-x); }\n\n    modint operator+(const\
+    \ modint& p) const { return modint(*this) += p; }\n\n    modint operator-(const\
+    \ modint& p) const { return modint(*this) -= p; }\n\n    modint operator*(const\
+    \ modint& p) const { return modint(*this) *= p; }\n\n    modint operator/(const\
+    \ modint& p) const { return modint(*this) /= p; }\n\n    bool operator==(const\
+    \ modint& p) const { return x == p.x; }\n\n    bool operator!=(const modint& p)\
+    \ const { return x != p.x; }\n\n    modint inverse() const {\n        int a =\
+    \ x, b = mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
+    \            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
+    \        return modint(u);\n    }\n\n    modint pow(int64_t n) const {\n     \
+    \   modint ret(1), mul(x);\n        while (n > 0) {\n            if (n & 1) ret\
+    \ *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n        return\
+    \ ret;\n    }\n\n    friend ostream& operator<<(ostream& os, const modint& p)\
+    \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
+    \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
+    \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n};\n\
+    #line 7 \"verify/aoj-DPL_5_G.test.cpp\"\n#define mod 1000000007ll\nusing mint\
+    \ = modint<mod>;\nint main() {\n    int n, k;\n    cin >> n >> k;\n    Combination<mint>\
+    \ comb(n);\n    print(comb.Bell(n, k));\n    return 0;\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G\"\
     \n#include \"library/template/template.cpp\"\n// library\n#include \"library/math/combination.cpp\"\
     \n#include \"library/mod/modint.cpp\"\n#define mod 1000000007ll\nusing mint =\
@@ -139,8 +140,8 @@ data:
   isVerificationFile: true
   path: verify/aoj-DPL_5_G.test.cpp
   requiredBy: []
-  timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-11-14 13:31:01+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DPL_5_G.test.cpp
 layout: document

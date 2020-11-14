@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/Combination.md
     document_title: Combination(P, C, H, Stirling number, Bell number)
@@ -39,10 +39,10 @@ data:
     \  // \u3082\u3057\u304F\u306F\u3001k\u500B\u4EE5\u4E0B\u306E\u7389\u306E\u4E00\
     \u500B\u4EE5\u4E0A\u5165\u3063\u305F\u30B0\u30EB\u30FC\u30D7\u306B\u5206\u3051\
     \u308B\u3068\u8003\u3048\u3066\u3082\u3044\u3044\n    T Bell(int n, int k) {\n\
-    \        vector<T> sm(k + 1);\n        sm[0] = 1;\n        rep(j, 1, k + 1) {\
-    \ sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j]; }\n        T res = 0;\n\
-    \        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i] * sm[k - i]; }\n   \
-    \     return res;\n    }\n};\n"
+    \        if (n < k) k = n;\n        vector<T> sm(k + 1);\n        sm[0] = 1;\n\
+    \        rep(j, 1, k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j];\
+    \ }\n        T res = 0;\n        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i]\
+    \ * sm[k - i]; }\n        return res;\n    }\n};\n"
   code: "/**\n * @brief Combination(P, C, H, Stirling number, Bell number)\n * @docs\
     \ docs/Combination.md\n */\ntemplate <typename T>\nstruct Combination {\n    vector<T>\
     \ _fact, _rfact, _inv;\n\n    Combination(int sz) : _fact(sz + 1), _rfact(sz +\
@@ -69,16 +69,16 @@ data:
     \u4E0A\uFF09\n    // \u3082\u3057\u304F\u306F\u3001k\u500B\u4EE5\u4E0B\u306E\u7389\
     \u306E\u4E00\u500B\u4EE5\u4E0A\u5165\u3063\u305F\u30B0\u30EB\u30FC\u30D7\u306B\
     \u5206\u3051\u308B\u3068\u8003\u3048\u3066\u3082\u3044\u3044\n    T Bell(int n,\
-    \ int k) {\n        vector<T> sm(k + 1);\n        sm[0] = 1;\n        rep(j, 1,\
-    \ k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j]; }\n        T res\
-    \ = 0;\n        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i] * sm[k - i];\
-    \ }\n        return res;\n    }\n};"
+    \ int k) {\n        if (n < k) k = n;\n        vector<T> sm(k + 1);\n        sm[0]\
+    \ = 1;\n        rep(j, 1, k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j];\
+    \ }\n        T res = 0;\n        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i]\
+    \ * sm[k - i]; }\n        return res;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: library/math/combination.cpp
   requiredBy: []
-  timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2020-11-14 13:31:01+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
 documentation_of: library/math/combination.cpp
