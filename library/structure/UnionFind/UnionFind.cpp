@@ -1,7 +1,7 @@
 
 /**
  * @brief UnionFind
- * @docs docs/union-find.md
+ * @docs docs/UnionFind.md
  */
 struct UnionFind {
     vector<int> data;  // sizes of sets
