@@ -49,6 +49,7 @@ struct Combination {
     // n個の区別できる玉をk個のグループに分割する場合の数（グループのサイズは0以上）
     // もしくは、k個以下の玉の一個以上入ったグループに分けると考えてもいい
     T Bell(int n, int k) {
+        if (n < k) k = n;
         vector<T> sm(k + 1);
         sm[0] = 1;
         rep(j, 1, k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j]; }
