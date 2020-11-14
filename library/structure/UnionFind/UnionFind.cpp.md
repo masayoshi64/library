@@ -9,11 +9,11 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/union-find.md
+    _deprecated_at_docs: docs/UnionFind.md
     document_title: UnionFind
     links: []
   bundledCode: "#line 1 \"library/structure/UnionFind/UnionFind.cpp\"\n\n/**\n * @brief\
-    \ UnionFind\n * @docs docs/union-find.md\n */\nstruct UnionFind {\n    vector<int>\
+    \ UnionFind\n * @docs docs/UnionFind.md\n */\nstruct UnionFind {\n    vector<int>\
     \ data;  // sizes of sets\n\n    UnionFind(int sz) : data(sz, -1) {}\n\n    bool\
     \ unite(int x, int y) {\n        x = find(x), y = find(y);\n        if (x == y)\
     \ return false;\n        if (data[x] > data[y]) swap(x, y);\n        data[x] +=\
@@ -21,7 +21,7 @@ data:
     \ k) {\n        if (data[k] < 0) return k;\n        return data[k] = find(data[k]);\n\
     \    }\n\n    int size(int k) { return (-data[find(k)]); }\n\n    bool same(int\
     \ x, int y) { return find(x) == find(y); }\n};\n"
-  code: "\n/**\n * @brief UnionFind\n * @docs docs/union-find.md\n */\nstruct UnionFind\
+  code: "\n/**\n * @brief UnionFind\n * @docs docs/UnionFind.md\n */\nstruct UnionFind\
     \ {\n    vector<int> data;  // sizes of sets\n\n    UnionFind(int sz) : data(sz,\
     \ -1) {}\n\n    bool unite(int x, int y) {\n        x = find(x), y = find(y);\n\
     \        if (x == y) return false;\n        if (data[x] > data[y]) swap(x, y);\n\
@@ -33,7 +33,7 @@ data:
   isVerificationFile: false
   path: library/structure/UnionFind/UnionFind.cpp
   requiredBy: []
-  timestamp: '2020-11-14 11:43:39+09:00'
+  timestamp: '2020-11-14 13:19:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-dsl-1-a.test.cpp
@@ -44,3 +44,5 @@ redirect_from:
 - /library/library/structure/UnionFind/UnionFind.cpp.html
 title: UnionFind
 ---
+# Union Find
+union findです。
