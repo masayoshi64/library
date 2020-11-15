@@ -7,6 +7,9 @@ data:
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj-NTL_1_A.test.cpp
+    title: verify/aoj-NTL_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
   _pathExtension: cpp
@@ -117,6 +120,7 @@ data:
   timestamp: '2020-11-14 13:19:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj-NTL_1_A.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
 documentation_of: library/template/template.cpp

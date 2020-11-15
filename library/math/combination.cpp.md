@@ -88,3 +88,11 @@ redirect_from:
 - /library/library/math/combination.cpp.html
 title: Combination(P, C, H, Stirling number, Bell number)
 ---
+# Combination
+## Stirling
+n個の区別できる玉をk個のグループに分割する場合の数（グループのサイズは1以上）
+O(klog(n))
+## Bell
+n個の区別できる玉をk個のグループに分割する場合の数（グループのサイズは0以上）
+もしくは、玉を一個以上入ったグループk個以下に分けると考えてもいい
+O(klog(n))
