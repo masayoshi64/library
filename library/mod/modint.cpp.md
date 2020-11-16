@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo-convolution_mod.test.cpp
+    title: verify/yosupo-convolution_mod.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -66,6 +69,7 @@ data:
   timestamp: '2020-11-14 13:19:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yosupo-convolution_mod.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document

@@ -1,6 +1,14 @@
 ---
 data:
   libraryCategories:
+  - name: library/convolution
+    pages:
+    - icon: ':warning:'
+      path: library/convolution/FormalPowerSeries.cpp
+      title: library/convolution/FormalPowerSeries.cpp
+    - icon: ':heavy_check_mark:'
+      path: library/convolution/NTT.cpp
+      title: library/convolution/NTT.cpp
   - name: library/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -22,6 +30,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/structure/UnionFind/UnionFind.cpp
       title: UnionFind
+  - name: library/structure/wavelet
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: library/structure/wavelet/WaveletMatrix.cpp
+      title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
     - icon: ':heavy_check_mark:'
@@ -39,5 +52,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yosupo-convolution_mod.test.cpp
+      title: verify/yosupo-convolution_mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yosupo-range_kth_smallest.test.cpp
+      title: verify/yosupo-range_kth_smallest.test.cpp
 layout: toppage
 ---

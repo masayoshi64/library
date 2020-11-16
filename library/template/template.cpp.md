@@ -12,6 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo-convolution_mod.test.cpp
+    title: verify/yosupo-convolution_mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yosupo-range_kth_smallest.test.cpp
+    title: verify/yosupo-range_kth_smallest.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -120,8 +126,10 @@ data:
   timestamp: '2020-11-14 13:19:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yosupo-convolution_mod.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-range_kth_smallest.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
 documentation_of: library/template/template.cpp
 layout: document
