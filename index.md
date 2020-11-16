@@ -30,6 +30,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/structure/UnionFind/UnionFind.cpp
       title: UnionFind
+    - icon: ':warning:'
+      path: library/structure/UnionFind/merge_list.cpp
+      title: library/structure/UnionFind/merge_list.cpp
   - name: library/structure/wavelet
     pages:
     - icon: ':heavy_check_mark:'
