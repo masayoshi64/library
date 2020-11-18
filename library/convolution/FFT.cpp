@@ -104,6 +104,8 @@ struct FFT {
 
     FFT() = default;
 
+    static constexpr int part = 35000;
+    static constexpr int part2 = 1225000000;
     vector<T> multiply(const vector<T> &a, const vector<T> &b, int need = -1) {
         if (need == -1) need = a.size() + b.size() - 1;
         int nbase = 0;
@@ -112,7 +114,7 @@ struct FFT {
         int sz = 1 << nbase;
         vector<C> fa(sz);
         for (int i = 0; i < a.size(); i++) {
-            fa[i] = C(a[i].x & ((1 << 15) - 1), a[i].x >> 15);
+            fa[i] = C(a[i].x % part, a[i].x / part);
         }
         fft(fa, sz);
         vector<C> fb(sz);
@@ -120,7 +122,7 @@ struct FFT {
             fb = fa;
         } else {
             for (int i = 0; i < b.size(); i++) {
-                fb[i] = C(b[i].x & ((1 << 15) - 1), b[i].x >> 15);
+                fb[i] = C(b[i].x % part, b[i].x / part);
             }
             fft(fb, sz);
         }
@@ -151,7 +153,7 @@ struct FFT {
             int64_t bb = llround(fb[i].x);
             int64_t cc = llround(fa[i].y);
             aa = T(aa).x, bb = T(bb).x, cc = T(cc).x;
-            ret[i] = aa + (bb << 15) + (cc << 30);
+            ret[i] = aa + (bb * part) + (cc * part2);
         }
         return ret;
     }
