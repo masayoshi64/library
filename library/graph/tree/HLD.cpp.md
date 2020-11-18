@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/yuki-650.cpp
-    title: verify/yuki-650.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/yuki-650.test.cpp
+    title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/tree/HLD.cpp\"\nstruct HLD {\n    vector<vector<int>>\
@@ -106,11 +106,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/graph/tree/HLD.cpp
-  requiredBy:
-  - verify/yuki-650.cpp
+  requiredBy: []
   timestamp: '2020-11-18 22:08:45+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/yuki-650.test.cpp
 documentation_of: library/graph/tree/HLD.cpp
 layout: document
 redirect_from:

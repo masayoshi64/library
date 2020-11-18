@@ -1,29 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: library/graph/tree/HLD.cpp
     title: library/graph/tree/HLD.cpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: library/math/Matrix.cpp
     title: library/math/Matrix.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: library/structure/segtree/SegmentTree.cpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://yukicoder.me/problems/no/650
     links:
     - https://yukicoder.me/problems/no/650
-  bundledCode: "#line 1 \"verify/yuki-650.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/650\"\
+  bundledCode: "#line 1 \"verify/yuki-650.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/650\"\
     \n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
@@ -73,7 +75,7 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 3 \"verify/yuki-650.cpp\"\n// library\n#line 1 \"library/graph/tree/HLD.cpp\"\
+    #line 3 \"verify/yuki-650.test.cpp\"\n// library\n#line 1 \"library/graph/tree/HLD.cpp\"\
     \nstruct HLD {\n    vector<vector<int>> G;\n    vector<int> parent, depth, sub_size,\
     \ v_id, id_to_v, head;\n    HLD(int n)\n        : G(n),\n          v_id(n, -1),\n\
     \          head(n),\n          sub_size(n, 1),\n          parent(n, -1),\n   \
@@ -227,7 +229,7 @@ data:
     \ < b; a >>= 1, b >>= 1) {\n            if (b & 1) {\n                Monoid nxt\
     \ = f(seg[--b], R);\n                if (check(nxt)) return find_subtree(b, check,\
     \ R, true);\n                R = nxt;\n            }\n        }\n        return\
-    \ -1;\n    }\n};\n#line 8 \"verify/yuki-650.cpp\"\nusing mint = modint<1000000007>;\n\
+    \ -1;\n    }\n};\n#line 8 \"verify/yuki-650.test.cpp\"\nusing mint = modint<1000000007>;\n\
     using mmat = Matrix<mint>;\n\nint main() {\n    int n, q;\n    cin >> n;\n   \
     \ HLD hld(n);\n    vector<Pi> etov(n - 1);\n    rep(i, n - 1) {\n        int a,\
     \ b;\n        cin >> a >> b;\n        hld.add_edge(a, b);\n        etov[i] = mp(a,\
@@ -267,16 +269,16 @@ data:
   - library/math/Matrix.cpp
   - library/mod/modint.cpp
   - library/structure/segtree/SegmentTree.cpp
-  isVerificationFile: false
-  path: verify/yuki-650.cpp
+  isVerificationFile: true
+  path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:08:45+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2020-11-18 22:13:19+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/yuki-650.cpp
+documentation_of: verify/yuki-650.test.cpp
 layout: document
 redirect_from:
-- /library/verify/yuki-650.cpp
-- /library/verify/yuki-650.cpp.html
-title: verify/yuki-650.cpp
+- /verify/verify/yuki-650.test.cpp
+- /verify/verify/yuki-650.test.cpp.html
+title: verify/yuki-650.test.cpp
 ---
