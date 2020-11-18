@@ -73,6 +73,7 @@ struct HLD {
     }
 
     // get res for [u, v] with query q and merge each value with f
+    // root->leaf
     template <typename T, typename Q, typename F>
     T query(int u, int v, T id, const Q& q, const F& f) {
         T l = id, r = id;
@@ -81,7 +82,7 @@ struct HLD {
                 swap(u, v);
                 swap(l, r);
             }
-            l = f(l, q(max(v_id[head[v]], v_id[u]), v_id[v]));
+            l = f(q(max(v_id[head[v]], v_id[u]), v_id[v]), l);
             if (head[u] != head[v])
                 v = parent[head[v]];
             else
@@ -106,6 +107,7 @@ struct HLD {
     }
 
     // query for edges between u, v inclusive with query q and merge func f
+    // root->leaf
     template <typename T, typename Q, typename F>
     T query_edge(int u, int v, T id, const Q& q, const F& f) {
         T l = id, r = id;
@@ -115,10 +117,10 @@ struct HLD {
                 swap(l, r);
             }
             if (head[u] != head[v]) {
-                l = f(l, q(v_id[head[v]], v_id[v]));
+                l = f(q(v_id[head[v]], v_id[v]), l);
                 v = parent[head[v]];
             } else {
-                if (u != v) l = f(l, q(v_id[u] + 1, v_id[v]));
+                if (u != v) l = f(q(v_id[u] + 1, v_id[v]), l);
                 break;
             }
         }
