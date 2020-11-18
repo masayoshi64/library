@@ -72,4 +72,6 @@ struct modint {
     }
 
     static int get_mod() { return mod; }
+
+    inline int get() { return x; }
 };

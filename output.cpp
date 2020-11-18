@@ -1,5 +1,5 @@
-#line 1 "verify/yuki-650.test.cpp"
-#define PROBLEM "https://yukicoder.me/problems/no/650"
+#line 1 "verify/yosupo-convolution_mod_1000000007.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod_1000000007"
 #line 1 "library/template/template.cpp"
 /* #region header */
 
@@ -143,261 +143,82 @@ struct Timer {
 #define endl '\n'
 const long double eps = 0.000000000000001;
 const long double PI = 3.141592653589793;
-#line 3 "verify/yuki-650.test.cpp"
+#line 3 "verify/yosupo-convolution_mod_1000000007.test.cpp"
 // library
-#line 1 "library/graph/tree/HLD.cpp"
-struct HLD {
-    vector<vector<int>> G;
-    vector<int> parent, depth, sub_size, v_id, id_to_v, head;
-    HLD(int n)
-        : G(n),
-          v_id(n, -1),
-          head(n),
-          sub_size(n, 1),
-          parent(n, -1),
-          depth(n, 0),
-          id_to_v(n) {}
+#line 1 "library/convolution/NTT.cpp"
+template <typename Mint>
+struct NTT {
+    vector<Mint> dw, idw;
+    int max_base;
+    Mint root;
 
-    void add_edge(int u, int v) {
-        G[u].emplace_back(v);
-        G[v].emplace_back(u);
-    }
-
-    void build(int root = 0) {
-        int pos = 0;
-        dfs_size(root);
-        head[root] = root;
-        dfs_hld(root, pos);
-    }
-
-    void dfs_size(int v) {
-        for (int& nv : G[v]) {
-            if (nv == parent[v]) {
-                nv = G[v].back();
-                G[v].pop_back();
-            }
-        }
-        for (int& nv : G[v]) {
-            parent[nv] = v;
-            depth[nv] = depth[v] + 1;
-            dfs_size(nv);
-            sub_size[v] += sub_size[nv];
-            if (sub_size[nv] > sub_size[G[v][0]]) swap(nv, G[v][0]);
+    NTT() {
+        const unsigned mod = Mint::get_mod();
+        assert(mod >= 3 && mod % 2 == 1);
+        auto tmp = mod - 1;
+        max_base = 0;
+        while (tmp % 2 == 0) tmp >>= 1, max_base++;
+        root = 2;
+        while (root.pow((mod - 1) >> 1) == 1) root += 1;
+        assert(root.pow(mod - 1) == 1);
+        dw.resize(max_base);
+        idw.resize(max_base);
+        for (int i = 0; i < max_base; i++) {
+            dw[i] = -root.pow((mod - 1) >> (i + 2));
+            idw[i] = Mint(1) / dw[i];
         }
     }
 
-    void dfs_hld(int v, int& pos) {
-        v_id[v] = pos;
-        id_to_v[pos++] = v;
-        for (int nv : G[v]) {
-            head[nv] = (nv == G[v][0] ? head[v] : nv);
-            dfs_hld(nv, pos);
-        }
-    }
-
-    int lca(int u, int v) {
-        while (1) {
-            if (v_id[u] > v_id[v]) swap(u, v);
-            if (head[u] == head[v]) return u;
-            v = parent[head[v]];
-        }
-    }
-
-    int distance(int u, int v) {
-        return depth[u] + depth[v] - 2 * depth[lca(u, v)];
-    }
-
-    // update vertexes in [u, v] with f
-    template <typename F>
-    void update(int u, int v, const F& f) {
-        while (1) {
-            if (v_id[u] > v_id[v]) swap(u, v);
-            f(max(v_id[head[v]], v_id[u]), v_id[v]);
-            if (head[u] != head[v])
-                v = parent[head[v]];
-            else
-                break;
-        }
-    }
-
-    // get res for [u, v] with query q and merge each value with f
-    // root->leaf
-    template <typename T, typename Q, typename F>
-    T query(int u, int v, T id, const Q& q, const F& f) {
-        T l = id, r = id;
-        while (1) {
-            if (v_id[u] > v_id[v]) {
-                swap(u, v);
-                swap(l, r);
-            }
-            l = f(q(max(v_id[head[v]], v_id[u]), v_id[v]), l);
-            if (head[u] != head[v])
-                v = parent[head[v]];
-            else
-                break;
-        }
-        return f(r, l);
-    }
-
-    // update edges between u, v inclusive with func f
-    template <typename F>
-    void update_edge(int u, int v, const F& f) {
-        while (1) {
-            if (v_id[u] > v_id[v]) swap(u, v);
-            if (head[u] != head[v]) {
-                f(v_id[head[v]], v_id[v]);
-                v = parent[head[v]];
-            } else {
-                if (u != v) f(v_id[u] + 1, v_id[v]);
-                break;
-            }
-        }
-    }
-
-    // query for edges between u, v inclusive with query q and merge func f
-    // root->leaf
-    template <typename T, typename Q, typename F>
-    T query_edge(int u, int v, T id, const Q& q, const F& f) {
-        T l = id, r = id;
-        while (1) {
-            if (v_id[u] > v_id[v]) {
-                swap(u, v);
-                swap(l, r);
-            }
-            if (head[u] != head[v]) {
-                l = f(q(v_id[head[v]], v_id[v]), l);
-                v = parent[head[v]];
-            } else {
-                if (u != v) l = f(q(v_id[u] + 1, v_id[v]), l);
-                break;
-            }
-        }
-        return f(r, l);
-    }
-};
-#line 1 "library/math/Matrix.cpp"
-template <class T>
-struct Matrix {
-    vector<vector<T>> A;
-
-    Matrix() {}
-
-    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}
-
-    Matrix(size_t n) : A(n, vector<T>(n, 0)){};
-
-    Matrix(vector<vector<T>> a) { A = a; }
-
-    size_t height() const { return (A.size()); }
-
-    size_t width() const { return (A[0].size()); }
-
-    inline const vector<T> &operator[](int k) const { return (A.at(k)); }
-
-    inline vector<T> &operator[](int k) { return (A.at(k)); }
-
-    static Matrix I(size_t n) {
-        Matrix mat(n);
-        for (int i = 0; i < n; i++) mat[i][i] = 1;
-        return (mat);
-    }
-
-    Matrix &operator+=(const Matrix &B) {
-        size_t n = height(), m = width();
-        assert(n == B.height() && m == B.width());
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++) (*this)[i][j] += B[i][j];
-        return (*this);
-    }
-
-    Matrix &operator-=(const Matrix &B) {
-        size_t n = height(), m = width();
-        assert(n == B.height() && m == B.width());
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++) (*this)[i][j] -= B[i][j];
-        return (*this);
-    }
-
-    Matrix &operator*=(const Matrix &B) {
-        size_t n = height(), m = B.width(), p = width();
-        assert(p == B.height());
-        vector<vector<T>> C(n, vector<T>(m, 0));
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                for (int k = 0; k < p; k++)
-                    C[i][j] = (C[i][j] + (*this)[i][k] * B[k][j]);
-        A.swap(C);
-        return (*this);
-    }
-
-    Matrix &operator^=(long long k) {
-        Matrix B = Matrix::I(height());
-        while (k > 0) {
-            if (k & 1) B *= *this;
-            *this *= *this;
-            k >>= 1LL;
-        }
-        A.swap(B.A);
-        return (*this);
-    }
-
-    Matrix operator+(const Matrix &B) const { return (Matrix(*this) += B); }
-
-    Matrix operator-(const Matrix &B) const { return (Matrix(*this) -= B); }
-
-    Matrix operator*(const Matrix &B) const { return (Matrix(*this) *= B); }
-
-    Matrix operator^(const long long k) const { return (Matrix(*this) ^= k); }
-
-    Matrix pow(long long n) {
-        Matrix ret = I(height());
-        Matrix x = Matrix(*this);
-        while (n > 0) {
-            if (n & 1) (ret *= x);
-            (x *= x);
-            n >>= 1;
-        }
-        return ret;
-    }
-
-    friend ostream &operator<<(ostream &os, Matrix &p) {
-        size_t n = p.height(), m = p.width();
-        for (int i = 0; i < n; i++) {
-            os << "[";
-            for (int j = 0; j < m; j++) {
-                os << p[i][j] << (j + 1 == m ? "]\n" : ",");
-            }
-        }
-        return (os);
-    }
-
-    T determinant() {
-        Matrix B(*this);
-        assert(width() == height());
-        T ret = 1;
-        for (int i = 0; i < width(); i++) {
-            int idx = -1;
-            for (int j = i; j < width(); j++) {
-                if (B[j][i] != 0) idx = j;
-            }
-            if (idx == -1) return (0);
-            if (i != idx) {
-                ret *= -1;
-                swap(B[i], B[idx]);
-            }
-            ret *= B[i][i];
-            T vv = B[i][i];
-            for (int j = 0; j < width(); j++) {
-                B[i][j] /= vv;
-            }
-            for (int j = i + 1; j < width(); j++) {
-                T a = B[j][i];
-                for (int k = 0; k < width(); k++) {
-                    B[j][k] -= B[i][k] * a;
+    void ntt(vector<Mint>& a) {
+        const int n = (int)a.size();
+        assert((n & (n - 1)) == 0);
+        assert(__builtin_ctz(n) <= max_base);
+        for (int m = n; m >>= 1;) {
+            Mint w = 1;
+            for (int s = 0, k = 0; s < n; s += 2 * m) {
+                for (int i = s, j = s + m; i < s + m; ++i, ++j) {
+                    auto x = a[i], y = a[j] * w;
+                    a[i] = x + y, a[j] = x - y;
                 }
+                w *= dw[__builtin_ctz(++k)];
             }
         }
-        return (ret);
+    }
+
+    void intt(vector<Mint>& a, bool f = true) {
+        const int n = (int)a.size();
+        assert((n & (n - 1)) == 0);
+        assert(__builtin_ctz(n) <= max_base);
+        for (int m = 1; m < n; m *= 2) {
+            Mint w = 1;
+            for (int s = 0, k = 0; s < n; s += 2 * m) {
+                for (int i = s, j = s + m; i < s + m; ++i, ++j) {
+                    auto x = a[i], y = a[j];
+                    a[i] = x + y, a[j] = (x - y) * w;
+                }
+                w *= idw[__builtin_ctz(++k)];
+            }
+        }
+        if (f) {
+            Mint inv_sz = Mint(1) / n;
+            for (int i = 0; i < n; i++) a[i] *= inv_sz;
+        }
+    }
+
+    vector<Mint> multiply(vector<Mint> a, vector<Mint> b) {
+        int need = a.size() + b.size() - 1;
+        int nbase = 1;
+        while ((1 << nbase) < need) nbase++;
+        int sz = 1 << nbase;
+        a.resize(sz, 0);
+        b.resize(sz, 0);
+        ntt(a);
+        ntt(b);
+        Mint inv_sz = Mint(1) / sz;
+        for (int i = 0; i < sz; i++) a[i] *= b[i] * inv_sz;
+        intt(a, false);
+        a.resize(need);
+        return a;
     }
 };
 #line 1 "library/mod/modint.cpp"
@@ -475,147 +296,558 @@ struct modint {
     }
 
     static int get_mod() { return mod; }
+
+    inline int get() { return x; }
 };
-#line 1 "library/structure/segtree/SegmentTree.cpp"
-/**
- * @brief Segment Tree
- * @docs docs/segmenttree.md
- */
-template <typename Monoid>
-struct SegmentTree {
-    using F = function<Monoid(Monoid, Monoid)>;
+#line 6 "verify/yosupo-convolution_mod_1000000007.test.cpp"
+//
+#line 1 "library/convolution/FFT.cpp"
+// namespace FastFourierTransform {
+// using real = long double;
 
-    int sz;
-    vector<Monoid> seg;
+// struct C {
+//     real x, y;
 
-    const F f;
-    const Monoid M1;
+//     C() : x(0), y(0) {}
 
-    SegmentTree(int n, const F f, const Monoid &M1) : f(f), M1(M1) {
-        sz = 1;
-        while (sz < n) sz <<= 1;
-        seg.assign(2 * sz, M1);
+//     C(real x, real y) : x(x), y(y) {}
+
+//     inline C operator+(const C &c) const { return C(x + c.x, y + c.y); }
+
+//     inline C operator-(const C &c) const { return C(x - c.x, y - c.y); }
+
+//     inline C operator*(const C &c) const {
+//         return C(x * c.x - y * c.y, x * c.y + y * c.x);
+//     }
+
+//     inline C conj() const { return C(x, -y); }
+// };
+
+// const real PI = acosl(-1);
+// int base = 1;
+// vector<C> rts = {{0, 0}, {1, 0}};
+// vector<int> rev = {0, 1};
+
+// void ensure_base(int nbase) {
+//     if (nbase <= base) return;
+//     rev.resize(1 << nbase);
+//     rts.resize(1 << nbase);
+//     for (int i = 0; i < (1 << nbase); i++) {
+//         rev[i] = (rev[i >> 1] >> 1) + ((i & 1) << (nbase - 1));
+//     }
+//     while (base < nbase) {
+//         real angle = PI * 2.0 / (1 << (base + 1));
+//         for (int i = 1 << (base - 1); i < (1 << base); i++) {
+//             rts[i << 1] = rts[i];
+//             real angle_i = angle * (2 * i + 1 - (1 << base));
+//             rts[(i << 1) + 1] = C(cos(angle_i), sin(angle_i));
+//         }
+//         ++base;
+//     }
+// }
+
+// void fft(vector<C> &a, int n) {
+//     assert((n & (n - 1)) == 0);
+//     int zeros = __builtin_ctz(n);
+//     ensure_base(zeros);
+//     int shift = base - zeros;
+//     for (int i = 0; i < n; i++) {
+//         if (i < (rev[i] >> shift)) {
+//             swap(a[i], a[rev[i] >> shift]);
+//         }
+//     }
+//     for (int k = 1; k < n; k <<= 1) {
+//         for (int i = 0; i < n; i += 2 * k) {
+//             for (int j = 0; j < k; j++) {
+//                 C z = a[i + j + k] * rts[j + k];
+//                 a[i + j + k] = a[i + j] - z;
+//                 a[i + j] = a[i + j] + z;
+//             }
+//         }
+//     }
+// }
+
+// vector<int64_t> multiply(const vector<int> &a, const vector<int> &b) {
+//     int need = (int)a.size() + (int)b.size() - 1;
+//     int nbase = 1;
+//     while ((1 << nbase) < need) nbase++;
+//     ensure_base(nbase);
+//     int sz = 1 << nbase;
+//     vector<C> fa(sz);
+//     for (int i = 0; i < sz; i++) {
+//         int x = (i < (int)a.size() ? a[i] : 0);
+//         int y = (i < (int)b.size() ? b[i] : 0);
+//         fa[i] = C(x, y);
+//     }
+//     fft(fa, sz);
+//     C r(0, -0.25 / (sz >> 1)), s(0, 1), t(0.5, 0);
+//     for (int i = 0; i <= (sz >> 1); i++) {
+//         int j = (sz - i) & (sz - 1);
+//         C z = (fa[j] * fa[j] - (fa[i] * fa[i]).conj()) * r;
+//         fa[j] = (fa[i] * fa[i] - (fa[j] * fa[j]).conj()) * r;
+//         fa[i] = z;
+//     }
+//     for (int i = 0; i < (sz >> 1); i++) {
+//         C A0 = (fa[i] + fa[i + (sz >> 1)]) * t;
+//         C A1 = (fa[i] - fa[i + (sz >> 1)]) * t * rts[(sz >> 1) + i];
+//         fa[i] = A0 + A1 * s;
+//     }
+//     fft(fa, sz >> 1);
+//     vector<int64_t> ret(need);
+//     for (int i = 0; i < need; i++) {
+//         ret[i] = llround(i & 1 ? fa[i >> 1].y : fa[i >> 1].x);
+//     }
+//     return ret;
+// }
+// };  // namespace FastFourierTransform
+// #include "library/convolution/NTT.cpp"
+// #include "library/mod/modint.cpp"
+// template <typename Mint>
+// struct FFT {
+//     constexpr int mod0 = 1045430273;
+//     constexpr int mod1 = 1051721729;
+//     constexpr int mod2 = 1053818881;
+//     using mint0 = modint<mod0>;
+//     using mint1 = modint<mod1>;
+//     using mint2 = modint<mod2>;
+//     NTT<mint0> ntt0;
+//     NTT<mint1> ntt1;
+//     NTT<mint2> ntt2;
+//     vector<Mint> multiply(const vector<int> &x, const vector<int> &y) {
+//         auto d0 = ntt0.multiply(x, y);
+//         auto d1 = ntt1.multiply(x, y);
+//         auto d2 = ntt2.multiply(x, y);
+//         int n = d0.size();
+//         vector<Mint> res(n);
+//         static const mint1 r01 = mint1(mint0.get_mod()).inv();
+//         static const mint2 r02 = mint2(mint0.get_mod()).inv();
+//         static const mint2 r12 = mint2(mint1.get_mod()).inv();
+//         static const mint2 r02r12 = r02 * r12;
+//         static const Mint w1 = Mint(mint0.get_mod());
+//         static const Mint w2 = w1 * Mint(mint1.get_mod());
+//         rep(i, n) {
+//             ull a = d0[i].v;
+//             ull b = (d1[i].v + mint1.get_mod() - a) * r01.v %
+//             mint1.get_mod(); ull c = ((d2[i].v + mint2.get_mod() - a) *
+//             r02r12.v +
+//                      (mint2.get_mod() - b) * r12.v) %
+//                     mint2.get_mod();
+//             res[i].v = (a + b * w1.v + c * w2.v) % Mint.get_mod();
+//         }
+//         return res;
+//     }
+// };
+
+// template <class mint>
+// void inplace_fmt(vector<mint> &f, bool inv) {
+//     const int n = f.size();
+//     static vector<mint> g, ig, p2;
+//     if (g.size() == 0) {
+//         rep(i, 30) {
+//             mint w = -mint::root().pow(((mint::mod - 1) >> (i + 2)) * 3);
+//             g.pb(w);
+//             ig.pb(w.inv());
+//             p2.pb(mint(1 << i).inv());
+//         }
+//     }
+//     static constexpr uint mod2 = mint::mod * 2;
+//     if (!inv) {
+//         int b = n;
+//         if (b >>= 1) {  // input:[0,mod)
+//             rep(i, b) {
+//                 uint x = f[i + b].x;
+//                 f[i + b].x = f[i].x + mint::mod - x;
+//                 f[i].x += x;
+//             }
+//         }
+//         if (b >>= 1) {  // input:[0,mod*2)
+//             mint p = 1;
+//             for (int i = 0, k = 0; i < n; i += b * 2) {
+//                 rep(j, i, i + b) {
+//                     uint x = (f[j + b] * p).x;
+//                     f[j + b].x = f[j].x + mint::mod - x;
+//                     f[j].x += x;
+//                 }
+//                 p *= g[__builtin_ctz(++k)];
+//             }
+//         }
+//         while (b) {
+//             if (b >>= 1) {  // input:[0,mod*3)
+//                 mint p = 1;
+//                 for (int i = 0, k = 0; i < n; i += b * 2) {
+//                     rep(j, i, i + b) {
+//                         uint x = (f[j + b] * p).x;
+//                         f[j + b].x = f[j].x + mint::mod - x;
+//                         f[j].x += x;
+//                     }
+//                     p *= g[__builtin_ctz(++k)];
+//                 }
+//             }
+//             if (b >>= 1) {  // input:[0,mod*4)
+//                 mint p = 1;
+//                 for (int i = 0, k = 0; i < n; i += b * 2) {
+//                     rep(j, i, i + b) {
+//                         uint x = (f[j + b] * p).x;
+//                         f[j].x = (f[j].x < mod2 ? f[j].x : f[j].x - mod2);
+//                         f[j + b].x = f[j].x + mint::mod - x;
+//                         f[j].x += x;
+//                     }
+//                     p *= g[__builtin_ctz(++k)];
+//                 }
+//             }
+//         }
+//     } else {
+//         int b = 1;
+//         if (b < n / 2) {  // input:[0,mod)
+//             mint p = 1;
+//             for (int i = 0, k = 0; i < n; i += b * 2) {
+//                 rep(j, i, i + b) {
+//                     ull x = f[j].v + mint::mod - f[j + b].v;
+//                     f[j].v += f[j + b].v;
+//                     f[j + b].v = x * p.v % mint::mod;
+//                 }
+//                 p *= ig[__builtin_ctz(++k)];
+//             }
+//             b <<= 1;
+//         }
+//         for (; b < n / 2; b <<= 1) {  // input:[0,mod*2)
+//             mint p = 1;
+//             for (int i = 0, k = 0; i < n; i += b * 2) {
+//                 rep(j, i, i + b / 2) {
+//                     ull x = f[j].v + mod2 - f[j + b].v;
+//                     f[j].v += f[j + b].v;
+//                     f[j].v = (f[j].v) < mod2 ? f[j].v : f[j].v - mod2;
+//                     f[j + b].v = x * p.v % mint::mod;
+//                 }
+//                 rep(j, i + b / 2, i + b) {
+//                     ull x = f[j].v + mod2 - f[j + b].v;
+//                     f[j].v += f[j + b].v;
+//                     // f[j].v=(f[j].v)<mod2?f[j].v:f[j].v-mod2;
+//                     f[j + b].v = x * p.v % mint::mod;
+//                 }
+//                 p *= ig[__builtin_ctz(++k)];
+//             }
+//         }
+//         if (b < n) {  // input:[0,mod*2)
+//             rep(i, b) {
+//                 uint x = f[i + b].v;
+//                 f[i + b].v = f[i].v + mod2 - x;
+//                 f[i].v += x;
+//             }
+//         }
+//         int lg = 1;
+//         int tmp = n;
+//         while (tmp > 1) lg *= 2, tmp /= 2;
+//         mint z = p2[lg];
+//         rep(i, n) f[i] *= z;
+//     }
+// }
+// template <class mint>
+// vector<mint> multiply(vector<mint> x, const vector<mint> &y,
+//                       bool same = false) {
+//     int n = x.size() + y.size() - 1;
+//     int s = 1;
+//     while (s < n) s *= 2;
+//     x.resize(s);
+//     inplace_fmt(x, false);
+//     if (!same) {
+//         vector<mint> z(s);
+//         rep(i, y.size()) z[i] = y[i];
+//         inplace_fmt(z, false);
+//         rep(i, s) x[i] *= z[i];
+//     } else {
+//         rep(i, s) x[i] *= x[i];
+//     }
+//     inplace_fmt(x, true);
+//     x.resize(n);
+//     return x;
+// }
+
+template <int mod>
+vector<int> multiply(vector<int>& a, vector<int>& b) {
+    using mint = modint<mod>;
+    using mint1 = modint<167772161>;
+    using mint2 = modint<469762049>;
+    using mint3 = modint<595591169>;
+    NTT<mint1> ntt1;
+    NTT<mint2> ntt2;
+    NTT<mint3> ntt3;
+    vector<mint1> a1(begin(a), end(a)), b1(begin(b), end(b));
+    vector<mint2> a2(begin(a), end(a)), b2(begin(b), end(b));
+    vector<mint3> a3(begin(a), end(a)), b3(begin(b), end(b));
+    auto x = ntt1.multiply(a1, b1);
+    auto y = ntt2.multiply(a2, b2);
+    auto z = ntt3.multiply(a3, b3);
+    const int m1 = 167772161, m2 = 469762049, m3 = 595591169;
+    const auto m1_inv_m2 = mint2(m1).inverse().get();
+    const auto m12_inv_m3 = (mint3(m1) * m2).inverse().get();
+    const auto m12_mod = (mint(m1) * m2).get();
+    vector<int> ret(x.size());
+    for (int i = 0; i < x.size(); i++) {
+        auto v1 = ((mint2(y[i]) + m2 - x[i].get()) * m1_inv_m2).get();
+        auto v2 =
+            ((z[i] + m3 - x[i].get() - mint3(m1) * v1) * m12_inv_m3).get();
+        ret[i] = (mint(x[i].get()) + mint(m1) * v1 + mint(m12_mod) * v2).get();
+    }
+    return ret;
+}
+#line 1 "library/math/FormalPowerSeries.cpp"
+template <typename T>
+struct FormalPowerSeries : vector<T> {
+    using vector<T>::vector;
+    using P = FormalPowerSeries;
+
+    using MULT = function<P(P, P)>;
+
+    static MULT& get_mult() {
+        static MULT mult = nullptr;
+        return mult;
     }
 
-    void set(int k, const Monoid &x) { seg[k + sz] = x; }
+    static void set_fft(MULT f) { get_mult() = f; }
 
-    void build() {
-        for (int k = sz - 1; k > 0; k--) {
-            seg[k] = f(seg[2 * k + 0], seg[2 * k + 1]);
-        }
+    // 末尾の0を消す
+    void shrink() {
+        while (this->size() && this->back() == T(0)) this->pop_back();
     }
 
-    void update(int k, const Monoid &x) {
-        k += sz;
-        seg[k] = x;
-        while (k >>= 1) {
-            seg[k] = f(seg[2 * k + 0], seg[2 * k + 1]);
-        }
+    P operator+(const P& r) const { return P(*this) += r; }
+
+    P operator+(const T& v) const { return P(*this) += v; }
+
+    P operator-(const P& r) const { return P(*this) -= r; }
+
+    P operator-(const T& v) const { return P(*this) -= v; }
+
+    P operator*(const P& r) const { return P(*this) *= r; }
+
+    P operator*(const T& v) const { return P(*this) *= v; }
+
+    P operator/(const P& r) const { return P(*this) /= r; }
+
+    P operator%(const P& r) const { return P(*this) %= r; }
+
+    P& operator+=(const P& r) {
+        if (r.size() > this->size()) this->resize(r.size());
+        for (int i = 0; i < r.size(); i++) (*this)[i] += r[i];
+        return *this;
     }
 
-    Monoid query(int a, int b) {
-        Monoid L = M1, R = M1;
-        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1) {
-            if (a & 1) L = f(L, seg[a++]);
-            if (b & 1) R = f(seg[--b], R);
-        }
-        return f(L, R);
+    P& operator+=(const T& r) {
+        if (this->empty()) this->resize(1);
+        (*this)[0] += r;
+        return *this;
     }
 
-    Monoid operator[](const int &k) const { return seg[k + sz]; }
-
-    template <typename C>
-    int find_subtree(int a, const C &check, Monoid &M, bool type) {
-        while (a < sz) {
-            Monoid nxt =
-                type ? f(seg[2 * a + type], M) : f(M, seg[2 * a + type]);
-            if (check(nxt))
-                a = 2 * a + type;
-            else
-                M = nxt, a = 2 * a + 1 - type;
-        }
-        return a - sz;
+    P& operator-=(const P& r) {
+        if (r.size() > this->size()) this->resize(r.size());
+        for (int i = 0; i < r.size(); i++) (*this)[i] -= r[i];
+        shrink();
+        return *this;
     }
 
-    // check(seg[i])を満たす最小のb<=iを返す.なければ-1
-    template <typename C>
-    int find_first(int a, const C &check) {
-        Monoid L = M1;
-        if (a <= 0) {
-            if (check(f(L, seg[1]))) return find_subtree(1, check, L, false);
-            return -1;
+    P& operator-=(const T& r) {
+        if (this->empty()) this->resize(1);
+        (*this)[0] -= r;
+        shrink();
+        return *this;
+    }
+
+    P& operator*=(const T& v) {
+        const int n = (int)this->size();
+        for (int k = 0; k < n; k++) (*this)[k] *= v;
+        return *this;
+    }
+
+    P& operator*=(const P& r) {
+        if (this->empty() || r.empty()) {
+            this->clear();
+            return *this;
         }
-        int b = sz;
-        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1) {
-            if (a & 1) {
-                Monoid nxt = f(L, seg[a]);
-                if (check(nxt)) return find_subtree(a, check, L, false);
-                L = nxt;
-                ++a;
+        assert(get_mult() != nullptr);
+        return *this = get_mult()(*this, r);
+    }
+
+    P& operator%=(const P& r) { return *this -= *this / r * r; }
+
+    P operator-() const {
+        P ret(this->size());
+        for (int i = 0; i < this->size(); i++) ret[i] = -(*this)[i];
+        return ret;
+    }
+
+    P& operator/=(const P& r) {
+        if (this->size() < r.size()) {
+            this->clear();
+            return *this;
+        }
+        int n = this->size() - r.size() + 1;
+        return *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);
+    }
+
+    P pre(int sz) const {
+        return P(begin(*this), begin(*this) + min((int)this->size(), sz));
+    }
+
+    // f/x^sz
+    P operator>>(int sz) const {
+        if (this->size() <= sz) return {};
+        P ret(*this);
+        ret.erase(ret.begin(), ret.begin() + sz);
+        return ret;
+    }
+
+    // f*x^sz
+    P operator<<(int sz) const {
+        P ret(*this);
+        ret.insert(ret.begin(), sz, T(0));
+        return ret;
+    }
+
+    // 反転
+    P rev(int deg = -1) const {
+        P ret(*this);
+        if (deg != -1) ret.resize(deg, T(0));
+        reverse(begin(ret), end(ret));
+        return ret;
+    }
+
+    //微分
+    P diff() const {
+        const int n = (int)this->size();
+        P ret(max(0, n - 1));
+        for (int i = 1; i < n; i++) ret[i - 1] = (*this)[i] * T(i);
+        return ret;
+    }
+
+    // 積分
+    P integral() const {
+        const int n = (int)this->size();
+        P ret(n + 1);
+        ret[0] = T(0);
+        for (int i = 0; i < n; i++) ret[i + 1] = (*this)[i] / T(i + 1);
+        return ret;
+    }
+
+    // 1/fのdeg項
+    // F(0) must not be 0
+    P inv(int deg = -1) const {
+        assert(((*this)[0]) != T(0));
+        const int n = (int)this->size();
+        if (deg == -1) deg = n;
+        P ret({T(1) / (*this)[0]});
+        for (int i = 1; i < deg; i <<= 1) {
+            ret = (ret + ret - ret * ret * pre(i << 1)).pre(i << 1);
+        }
+        return ret.pre(deg);
+    }
+
+    // F(0) must be 1
+    P log(int deg = -1) const {
+        assert((*this)[0] == 1);
+        const int n = (int)this->size();
+        if (deg == -1) deg = n;
+        return (this->diff() * this->inv(deg)).pre(deg - 1).integral();
+    }
+
+    P sqrt(int deg = -1) const {
+        const int n = (int)this->size();
+        if (deg == -1) deg = n;
+
+        if ((*this)[0] == T(0)) {
+            for (int i = 1; i < n; i++) {
+                if ((*this)[i] != T(0)) {
+                    if (i & 1) return {};
+                    if (deg - i / 2 <= 0) break;
+                    auto ret = (*this >> i).sqrt(deg - i / 2) << (i / 2);
+                    if (ret.size() < deg) ret.resize(deg, T(0));
+                    return ret;
+                }
+            }
+            return P(deg, 0);
+        }
+
+        P ret({T(1)});
+        T inv2 = T(1) / T(2);
+        for (int i = 1; i < deg; i <<= 1) {
+            ret = (ret + pre(i << 1) * ret.inv(i << 1)) * inv2;
+        }
+        return ret.pre(deg);
+    }
+
+    // F(0) must be 0
+    P exp(int deg = -1) const {
+        assert((*this)[0] == T(0));
+        const int n = (int)this->size();
+        if (deg == -1) deg = n;
+        P ret({T(1)});
+        for (int i = 1; i < deg; i <<= 1) {
+            ret = (ret * (pre(i << 1) + T(1) - ret.log(i << 1))).pre(i << 1);
+        }
+        return ret.pre(deg);
+    }
+
+    P pow(int64_t k, int deg = -1) const {
+        const int n = (int)this->size();
+        if (deg == -1) deg = n;
+        for (int i = 0; i < n; i++) {
+            if ((*this)[i] != T(0)) {
+                T rev = T(1) / (*this)[i];
+                P C(*this * rev);
+                P D(n - i);
+                for (int j = i; j < n; j++) D[j - i] = C[j];
+                D = (D.log() * k).exp() * (*this)[i].pow(k);
+                P E(deg);
+                if (i * k > deg) return E;
+                auto S = i * k;
+                for (int j = 0; j + S < deg && j < D.size(); j++)
+                    E[j + S] = D[j];
+                return E;
             }
         }
-        return -1;
+        return *this;
     }
 
-    // check(seg[i])を満たす最小のi<bを返す.なければ-1
-    template <typename C>
-    int find_last(int b, const C &check) {
-        Monoid R = M1;
-        if (b >= sz) {
-            if (check(f(seg[1], R))) return find_subtree(1, check, R, true);
-            return -1;
+    //代入
+    T eval(T x) const {
+        T r = 0, w = 1;
+        for (auto& v : *this) {
+            r += w * v;
+            w *= x;
         }
-        int a = sz;
-        for (b += sz; a < b; a >>= 1, b >>= 1) {
-            if (b & 1) {
-                Monoid nxt = f(seg[--b], R);
-                if (check(nxt)) return find_subtree(b, check, R, true);
-                R = nxt;
-            }
-        }
-        return -1;
+        return r;
     }
 };
-#line 8 "verify/yuki-650.test.cpp"
+
+// NTT<mint> ntt;
+// FPS mult_ntt(const FPS::P& a, const FPS::P& b) {
+//     auto ret = ntt.multiply(a, b);
+//     return FPS::P(ret.begin(), ret.end());
+// }
+// FPS mult(const FPS::P& a, const FPS::P& b) {
+//     FPS c(a.size() + b.size() - 1);
+//     rep(i, a.size()) rep(j, b.size()) { c[i + j] += a[i] * b[j]; }
+//     return c;
+// }
+#line 9 "verify/yosupo-convolution_mod_1000000007.test.cpp"
 using mint = modint<1000000007>;
-using mmat = Matrix<mint>;
-
+using FPS = FormalPowerSeries<mint>;
+FPS mult_fft(const FPS::P& a, const FPS::P& b) {
+    vi aa(a.size()), bb(b.size());
+    rep(i, a.size()) aa[i] = a[i].x;
+    rep(i, b.size()) bb[i] = b[i].x;
+    auto ret = multiply<1000000007>(aa, bb);
+    return FPS::P(ret.begin(), ret.end());
+}
+// FPS::set_fft(mult_ntt); in main
 int main() {
-    int n, q;
-    cin >> n;
-    HLD hld(n);
-    vector<Pi> etov(n - 1);
-    rep(i, n - 1) {
-        int a, b;
-        cin >> a >> b;
-        hld.add_edge(a, b);
-        etov[i] = mp(a, b);
-    }
-    cin >> q;
-    SegmentTree<mmat> seg(
-        n, [&](mmat a, mmat b) { return a * b; }, mmat::I(2));
-    hld.build();
-    rep(_, q) {
-        char t;
-        cin >> t;
-        if (t == 'g') {
-            int u, v;
-            cin >> u >> v;
-            mmat res = hld.query_edge(
-                u, v, mmat::I(2),
-                [&](int a, int b) { return seg.query(a, b + 1); },
-                [&](mmat a, mmat b) { return a * b; });
-            rep(r, 2) {
-                rep(c, 2) { cout << res[r][c] << ' '; }
-            }
-            cout << endl;
-        } else {
-            int i, a, b, c, d;
-            cin >> i >> a >> b >> c >> d;
-            auto [u, v] = etov[i];
-            hld.update_edge(u, v, [&](int l, int r) {
-                return seg.update(l, mmat({{a, b}, {c, d}}));
-            });
-        }
-    }
+    int n, m;
+    cin >> n >> m;
+    FPS a(n), b(m);
+    rep(i, n) cin >> a[i];
+    rep(i, m) cin >> b[i];
+    FPS::set_fft(mult_fft);
+    auto c = a * b;
+    rep(i, n + m - 1) { cout << c[i] << ' '; }
+    cout << endl;
 }

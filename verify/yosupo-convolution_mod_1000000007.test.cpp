@@ -1,20 +1,19 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod_1000000007"
 #include "library/template/template.cpp"
 // library
+#include "library/convolution/NTT.cpp"
+#include "library/mod/modint.cpp"
+//
 #include "library/convolution/FFT.cpp"
 #include "library/math/FormalPowerSeries.cpp"
-#include "library/mod/modint.cpp"
 using mint = modint<1000000007>;
 using FPS = FormalPowerSeries<mint>;
-FFT<mint> fft;
 FPS mult_fft(const FPS::P& a, const FPS::P& b) {
-    auto ret = fft.multiply(a, b);
+    vi aa(a.size()), bb(b.size());
+    rep(i, a.size()) aa[i] = a[i].x;
+    rep(i, b.size()) bb[i] = b[i].x;
+    auto ret = multiply<1000000007>(aa, bb);
     return FPS::P(ret.begin(), ret.end());
-}
-FPS mult(const FPS::P& a, const FPS::P& b) {
-    FPS c(a.size() + b.size() - 1);
-    rep(i, a.size()) rep(j, b.size()) { c[i + j] += a[i] * b[j]; }
-    return c;
 }
 // FPS::set_fft(mult_ntt); in main
 int main() {
