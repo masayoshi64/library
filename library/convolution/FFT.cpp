@@ -1,5 +1,5 @@
 namespace FastFourierTransform {
-using real = double;
+using real = long double;
 
 struct C {
     real x, y;
