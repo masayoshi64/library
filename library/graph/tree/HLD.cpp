@@ -88,7 +88,7 @@ struct HLD {
             else
                 break;
         }
-        return f(l, r);
+        return f(r, l);
     }
 
     // update edges between u, v inclusive with func f
@@ -124,6 +124,6 @@ struct HLD {
                 break;
             }
         }
-        return f(l, r);
+        return f(r, l);
     }
 };
