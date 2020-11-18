@@ -60,6 +60,14 @@ data:
     - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
+  - name: .
+    pages:
+    - icon: ':warning:'
+      path: ouput.cpp
+      title: Segment Tree
+    - icon: ':warning:'
+      path: output.cpp
+      title: Segment Tree
   verificationCategories:
   - name: verify
     pages:

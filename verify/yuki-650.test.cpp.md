@@ -100,13 +100,13 @@ data:
     \ if (v_id[u] > v_id[v]) swap(u, v);\n            f(max(v_id[head[v]], v_id[u]),\
     \ v_id[v]);\n            if (head[u] != head[v])\n                v = parent[head[v]];\n\
     \            else\n                break;\n        }\n    }\n\n    // get res\
-    \ for [u, v] with query q and merge each value with f\n    template <typename\
-    \ T, typename Q, typename F>\n    T query(int u, int v, T id, const Q& q, const\
-    \ F& f) {\n        T l = id, r = id;\n        while (1) {\n            if (v_id[u]\
-    \ > v_id[v]) {\n                swap(u, v);\n                swap(l, r);\n   \
-    \         }\n            l = f(l, q(max(v_id[head[v]], v_id[u]), v_id[v]));\n\
-    \            if (head[u] != head[v])\n                v = parent[head[v]];\n \
-    \           else\n                break;\n        }\n        return f(l, r);\n\
+    \ for [u, v] with query q and merge each value with f\n    // root->leaf\n   \
+    \ template <typename T, typename Q, typename F>\n    T query(int u, int v, T id,\
+    \ const Q& q, const F& f) {\n        T l = id, r = id;\n        while (1) {\n\
+    \            if (v_id[u] > v_id[v]) {\n                swap(u, v);\n         \
+    \       swap(l, r);\n            }\n            l = f(q(max(v_id[head[v]], v_id[u]),\
+    \ v_id[v]), l);\n            if (head[u] != head[v])\n                v = parent[head[v]];\n\
+    \            else\n                break;\n        }\n        return f(l, r);\n\
     \    }\n\n    // update edges between u, v inclusive with func f\n    template\
     \ <typename F>\n    void update_edge(int u, int v, const F& f) {\n        while\
     \ (1) {\n            if (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u]\
@@ -114,16 +114,16 @@ data:
     \ = parent[head[v]];\n            } else {\n                if (u != v) f(v_id[u]\
     \ + 1, v_id[v]);\n                break;\n            }\n        }\n    }\n\n\
     \    // query for edges between u, v inclusive with query q and merge func f\n\
-    \    template <typename T, typename Q, typename F>\n    T query_edge(int u, int\
-    \ v, T id, const Q& q, const F& f) {\n        T l = id, r = id;\n        while\
-    \ (1) {\n            if (v_id[u] > v_id[v]) {\n                swap(u, v);\n \
-    \               swap(l, r);\n            }\n            if (head[u] != head[v])\
-    \ {\n                l = f(l, q(v_id[head[v]], v_id[v]));\n                v =\
-    \ parent[head[v]];\n            } else {\n                if (u != v) l = f(l,\
-    \ q(v_id[u] + 1, v_id[v]));\n                break;\n            }\n        }\n\
-    \        return f(l, r);\n    }\n};\n#line 1 \"library/math/Matrix.cpp\"\ntemplate\
-    \ <class T>\nstruct Matrix {\n    vector<vector<T>> A;\n\n    Matrix() {}\n\n\
-    \    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
+    \    // root->leaf\n    template <typename T, typename Q, typename F>\n    T query_edge(int\
+    \ u, int v, T id, const Q& q, const F& f) {\n        T l = id, r = id;\n     \
+    \   while (1) {\n            if (v_id[u] > v_id[v]) {\n                swap(u,\
+    \ v);\n                swap(l, r);\n            }\n            if (head[u] !=\
+    \ head[v]) {\n                l = f(q(v_id[head[v]], v_id[v]), l);\n         \
+    \       v = parent[head[v]];\n            } else {\n                if (u != v)\
+    \ l = f(q(v_id[u] + 1, v_id[v]), l);\n                break;\n            }\n\
+    \        }\n        return f(l, r);\n    }\n};\n#line 1 \"library/math/Matrix.cpp\"\
+    \ntemplate <class T>\nstruct Matrix {\n    vector<vector<T>> A;\n\n    Matrix()\
+    \ {}\n\n    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
     \ n) : A(n, vector<T>(n, 0)){};\n\n    Matrix(vector<vector<T>> a) { A = a; }\n\
     \n    size_t height() const { return (A.size()); }\n\n    size_t width() const\
     \ { return (A[0].size()); }\n\n    inline const vector<T> &operator[](int k) const\
@@ -272,7 +272,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:13:19+09:00'
+  timestamp: '2020-11-18 22:39:07+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp
