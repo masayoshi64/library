@@ -41,7 +41,7 @@ data:
     \ {\n                swap(u, v);\n                swap(l, r);\n            }\n\
     \            l = f(q(max(v_id[head[v]], v_id[u]), v_id[v]), l);\n            if\
     \ (head[u] != head[v])\n                v = parent[head[v]];\n            else\n\
-    \                break;\n        }\n        return f(l, r);\n    }\n\n    // update\
+    \                break;\n        }\n        return f(r, l);\n    }\n\n    // update\
     \ edges between u, v inclusive with func f\n    template <typename F>\n    void\
     \ update_edge(int u, int v, const F& f) {\n        while (1) {\n            if\
     \ (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u] != head[v]) {\n   \
@@ -56,7 +56,7 @@ data:
     \ {\n                l = f(q(v_id[head[v]], v_id[v]), l);\n                v =\
     \ parent[head[v]];\n            } else {\n                if (u != v) l = f(q(v_id[u]\
     \ + 1, v_id[v]), l);\n                break;\n            }\n        }\n     \
-    \   return f(l, r);\n    }\n};\n"
+    \   return f(r, l);\n    }\n};\n"
   code: "struct HLD {\n    vector<vector<int>> G;\n    vector<int> parent, depth,\
     \ sub_size, v_id, id_to_v, head;\n    HLD(int n)\n        : G(n),\n          v_id(n,\
     \ -1),\n          head(n),\n          sub_size(n, 1),\n          parent(n, -1),\n\
@@ -87,7 +87,7 @@ data:
     \            if (v_id[u] > v_id[v]) {\n                swap(u, v);\n         \
     \       swap(l, r);\n            }\n            l = f(q(max(v_id[head[v]], v_id[u]),\
     \ v_id[v]), l);\n            if (head[u] != head[v])\n                v = parent[head[v]];\n\
-    \            else\n                break;\n        }\n        return f(l, r);\n\
+    \            else\n                break;\n        }\n        return f(r, l);\n\
     \    }\n\n    // update edges between u, v inclusive with func f\n    template\
     \ <typename F>\n    void update_edge(int u, int v, const F& f) {\n        while\
     \ (1) {\n            if (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u]\
@@ -102,12 +102,12 @@ data:
     \ head[v]) {\n                l = f(q(v_id[head[v]], v_id[v]), l);\n         \
     \       v = parent[head[v]];\n            } else {\n                if (u != v)\
     \ l = f(q(v_id[u] + 1, v_id[v]), l);\n                break;\n            }\n\
-    \        }\n        return f(l, r);\n    }\n};"
+    \        }\n        return f(r, l);\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: library/graph/tree/HLD.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:39:07+09:00'
+  timestamp: '2020-11-18 22:56:07+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yuki-650.test.cpp

@@ -106,7 +106,7 @@ data:
     \            if (v_id[u] > v_id[v]) {\n                swap(u, v);\n         \
     \       swap(l, r);\n            }\n            l = f(q(max(v_id[head[v]], v_id[u]),\
     \ v_id[v]), l);\n            if (head[u] != head[v])\n                v = parent[head[v]];\n\
-    \            else\n                break;\n        }\n        return f(l, r);\n\
+    \            else\n                break;\n        }\n        return f(r, l);\n\
     \    }\n\n    // update edges between u, v inclusive with func f\n    template\
     \ <typename F>\n    void update_edge(int u, int v, const F& f) {\n        while\
     \ (1) {\n            if (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u]\
@@ -121,7 +121,7 @@ data:
     \ head[v]) {\n                l = f(q(v_id[head[v]], v_id[v]), l);\n         \
     \       v = parent[head[v]];\n            } else {\n                if (u != v)\
     \ l = f(q(v_id[u] + 1, v_id[v]), l);\n                break;\n            }\n\
-    \        }\n        return f(l, r);\n    }\n};\n#line 1 \"library/math/Matrix.cpp\"\
+    \        }\n        return f(r, l);\n    }\n};\n#line 1 \"library/math/Matrix.cpp\"\
     \ntemplate <class T>\nstruct Matrix {\n    vector<vector<T>> A;\n\n    Matrix()\
     \ {}\n\n    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
     \ n) : A(n, vector<T>(n, 0)){};\n\n    Matrix(vector<vector<T>> a) { A = a; }\n\
@@ -272,7 +272,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:39:07+09:00'
+  timestamp: '2020-11-18 22:56:07+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp
