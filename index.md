@@ -70,7 +70,7 @@ data:
       title: Segment Tree
     - icon: ':warning:'
       path: output.cpp
-      title: output.cpp
+      title: Segment Tree
   verificationCategories:
   - name: verify
     pages:
