@@ -6,8 +6,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
+  - icon: ':x:'
+    path: verify/yosupo-convolution_mod_1000000007.test.cpp
+    title: verify/yosupo-convolution_mod_1000000007.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/math/FormalPowerSeries.cpp\"\ntemplate <typename\
@@ -187,8 +190,9 @@ data:
   path: library/math/FormalPowerSeries.cpp
   requiredBy: []
   timestamp: '2020-11-18 22:08:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/math/FormalPowerSeries.cpp
 layout: document

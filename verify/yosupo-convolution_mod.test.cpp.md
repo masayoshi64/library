@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/convolution/NTT.cpp
     title: library/convolution/NTT.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/math/FormalPowerSeries.cpp
     title: library/math/FormalPowerSeries.cpp
   - icon: ':question:'
