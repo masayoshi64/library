@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: library/convolution
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/convolution/FFT.cpp
       title: library/convolution/FFT.cpp
     - icon: ':heavy_check_mark:'
@@ -16,7 +16,7 @@ data:
       title: library/graph/tree/HLD.cpp
   - name: library/math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/math/FormalPowerSeries.cpp
       title: library/math/FormalPowerSeries.cpp
     - icon: ':x:'
@@ -86,7 +86,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod_1000000007.test.cpp
       title: verify/yosupo-convolution_mod_1000000007.test.cpp
     - icon: ':heavy_check_mark:'

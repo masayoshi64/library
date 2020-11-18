@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/convolution/FFT.cpp
     title: library/convolution/FFT.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/math/FormalPowerSeries.cpp
     title: library/math/FormalPowerSeries.cpp
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -75,13 +75,13 @@ data:
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
     #line 3 \"verify/yosupo-convolution_mod_1000000007.test.cpp\"\n// library\n#line\
     \ 1 \"library/convolution/FFT.cpp\"\nnamespace FastFourierTransform {\nusing real\
-    \ = double;\n\nstruct C {\n    real x, y;\n\n    C() : x(0), y(0) {}\n\n    C(real\
-    \ x, real y) : x(x), y(y) {}\n\n    inline C operator+(const C &c) const { return\
-    \ C(x + c.x, y + c.y); }\n\n    inline C operator-(const C &c) const { return\
-    \ C(x - c.x, y - c.y); }\n\n    inline C operator*(const C &c) const {\n     \
-    \   return C(x * c.x - y * c.y, x * c.y + y * c.x);\n    }\n\n    inline C conj()\
-    \ const { return C(x, -y); }\n};\n\nconst real PI = acosl(-1);\nint base = 1;\n\
-    vector<C> rts = {{0, 0}, {1, 0}};\nvector<int> rev = {0, 1};\n\nvoid ensure_base(int\
+    \ = long double;\n\nstruct C {\n    real x, y;\n\n    C() : x(0), y(0) {}\n\n\
+    \    C(real x, real y) : x(x), y(y) {}\n\n    inline C operator+(const C &c) const\
+    \ { return C(x + c.x, y + c.y); }\n\n    inline C operator-(const C &c) const\
+    \ { return C(x - c.x, y - c.y); }\n\n    inline C operator*(const C &c) const\
+    \ {\n        return C(x * c.x - y * c.y, x * c.y + y * c.x);\n    }\n\n    inline\
+    \ C conj() const { return C(x, -y); }\n};\n\nconst real PI = acosl(-1);\nint base\
+    \ = 1;\nvector<C> rts = {{0, 0}, {1, 0}};\nvector<int> rev = {0, 1};\n\nvoid ensure_base(int\
     \ nbase) {\n    if (nbase <= base) return;\n    rev.resize(1 << nbase);\n    rts.resize(1\
     \ << nbase);\n    for (int i = 0; i < (1 << nbase); i++) {\n        rev[i] = (rev[i\
     \ >> 1] >> 1) + ((i & 1) << (nbase - 1));\n    }\n    while (base < nbase) {\n\
@@ -279,8 +279,8 @@ data:
   isVerificationFile: true
   path: verify/yosupo-convolution_mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 23:24:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-11-18 23:30:56+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod_1000000007.test.cpp
 layout: document

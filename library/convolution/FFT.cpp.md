@@ -3,16 +3,16 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/convolution/FFT.cpp\"\nnamespace FastFourierTransform\
-    \ {\nusing real = double;\n\nstruct C {\n    real x, y;\n\n    C() : x(0), y(0)\
-    \ {}\n\n    C(real x, real y) : x(x), y(y) {}\n\n    inline C operator+(const\
+    \ {\nusing real = long double;\n\nstruct C {\n    real x, y;\n\n    C() : x(0),\
+    \ y(0) {}\n\n    C(real x, real y) : x(x), y(y) {}\n\n    inline C operator+(const\
     \ C &c) const { return C(x + c.x, y + c.y); }\n\n    inline C operator-(const\
     \ C &c) const { return C(x - c.x, y - c.y); }\n\n    inline C operator*(const\
     \ C &c) const {\n        return C(x * c.x - y * c.y, x * c.y + y * c.x);\n   \
@@ -75,8 +75,8 @@ data:
     \            int64_t bb = llround(fb[i].x);\n            int64_t cc = llround(fa[i].y);\n\
     \            aa = T(aa).x, bb = T(bb).x, cc = T(cc).x;\n            ret[i] = aa\
     \ + (bb * part) + (cc * part2);\n        }\n        return ret;\n    }\n};\n"
-  code: "namespace FastFourierTransform {\nusing real = double;\n\nstruct C {\n  \
-    \  real x, y;\n\n    C() : x(0), y(0) {}\n\n    C(real x, real y) : x(x), y(y)\
+  code: "namespace FastFourierTransform {\nusing real = long double;\n\nstruct C {\n\
+    \    real x, y;\n\n    C() : x(0), y(0) {}\n\n    C(real x, real y) : x(x), y(y)\
     \ {}\n\n    inline C operator+(const C &c) const { return C(x + c.x, y + c.y);\
     \ }\n\n    inline C operator-(const C &c) const { return C(x - c.x, y - c.y);\
     \ }\n\n    inline C operator*(const C &c) const {\n        return C(x * c.x -\
@@ -144,8 +144,8 @@ data:
   isVerificationFile: false
   path: library/convolution/FFT.cpp
   requiredBy: []
-  timestamp: '2020-11-18 23:24:37+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2020-11-18 23:30:56+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/convolution/FFT.cpp
