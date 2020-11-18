@@ -242,9 +242,9 @@ data:
     \ });\n            rep(r, 2) {\n                rep(c, 2) { cout << res[r][c]\
     \ << ' '; }\n            }\n            cout << endl;\n        } else {\n    \
     \        int i, a, b, c, d;\n            cin >> i >> a >> b >> c >> d;\n     \
-    \       auto [u, v] = etov[i];\n            hld.update_edge(u, v, [&](int l, int\
-    \ r) {\n                return seg.update(l, mmat({{a, b}, {c, d}}));\n      \
-    \      });\n        }\n    }\n}\n"
+    \       int u = etov[i].first, v = etov[i].second;\n            hld.update_edge(u,\
+    \ v, [&](int l, int r) {\n                return seg.update(l, mmat({{a, b}, {c,\
+    \ d}}));\n            });\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/650\"\n#include \"library/template/template.cpp\"\
     \n// library\n#include \"library/graph/tree/HLD.cpp\"\n#include \"library/math/Matrix.cpp\"\
     \n#include \"library/mod/modint.cpp\"\n#include \"library/structure/segtree/SegmentTree.cpp\"\
@@ -260,9 +260,9 @@ data:
     \ });\n            rep(r, 2) {\n                rep(c, 2) { cout << res[r][c]\
     \ << ' '; }\n            }\n            cout << endl;\n        } else {\n    \
     \        int i, a, b, c, d;\n            cin >> i >> a >> b >> c >> d;\n     \
-    \       auto [u, v] = etov[i];\n            hld.update_edge(u, v, [&](int l, int\
-    \ r) {\n                return seg.update(l, mmat({{a, b}, {c, d}}));\n      \
-    \      });\n        }\n    }\n}"
+    \       int u = etov[i].first, v = etov[i].second;\n            hld.update_edge(u,\
+    \ v, [&](int l, int r) {\n                return seg.update(l, mmat({{a, b}, {c,\
+    \ d}}));\n            });\n        }\n    }\n}"
   dependsOn:
   - library/template/template.cpp
   - library/graph/tree/HLD.cpp
@@ -272,7 +272,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:56:07+09:00'
+  timestamp: '2020-11-18 23:36:00+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp
