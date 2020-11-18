@@ -124,10 +124,11 @@ data:
     \ ret;\n    }\n\n    friend ostream& operator<<(ostream& os, const modint& p)\
     \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
     \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
-    \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n};\n\
-    #line 7 \"verify/aoj-DPL_5_G.test.cpp\"\n#define mod 1000000007ll\nusing mint\
-    \ = modint<mod>;\nint main() {\n    int n, k;\n    cin >> n >> k;\n    Combination<mint>\
-    \ comb(n);\n    print(comb.Bell(n, k));\n    return 0;\n}\n"
+    \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n\n \
+    \   inline int get() { return x; }\n};\n#line 7 \"verify/aoj-DPL_5_G.test.cpp\"\
+    \n#define mod 1000000007ll\nusing mint = modint<mod>;\nint main() {\n    int n,\
+    \ k;\n    cin >> n >> k;\n    Combination<mint> comb(n);\n    print(comb.Bell(n,\
+    \ k));\n    return 0;\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G\"\
     \n#include \"library/template/template.cpp\"\n// library\n#include \"library/math/combination.cpp\"\
     \n#include \"library/mod/modint.cpp\"\n#define mod 1000000007ll\nusing mint =\
@@ -140,7 +141,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-DPL_5_G.test.cpp
   requiredBy: []
-  timestamp: '2020-11-14 13:31:01+09:00'
+  timestamp: '2020-11-19 00:26:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DPL_5_G.test.cpp

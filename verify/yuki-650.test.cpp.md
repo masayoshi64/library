@@ -192,8 +192,8 @@ data:
     \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
     \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n};\n#line 1 \"library/structure/segtree/SegmentTree.cpp\"\n\
-    /**\n * @brief Segment Tree\n * @docs docs/segmenttree.md\n */\ntemplate <typename\
+    \ { return mod; }\n\n    inline int get() { return x; }\n};\n#line 1 \"library/structure/segtree/SegmentTree.cpp\"\
+    \n/**\n * @brief Segment Tree\n * @docs docs/segmenttree.md\n */\ntemplate <typename\
     \ Monoid>\nstruct SegmentTree {\n    using F = function<Monoid(Monoid, Monoid)>;\n\
     \n    int sz;\n    vector<Monoid> seg;\n\n    const F f;\n    const Monoid M1;\n\
     \n    SegmentTree(int n, const F f, const Monoid &M1) : f(f), M1(M1) {\n     \
@@ -272,7 +272,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 23:36:00+09:00'
+  timestamp: '2020-11-19 00:26:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp

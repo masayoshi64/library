@@ -211,17 +211,17 @@ data:
     \ ret;\n    }\n\n    friend ostream& operator<<(ostream& os, const modint& p)\
     \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
     \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
-    \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n};\n\
-    #line 7 \"verify/yosupo-convolution_mod.test.cpp\"\nusing mint = modint<998244353>;\n\
-    using FPS = FormalPowerSeries<mint>;\nNTT<mint> ntt;\nFPS mult_ntt(const FPS::P&\
-    \ a, const FPS::P& b) {\n    auto ret = ntt.multiply(a, b);\n    return FPS::P(ret.begin(),\
-    \ ret.end());\n}\nFPS mult(const FPS::P& a, const FPS::P& b) {\n    FPS c(a.size()\
-    \ + b.size() - 1);\n    rep(i, a.size()) rep(j, b.size()) { c[i + j] += a[i] *\
-    \ b[j]; }\n    return c;\n}\n// FPS::set_fft(mult_ntt); in main\nint main() {\n\
-    \    int n, m;\n    cin >> n >> m;\n    FPS a(n), b(m);\n    rep(i, n) cin >>\
-    \ a[i];\n    rep(i, m) cin >> b[i];\n    NTT<mint> ntt;\n    FPS::set_fft(mult_ntt);\n\
-    \    auto c = a * b;\n    rep(i, n + m - 1) { cout << c[i] << ' '; }\n    cout\
-    \ << endl;\n}\n"
+    \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n\n \
+    \   inline int get() { return x; }\n};\n#line 7 \"verify/yosupo-convolution_mod.test.cpp\"\
+    \nusing mint = modint<998244353>;\nusing FPS = FormalPowerSeries<mint>;\nNTT<mint>\
+    \ ntt;\nFPS mult_ntt(const FPS::P& a, const FPS::P& b) {\n    auto ret = ntt.multiply(a,\
+    \ b);\n    return FPS::P(ret.begin(), ret.end());\n}\nFPS mult(const FPS::P& a,\
+    \ const FPS::P& b) {\n    FPS c(a.size() + b.size() - 1);\n    rep(i, a.size())\
+    \ rep(j, b.size()) { c[i + j] += a[i] * b[j]; }\n    return c;\n}\n// FPS::set_fft(mult_ntt);\
+    \ in main\nint main() {\n    int n, m;\n    cin >> n >> m;\n    FPS a(n), b(m);\n\
+    \    rep(i, n) cin >> a[i];\n    rep(i, m) cin >> b[i];\n    NTT<mint> ntt;\n\
+    \    FPS::set_fft(mult_ntt);\n    auto c = a * b;\n    rep(i, n + m - 1) { cout\
+    \ << c[i] << ' '; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n#include\
     \ \"library/template/template.cpp\"\n// library\n#include \"library/convolution/NTT.cpp\"\
     \n#include \"library/math/FormalPowerSeries.cpp\"\n#include \"library/mod/modint.cpp\"\
@@ -242,7 +242,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-convolution_mod.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:08:45+09:00'
+  timestamp: '2020-11-19 00:26:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod.test.cpp
