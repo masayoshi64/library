@@ -1,4 +1,3 @@
-
 template <typename T>
 struct FormalPowerSeries : vector<T> {
     using vector<T>::vector;
@@ -13,6 +12,7 @@ struct FormalPowerSeries : vector<T> {
 
     static void set_fft(MULT f) { get_mult() = f; }
 
+    // 末尾の0を消す
     void shrink() {
         while (this->size() && this->back() == T(0)) this->pop_back();
     }
@@ -95,6 +95,7 @@ struct FormalPowerSeries : vector<T> {
         return P(begin(*this), begin(*this) + min((int)this->size(), sz));
     }
 
+    // f/x^sz
     P operator>>(int sz) const {
         if (this->size() <= sz) return {};
         P ret(*this);
@@ -102,12 +103,14 @@ struct FormalPowerSeries : vector<T> {
         return ret;
     }
 
+    // f*x^sz
     P operator<<(int sz) const {
         P ret(*this);
         ret.insert(ret.begin(), sz, T(0));
         return ret;
     }
 
+    // 反転
     P rev(int deg = -1) const {
         P ret(*this);
         if (deg != -1) ret.resize(deg, T(0));
@@ -115,6 +118,7 @@ struct FormalPowerSeries : vector<T> {
         return ret;
     }
 
+    //微分
     P diff() const {
         const int n = (int)this->size();
         P ret(max(0, n - 1));
@@ -122,6 +126,7 @@ struct FormalPowerSeries : vector<T> {
         return ret;
     }
 
+    // 積分
     P integral() const {
         const int n = (int)this->size();
         P ret(n + 1);
@@ -130,6 +135,7 @@ struct FormalPowerSeries : vector<T> {
         return ret;
     }
 
+    // 1/fのdeg項
     // F(0) must not be 0
     P inv(int deg = -1) const {
         assert(((*this)[0]) != T(0));
@@ -208,6 +214,7 @@ struct FormalPowerSeries : vector<T> {
         return *this;
     }
 
+    //代入
     T eval(T x) const {
         T r = 0, w = 1;
         for (auto& v : *this) {
@@ -218,9 +225,9 @@ struct FormalPowerSeries : vector<T> {
     }
 };
 
-// using FPS = FormalPowerSeries<mint>;
+// NTT<mint> ntt;
 // FPS mult_ntt(const FPS::P& a, const FPS::P& b) {
-//     auto ret = NTT::convolute(a, b);
+//     auto ret = ntt.multiply(a, b);
 //     return FPS::P(ret.begin(), ret.end());
 // }
 // FPS mult(const FPS::P& a, const FPS::P& b) {
@@ -228,4 +235,3 @@ struct FormalPowerSeries : vector<T> {
 //     rep(i, a.size()) rep(j, b.size()) { c[i + j] += a[i] * b[j]; }
 //     return c;
 // }
-// // FPS::set_fft(mult_ntt); in main

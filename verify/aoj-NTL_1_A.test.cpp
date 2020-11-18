@@ -4,7 +4,6 @@
 #include "library/template/template.cpp"
 // library
 #include "library/math/pollard.cpp"
-
 int main() {
     int n;
     cin >> n;
