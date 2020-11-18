@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: library/structure/UnionFind/merge_tree.cpp
+    title: library/structure/UnionFind/merge_tree.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
@@ -32,7 +35,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/structure/UnionFind/UnionFind.cpp
-  requiredBy: []
+  requiredBy:
+  - library/structure/UnionFind/merge_tree.cpp
   timestamp: '2020-11-14 13:19:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

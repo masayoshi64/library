@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/yuki-650.cpp
+    title: verify/yuki-650.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
@@ -65,7 +68,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/mod/modint.cpp
-  requiredBy: []
+  requiredBy:
+  - verify/yuki-650.cpp
   timestamp: '2020-11-14 13:19:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

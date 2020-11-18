@@ -95,12 +95,12 @@ data:
     \    vl b = pollard_rec(n / x);\n    a.insert(a.end(), b.begin(), b.end());\n\
     \    return a;\n}\n\nmap<ll, int> pollard(ll n) {\n    map<ll, int> res;\n   \
     \ for (ll a : pollard_rec(n)) {\n        res[a]++;\n    }\n    return res;\n}\n\
-    #line 7 \"verify/aoj-NTL_1_A.test.cpp\"\n\nint main() {\n    int n;\n    cin >>\
+    #line 7 \"verify/aoj-NTL_1_A.test.cpp\"\nint main() {\n    int n;\n    cin >>\
     \ n;\n    auto res = pollard(n);\n    cout << n << ':';\n    for (auto [p, i]\
     \ : res) {\n        rep(j, i) cout << ' ' << p;\n    }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/math/pollard.cpp\"\
-    \n\nint main() {\n    int n;\n    cin >> n;\n    auto res = pollard(n);\n    cout\
+    \nint main() {\n    int n;\n    cin >> n;\n    auto res = pollard(n);\n    cout\
     \ << n << ':';\n    for (auto [p, i] : res) {\n        rep(j, i) cout << ' ' <<\
     \ p;\n    }\n    cout << endl;\n}"
   dependsOn:
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-NTL_1_A.test.cpp
   requiredBy: []
-  timestamp: '2020-11-15 12:33:56+09:00'
+  timestamp: '2020-11-18 22:08:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-NTL_1_A.test.cpp
