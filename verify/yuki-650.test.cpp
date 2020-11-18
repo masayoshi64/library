@@ -40,7 +40,7 @@ int main() {
         } else {
             int i, a, b, c, d;
             cin >> i >> a >> b >> c >> d;
-            auto [u, v] = etov[i];
+            int u = etov[i].first, v = etov[i].second;
             hld.update_edge(u, v, [&](int l, int r) {
                 return seg.update(l, mmat({{a, b}, {c, d}}));
             });
