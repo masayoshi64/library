@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/math/pollard.cpp
     title: factorization(pollard)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []

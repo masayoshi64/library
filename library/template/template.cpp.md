@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/yuki-650.cpp
+    title: verify/yuki-650.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
@@ -9,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-ALDS1_14_B.test.cpp
     title: verify/aoj-ALDS1_14_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj-ALDS1_14_D.test.cpp
+    title: verify/aoj-ALDS1_14_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
@@ -27,11 +33,8 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-range_kth_smallest.test.cpp
     title: verify/yosupo-range_kth_smallest.test.cpp
-  - icon: ':x:'
-    path: verify/yuki-650.test.cpp
-    title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -134,18 +137,19 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/template/template.cpp
-  requiredBy: []
+  requiredBy:
+  - verify/yuki-650.cpp
   timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
+  - verify/aoj-ALDS1_14_D.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
   - verify/aoj-1595.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
   - verify/aoj-ALDS1_14_B.test.cpp
   - verify/yosupo-range_kth_smallest.test.cpp
-  - verify/yuki-650.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
 documentation_of: library/template/template.cpp
 layout: document

@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/yuki-650.cpp
+    title: verify/yuki-650.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
@@ -12,11 +15,8 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
-  - icon: ':x:'
-    path: verify/yuki-650.test.cpp
-    title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/mod/modint.cpp\"\ntemplate <int mod>\nstruct modint\
@@ -72,14 +72,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/mod/modint.cpp
-  requiredBy: []
+  requiredBy:
+  - verify/yuki-650.cpp
   timestamp: '2020-11-19 00:26:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
-  - verify/yuki-650.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document
 redirect_from:

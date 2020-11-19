@@ -16,7 +16,7 @@ data:
       title: library/graph/distance/dijkstra.cpp
   - name: library/graph/tree
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: library/graph/tree/HLD.cpp
       title: library/graph/tree/HLD.cpp
     - icon: ':heavy_check_mark:'
@@ -27,7 +27,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/FormalPowerSeries.cpp
       title: library/math/FormalPowerSeries.cpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: library/math/Matrix.cpp
       title: library/math/Matrix.cpp
     - icon: ':heavy_check_mark:'
@@ -41,7 +41,7 @@ data:
       title: factorization(pollard)
   - name: library/mod
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
   - name: library/string
@@ -49,6 +49,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/string/RollingHash.cpp
       title: library/string/RollingHash.cpp
+    - icon: ':heavy_check_mark:'
+      path: library/string/SuffixArray.cpp
+      title: library/string/SuffixArray.cpp
   - name: library/structure/UnionFind
     pages:
     - icon: ':heavy_check_mark:'
@@ -63,7 +66,7 @@ data:
       path: library/structure/segtree/LazySegmentTree.cpp
       title: "Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\
         \u6728)"
-    - icon: ':x:'
+    - icon: ':warning:'
       path: library/structure/segtree/SegmentTree.cpp
       title: Segment Tree
   - name: library/structure/wavelet
@@ -73,7 +76,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: .
@@ -87,6 +90,11 @@ data:
     - icon: ':warning:'
       path: output.cpp
       title: output.cpp
+  - name: verify
+    pages:
+    - icon: ':warning:'
+      path: verify/yuki-650.cpp
+      title: verify/yuki-650.cpp
   verificationCategories:
   - name: verify
     pages:
@@ -96,6 +104,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-ALDS1_14_B.test.cpp
       title: verify/aoj-ALDS1_14_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-ALDS1_14_D.test.cpp
+      title: verify/aoj-ALDS1_14_D.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-DPL_5_G.test.cpp
       title: verify/aoj-DPL_5_G.test.cpp
@@ -114,8 +125,5 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-range_kth_smallest.test.cpp
       title: verify/yosupo-range_kth_smallest.test.cpp
-    - icon: ':x:'
-      path: verify/yuki-650.test.cpp
-      title: verify/yuki-650.test.cpp
 layout: toppage
 ---

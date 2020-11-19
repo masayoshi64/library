@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: library/string/RollingHash.cpp
-    title: library/string/RollingHash.cpp
+    path: library/string/SuffixArray.cpp
+    title: library/string/SuffixArray.cpp
   - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
@@ -13,11 +13,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
-  bundledCode: "#line 1 \"verify/aoj-ALDS1_14_B.test.cpp\"\n#define PROBLEM \\\n \
-    \   \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D
+  bundledCode: "#line 1 \"verify/aoj-ALDS1_14_D.test.cpp\"\n#define PROBLEM \\\n \
+    \   \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D\"\n\n\
     #line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
@@ -67,59 +67,61 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 5 \"verify/aoj-ALDS1_14_B.test.cpp\"\n// library\n#line 1 \"library/string/RollingHash.cpp\"\
-    \nstruct RollingHash {\n    vector<unsigned long long> hashed, power;\n    const\
-    \ unsigned long long MASK30 = (1ULL << 30) - 1;\n    const unsigned long long\
-    \ MASK31 = (1ULL << 31) - 1;\n    const unsigned long long MOD = (1ULL << 61)\
-    \ - 1;\n    const unsigned long long MASK61 = MOD;\n\n    RollingHash(const string\
-    \ &s, unsigned long long base = 10007) {\n        int sz = (int)s.size();\n  \
-    \      hashed.assign(sz + 1, 0);\n        power.assign(sz + 1, 0);\n        power[0]\
-    \ = 1;\n        for (int i = 0; i < sz; i++) {\n            power[i + 1] = CalcMod(Mul(power[i],\
-    \ base));\n            hashed[i + 1] = CalcMod(Mul(hashed[i], base) + s[i]);\n\
-    \        }\n    }\n\n    // a*b mod 2^61-1\u3092\u8FD4\u3059\u95A2\u6570(\u6700\
-    \u5F8C\u306BMod\u3092\u53D6\u308B)\n    long long Mul(unsigned long long a, unsigned\
-    \ long long b) {\n        unsigned long long au = a >> 31;\n        unsigned long\
-    \ long ad = a & MASK31;\n        unsigned long long bu = b >> 31;\n        unsigned\
-    \ long long bd = b & MASK31;\n        unsigned long long mid = ad * bu + au *\
-    \ bd;\n        unsigned long long midu = mid >> 30;\n        unsigned long long\
-    \ midd = mid & MASK30;\n        return au * bu * 2 + midu + (midd << 31) + ad\
-    \ * bd;\n    }\n\n    // mod 2^61-1\u3092\u8A08\u7B97\u3059\u308B\u95A2\u6570\n\
-    \    unsigned long long CalcMod(unsigned long long x) {\n        unsigned long\
-    \ long xu = x >> 61;\n        unsigned long long xd = x & MASK61;\n        unsigned\
-    \ long long res = xu + xd;\n        if (res >= MOD) res -= MOD;\n        return\
-    \ res;\n    }\n\n    unsigned long long get(int l, int r) {\n        unsigned\
-    \ long long ret =\n            CalcMod(hashed[r] + MOD * 3 - Mul(hashed[l], power[r\
-    \ - l]));\n        return ret;\n    }\n\n    // CalcMod\u3092\u591A\u3081\u306B\
-    \u3068\u3063\u3066\u308B\n    unsigned long long connect(unsigned long long h1,\
-    \ unsigned long long h2,\n                               int h2len) {\n      \
-    \  unsigned long long ret = CalcMod(CalcMod(Mul(h1, power[h2len])) + h2);\n  \
-    \      return ret;\n    }\n\n    int LCP(RollingHash &b, int l1, int r1, int l2,\
-    \ int r2) {\n        int len = min(r1 - l1, r2 - l2);\n        int low = -1, high\
-    \ = len + 1;\n        while (high - low > 1) {\n            int mid = (low + high)\
-    \ / 2;\n            if (get(l1, l1 + mid) == b.get(l2, l2 + mid))\n          \
-    \      low = mid;\n            else\n                high = mid;\n        }\n\
-    \        return (low);\n    }\n};\n#line 7 \"verify/aoj-ALDS1_14_B.test.cpp\"\n\
-    int main() {\n    string t, p;\n    cin >> t >> p;\n    int n = t.size(), m =\
-    \ p.size();\n    RollingHash rht(t), rhp(p);\n    rep(i, n - m + 1) {\n      \
-    \  if (rht.get(i, i + m) == rhp.get(0, m)) print(i);\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
-    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/string/RollingHash.cpp\"\
-    \nint main() {\n    string t, p;\n    cin >> t >> p;\n    int n = t.size(), m\
-    \ = p.size();\n    RollingHash rht(t), rhp(p);\n    rep(i, n - m + 1) {\n    \
-    \    if (rht.get(i, i + m) == rhp.get(0, m)) print(i);\n    }\n}"
+    #line 5 \"verify/aoj-ALDS1_14_D.test.cpp\"\n// library\n#line 1 \"library/string/SuffixArray.cpp\"\
+    \nstruct SuffixArray {\n    vector<int> SA;\n    const string s;\n\n    SuffixArray(const\
+    \ string &str) : s(str) {\n        SA.resize(s.size());\n        iota(begin(SA),\
+    \ end(SA), 0);\n        sort(begin(SA), end(SA),\n             [&](int a, int\
+    \ b) { return s[a] == s[b] ? a > b : s[a] < s[b]; });\n        vector<int> classes(s.size()),\
+    \ c(s.begin(), s.end()), cnt(s.size());\n        for (int len = 1; len < s.size();\
+    \ len <<= 1) {\n            for (int i = 0; i < s.size(); i++) {\n           \
+    \     if (i > 0 && c[SA[i - 1]] == c[SA[i]] &&\n                    SA[i - 1]\
+    \ + len < s.size() &&\n                    c[SA[i - 1] + len / 2] == c[SA[i] +\
+    \ len / 2]) {\n                    classes[SA[i]] = classes[SA[i - 1]];\n    \
+    \            } else {\n                    classes[SA[i]] = i;\n             \
+    \   }\n            }\n            iota(begin(cnt), end(cnt), 0);\n           \
+    \ copy(begin(SA), end(SA), begin(c));\n            for (int i = 0; i < s.size();\
+    \ i++) {\n                int s1 = c[i] - len;\n                if (s1 >= 0) SA[cnt[classes[s1]]++]\
+    \ = s1;\n            }\n            classes.swap(c);\n        }\n    }\n\n   \
+    \ int operator[](int k) const { return SA[k]; }\n\n    int size() const { return\
+    \ s.size(); }\n\n    bool lt_substr(const string &t, int si = 0, int ti = 0) {\n\
+    \        int sn = (int)s.size(), tn = (int)t.size();\n        while (si < sn &&\
+    \ ti < tn) {\n            if (s[si] < t[ti]) return true;\n            if (s[si]\
+    \ > t[ti]) return false;\n            ++si, ++ti;\n        }\n        return si\
+    \ >= sn && ti < tn;\n    }\n\n    int lower_bound(const string &t) {\n       \
+    \ int low = -1, high = (int)SA.size();\n        while (high - low > 1) {\n   \
+    \         int mid = (low + high) / 2;\n            if (lt_substr(t, SA[mid]))\n\
+    \                low = mid;\n            else\n                high = mid;\n \
+    \       }\n        return high;\n    }\n\n    pair<int, int> lower_upper_bound(string\
+    \ &t) {\n        int idx = lower_bound(t);\n        int low = idx - 1, high =\
+    \ (int)SA.size();\n        t.back()++;\n        while (high - low > 1) {\n   \
+    \         int mid = (low + high) / 2;\n            if (lt_substr(t, SA[mid]))\n\
+    \                low = mid;\n            else\n                high = mid;\n \
+    \       }\n        t.back()--;\n        return {idx, high};\n    }\n\n    void\
+    \ show() {\n        for (int i = 0; i < size(); i++) {\n            cout << i\
+    \ << \": \" << s.substr(SA[i]) << endl;\n        }\n    }\n};\n#line 7 \"verify/aoj-ALDS1_14_D.test.cpp\"\
+    \nint main() {\n    string t;\n    cin >> t;\n    SuffixArray sa(t);\n    int\
+    \ q;\n    cin >> q;\n    while (q--) {\n        string p;\n        cin >> p;\n\
+    \        auto range = sa.lower_upper_bound(p);\n        print((range.first !=\
+    \ range.second));\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/string/SuffixArray.cpp\"\
+    \nint main() {\n    string t;\n    cin >> t;\n    SuffixArray sa(t);\n    int\
+    \ q;\n    cin >> q;\n    while (q--) {\n        string p;\n        cin >> p;\n\
+    \        auto range = sa.lower_upper_bound(p);\n        print((range.first !=\
+    \ range.second));\n    }\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/string/RollingHash.cpp
+  - library/string/SuffixArray.cpp
   isVerificationFile: true
-  path: verify/aoj-ALDS1_14_B.test.cpp
+  path: verify/aoj-ALDS1_14_D.test.cpp
   requiredBy: []
-  timestamp: '2020-11-19 12:41:17+09:00'
+  timestamp: '2020-11-19 13:05:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj-ALDS1_14_B.test.cpp
+documentation_of: verify/aoj-ALDS1_14_D.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj-ALDS1_14_B.test.cpp
-- /verify/verify/aoj-ALDS1_14_B.test.cpp.html
-title: verify/aoj-ALDS1_14_B.test.cpp
+- /verify/verify/aoj-ALDS1_14_D.test.cpp
+- /verify/verify/aoj-ALDS1_14_D.test.cpp.html
+title: verify/aoj-ALDS1_14_D.test.cpp
 ---

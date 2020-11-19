@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/yuki-650.test.cpp
-    title: verify/yuki-650.test.cpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/yuki-650.cpp
+    title: verify/yuki-650.cpp
+  _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/segmenttree.md
     document_title: Segment Tree
@@ -90,11 +90,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/structure/segtree/SegmentTree.cpp
-  requiredBy: []
+  requiredBy:
+  - verify/yuki-650.cpp
   timestamp: '2020-11-18 22:08:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/yuki-650.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: library/structure/segtree/SegmentTree.cpp
 layout: document
 redirect_from:
