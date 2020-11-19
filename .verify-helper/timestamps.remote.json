@@ -7,5 +7,6 @@
 "verify/aoj-dsl-1-a.test.cpp": "2020-11-14 13:19:56 +0900",
 "verify/yosupo-convolution_mod.test.cpp": "2020-11-19 00:26:15 +0900",
 "verify/yosupo-convolution_mod_1000000007.test.cpp": "2020-11-19 12:41:17 +0900",
-"verify/yosupo-range_kth_smallest.test.cpp": "2020-11-16 22:08:53 +0900"
+"verify/yosupo-range_kth_smallest.test.cpp": "2020-11-16 22:08:53 +0900",
+"verify/yosupo-two_sat.test.cpp": "2020-11-19 20:53:33 +0900"
 }
