@@ -2,4 +2,3 @@
 input.txt
 *.out
 *.out.dSYM
-verify/yuki-650.test.cpp
