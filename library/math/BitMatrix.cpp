@@ -1,6 +1,5 @@
-const int MAX_ROW = 100005;
-const int MAX_COL = 65;
 
+template <int MAX_ROW, int MAX_COL>
 struct BitMatrix {
     int H, W, rank;
     vector<int> top;  // top bit
