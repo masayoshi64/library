@@ -9,11 +9,24 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
       title: library/convolution/NTT.cpp
+  - name: library/graph/connected-components
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: library/graph/connected-components/StronglyConnectedComponents.cpp
+      title: library/graph/connected-components/StronglyConnectedComponents.cpp
+    - icon: ':heavy_check_mark:'
+      path: library/graph/connected-components/TwoSat.cpp
+      title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
     pages:
     - icon: ':warning:'
       path: library/graph/distance/dijkstra.cpp
       title: library/graph/distance/dijkstra.cpp
+  - name: library/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: library/graph/graph-template.cpp
+      title: library/graph/graph-template.cpp
   - name: library/graph/tree
     pages:
     - icon: ':warning:'
@@ -79,17 +92,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
-  - name: .
-    pages:
-    - icon: ':warning:'
-      path: ou.cpp
-      title: Segment Tree
-    - icon: ':warning:'
-      path: ouput.cpp
-      title: Segment Tree
-    - icon: ':warning:'
-      path: output.cpp
-      title: output.cpp
   - name: verify
     pages:
     - icon: ':warning:'
@@ -125,5 +127,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-range_kth_smallest.test.cpp
       title: verify/yosupo-range_kth_smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yosupo-two_sat.test.cpp
+      title: verify/yosupo-two_sat.test.cpp
 layout: toppage
 ---

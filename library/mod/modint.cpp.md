@@ -78,8 +78,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
-  - verify/yosupo-convolution_mod.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document
 redirect_from:
