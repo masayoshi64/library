@@ -9,11 +9,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
       title: library/convolution/NTT.cpp
+  - name: library/graph/distance
+    pages:
+    - icon: ':warning:'
+      path: library/graph/distance/dijkstra.cpp
+      title: library/graph/distance/dijkstra.cpp
   - name: library/graph/tree
     pages:
     - icon: ':x:'
       path: library/graph/tree/HLD.cpp
       title: library/graph/tree/HLD.cpp
+    - icon: ':heavy_check_mark:'
+      path: library/graph/tree/ReRooting.cpp
+      title: library/graph/tree/ReRooting.cpp
   - name: library/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -36,6 +44,11 @@ data:
     - icon: ':question:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
+  - name: library/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: library/string/RollingHash.cpp
+      title: library/string/RollingHash.cpp
   - name: library/structure/UnionFind
     pages:
     - icon: ':heavy_check_mark:'
@@ -66,6 +79,9 @@ data:
   - name: .
     pages:
     - icon: ':warning:'
+      path: ou.cpp
+      title: Segment Tree
+    - icon: ':warning:'
       path: ouput.cpp
       title: Segment Tree
     - icon: ':warning:'
@@ -74,6 +90,12 @@ data:
   verificationCategories:
   - name: verify
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-1595.test.cpp
+      title: verify/aoj-1595.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-ALDS1_14_B.test.cpp
+      title: verify/aoj-ALDS1_14_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-DPL_5_G.test.cpp
       title: verify/aoj-DPL_5_G.test.cpp

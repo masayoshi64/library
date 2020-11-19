@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aoj-1595.test.cpp
+    title: verify/aoj-1595.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj-ALDS1_14_B.test.cpp
+    title: verify/aoj-ALDS1_14_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   - icon: ':heavy_check_mark:'
@@ -135,7 +141,9 @@ data:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
+  - verify/aoj-1595.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/aoj-ALDS1_14_B.test.cpp
   - verify/yosupo-range_kth_smallest.test.cpp
   - verify/yuki-650.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
