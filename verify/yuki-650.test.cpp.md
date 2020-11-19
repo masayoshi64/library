@@ -230,17 +230,17 @@ data:
     \ = f(seg[--b], R);\n                if (check(nxt)) return find_subtree(b, check,\
     \ R, true);\n                R = nxt;\n            }\n        }\n        return\
     \ -1;\n    }\n};\n#line 8 \"verify/yuki-650.test.cpp\"\nusing mint = modint<1000000007>;\n\
-    using mmat = Matrix<mint>;\n\nint main() {\n    int n, q;\n    cin >> n;\n   \
-    \ HLD hld(n);\n    vector<Pi> etov(n - 1);\n    rep(i, n - 1) {\n        int a,\
-    \ b;\n        cin >> a >> b;\n        hld.add_edge(a, b);\n        etov[i] = mp(a,\
+    using mmat = Matrix<mint>;\nint main() {\n    int n, q;\n    cin >> n;\n    HLD\
+    \ hld(n);\n    vector<Pi> etov(n - 1);\n    rep(i, n - 1) {\n        int a, b;\n\
+    \        cin >> a >> b;\n        hld.add_edge(a, b);\n        etov[i] = mp(a,\
     \ b);\n    }\n    cin >> q;\n    SegmentTree<mmat> seg(\n        n, [&](mmat a,\
     \ mmat b) { return a * b; }, mmat::I(2));\n    hld.build();\n    rep(_, q) {\n\
     \        char t;\n        cin >> t;\n        if (t == 'g') {\n            int\
     \ u, v;\n            cin >> u >> v;\n            mmat res = hld.query_edge(\n\
     \                u, v, mmat::I(2),\n                [&](int a, int b) { return\
     \ seg.query(a, b + 1); },\n                [&](mmat a, mmat b) { return a * b;\
-    \ });\n            rep(r, 2) {\n                rep(c, 2) { cout << res[r][c]\
-    \ << ' '; }\n            }\n            cout << endl;\n        } else {\n    \
+    \ });\n            cout << res[0][0] << \" \" << res[0][1] << \" \" << res[1][0]\
+    \ << \" \"\n                 << res[1][1] << \"\\n\";\n        } else {\n    \
     \        int i, a, b, c, d;\n            cin >> i >> a >> b >> c >> d;\n     \
     \       int u = etov[i].first, v = etov[i].second;\n            hld.update_edge(u,\
     \ v, [&](int l, int r) {\n                return seg.update(l, mmat({{a, b}, {c,\
@@ -248,7 +248,7 @@ data:
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/650\"\n#include \"library/template/template.cpp\"\
     \n// library\n#include \"library/graph/tree/HLD.cpp\"\n#include \"library/math/Matrix.cpp\"\
     \n#include \"library/mod/modint.cpp\"\n#include \"library/structure/segtree/SegmentTree.cpp\"\
-    \nusing mint = modint<1000000007>;\nusing mmat = Matrix<mint>;\n\nint main() {\n\
+    \nusing mint = modint<1000000007>;\nusing mmat = Matrix<mint>;\nint main() {\n\
     \    int n, q;\n    cin >> n;\n    HLD hld(n);\n    vector<Pi> etov(n - 1);\n\
     \    rep(i, n - 1) {\n        int a, b;\n        cin >> a >> b;\n        hld.add_edge(a,\
     \ b);\n        etov[i] = mp(a, b);\n    }\n    cin >> q;\n    SegmentTree<mmat>\
@@ -257,8 +257,8 @@ data:
     \            int u, v;\n            cin >> u >> v;\n            mmat res = hld.query_edge(\n\
     \                u, v, mmat::I(2),\n                [&](int a, int b) { return\
     \ seg.query(a, b + 1); },\n                [&](mmat a, mmat b) { return a * b;\
-    \ });\n            rep(r, 2) {\n                rep(c, 2) { cout << res[r][c]\
-    \ << ' '; }\n            }\n            cout << endl;\n        } else {\n    \
+    \ });\n            cout << res[0][0] << \" \" << res[0][1] << \" \" << res[1][0]\
+    \ << \" \"\n                 << res[1][1] << \"\\n\";\n        } else {\n    \
     \        int i, a, b, c, d;\n            cin >> i >> a >> b >> c >> d;\n     \
     \       int u = etov[i].first, v = etov[i].second;\n            hld.update_edge(u,\
     \ v, [&](int l, int r) {\n                return seg.update(l, mmat({{a, b}, {c,\
@@ -272,7 +272,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-19 00:26:15+09:00'
+  timestamp: '2020-11-19 12:46:23+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp
