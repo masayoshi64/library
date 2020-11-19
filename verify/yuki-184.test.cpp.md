@@ -1,24 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: library/string/RollingHash.cpp
-    title: library/string/RollingHash.cpp
+  - icon: ':x:'
+    path: library/math/BitMatrix.cpp
+    title: library/math/BitMatrix.cpp
   - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
+    PROBLEM: https://yukicoder.me/problems/no/184
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
-  bundledCode: "#line 1 \"verify/aoj-ALDS1_14_B.test.cpp\"\n#define PROBLEM \\\n \
-    \   \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n\
-    #line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
+    - https://yukicoder.me/problems/no/184
+  bundledCode: "#line 1 \"verify/yuki-184.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/184\"\
+    \n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
@@ -67,59 +66,42 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 5 \"verify/aoj-ALDS1_14_B.test.cpp\"\n// library\n#line 1 \"library/string/RollingHash.cpp\"\
-    \nstruct RollingHash {\n    vector<unsigned long long> hashed, power;\n    const\
-    \ unsigned long long MASK30 = (1ULL << 30) - 1;\n    const unsigned long long\
-    \ MASK31 = (1ULL << 31) - 1;\n    const unsigned long long MOD = (1ULL << 61)\
-    \ - 1;\n    const unsigned long long MASK61 = MOD;\n\n    RollingHash(const string\
-    \ &s, unsigned long long base = 10007) {\n        int sz = (int)s.size();\n  \
-    \      hashed.assign(sz + 1, 0);\n        power.assign(sz + 1, 0);\n        power[0]\
-    \ = 1;\n        for (int i = 0; i < sz; i++) {\n            power[i + 1] = CalcMod(Mul(power[i],\
-    \ base));\n            hashed[i + 1] = CalcMod(Mul(hashed[i], base) + s[i]);\n\
-    \        }\n    }\n\n    // a*b mod 2^61-1\u3092\u8FD4\u3059\u95A2\u6570(\u6700\
-    \u5F8C\u306BMod\u3092\u53D6\u308B)\n    long long Mul(unsigned long long a, unsigned\
-    \ long long b) {\n        unsigned long long au = a >> 31;\n        unsigned long\
-    \ long ad = a & MASK31;\n        unsigned long long bu = b >> 31;\n        unsigned\
-    \ long long bd = b & MASK31;\n        unsigned long long mid = ad * bu + au *\
-    \ bd;\n        unsigned long long midu = mid >> 30;\n        unsigned long long\
-    \ midd = mid & MASK30;\n        return au * bu * 2 + midu + (midd << 31) + ad\
-    \ * bd;\n    }\n\n    // mod 2^61-1\u3092\u8A08\u7B97\u3059\u308B\u95A2\u6570\n\
-    \    unsigned long long CalcMod(unsigned long long x) {\n        unsigned long\
-    \ long xu = x >> 61;\n        unsigned long long xd = x & MASK61;\n        unsigned\
-    \ long long res = xu + xd;\n        if (res >= MOD) res -= MOD;\n        return\
-    \ res;\n    }\n\n    unsigned long long get(int l, int r) {\n        unsigned\
-    \ long long ret =\n            CalcMod(hashed[r] + MOD * 3 - Mul(hashed[l], power[r\
-    \ - l]));\n        return ret;\n    }\n\n    // CalcMod\u3092\u591A\u3081\u306B\
-    \u3068\u3063\u3066\u308B\n    unsigned long long connect(unsigned long long h1,\
-    \ unsigned long long h2,\n                               int h2len) {\n      \
-    \  unsigned long long ret = CalcMod(CalcMod(Mul(h1, power[h2len])) + h2);\n  \
-    \      return ret;\n    }\n\n    int LCP(RollingHash &b, int l1, int r1, int l2,\
-    \ int r2) {\n        int len = min(r1 - l1, r2 - l2);\n        int low = -1, high\
-    \ = len + 1;\n        while (high - low > 1) {\n            int mid = (low + high)\
-    \ / 2;\n            if (get(l1, l1 + mid) == b.get(l2, l2 + mid))\n          \
-    \      low = mid;\n            else\n                high = mid;\n        }\n\
-    \        return (low);\n    }\n};\n#line 7 \"verify/aoj-ALDS1_14_B.test.cpp\"\n\
-    int main() {\n    string t, p;\n    cin >> t >> p;\n    int n = t.size(), m =\
-    \ p.size();\n    RollingHash rht(t), rhp(p);\n    rep(i, n - m + 1) {\n      \
-    \  if (rht.get(i, i + m) == rhp.get(0, m)) print(i);\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\
-    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/string/RollingHash.cpp\"\
-    \nint main() {\n    string t, p;\n    cin >> t >> p;\n    int n = t.size(), m\
-    \ = p.size();\n    RollingHash rht(t), rhp(p);\n    rep(i, n - m + 1) {\n    \
-    \    if (rht.get(i, i + m) == rhp.get(0, m)) print(i);\n    }\n}"
+    #line 3 \"verify/yuki-184.test.cpp\"\n// library\n#line 1 \"library/math/BitMatrix.cpp\"\
+    \nconst int MAX_ROW = 100000;\nconst int MAX_COL = 60;\n\nstruct BitMatrix {\n\
+    \    int H, W, rank;\n    vector<int> top;  // top bit\n    bitset<MAX_COL> A[MAX_ROW];\n\
+    \    BitMatrix(int h = 1, int w = 1) : H(h), W(w) { top.resize(h); }\n    void\
+    \ build(bool is_extended = false) {\n        rep(col, W) {\n            if (is_extended\
+    \ && col == W - 1) break;\n            int row = rank;\n            for (; row\
+    \ < H; ++row) {\n                if (A[row][col]) {\n                    swap(A[rank],\
+    \ A[row]);\n                    break;\n                }\n            }\n   \
+    \         if (row == H) continue;\n            top[rank] = col;\n            rep(k,\
+    \ H) {\n                if (k == rank) continue;\n                if (A[k][col])\
+    \ A[k] ^= A[rank];\n            }\n            ++rank;\n        }\n    }\n   \
+    \ int solve(vector<int>& res) {\n        // if it has no solution then return\
+    \ -1\n        for (int row = rank; row < H; ++row)\n            if (A[row][W -\
+    \ 1]) return -1;\n        res.assign(W - 1, 0);\n        for (int i = 0; i < rank;\
+    \ ++i) res[i] = A[i][W - 1];\n        return rank;\n    }\n    inline bitset<MAX_COL>&\
+    \ operator[](int i) { return A[i]; }\n};\n#line 5 \"verify/yuki-184.test.cpp\"\
+    \nint main() {\n    int n;\n    cin >> n;\n    BitMatrix bm(n, 60);\n    vl a(n);\n\
+    \    scan(a);\n    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n    print(((ll)1\
+    \ << bm.rank));\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/184\"\n#include \"library/template/template.cpp\"\
+    \n// library\n#include \"library/math/BitMatrix.cpp\"\nint main() {\n    int n;\n\
+    \    cin >> n;\n    BitMatrix bm(n, 60);\n    vl a(n);\n    scan(a);\n    rep(i,\
+    \ n) { bm[i] = a[i]; }\n    bm.build();\n    print(((ll)1 << bm.rank));\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/string/RollingHash.cpp
+  - library/math/BitMatrix.cpp
   isVerificationFile: true
-  path: verify/aoj-ALDS1_14_B.test.cpp
+  path: verify/yuki-184.test.cpp
   requiredBy: []
-  timestamp: '2020-11-19 12:41:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-11-19 21:04:54+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/aoj-ALDS1_14_B.test.cpp
+documentation_of: verify/yuki-184.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj-ALDS1_14_B.test.cpp
-- /verify/verify/aoj-ALDS1_14_B.test.cpp.html
-title: verify/aoj-ALDS1_14_B.test.cpp
+- /verify/verify/yuki-184.test.cpp
+- /verify/verify/yuki-184.test.cpp.html
+title: verify/yuki-184.test.cpp
 ---

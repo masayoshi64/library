@@ -36,8 +36,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
+  - icon: ':x:'
+    path: verify/yuki-184.test.cpp
+    title: verify/yuki-184.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -143,7 +146,7 @@ data:
   requiredBy:
   - verify/yuki-650.cpp
   timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/aoj-1595.test.cpp
@@ -152,6 +155,7 @@ data:
   - verify/yosupo-range_kth_smallest.test.cpp
   - verify/aoj-ALDS1_14_B.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/yuki-184.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
   - verify/yosupo-convolution_mod.test.cpp

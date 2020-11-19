@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/structure/wavelet/WaveletMatrix.cpp
     title: library/structure/wavelet/WaveletMatrix.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []

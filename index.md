@@ -37,6 +37,9 @@ data:
       title: library/graph/tree/ReRooting.cpp
   - name: library/math
     pages:
+    - icon: ':x:'
+      path: library/math/BitMatrix.cpp
+      title: library/math/BitMatrix.cpp
     - icon: ':heavy_check_mark:'
       path: library/math/FormalPowerSeries.cpp
       title: library/math/FormalPowerSeries.cpp
@@ -89,7 +92,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: verify
@@ -130,5 +133,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
+    - icon: ':x:'
+      path: verify/yuki-184.test.cpp
+      title: verify/yuki-184.test.cpp
 layout: toppage
 ---
