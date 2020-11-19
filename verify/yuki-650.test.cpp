@@ -7,7 +7,6 @@
 #include "library/structure/segtree/SegmentTree.cpp"
 using mint = modint<1000000007>;
 using mmat = Matrix<mint>;
-
 int main() {
     int n, q;
     cin >> n;
@@ -33,10 +32,8 @@ int main() {
                 u, v, mmat::I(2),
                 [&](int a, int b) { return seg.query(a, b + 1); },
                 [&](mmat a, mmat b) { return a * b; });
-            rep(r, 2) {
-                rep(c, 2) { cout << res[r][c] << ' '; }
-            }
-            cout << endl;
+            cout << res[0][0] << " " << res[0][1] << " " << res[1][0] << " "
+                 << res[1][1] << "\n";
         } else {
             int i, a, b, c, d;
             cin >> i >> a >> b >> c >> d;

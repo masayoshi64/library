@@ -6,6 +6,7 @@
 int main() {
     int n;
     cin >> n;
+    //各頂点から最も遠い点への距離を求める
     auto f = [&](ll x, int u) { return x + 1; };
     auto merge = [&](ll x, ll y) { return max(x, y); };
     ReRooting<ll> rr(n, f, merge, 0);
