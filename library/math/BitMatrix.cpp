@@ -1,11 +1,11 @@
-const int MAX_ROW = 100000;
-const int MAX_COL = 60;
+const int MAX_ROW = 100005;
+const int MAX_COL = 65;
 
 struct BitMatrix {
     int H, W, rank;
     vector<int> top;  // top bit
     bitset<MAX_COL> A[MAX_ROW];
-    BitMatrix(int h = 1, int w = 1) : H(h), W(w) { top.resize(h); }
+    BitMatrix(int h = 1, int w = 1) : H(h), W(w), rank(0) { top.resize(h); }
     void build(bool is_extended = false) {
         rep(col, W) {
             if (is_extended && col == W - 1) break;

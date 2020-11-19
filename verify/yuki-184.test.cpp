@@ -5,7 +5,7 @@
 int main() {
     int n;
     cin >> n;
-    BitMatrix bm(n, 60);
+    BitMatrix bm(n, 61);
     vl a(n);
     scan(a);
     rep(i, n) { bm[i] = a[i]; }
