@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/yuki-650.cpp
-    title: verify/yuki-650.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/yuki-650.test.cpp
+    title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/math/Matrix.cpp\"\ntemplate <class T>\nstruct Matrix\
@@ -107,11 +107,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/math/Matrix.cpp
-  requiredBy:
-  - verify/yuki-650.cpp
+  requiredBy: []
   timestamp: '2020-11-18 22:08:45+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/yuki-650.test.cpp
 documentation_of: library/math/Matrix.cpp
 layout: document
 redirect_from:

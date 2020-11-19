@@ -29,7 +29,7 @@ data:
       title: library/graph/graph-template.cpp
   - name: library/graph/tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/tree/HLD.cpp
       title: library/graph/tree/HLD.cpp
     - icon: ':heavy_check_mark:'
@@ -37,13 +37,13 @@ data:
       title: library/graph/tree/ReRooting.cpp
   - name: library/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/math/BitMatrix.cpp
       title: library/math/BitMatrix.cpp
     - icon: ':heavy_check_mark:'
       path: library/math/FormalPowerSeries.cpp
       title: library/math/FormalPowerSeries.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/math/Matrix.cpp
       title: library/math/Matrix.cpp
     - icon: ':heavy_check_mark:'
@@ -62,6 +62,9 @@ data:
       title: library/mod/modint.cpp
   - name: library/string
     pages:
+    - icon: ':warning:'
+      path: library/string/LongestCommonPrefixArray.cpp
+      title: library/string/LongestCommonPrefixArray.cpp
     - icon: ':heavy_check_mark:'
       path: library/string/RollingHash.cpp
       title: library/string/RollingHash.cpp
@@ -82,7 +85,7 @@ data:
       path: library/structure/segtree/LazySegmentTree.cpp
       title: "Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\
         \u6728)"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/structure/segtree/SegmentTree.cpp
       title: Segment Tree
   - name: library/structure/wavelet
@@ -92,14 +95,14 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: verify
     pages:
     - icon: ':warning:'
-      path: verify/yuki-650.cpp
-      title: verify/yuki-650.cpp
+      path: verify/aoj.cpp
+      title: verify/aoj.cpp
   verificationCategories:
   - name: verify
     pages:
@@ -133,8 +136,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yuki-184.test.cpp
       title: verify/yuki-184.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yuki-650.test.cpp
+      title: verify/yuki-650.test.cpp
 layout: toppage
 ---
