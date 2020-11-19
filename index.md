@@ -22,6 +22,14 @@ data:
     - icon: ':warning:'
       path: library/graph/distance/dijkstra.cpp
       title: library/graph/distance/dijkstra.cpp
+    - icon: ':warning:'
+      path: library/graph/distance/multi_source_dijkstra.cpp
+      title: library/graph/distance/multi_source_dijkstra.cpp
+  - name: library/graph/flow
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: library/graph/flow/Dinic.cpp
+      title: "Dinic(\u6700\u5927\u6D41)"
   - name: library/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -62,13 +70,13 @@ data:
       title: library/mod/modint.cpp
   - name: library/string
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: library/string/LongestCommonPrefixArray.cpp
       title: library/string/LongestCommonPrefixArray.cpp
     - icon: ':heavy_check_mark:'
       path: library/string/RollingHash.cpp
       title: library/string/RollingHash.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/string/SuffixArray.cpp
       title: library/string/SuffixArray.cpp
   - name: library/structure/UnionFind
@@ -95,7 +103,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: verify
@@ -119,6 +127,9 @@ data:
       path: verify/aoj-DPL_5_G.test.cpp
       title: verify/aoj-DPL_5_G.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aoj-GRL_6_A.test.cpp
+      title: verify/aoj-GRL_6_A.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-NTL_1_A.test.cpp
       title: verify/aoj-NTL_1_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -136,6 +147,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
+    - icon: ':x:'
+      path: verify/yuki-1408.test.cpp
+      title: verify/yuki-1408.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yuki-184.test.cpp
       title: verify/yuki-184.test.cpp

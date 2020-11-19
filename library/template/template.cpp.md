@@ -19,6 +19,9 @@ data:
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj-GRL_6_A.test.cpp
+    title: verify/aoj-GRL_6_A.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-NTL_1_A.test.cpp
     title: verify/aoj-NTL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
+  - icon: ':x:'
+    path: verify/yuki-1408.test.cpp
+    title: verify/yuki-1408.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yuki-184.test.cpp
     title: verify/yuki-184.test.cpp
@@ -43,7 +49,7 @@ data:
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -149,8 +155,9 @@ data:
   requiredBy:
   - verify/aoj.cpp
   timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/aoj-GRL_6_A.test.cpp
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/aoj-1595.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
@@ -162,6 +169,7 @@ data:
   - verify/aoj-dsl-1-a.test.cpp
   - verify/yuki-650.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
+  - verify/yuki-1408.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/template/template.cpp
 layout: document
