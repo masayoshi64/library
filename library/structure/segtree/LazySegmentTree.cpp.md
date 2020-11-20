@@ -2,9 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj.test.cpp
+    title: verify/aoj.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/lazy-segment-tree.md
     document_title: "Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\
@@ -192,8 +195,9 @@ data:
   path: library/structure/segtree/LazySegmentTree.cpp
   requiredBy: []
   timestamp: '2020-11-18 22:08:45+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj.test.cpp
 documentation_of: library/structure/segtree/LazySegmentTree.cpp
 layout: document
 redirect_from:

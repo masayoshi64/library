@@ -102,7 +102,7 @@ data:
       title: library/structure/UnionFind/merge_tree.cpp
   - name: library/structure/segtree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/structure/segtree/LazySegmentTree.cpp
       title: "Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\
         \u6728)"
@@ -163,6 +163,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj.test.cpp
+      title: verify/aoj.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp
