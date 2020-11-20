@@ -1,5 +1,5 @@
 #define PROBLEM \
-    "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja"
+    "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G"
 
 #include "library/template/template.cpp"
 // library

@@ -13,7 +13,7 @@ int main() {
     vector<ld> p(n);
     scan(a);
     rep(i, n) cin >> p[i], p[i] /= 100;
-    vector<ld> f(1 << n);
+    vector<ll> f(1 << n);
     rep(s, 1 << n) {
         ll prod = 1;
         rep(i, n) {
@@ -37,7 +37,7 @@ int main() {
             else
                 ps *= p[i];
         }
-        ans += ps * g[s];
+        ans += ps * (m - g[s]);
     }
-    print((ld)m - ans);
+    print(ans);
 }
