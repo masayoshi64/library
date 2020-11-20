@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: developping
+    pages:
+    - icon: ':warning:'
+      path: developping/dfs_grid.cpp
+      title: developping/dfs_grid.cpp
   - name: library/convolution
     pages:
     - icon: ':heavy_check_mark:'
@@ -28,6 +33,9 @@ data:
     - icon: ':warning:'
       path: library/graph/distance/multi_source_dijkstra.cpp
       title: library/graph/distance/multi_source_dijkstra.cpp
+    - icon: ':warning:'
+      path: library/graph/distance/warshall_floyd.cpp
+      title: library/graph/distance/warshall_floyd.cpp
   - name: library/graph/flow
     pages:
     - icon: ':heavy_check_mark:'
