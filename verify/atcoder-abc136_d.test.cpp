@@ -12,5 +12,5 @@ int main() {
     dl.build();
     vi ans(n);
     rep(i, n) { ans[dl.query(i, 1000000000)]++; }
-    print((ans));
+    cout << ans;
 }

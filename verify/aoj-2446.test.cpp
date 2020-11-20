@@ -20,11 +20,12 @@ int main() {
             if ((s & (1 << i)) == 0) continue;
             ll g = gcd(prod, a[i]);
             if ((__int128_t)prod * a[i] / g <= m)
-                prod = prod * a[i] / g;
+                prod = prod * (a[i] / g);
             else
                 prod = m + 1;
         }
-        f[s] = (popcnt(s) % 2 ? -1 : 1) * (m / prod);
+        if (s == 0) continue;
+        f[s] = (popcnt(s) % 2 ? 1 : -1) * (m / prod);
     }
     // FZTで包除原理
     auto g = FZT(f);
@@ -38,7 +39,8 @@ int main() {
             else
                 ps *= p[i];
         }
-        ans += ps * (m - g[s]);
+        ll tmp = g[s];
+        ans += ps * g[s];
     }
     print(ans);
 }
