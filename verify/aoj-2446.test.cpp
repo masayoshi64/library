@@ -18,8 +18,9 @@ int main() {
         ll prod = 1;
         rep(i, n) {
             if ((s & (1 << i)) == 0) continue;
-            if ((__int128_t)prod * a[i] <= m)
-                prod *= a[i];
+            ll g = gcd(prod, a[i]);
+            if ((__int128_t)prod * a[i] / g <= m)
+                prod = prod * a[i] / g;
             else
                 prod = m + 1;
         }
@@ -30,7 +31,7 @@ int main() {
     ld ans = 0;
     // 期待値計算
     rep(s, 1 << n) {
-        double ps = 1;
+        ld ps = 1;
         rep(i, n) {
             if ((s & (1 << i)) == 0)
                 ps *= 1 - p[i];
