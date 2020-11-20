@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-2446.test.cpp
     title: verify/aoj-2446.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/convolution/FZT.cpp\"\n// \u90E8\u5206\u96C6\u5408\
@@ -30,7 +30,7 @@ data:
   path: library/convolution/FZT.cpp
   requiredBy: []
   timestamp: '2020-11-20 19:55:43+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-2446.test.cpp
 documentation_of: library/convolution/FZT.cpp

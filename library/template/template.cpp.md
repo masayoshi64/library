@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: test/atcoder-abc136_d.cpp
+    title: test/atcoder-abc136_d.cpp
+  - icon: ':warning:'
     path: verify/aoj.cpp
     title: verify/aoj.cpp
   - icon: ':warning:'
@@ -12,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
     title: verify/aoj-1595.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-2446.test.cpp
     title: verify/aoj-2446.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,9 +48,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
-  - icon: ':x:'
-    path: verify/atcoder-abc136_d.test.cpp
-    title: verify/atcoder-abc136_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
@@ -67,7 +67,7 @@ data:
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -177,10 +177,11 @@ data:
   isVerificationFile: false
   path: library/template/template.cpp
   requiredBy:
+  - test/atcoder-abc136_d.cpp
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   timestamp: '2020-11-20 19:34:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-GRL_7_A.test.cpp
   - verify/aoj-GRL_6_A.test.cpp
@@ -199,7 +200,6 @@ data:
   - verify/aoj-GRL_6_B.test.cpp
   - verify/aoj-DSL_2_G.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
-  - verify/atcoder-abc136_d.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/template/template.cpp
 layout: document

@@ -1,22 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: library/others/Doubling.cpp
     title: library/others/Doubling.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc136/tasks/abc136_d
     links:
     - https://atcoder.jp/contests/abc136/tasks/abc136_d
-  bundledCode: "#line 1 \"verify/atcoder-abc136_d.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc136/tasks/abc136_d\"\
+  bundledCode: "#line 1 \"test/atcoder-abc136_d.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc136/tasks/abc136_d\"\
     \n\n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma\
     \ GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n//\
     \ types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
@@ -68,7 +66,7 @@ data:
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
     \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
     \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 4 \"verify/atcoder-abc136_d.test.cpp\"\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 4 \"test/atcoder-abc136_d.cpp\"\
     \n// library\n#line 1 \"library/others/Doubling.cpp\"\nstruct Doubling {\n   \
     \ const int LOG;\n    vector<vector<int> > table;\n\n    Doubling(int sz, int64_t\
     \ lim_t) : LOG(64 - __builtin_clzll(lim_t)) {\n        table.assign(LOG, vector<int>(sz,\
@@ -79,11 +77,11 @@ data:
     \               table[k + 1][i] = table[k][table[k][i]];\n            }\n    \
     \    }\n    }\n\n    int query(int k, int64_t t) {\n        for (int i = LOG -\
     \ 1; i >= 0; i--) {\n            if ((t >> i) & 1) k = table[i][k];\n        }\n\
-    \        return k;\n    }\n};\n#line 6 \"verify/atcoder-abc136_d.test.cpp\"\n\
-    int main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    Doubling\
-    \ dl(n, 1000000000);\n    rep(i, n) { dl.set_next(i, (s[i] == 'L' ? i - 1 : i\
-    \ + 1)); }\n    dl.build();\n    vi ans(n);\n    rep(i, n) { ans[dl.query(i, 1000000000)]++;\
-    \ }\n    cout << ans;\n}\n"
+    \        return k;\n    }\n};\n#line 6 \"test/atcoder-abc136_d.cpp\"\nint main()\
+    \ {\n    string s;\n    cin >> s;\n    int n = s.size();\n    Doubling dl(n, 1000000000);\n\
+    \    rep(i, n) { dl.set_next(i, (s[i] == 'L' ? i - 1 : i + 1)); }\n    dl.build();\n\
+    \    vi ans(n);\n    rep(i, n) { ans[dl.query(i, 1000000000)]++; }\n    cout <<\
+    \ ans;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc136/tasks/abc136_d\"\n\n\
     #include \"library/template/template.cpp\"\n// library\n#include \"library/others/Doubling.cpp\"\
     \nint main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    Doubling\
@@ -93,16 +91,16 @@ data:
   dependsOn:
   - library/template/template.cpp
   - library/others/Doubling.cpp
-  isVerificationFile: true
-  path: verify/atcoder-abc136_d.test.cpp
+  isVerificationFile: false
+  path: test/atcoder-abc136_d.cpp
   requiredBy: []
-  timestamp: '2020-11-20 20:54:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-11-20 21:05:50+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: verify/atcoder-abc136_d.test.cpp
+documentation_of: test/atcoder-abc136_d.cpp
 layout: document
 redirect_from:
-- /verify/verify/atcoder-abc136_d.test.cpp
-- /verify/verify/atcoder-abc136_d.test.cpp.html
-title: verify/atcoder-abc136_d.test.cpp
+- /library/test/atcoder-abc136_d.cpp
+- /library/test/atcoder-abc136_d.cpp.html
+title: test/atcoder-abc136_d.cpp
 ---

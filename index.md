@@ -11,7 +11,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/convolution/FFT.cpp
       title: library/convolution/FFT.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/convolution/FZT.cpp
       title: library/convolution/FZT.cpp
     - icon: ':heavy_check_mark:'
@@ -91,7 +91,7 @@ data:
       title: library/mod/modint.cpp
   - name: library/others
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: library/others/Doubling.cpp
       title: library/others/Doubling.cpp
   - name: library/string
@@ -129,9 +129,14 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
+  - name: test
+    pages:
+    - icon: ':warning:'
+      path: test/atcoder-abc136_d.cpp
+      title: test/atcoder-abc136_d.cpp
   - name: verify
     pages:
     - icon: ':warning:'
@@ -146,7 +151,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-1595.test.cpp
       title: verify/aoj-1595.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-2446.test.cpp
       title: verify/aoj-2446.test.cpp
     - icon: ':heavy_check_mark:'
@@ -179,9 +184,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
-    - icon: ':x:'
-      path: verify/atcoder-abc136_d.test.cpp
-      title: verify/atcoder-abc136_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp

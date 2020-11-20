@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/atcoder-abc136_d.test.cpp
-    title: verify/atcoder-abc136_d.test.cpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/atcoder-abc136_d.cpp
+    title: test/atcoder-abc136_d.cpp
+  _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/others/Doubling.cpp\"\nstruct Doubling {\n    const\
@@ -34,11 +34,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/others/Doubling.cpp
-  requiredBy: []
+  requiredBy:
+  - test/atcoder-abc136_d.cpp
   timestamp: '2020-11-20 20:38:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/atcoder-abc136_d.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: library/others/Doubling.cpp
 layout: document
 redirect_from:
