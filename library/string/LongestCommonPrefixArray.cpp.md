@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/string/SuffixArray.cpp
     title: library/string/SuffixArray.cpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/yuki-1408.test.cpp
-    title: verify/yuki-1408.test.cpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: verify/yuki-1408.cpp
+    title: verify/yuki-1408.cpp
+  _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/string/SuffixArray.cpp\"\nstruct SuffixArray {\n\
@@ -75,11 +75,11 @@ data:
   - library/string/SuffixArray.cpp
   isVerificationFile: false
   path: library/string/LongestCommonPrefixArray.cpp
-  requiredBy: []
+  requiredBy:
+  - verify/yuki-1408.cpp
   timestamp: '2020-11-19 21:50:32+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/yuki-1408.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: library/string/LongestCommonPrefixArray.cpp
 layout: document
 redirect_from:

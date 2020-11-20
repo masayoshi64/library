@@ -8,18 +8,18 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/distance/dijkstra.cpp\"\ntemplate <typename\
-    \ T>\nvector<T> dijkstra(WeightedGraph<T> &g, int s) {\n    const auto INF = numeric_limits<T>::max();\n\
-    \    vector<T> dist(g.size(), INF);\n\n    using Pi = pair<T, int>;\n    priority_queue<Pi,\
-    \ vector<Pi>, greater<Pi> > que;\n    dist[s] = 0;\n    que.emplace(dist[s], s);\n\
-    \    while (!que.empty()) {\n        T cost;\n        int idx;\n        tie(cost,\
-    \ idx) = que.top();\n        que.pop();\n        if (dist[idx] < cost) continue;\n\
-    \        for (auto &e : g[idx]) {\n            auto next_cost = cost + e.cost;\n\
-    \            if (dist[e.to] <= next_cost) continue;\n            dist[e.to] =\
-    \ next_cost;\n            que.emplace(dist[e.to], e.to);\n        }\n    }\n \
-    \   return dist;\n}\n"
+    \ T>\nvector<T> dijkstra(WeightedGraph<T> &g, int s) {\n    const auto TINF =\
+    \ numeric_limits<T>::max();\n    vector<T> dist(g.size(), TINF);\n\n    using\
+    \ Pi = pair<T, int>;\n    priority_queue<Pi, vector<Pi>, greater<Pi> > que;\n\
+    \    dist[s] = 0;\n    que.emplace(dist[s], s);\n    while (!que.empty()) {\n\
+    \        T cost;\n        int idx;\n        tie(cost, idx) = que.top();\n    \
+    \    que.pop();\n        if (dist[idx] < cost) continue;\n        for (auto &e\
+    \ : g[idx]) {\n            auto next_cost = cost + e.cost;\n            if (dist[e.to]\
+    \ <= next_cost) continue;\n            dist[e.to] = next_cost;\n            que.emplace(dist[e.to],\
+    \ e.to);\n        }\n    }\n    return dist;\n}\n"
   code: "template <typename T>\nvector<T> dijkstra(WeightedGraph<T> &g, int s) {\n\
-    \    const auto INF = numeric_limits<T>::max();\n    vector<T> dist(g.size(),\
-    \ INF);\n\n    using Pi = pair<T, int>;\n    priority_queue<Pi, vector<Pi>, greater<Pi>\
+    \    const auto TINF = numeric_limits<T>::max();\n    vector<T> dist(g.size(),\
+    \ TINF);\n\n    using Pi = pair<T, int>;\n    priority_queue<Pi, vector<Pi>, greater<Pi>\
     \ > que;\n    dist[s] = 0;\n    que.emplace(dist[s], s);\n    while (!que.empty())\
     \ {\n        T cost;\n        int idx;\n        tie(cost, idx) = que.top();\n\
     \        que.pop();\n        if (dist[idx] < cost) continue;\n        for (auto\
@@ -31,7 +31,7 @@ data:
   isVerificationFile: false
   path: library/graph/distance/dijkstra.cpp
   requiredBy: []
-  timestamp: '2020-11-19 12:41:17+09:00'
+  timestamp: '2020-11-20 12:57:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: library/graph/distance/dijkstra.cpp

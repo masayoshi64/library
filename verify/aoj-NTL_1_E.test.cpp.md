@@ -2,25 +2,28 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: library/math/BitMatrix.cpp
-    title: library/math/BitMatrix.cpp
+    path: library/math/extgcd.cpp
+    title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
   - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530
-  bundledCode: "#line 1 \"verify/aoj.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530\"\
-    \n\n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma\
-    \ GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n//\
-    \ types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
-    \ double;\ntypedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll>\
-    \ vl;\ntypedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\n\
-    using mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E
+  bundledCode: "#line 1 \"verify/aoj-NTL_1_E.test.cpp\"\n#define PROBLEM \\\n    \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E\"\n\n#line 1\
+    \ \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC optimize(\"\
+    Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\nusing ll =\
+    \ long long;\nusing ull = unsigned long long;\nusing ld = long double;\ntypedef\
+    \ pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\ntypedef\
+    \ vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing mat\
+    \ = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
     \ long>> vvl;\ntypedef vector<vector<char>> vvc;\n// abreviations\n#define all(x)\
     \ (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define rep_(i,\
     \ a_, b_, a, b, ...) for (ll i = (a), max_i = (b); i < max_i; i++)\n#define rep(i,\
@@ -64,49 +67,32 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 4 \"verify/aoj.cpp\"\n// library\n#line 1 \"library/math/BitMatrix.cpp\"\
-    \n\ntemplate <int MAX_ROW, int MAX_COL>\nstruct BitMatrix {\n    int H, W, rank;\n\
-    \    vector<int> top;  // top bit\n    bitset<MAX_COL> A[MAX_ROW];\n    BitMatrix(int\
-    \ h = 1, int w = 1) : H(h), W(w), rank(0) { top.resize(h); }\n    void build(bool\
-    \ is_extended = false) {\n        rep(col, W) {\n            if (is_extended &&\
-    \ col == W - 1) break;\n            int row = rank;\n            for (; row <\
-    \ H; ++row) {\n                if (A[row][col]) {\n                    swap(A[rank],\
-    \ A[row]);\n                    break;\n                }\n            }\n   \
-    \         if (row == H) continue;\n            top[rank] = col;\n            rep(k,\
-    \ H) {\n                if (k == rank) continue;\n                if (A[k][col])\
-    \ A[k] ^= A[rank];\n            }\n            ++rank;\n        }\n    }\n   \
-    \ int solve(vector<int>& res) {\n        // if it has no solution then return\
-    \ -1\n        for (int row = rank; row < H; ++row)\n            if (A[row][W -\
-    \ 1]) return -1;\n        res.assign(W - 1, 0);\n        for (int i = 0; i < rank;\
-    \ ++i) res[i] = A[i][W - 1];\n        return rank;\n    }\n    inline bitset<MAX_COL>&\
-    \ operator[](int i) { return A[i]; }\n};\n#line 6 \"verify/aoj.cpp\"\nint main()\
-    \ {\n    int r, c;\n    cin >> r >> c;\n    BitMatrix<2505, 2505> bm(r * c, r\
-    \ * c + 1);\n    rep(i, r) {\n        rep(j, c) {\n            int b;\n      \
-    \      cin >> b;\n            int k = i * c + j;\n            bm[k][r * c] = b;\n\
-    \        }\n    }\n    rep(i, r) {\n        rep(j, c) {\n            int b;\n\
-    \            cin >> b;\n            int k = i * c + j;\n            bm[k][r *\
-    \ c] = b;\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530\"\
-    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/math/BitMatrix.cpp\"\
-    \nint main() {\n    int r, c;\n    cin >> r >> c;\n    BitMatrix<2505, 2505> bm(r\
-    \ * c, r * c + 1);\n    rep(i, r) {\n        rep(j, c) {\n            int b;\n\
-    \            cin >> b;\n            int k = i * c + j;\n            bm[k][r *\
-    \ c] = b;\n        }\n    }\n    rep(i, r) {\n        rep(j, c) {\n          \
-    \  int b;\n            cin >> b;\n            int k = i * c + j;\n           \
-    \ bm[k][r * c] = b;\n        }\n    }\n}"
+    #line 5 \"verify/aoj-NTL_1_E.test.cpp\"\n// library\n#line 1 \"library/math/extgcd.cpp\"\
+    \n/**\n * @brief \u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\
+    \u6CD5\n * @docs docs/extgcd.md\n */\n\n// give the solution which minimize |x|+|y|\n\
+    template <typename T>\nT extgcd(T a, T b, T &x, T &y) {\n    T d = a;\n    if\
+    \ (b != 0) {\n        d = extgcd(b, a % b, y, x);\n        y -= (a / b) * x;\n\
+    \    } else {\n        x = 1;\n        y = 0;\n    }\n    return d;  // gcd(a,\
+    \ b)\n}\n#line 7 \"verify/aoj-NTL_1_E.test.cpp\"\nint main() {\n    ll a, b, x,\
+    \ y;\n    cin >> a >> b;\n    extgcd(a, b, x, y);\n    cout << x << ' ' << y <<\
+    \ endl;\n}\n"
+  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/math/extgcd.cpp\"\
+    \nint main() {\n    ll a, b, x, y;\n    cin >> a >> b;\n    extgcd(a, b, x, y);\n\
+    \    cout << x << ' ' << y << endl;\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/math/BitMatrix.cpp
-  isVerificationFile: false
-  path: verify/aoj.cpp
+  - library/math/extgcd.cpp
+  isVerificationFile: true
+  path: verify/aoj-NTL_1_E.test.cpp
   requiredBy: []
-  timestamp: '2020-11-19 21:50:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2020-11-20 12:57:45+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj.cpp
+documentation_of: verify/aoj-NTL_1_E.test.cpp
 layout: document
 redirect_from:
-- /library/verify/aoj.cpp
-- /library/verify/aoj.cpp.html
-title: verify/aoj.cpp
+- /verify/verify/aoj-NTL_1_E.test.cpp
+- /verify/verify/aoj-NTL_1_E.test.cpp.html
+title: verify/aoj-NTL_1_E.test.cpp
 ---

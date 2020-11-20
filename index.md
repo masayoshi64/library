@@ -28,6 +28,10 @@ data:
   - name: library/graph/flow
     pages:
     - icon: ':heavy_check_mark:'
+      path: library/graph/flow/BipartiteMatching.cpp
+      title: "\u4E8C\u90E8\u30B0\u30E9\u30D5\u306E\u6700\u5927\u30DE\u30C3\u30C1\u30F3\
+        \u30B0"
+    - icon: ':heavy_check_mark:'
       path: library/graph/flow/Dinic.cpp
       title: "Dinic(\u6700\u5927\u6D41)"
   - name: library/graph
@@ -58,6 +62,9 @@ data:
       path: library/math/combination.cpp
       title: Combination(P, C, H, Stirling number, Bell number)
     - icon: ':heavy_check_mark:'
+      path: library/math/extgcd.cpp
+      title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
+    - icon: ':heavy_check_mark:'
       path: library/math/is_prime.cpp
       title: is_prime(miller-rabin)
     - icon: ':heavy_check_mark:'
@@ -70,13 +77,13 @@ data:
       title: library/mod/modint.cpp
   - name: library/string
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: library/string/LongestCommonPrefixArray.cpp
       title: library/string/LongestCommonPrefixArray.cpp
     - icon: ':heavy_check_mark:'
       path: library/string/RollingHash.cpp
       title: library/string/RollingHash.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/string/SuffixArray.cpp
       title: library/string/SuffixArray.cpp
   - name: library/structure/UnionFind
@@ -103,7 +110,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: verify
@@ -111,6 +118,9 @@ data:
     - icon: ':warning:'
       path: verify/aoj.cpp
       title: verify/aoj.cpp
+    - icon: ':warning:'
+      path: verify/yuki-1408.cpp
+      title: verify/yuki-1408.cpp
   verificationCategories:
   - name: verify
     pages:
@@ -130,8 +140,14 @@ data:
       path: verify/aoj-GRL_6_A.test.cpp
       title: verify/aoj-GRL_6_A.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aoj-GRL_7_A.test.cpp
+      title: verify/aoj-GRL_7_A.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-NTL_1_A.test.cpp
       title: verify/aoj-NTL_1_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-NTL_1_E.test.cpp
+      title: verify/aoj-NTL_1_E.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
@@ -147,9 +163,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
-    - icon: ':x:'
-      path: verify/yuki-1408.test.cpp
-      title: verify/yuki-1408.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yuki-184.test.cpp
       title: verify/yuki-184.test.cpp
