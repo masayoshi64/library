@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/flow/MinCostFlow.cpp
     title: library/graph/flow/MinCostFlow.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -67,13 +67,16 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 5 \"verify/aoj-GRL_6_B.test.cpp\"\n// library\n#line 1 \"library/graph/flow/MinCostFlow.cpp\"\
-    \ntemplate <typename flow_t, typename cost_t>\nstruct MinCostFlow {\n    const\
-    \ cost_t TINF;\n\n    struct edge {\n        int to;\n        flow_t cap;\n  \
-    \      cost_t cost;\n        int rev;\n        bool isrev;\n    };\n    vector<vector<edge>\
-    \ > graph;\n    vector<cost_t> potential, min_cost;\n    vector<int> prevv, preve;\n\
-    \n    MinCostFlow(int V) : graph(V), TINF(numeric_limits<cost_t>::max()) {}\n\n\
-    \    void add_edge(int from, int to, flow_t cap, cost_t cost) {\n        graph[from].emplace_back(\n\
+    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-GRL_6_B.test.cpp\"\
+    \n// library\n#line 1 \"library/graph/flow/MinCostFlow.cpp\"\ntemplate <typename\
+    \ flow_t, typename cost_t>\nstruct MinCostFlow {\n    const cost_t TINF;\n\n \
+    \   struct edge {\n        int to;\n        flow_t cap;\n        cost_t cost;\n\
+    \        int rev;\n        bool isrev;\n    };\n    vector<vector<edge> > graph;\n\
+    \    vector<cost_t> potential, min_cost;\n    vector<int> prevv, preve;\n\n  \
+    \  MinCostFlow(int V) : graph(V), TINF(numeric_limits<cost_t>::max()) {}\n\n \
+    \   void add_edge(int from, int to, flow_t cap, cost_t cost) {\n        graph[from].emplace_back(\n\
     \            (edge){to, cap, cost, (int)graph[to].size(), false});\n        graph[to].emplace_back(\n\
     \            (edge){from, 0, -cost, (int)graph[from].size() - 1, true});\n   \
     \ }\n\n    cost_t min_cost_flow(int s, int t, flow_t f) {\n        int V = (int)graph.size();\n\
@@ -119,7 +122,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-GRL_6_B.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 13:17:46+09:00'
+  timestamp: '2020-11-20 19:34:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-GRL_6_B.test.cpp

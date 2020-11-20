@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/math/pollard.cpp
     title: factorization(pollard)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -70,34 +70,37 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 5 \"verify/aoj-NTL_1_A.test.cpp\"\n// library\n#line 1 \"library/math/pollard.cpp\"\
-    \n/**\n * @brief factorization(pollard)\n * @docs pollard.md\n */\n#line 1 \"\
-    library/math/is_prime.cpp\"\n/**\n * @brief is_prime(miller-rabin)\n * @docs docs/is_prime.md\n\
-    \ */\n// codeforces\u3067\u306F__int128\u304C\u4F7F\u3048\u306A\u3044\u306E\u3067\
-    \u6D88\u3059\u3053\u3068\n// http://miller-rabin.appspot.com/\nbool is_prime(ll\
-    \ n) {\n    if (n <= 1) return false;\n    if (n == 2) return true;\n    if (n\
-    \ % 2 == 0) return false;\n    ll d = n - 1;\n    while (d % 2 == 0) d /= 2;\n\
-    \    for (ll a : {2, 325, 9375, 28178, 450775, 9780504, 1795265022}) {\n     \
-    \   a %= n;\n        if (a == 0) return true;\n        ll t = d;\n        ll y\
-    \ = modpow(a, t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n \
-    \           y = __int128_t(y) * y % n;\n            t <<= 1;\n        }\n    \
-    \    if (y != n - 1 && t % 2 == 0) {\n            return false;\n        }\n \
-    \   }\n    return true;\n}\n#line 6 \"library/math/pollard.cpp\"\n// In codeforces,\
-    \ delete __int128 in the second line.\n// about O(N^1/4logN)\nll pollard_single(ll\
-    \ n) {\n    auto f = [&](ll x) { return (__int128_t(x) * x + 1) % n; };\n    //\
-    \ auto f = [&](ll x) { return (x * x + 1) % n; };\n    if (is_prime(n)) return\
-    \ n;\n    if (n % 2 == 0) return 2;\n    ll st = 0;\n    while (true) {\n    \
-    \    st = my_rand() % n;\n        ll x = st, y = f(x);\n        while (true) {\n\
-    \            ll p = gcd((y - x + n), n);\n            if (p == 0 || p == n) break;\n\
-    \            if (p != 1) return p;\n            x = f(x);\n            y = f(f(y));\n\
-    \        }\n    }\n}\n\nvl pollard_rec(ll n) {\n    if (n == 1) return {};\n \
-    \   ll x = pollard_single(n);\n    if (x == n) return {x};\n    vl a = pollard_rec(x);\n\
-    \    vl b = pollard_rec(n / x);\n    a.insert(a.end(), b.begin(), b.end());\n\
-    \    return a;\n}\n\nmap<ll, int> pollard(ll n) {\n    map<ll, int> res;\n   \
-    \ for (ll a : pollard_rec(n)) {\n        res[a]++;\n    }\n    return res;\n}\n\
-    #line 7 \"verify/aoj-NTL_1_A.test.cpp\"\nint main() {\n    int n;\n    cin >>\
-    \ n;\n    auto res = pollard(n);\n    cout << n << ':';\n    for (auto [p, i]\
-    \ : res) {\n        rep(j, i) cout << ' ' << p;\n    }\n    cout << endl;\n}\n"
+    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-NTL_1_A.test.cpp\"\
+    \n// library\n#line 1 \"library/math/pollard.cpp\"\n/**\n * @brief factorization(pollard)\n\
+    \ * @docs pollard.md\n */\n#line 1 \"library/math/is_prime.cpp\"\n/**\n * @brief\
+    \ is_prime(miller-rabin)\n * @docs docs/is_prime.md\n */\n// codeforces\u3067\u306F\
+    __int128\u304C\u4F7F\u3048\u306A\u3044\u306E\u3067\u6D88\u3059\u3053\u3068\n//\
+    \ http://miller-rabin.appspot.com/\nbool is_prime(ll n) {\n    if (n <= 1) return\
+    \ false;\n    if (n == 2) return true;\n    if (n % 2 == 0) return false;\n  \
+    \  ll d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    for (ll a : {2, 325, 9375,\
+    \ 28178, 450775, 9780504, 1795265022}) {\n        a %= n;\n        if (a == 0)\
+    \ return true;\n        ll t = d;\n        ll y = modpow(a, t, n);\n        while\
+    \ (t != n - 1 && y != 1 && y != n - 1) {\n            y = __int128_t(y) * y %\
+    \ n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n\
+    \            return false;\n        }\n    }\n    return true;\n}\n#line 6 \"\
+    library/math/pollard.cpp\"\n// In codeforces, delete __int128 in the second line.\n\
+    // about O(N^1/4logN)\nll pollard_single(ll n) {\n    auto f = [&](ll x) { return\
+    \ (__int128_t(x) * x + 1) % n; };\n    // auto f = [&](ll x) { return (x * x +\
+    \ 1) % n; };\n    if (is_prime(n)) return n;\n    if (n % 2 == 0) return 2;\n\
+    \    ll st = 0;\n    while (true) {\n        st = my_rand() % n;\n        ll x\
+    \ = st, y = f(x);\n        while (true) {\n            ll p = gcd((y - x + n),\
+    \ n);\n            if (p == 0 || p == n) break;\n            if (p != 1) return\
+    \ p;\n            x = f(x);\n            y = f(f(y));\n        }\n    }\n}\n\n\
+    vl pollard_rec(ll n) {\n    if (n == 1) return {};\n    ll x = pollard_single(n);\n\
+    \    if (x == n) return {x};\n    vl a = pollard_rec(x);\n    vl b = pollard_rec(n\
+    \ / x);\n    a.insert(a.end(), b.begin(), b.end());\n    return a;\n}\n\nmap<ll,\
+    \ int> pollard(ll n) {\n    map<ll, int> res;\n    for (ll a : pollard_rec(n))\
+    \ {\n        res[a]++;\n    }\n    return res;\n}\n#line 7 \"verify/aoj-NTL_1_A.test.cpp\"\
+    \nint main() {\n    int n;\n    cin >> n;\n    auto res = pollard(n);\n    cout\
+    \ << n << ':';\n    for (auto [p, i] : res) {\n        rep(j, i) cout << ' ' <<\
+    \ p;\n    }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/math/pollard.cpp\"\
     \nint main() {\n    int n;\n    cin >> n;\n    auto res = pollard(n);\n    cout\
@@ -110,7 +113,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-NTL_1_A.test.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:08:45+09:00'
+  timestamp: '2020-11-20 19:34:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-NTL_1_A.test.cpp

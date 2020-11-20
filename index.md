@@ -6,6 +6,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/convolution/FFT.cpp
       title: library/convolution/FFT.cpp
+    - icon: ':x:'
+      path: library/convolution/FZT.cpp
+      title: library/convolution/FZT.cpp
     - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
       title: library/convolution/NTT.cpp
@@ -113,7 +116,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: verify
@@ -130,6 +133,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-1595.test.cpp
       title: verify/aoj-1595.test.cpp
+    - icon: ':x:'
+      path: verify/aoj-2446.test.cpp
+      title: verify/aoj-2446.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-ALDS1_14_B.test.cpp
       title: verify/aoj-ALDS1_14_B.test.cpp

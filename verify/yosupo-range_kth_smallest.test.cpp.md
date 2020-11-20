@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/structure/wavelet/WaveletMatrix.cpp
     title: library/structure/wavelet/WaveletMatrix.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -66,10 +66,12 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 3 \"verify/yosupo-range_kth_smallest.test.cpp\"\n// library\n#line 1 \"\
-    library/structure/wavelet/WaveletMatrix.cpp\"\nstruct SuccinctIndexableDictionary\
-    \ {\n    size_t length;\n    size_t blocks;\n    vector<unsigned> bit, sum;\n\n\
-    \    SuccinctIndexableDictionary() = default;\n\n    SuccinctIndexableDictionary(size_t\
+    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 3 \"verify/yosupo-range_kth_smallest.test.cpp\"\
+    \n// library\n#line 1 \"library/structure/wavelet/WaveletMatrix.cpp\"\nstruct\
+    \ SuccinctIndexableDictionary {\n    size_t length;\n    size_t blocks;\n    vector<unsigned>\
+    \ bit, sum;\n\n    SuccinctIndexableDictionary() = default;\n\n    SuccinctIndexableDictionary(size_t\
     \ length)\n        : length(length), blocks((length + 31) >> 5) {\n        bit.assign(blocks,\
     \ 0U);\n        sum.assign(blocks, 0U);\n    }\n\n    void set(int k) { bit[k\
     \ >> 5] |= 1U << (k & 31); }\n\n    void build() {\n        sum[0] = 0U;\n   \
@@ -137,7 +139,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2020-11-16 22:08:53+09:00'
+  timestamp: '2020-11-20 19:34:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-range_kth_smallest.test.cpp

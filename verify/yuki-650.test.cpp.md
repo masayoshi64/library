@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/structure/segtree/SegmentTree.cpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -75,55 +75,58 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 3 \"verify/yuki-650.test.cpp\"\n// library\n#line 1 \"library/graph/tree/HLD.cpp\"\
-    \nstruct HLD {\n    vector<vector<int>> G;\n    vector<int> parent, depth, sub_size,\
-    \ v_id, id_to_v, head;\n    HLD(int n)\n        : G(n),\n          v_id(n, -1),\n\
-    \          head(n),\n          sub_size(n, 1),\n          parent(n, -1),\n   \
-    \       depth(n, 0),\n          id_to_v(n) {}\n\n    void add_edge(int u, int\
-    \ v) {\n        G[u].emplace_back(v);\n        G[v].emplace_back(u);\n    }\n\n\
-    \    void build(int root = 0) {\n        int pos = 0;\n        dfs_size(root);\n\
-    \        head[root] = root;\n        dfs_hld(root, pos);\n    }\n\n    void dfs_size(int\
-    \ v) {\n        for (int& nv : G[v]) {\n            if (nv == parent[v]) {\n \
-    \               nv = G[v].back();\n                G[v].pop_back();\n        \
-    \    }\n        }\n        for (int& nv : G[v]) {\n            parent[nv] = v;\n\
-    \            depth[nv] = depth[v] + 1;\n            dfs_size(nv);\n          \
-    \  sub_size[v] += sub_size[nv];\n            if (sub_size[nv] > sub_size[G[v][0]])\
-    \ swap(nv, G[v][0]);\n        }\n    }\n\n    void dfs_hld(int v, int& pos) {\n\
-    \        v_id[v] = pos;\n        id_to_v[pos++] = v;\n        for (int nv : G[v])\
-    \ {\n            head[nv] = (nv == G[v][0] ? head[v] : nv);\n            dfs_hld(nv,\
-    \ pos);\n        }\n    }\n\n    int lca(int u, int v) {\n        while (1) {\n\
-    \            if (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u] == head[v])\
-    \ return u;\n            v = parent[head[v]];\n        }\n    }\n\n    int distance(int\
-    \ u, int v) {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n  \
-    \  }\n\n    // update vertexes in [u, v] with f\n    template <typename F>\n \
-    \   void update(int u, int v, const F& f) {\n        while (1) {\n           \
-    \ if (v_id[u] > v_id[v]) swap(u, v);\n            f(max(v_id[head[v]], v_id[u]),\
-    \ v_id[v]);\n            if (head[u] != head[v])\n                v = parent[head[v]];\n\
-    \            else\n                break;\n        }\n    }\n\n    // get res\
-    \ for [u, v] with query q and merge each value with f\n    // root->leaf\n   \
-    \ template <typename T, typename Q, typename F>\n    T query(int u, int v, T id,\
-    \ const Q& q, const F& f) {\n        T l = id, r = id;\n        while (1) {\n\
-    \            if (v_id[u] > v_id[v]) {\n                swap(u, v);\n         \
-    \       swap(l, r);\n            }\n            l = f(q(max(v_id[head[v]], v_id[u]),\
-    \ v_id[v]), l);\n            if (head[u] != head[v])\n                v = parent[head[v]];\n\
-    \            else\n                break;\n        }\n        return f(r, l);\n\
-    \    }\n\n    // update edges between u, v inclusive with func f\n    template\
-    \ <typename F>\n    void update_edge(int u, int v, const F& f) {\n        while\
-    \ (1) {\n            if (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u]\
-    \ != head[v]) {\n                f(v_id[head[v]], v_id[v]);\n                v\
-    \ = parent[head[v]];\n            } else {\n                if (u != v) f(v_id[u]\
-    \ + 1, v_id[v]);\n                break;\n            }\n        }\n    }\n\n\
-    \    // query for edges between u, v inclusive with query q and merge func f\n\
-    \    // root->leaf\n    template <typename T, typename Q, typename F>\n    T query_edge(int\
-    \ u, int v, T id, const Q& q, const F& f) {\n        T l = id, r = id;\n     \
-    \   while (1) {\n            if (v_id[u] > v_id[v]) {\n                swap(u,\
-    \ v);\n                swap(l, r);\n            }\n            if (head[u] !=\
-    \ head[v]) {\n                l = f(q(v_id[head[v]], v_id[v]), l);\n         \
-    \       v = parent[head[v]];\n            } else {\n                if (u != v)\
-    \ l = f(q(v_id[u] + 1, v_id[v]), l);\n                break;\n            }\n\
-    \        }\n        return f(r, l);\n    }\n};\n#line 1 \"library/math/Matrix.cpp\"\
-    \ntemplate <class T>\nstruct Matrix {\n    vector<vector<T>> A;\n\n    Matrix()\
-    \ {}\n\n    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
+    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 3 \"verify/yuki-650.test.cpp\"\
+    \n// library\n#line 1 \"library/graph/tree/HLD.cpp\"\nstruct HLD {\n    vector<vector<int>>\
+    \ G;\n    vector<int> parent, depth, sub_size, v_id, id_to_v, head;\n    HLD(int\
+    \ n)\n        : G(n),\n          v_id(n, -1),\n          head(n),\n          sub_size(n,\
+    \ 1),\n          parent(n, -1),\n          depth(n, 0),\n          id_to_v(n)\
+    \ {}\n\n    void add_edge(int u, int v) {\n        G[u].emplace_back(v);\n   \
+    \     G[v].emplace_back(u);\n    }\n\n    void build(int root = 0) {\n       \
+    \ int pos = 0;\n        dfs_size(root);\n        head[root] = root;\n        dfs_hld(root,\
+    \ pos);\n    }\n\n    void dfs_size(int v) {\n        for (int& nv : G[v]) {\n\
+    \            if (nv == parent[v]) {\n                nv = G[v].back();\n     \
+    \           G[v].pop_back();\n            }\n        }\n        for (int& nv :\
+    \ G[v]) {\n            parent[nv] = v;\n            depth[nv] = depth[v] + 1;\n\
+    \            dfs_size(nv);\n            sub_size[v] += sub_size[nv];\n       \
+    \     if (sub_size[nv] > sub_size[G[v][0]]) swap(nv, G[v][0]);\n        }\n  \
+    \  }\n\n    void dfs_hld(int v, int& pos) {\n        v_id[v] = pos;\n        id_to_v[pos++]\
+    \ = v;\n        for (int nv : G[v]) {\n            head[nv] = (nv == G[v][0] ?\
+    \ head[v] : nv);\n            dfs_hld(nv, pos);\n        }\n    }\n\n    int lca(int\
+    \ u, int v) {\n        while (1) {\n            if (v_id[u] > v_id[v]) swap(u,\
+    \ v);\n            if (head[u] == head[v]) return u;\n            v = parent[head[v]];\n\
+    \        }\n    }\n\n    int distance(int u, int v) {\n        return depth[u]\
+    \ + depth[v] - 2 * depth[lca(u, v)];\n    }\n\n    // update vertexes in [u, v]\
+    \ with f\n    template <typename F>\n    void update(int u, int v, const F& f)\
+    \ {\n        while (1) {\n            if (v_id[u] > v_id[v]) swap(u, v);\n   \
+    \         f(max(v_id[head[v]], v_id[u]), v_id[v]);\n            if (head[u] !=\
+    \ head[v])\n                v = parent[head[v]];\n            else\n         \
+    \       break;\n        }\n    }\n\n    // get res for [u, v] with query q and\
+    \ merge each value with f\n    // root->leaf\n    template <typename T, typename\
+    \ Q, typename F>\n    T query(int u, int v, T id, const Q& q, const F& f) {\n\
+    \        T l = id, r = id;\n        while (1) {\n            if (v_id[u] > v_id[v])\
+    \ {\n                swap(u, v);\n                swap(l, r);\n            }\n\
+    \            l = f(q(max(v_id[head[v]], v_id[u]), v_id[v]), l);\n            if\
+    \ (head[u] != head[v])\n                v = parent[head[v]];\n            else\n\
+    \                break;\n        }\n        return f(r, l);\n    }\n\n    // update\
+    \ edges between u, v inclusive with func f\n    template <typename F>\n    void\
+    \ update_edge(int u, int v, const F& f) {\n        while (1) {\n            if\
+    \ (v_id[u] > v_id[v]) swap(u, v);\n            if (head[u] != head[v]) {\n   \
+    \             f(v_id[head[v]], v_id[v]);\n                v = parent[head[v]];\n\
+    \            } else {\n                if (u != v) f(v_id[u] + 1, v_id[v]);\n\
+    \                break;\n            }\n        }\n    }\n\n    // query for edges\
+    \ between u, v inclusive with query q and merge func f\n    // root->leaf\n  \
+    \  template <typename T, typename Q, typename F>\n    T query_edge(int u, int\
+    \ v, T id, const Q& q, const F& f) {\n        T l = id, r = id;\n        while\
+    \ (1) {\n            if (v_id[u] > v_id[v]) {\n                swap(u, v);\n \
+    \               swap(l, r);\n            }\n            if (head[u] != head[v])\
+    \ {\n                l = f(q(v_id[head[v]], v_id[v]), l);\n                v =\
+    \ parent[head[v]];\n            } else {\n                if (u != v) l = f(q(v_id[u]\
+    \ + 1, v_id[v]), l);\n                break;\n            }\n        }\n     \
+    \   return f(r, l);\n    }\n};\n#line 1 \"library/math/Matrix.cpp\"\ntemplate\
+    \ <class T>\nstruct Matrix {\n    vector<vector<T>> A;\n\n    Matrix() {}\n\n\
+    \    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
     \ n) : A(n, vector<T>(n, 0)){};\n\n    Matrix(vector<vector<T>> a) { A = a; }\n\
     \n    size_t height() const { return (A.size()); }\n\n    size_t width() const\
     \ { return (A[0].size()); }\n\n    inline const vector<T> &operator[](int k) const\
@@ -272,7 +275,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-11-19 21:50:32+09:00'
+  timestamp: '2020-11-20 19:34:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp

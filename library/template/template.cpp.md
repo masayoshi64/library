@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
     title: verify/aoj-1595.test.cpp
+  - icon: ':x:'
+    path: verify/aoj-2446.test.cpp
+    title: verify/aoj-2446.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj-ALDS1_14_B.test.cpp
     title: verify/aoj-ALDS1_14_B.test.cpp
@@ -58,7 +61,7 @@ data:
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -109,7 +112,10 @@ data:
     \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
-    \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n"
+    \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
+    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n"
   code: "/* #region header */\n\n#pragma GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\n\
     using namespace std;\n// types\nusing ll = long long;\nusing ull = unsigned long\
     \ long;\nusing ld = long double;\ntypedef pair<ll, ll> Pl;\ntypedef pair<int,\
@@ -157,15 +163,18 @@ data:
     \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
-    \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;"
+    \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
+    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}"
   dependsOn: []
   isVerificationFile: false
   path: library/template/template.cpp
   requiredBy:
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
-  timestamp: '2020-11-14 13:19:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-11-20 19:34:52+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj-GRL_7_A.test.cpp
   - verify/aoj-GRL_6_A.test.cpp
@@ -179,6 +188,7 @@ data:
   - verify/aoj-DPL_5_G.test.cpp
   - verify/yuki-184.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
+  - verify/aoj-2446.test.cpp
   - verify/yuki-650.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
