@@ -45,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
+  - icon: ':x:'
+    path: verify/atcoder-abc136_d.test.cpp
+    title: verify/atcoder-abc136_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
@@ -196,6 +199,7 @@ data:
   - verify/aoj-GRL_6_B.test.cpp
   - verify/aoj-DSL_2_G.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
+  - verify/atcoder-abc136_d.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/template/template.cpp
 layout: document

@@ -89,6 +89,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
+  - name: library/others
+    pages:
+    - icon: ':x:'
+      path: library/others/Doubling.cpp
+      title: library/others/Doubling.cpp
   - name: library/string
     pages:
     - icon: ':warning:'
@@ -174,6 +179,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
+    - icon: ':x:'
+      path: verify/atcoder-abc136_d.test.cpp
+      title: verify/atcoder-abc136_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp
