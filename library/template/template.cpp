@@ -140,3 +140,12 @@ struct Timer {
 #define endl '\n'
 const long double eps = 0.000000000000001;
 const long double PI = 3.141592653589793;
+
+template <typename T>
+vector<int> IOTA(vector<T> a) {
+    int n = a.size();
+    vector<int> id(n);
+    iota(all(id), 0);
+    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });
+    return id;
+}
