@@ -83,20 +83,20 @@ data:
     int main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    Doubling\
     \ dl(n, 1000000000);\n    rep(i, n) { dl.set_next(i, (s[i] == 'L' ? i - 1 : i\
     \ + 1)); }\n    dl.build();\n    vi ans(n);\n    rep(i, n) { ans[dl.query(i, 1000000000)]++;\
-    \ }\n    print((ans));\n}\n"
+    \ }\n    cout << ans;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc136/tasks/abc136_d\"\n\n\
     #include \"library/template/template.cpp\"\n// library\n#include \"library/others/Doubling.cpp\"\
     \nint main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    Doubling\
     \ dl(n, 1000000000);\n    rep(i, n) { dl.set_next(i, (s[i] == 'L' ? i - 1 : i\
     \ + 1)); }\n    dl.build();\n    vi ans(n);\n    rep(i, n) { ans[dl.query(i, 1000000000)]++;\
-    \ }\n    print((ans));\n}"
+    \ }\n    cout << ans;\n}"
   dependsOn:
   - library/template/template.cpp
   - library/others/Doubling.cpp
   isVerificationFile: true
   path: verify/atcoder-abc136_d.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 20:38:44+09:00'
+  timestamp: '2020-11-20 20:54:25+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/atcoder-abc136_d.test.cpp
