@@ -7,7 +7,7 @@ int main() {
     cin.tie(0);
     ios::sync_with_stdio(0);
     cout << setprecision(30) << fixed;
-    int n, m;
+    ll n, m;
     cin >> n >> m;
     vl a(n);
     vector<ld> p(n);

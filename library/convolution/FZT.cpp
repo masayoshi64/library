@@ -4,7 +4,7 @@ template <typename T>
 vector<T> FZT(vector<T> f) {
     int N = 0;
     int tmp = f.size();
-    while (tmp) N++, tmp /= 2;
+    while (tmp > 1) N++, tmp /= 2;
     for (int j = 0; j < N; j++) {
         for (int i = 0; i < (1 << N); i++) {
             if (i & (1 << j)) {
