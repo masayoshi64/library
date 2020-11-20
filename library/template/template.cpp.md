@@ -25,6 +25,9 @@ data:
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj-DSL_2_G.test.cpp
+    title: verify/aoj-DSL_2_G.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_6_A.test.cpp
     title: verify/aoj-GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,9 +45,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj.test.cpp
-    title: verify/aoj.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
@@ -182,7 +182,6 @@ data:
   - verify/aoj-GRL_7_A.test.cpp
   - verify/aoj-GRL_6_A.test.cpp
   - verify/yosupo-convolution_mod_1000000007.test.cpp
-  - verify/aoj.test.cpp
   - verify/aoj-1595.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
   - verify/yosupo-two_sat.test.cpp
@@ -195,6 +194,7 @@ data:
   - verify/aoj-2446.test.cpp
   - verify/yuki-650.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
+  - verify/aoj-DSL_2_G.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/template/template.cpp

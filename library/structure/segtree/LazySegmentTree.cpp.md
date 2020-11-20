@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/aoj.test.cpp
-    title: verify/aoj.test.cpp
+    path: verify/aoj-DSL_2_G.test.cpp
+    title: verify/aoj-DSL_2_G.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -197,7 +197,7 @@ data:
   timestamp: '2020-11-18 22:08:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj.test.cpp
+  - verify/aoj-DSL_2_G.test.cpp
 documentation_of: library/structure/segtree/LazySegmentTree.cpp
 layout: document
 redirect_from:

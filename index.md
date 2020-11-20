@@ -146,6 +146,9 @@ data:
       path: verify/aoj-DPL_5_G.test.cpp
       title: verify/aoj-DPL_5_G.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aoj-DSL_2_G.test.cpp
+      title: verify/aoj-DSL_2_G.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-GRL_6_A.test.cpp
       title: verify/aoj-GRL_6_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -163,9 +166,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj.test.cpp
-      title: verify/aoj.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp

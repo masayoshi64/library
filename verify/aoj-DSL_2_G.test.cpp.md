@@ -14,16 +14,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja
-  bundledCode: "#line 1 \"verify/aoj.test.cpp\"\n#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja\"\
-    \n\n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma\
-    \ GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n//\
-    \ types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
-    \ double;\ntypedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll>\
-    \ vl;\ntypedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\n\
-    using mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
+  bundledCode: "#line 1 \"verify/aoj-DSL_2_G.test.cpp\"\n#define PROBLEM \\\n    \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\n\n#line 1\
+    \ \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC optimize(\"\
+    Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\nusing ll =\
+    \ long long;\nusing ull = unsigned long long;\nusing ld = long double;\ntypedef\
+    \ pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\ntypedef\
+    \ vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing mat\
+    \ = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
     \ long>> vvl;\ntypedef vector<vector<char>> vvc;\n// abreviations\n#define all(x)\
     \ (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define rep_(i,\
     \ a_, b_, a, b, ...) for (ll i = (a), max_i = (b); i < max_i; i++)\n#define rep(i,\
@@ -69,7 +70,7 @@ data:
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
     \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
     \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj.test.cpp\"\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-DSL_2_G.test.cpp\"\
     \n// library\n#line 1 \"library/structure/segtree/LazySegmentTree.cpp\"\n/**\n\
     \ * @brief Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\
     \u6728)\n * @docs docs/lazy-segment-tree.md\n */\ntemplate <typename Monoid, typename\
@@ -159,13 +160,13 @@ data:
     \ myreplace<obj, T>, myreplace<T>, segobj<T>(),\n              numeric_limits<T>::max())\
     \ {\n        rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n\
     \    }\n    T sum(int l, int r) { return this->query(l, r).val; }\n};\n#line 7\
-    \ \"verify/aoj.test.cpp\"\nint main() {\n    int n, q;\n    cin >> n >> q;\n \
-    \   RSRAQ<ll> seg(n);\n    rep(i, q) {\n        int t;\n        cin >> t;\n  \
-    \      if (t == 0) {\n            int s, t, x;\n            cin >> s >> t >> x;\n\
-    \            s--;\n            seg.update(s, t, x);\n        } else {\n      \
-    \      int s, t;\n            cin >> s >> t;\n            s--;\n            print(seg.query(s,\
-    \ t));\n        }\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G&lang=ja\"\
+    \ \"verify/aoj-DSL_2_G.test.cpp\"\nint main() {\n    int n, q;\n    cin >> n >>\
+    \ q;\n    RSRAQ<ll> seg(n);\n    rep(i, q) {\n        int t;\n        cin >> t;\n\
+    \        if (t == 0) {\n            int s, t, x;\n            cin >> s >> t >>\
+    \ x;\n            s--;\n            seg.update(s, t, x);\n        } else {\n \
+    \           int s, t;\n            cin >> s >> t;\n            s--;\n        \
+    \    print(seg.query(s, t));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/segtree/LazySegmentTree.cpp\"\
     \nint main() {\n    int n, q;\n    cin >> n >> q;\n    RSRAQ<ll> seg(n);\n   \
     \ rep(i, q) {\n        int t;\n        cin >> t;\n        if (t == 0) {\n    \
@@ -177,15 +178,15 @@ data:
   - library/template/template.cpp
   - library/structure/segtree/LazySegmentTree.cpp
   isVerificationFile: true
-  path: verify/aoj.test.cpp
+  path: verify/aoj-DSL_2_G.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 20:02:02+09:00'
+  timestamp: '2020-11-20 20:04:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj.test.cpp
+documentation_of: verify/aoj-DSL_2_G.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj.test.cpp
-- /verify/verify/aoj.test.cpp.html
-title: verify/aoj.test.cpp
+- /verify/verify/aoj-DSL_2_G.test.cpp
+- /verify/verify/aoj-DSL_2_G.test.cpp.html
+title: verify/aoj-DSL_2_G.test.cpp
 ---
