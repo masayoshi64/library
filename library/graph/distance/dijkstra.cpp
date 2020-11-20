@@ -1,7 +1,7 @@
 template <typename T>
 vector<T> dijkstra(WeightedGraph<T> &g, int s) {
-    const auto INF = numeric_limits<T>::max();
-    vector<T> dist(g.size(), INF);
+    const auto TINF = numeric_limits<T>::max();
+    vector<T> dist(g.size(), TINF);
 
     using Pi = pair<T, int>;
     priority_queue<Pi, vector<Pi>, greater<Pi> > que;
