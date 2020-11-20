@@ -34,6 +34,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/flow/Dinic.cpp
       title: "Dinic(\u6700\u5927\u6D41)"
+    - icon: ':heavy_check_mark:'
+      path: library/graph/flow/MinCostFlow.cpp
+      title: library/graph/flow/MinCostFlow.cpp
   - name: library/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -139,6 +142,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-GRL_6_A.test.cpp
       title: verify/aoj-GRL_6_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-GRL_6_B.test.cpp
+      title: verify/aoj-GRL_6_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-GRL_7_A.test.cpp
       title: verify/aoj-GRL_7_A.test.cpp

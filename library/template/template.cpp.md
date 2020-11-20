@@ -25,6 +25,9 @@ data:
     path: verify/aoj-GRL_6_A.test.cpp
     title: verify/aoj-GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj-GRL_6_B.test.cpp
+    title: verify/aoj-GRL_6_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_7_A.test.cpp
     title: verify/aoj-GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -177,6 +180,7 @@ data:
   - verify/yuki-184.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
   - verify/yuki-650.test.cpp
+  - verify/aoj-GRL_6_B.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/template/template.cpp
