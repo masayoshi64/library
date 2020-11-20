@@ -1,5 +1,5 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446"
-
+#define ERROR "1e-6"
 #include "library/template/template.cpp"
 // library
 #include "library/convolution/FZT.cpp"
