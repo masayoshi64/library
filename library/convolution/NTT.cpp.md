@@ -15,12 +15,12 @@ data:
     links: []
   bundledCode: "#line 1 \"library/convolution/NTT.cpp\"\ntemplate <typename Mint>\n\
     struct NTT {\n    vector<Mint> dw, idw;\n    int max_base;\n    Mint root;\n\n\
-    \    NTT() {\n        const unsigned mod = Mint::get_mod();\n        assert(mod\
-    \ >= 3 && mod % 2 == 1);\n        auto tmp = mod - 1;\n        max_base = 0;\n\
+    \    NTT() {\n        const unsigned Mod = Mint::get_mod();\n        assert(Mod\
+    \ >= 3 && Mod % 2 == 1);\n        auto tmp = Mod - 1;\n        max_base = 0;\n\
     \        while (tmp % 2 == 0) tmp >>= 1, max_base++;\n        root = 2;\n    \
-    \    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n        assert(root.pow(mod\
+    \    while (root.pow((Mod - 1) >> 1) == 1) root += 1;\n        assert(root.pow(Mod\
     \ - 1) == 1);\n        dw.resize(max_base);\n        idw.resize(max_base);\n \
-    \       for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((mod\
+    \       for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((Mod\
     \ - 1) >> (i + 2));\n            idw[i] = Mint(1) / dw[i];\n        }\n    }\n\
     \n    void ntt(vector<Mint> &a) {\n        const int n = (int)a.size();\n    \
     \    assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n\
@@ -45,12 +45,12 @@ data:
     \ i < sz; i++) a[i] *= b[i] * inv_sz;\n        intt(a, false);\n        a.resize(need);\n\
     \        return a;\n    }\n};\n"
   code: "template <typename Mint>\nstruct NTT {\n    vector<Mint> dw, idw;\n    int\
-    \ max_base;\n    Mint root;\n\n    NTT() {\n        const unsigned mod = Mint::get_mod();\n\
-    \        assert(mod >= 3 && mod % 2 == 1);\n        auto tmp = mod - 1;\n    \
+    \ max_base;\n    Mint root;\n\n    NTT() {\n        const unsigned Mod = Mint::get_mod();\n\
+    \        assert(Mod >= 3 && Mod % 2 == 1);\n        auto tmp = Mod - 1;\n    \
     \    max_base = 0;\n        while (tmp % 2 == 0) tmp >>= 1, max_base++;\n    \
-    \    root = 2;\n        while (root.pow((mod - 1) >> 1) == 1) root += 1;\n   \
-    \     assert(root.pow(mod - 1) == 1);\n        dw.resize(max_base);\n        idw.resize(max_base);\n\
-    \        for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((mod\
+    \    root = 2;\n        while (root.pow((Mod - 1) >> 1) == 1) root += 1;\n   \
+    \     assert(root.pow(Mod - 1) == 1);\n        dw.resize(max_base);\n        idw.resize(max_base);\n\
+    \        for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((Mod\
     \ - 1) >> (i + 2));\n            idw[i] = Mint(1) / dw[i];\n        }\n    }\n\
     \n    void ntt(vector<Mint> &a) {\n        const int n = (int)a.size();\n    \
     \    assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n\
@@ -78,7 +78,7 @@ data:
   isVerificationFile: false
   path: library/convolution/NTT.cpp
   requiredBy: []
-  timestamp: '2020-11-16 22:08:53+09:00'
+  timestamp: '2020-11-21 10:59:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp

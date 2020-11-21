@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -81,12 +81,12 @@ data:
     \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 3 \"verify/yosupo-convolution_mod_1000000007.test.cpp\"\
     \n// library\n#line 1 \"library/convolution/NTT.cpp\"\ntemplate <typename Mint>\n\
     struct NTT {\n    vector<Mint> dw, idw;\n    int max_base;\n    Mint root;\n\n\
-    \    NTT() {\n        const unsigned mod = Mint::get_mod();\n        assert(mod\
-    \ >= 3 && mod % 2 == 1);\n        auto tmp = mod - 1;\n        max_base = 0;\n\
+    \    NTT() {\n        const unsigned Mod = Mint::get_mod();\n        assert(Mod\
+    \ >= 3 && Mod % 2 == 1);\n        auto tmp = Mod - 1;\n        max_base = 0;\n\
     \        while (tmp % 2 == 0) tmp >>= 1, max_base++;\n        root = 2;\n    \
-    \    while (root.pow((mod - 1) >> 1) == 1) root += 1;\n        assert(root.pow(mod\
+    \    while (root.pow((Mod - 1) >> 1) == 1) root += 1;\n        assert(root.pow(Mod\
     \ - 1) == 1);\n        dw.resize(max_base);\n        idw.resize(max_base);\n \
-    \       for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((mod\
+    \       for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((Mod\
     \ - 1) >> (i + 2));\n            idw[i] = Mint(1) / dw[i];\n        }\n    }\n\
     \n    void ntt(vector<Mint> &a) {\n        const int n = (int)a.size();\n    \
     \    assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n\
@@ -264,7 +264,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-convolution_mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 19:34:52+09:00'
+  timestamp: '2020-11-21 10:59:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod_1000000007.test.cpp

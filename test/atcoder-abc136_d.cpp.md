@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: library/others/Doubling.cpp
     title: library/others/Doubling.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []

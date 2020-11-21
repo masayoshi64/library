@@ -105,6 +105,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/string/SuffixArray.cpp
       title: library/string/SuffixArray.cpp
+  - name: library/structure/BIT
+    pages:
+    - icon: ':x:'
+      path: library/structure/BIT/BIT.cpp
+      title: library/structure/BIT/BIT.cpp
   - name: library/structure/UnionFind
     pages:
     - icon: ':heavy_check_mark:'
@@ -129,7 +134,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: test
@@ -163,6 +168,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-DPL_5_G.test.cpp
       title: verify/aoj-DPL_5_G.test.cpp
+    - icon: ':x:'
+      path: verify/aoj-DSL_2_B.test.cpp
+      title: verify/aoj-DSL_2_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-DSL_2_G.test.cpp
       title: verify/aoj-DSL_2_G.test.cpp

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: library/structure/UnionFind/UnionFind.cpp
-    title: UnionFind
+  - icon: ':x:'
+    path: library/structure/BIT/BIT.cpp
+    title: library/structure/BIT/BIT.cpp
   - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A
-  bundledCode: "#line 1 \"verify/aoj-dsl-1-a.test.cpp\"\n#define PROBLEM \\\n    \"\
-    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A\"\n\n#line 1\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
+  bundledCode: "#line 1 \"verify/aoj-DSL_2_B.test.cpp\"\n#define PROBLEM \\\n    \"\
+    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\n\n#line 1\
     \ \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC optimize(\"\
     Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\nusing ll =\
     \ long long;\nusing ull = unsigned long long;\nusing ld = long double;\ntypedef\
@@ -69,39 +69,44 @@ data:
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
     \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
     \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-dsl-1-a.test.cpp\"\
-    \n// library\n#line 1 \"library/structure/UnionFind/UnionFind.cpp\"\n\n/**\n *\
-    \ @brief UnionFind\n * @docs docs/UnionFind.md\n */\nstruct UnionFind {\n    vector<int>\
-    \ data;  // sizes of sets\n\n    UnionFind(int sz) : data(sz, -1) {}\n\n    bool\
-    \ unite(int x, int y) {\n        x = find(x), y = find(y);\n        if (x == y)\
-    \ return false;\n        if (data[x] > data[y]) swap(x, y);\n        data[x] +=\
-    \ data[y];\n        data[y] = x;\n        return true;\n    }\n\n    int find(int\
-    \ k) {\n        if (data[k] < 0) return k;\n        return data[k] = find(data[k]);\n\
-    \    }\n\n    int size(int k) { return (-data[find(k)]); }\n\n    bool same(int\
-    \ x, int y) { return find(x) == find(y); }\n};\n#line 7 \"verify/aoj-dsl-1-a.test.cpp\"\
-    \n\nint main() {\n    int N, Q;\n    scanf(\"%d %d\", &N, &Q);\n    UnionFind\
-    \ uf(N);\n    while (Q--) {\n        int t, x, y;\n        scanf(\"%d %d %d\"\
-    , &t, &x, &y);\n        if (t == 0)\n            uf.unite(x, y);\n        else\n\
-    \            printf(\"%d\\n\", uf.find(x) == uf.find(y));\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A\"\
-    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/UnionFind/UnionFind.cpp\"\
-    \n\nint main() {\n    int N, Q;\n    scanf(\"%d %d\", &N, &Q);\n    UnionFind\
-    \ uf(N);\n    while (Q--) {\n        int t, x, y;\n        scanf(\"%d %d %d\"\
-    , &t, &x, &y);\n        if (t == 0)\n            uf.unite(x, y);\n        else\n\
-    \            printf(\"%d\\n\", uf.find(x) == uf.find(y));\n    }\n}"
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-DSL_2_B.test.cpp\"\
+    \n// library\n#line 1 \"library/structure/BIT/BIT.cpp\"\ntemplate <typename T>\n\
+    struct BIT {\n    vector<T> data;\n\n    BIT(int sz) { data.assign(++sz, 0); }\n\
+    \    //[0, k)\n    T sum(int k) {\n        T ret = 0;\n        for (; k > 0; k\
+    \ -= k & -k) ret += data[k];\n        return (ret);\n    }\n\n    T sum(int l,\
+    \ int r) { return sum(r) - sum(l); }\n\n    void add(int k, T x) {\n        for\
+    \ (++k; k < data.size(); k += k & -k) data[k] += x;\n    }\n\n    // 0-indexed\u3067\
+    k\u756A\u76EE\u306E\u5024\u3092\u8FD4\u3059\u3002\n    int search(long long k)\
+    \ {\n        ++k;\n        int res = 0;\n        int N = 1;\n        while (N\
+    \ < (int)data.size()) N *= 2;\n        for (int i = N / 2; i > 0; i /= 2) {\n\
+    \            if (res + i < (int)data.size() && data[res + i] < k) {\n        \
+    \        k = k - data[res + i];\n                res = res + i;\n            }\n\
+    \        }\n        return res;\n    }\n\n    // for debug\n    void show() {\n\
+    \        rep(i, SZ(data) - 1) cout << sum(i + 1) - sum(i) << ' ';\n        cout\
+    \ << endl;\n    }\n};\n#line 7 \"verify/aoj-DSL_2_B.test.cpp\"\nint main() {\n\
+    \    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i, q) {\n   \
+    \     int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0) {\n     \
+    \       x--;\n            bit.add(i, y);\n        } else {\n            x--;\n\
+    \            print(bit.sum(x, y));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/BIT/BIT.cpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i,\
+    \ q) {\n        int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0)\
+    \ {\n            x--;\n            bit.add(i, y);\n        } else {\n        \
+    \    x--;\n            print(bit.sum(x, y));\n        }\n    }\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/structure/UnionFind/UnionFind.cpp
+  - library/structure/BIT/BIT.cpp
   isVerificationFile: true
-  path: verify/aoj-dsl-1-a.test.cpp
+  path: verify/aoj-DSL_2_B.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 19:34:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-11-21 10:59:37+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/aoj-dsl-1-a.test.cpp
+documentation_of: verify/aoj-DSL_2_B.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj-dsl-1-a.test.cpp
-- /verify/verify/aoj-dsl-1-a.test.cpp.html
-title: verify/aoj-dsl-1-a.test.cpp
+- /verify/verify/aoj-DSL_2_B.test.cpp
+- /verify/verify/aoj-DSL_2_B.test.cpp.html
+title: verify/aoj-DSL_2_B.test.cpp
 ---
