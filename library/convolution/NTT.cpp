@@ -5,18 +5,18 @@ struct NTT {
     Mint root;
 
     NTT() {
-        const unsigned mod = Mint::get_mod();
-        assert(mod >= 3 && mod % 2 == 1);
-        auto tmp = mod - 1;
+        const unsigned Mod = Mint::get_mod();
+        assert(Mod >= 3 && Mod % 2 == 1);
+        auto tmp = Mod - 1;
         max_base = 0;
         while (tmp % 2 == 0) tmp >>= 1, max_base++;
         root = 2;
-        while (root.pow((mod - 1) >> 1) == 1) root += 1;
-        assert(root.pow(mod - 1) == 1);
+        while (root.pow((Mod - 1) >> 1) == 1) root += 1;
+        assert(root.pow(Mod - 1) == 1);
         dw.resize(max_base);
         idw.resize(max_base);
         for (int i = 0; i < max_base; i++) {
-            dw[i] = -root.pow((mod - 1) >> (i + 2));
+            dw[i] = -root.pow((Mod - 1) >> (i + 2));
             idw[i] = Mint(1) / dw[i];
         }
     }
