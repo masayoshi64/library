@@ -13,7 +13,7 @@ int main() {
         cin >> t >> x >> y;
         if (t == 0) {
             x--;
-            bit.add(i, y);
+            bit.add(x, y);
         } else {
             x--;
             print(bit.sum(x, y));

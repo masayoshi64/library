@@ -1,6 +1,6 @@
 // dijkstra start from v in s
 template <typename T>
-vector<T> multi_source_dijkstra(WeightedGraph<T> &g, vector<int> &s) {
+vector<T> multi_source_dijkstra(Graph<T> &g, vector<int> &s) {
     const auto Inf = numeric_limits<T>::max();
     vector<T> dist(g.size(), Inf);
 

@@ -1,5 +1,5 @@
 template <typename T>
-vector<T> dijkstra(WeightedGraph<T> &g, int s) {
+vector<T> dijkstra(Graph<T> &g, int s) {
     const auto TINF = numeric_limits<T>::max();
     vector<T> dist(g.size(), TINF);
 
