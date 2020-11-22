@@ -55,27 +55,19 @@ data:
     \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
     \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
     \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\n// graph template\ntemplate <typename T>\nstruct\
-    \ edge {\n    int src, to;\n    T cost;\n\n    edge(int to, T cost) : src(-1),\
-    \ to(to), cost(cost) {}\n\n    edge(int src, int to, T cost) : src(src), to(to),\
-    \ cost(cost) {}\n\n    edge& operator=(const int& x) {\n        to = x;\n    \
-    \    return *this;\n    }\n\n    bool operator<(const edge<T>& r) const { return\
-    \ cost < r.cost; }\n\n    operator int() const { return to; }\n};\ntemplate <typename\
-    \ T>\nusing Edges = vector<edge<T>>;\ntemplate <typename T>\nusing WeightedGraph\
-    \ = vector<Edges<T>>;\nusing UnWeightedGraph = vector<vector<int>>;\nstruct Timer\
-    \ {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n   \
-    \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
+    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
+    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
+    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
+    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
+    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
-    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-DSL_2_G.test.cpp\"\
-    \n// library\n#line 1 \"library/structure/segtree/LazySegmentTree.cpp\"\n/**\n\
-    \ * @brief Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\
-    \u6728)\n * @docs docs/lazy-segment-tree.md\n */\ntemplate <typename Monoid, typename\
-    \ OperatorMonoid>\nstruct LazySegmentTree {\n    int n, sz, height;\n    vector<Monoid>\
-    \ data;\n    vector<OperatorMonoid> lazy;\n    using F = function<Monoid(Monoid,\
+    #line 5 \"verify/aoj-DSL_2_G.test.cpp\"\n// library\n#line 1 \"library/structure/segtree/LazySegmentTree.cpp\"\
+    \n/**\n * @brief Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)\n * @docs docs/lazy-segment-tree.md\n */\ntemplate <typename Monoid,\
+    \ typename OperatorMonoid>\nstruct LazySegmentTree {\n    int n, sz, height;\n\
+    \    vector<Monoid> data;\n    vector<OperatorMonoid> lazy;\n    using F = function<Monoid(Monoid,\
     \ Monoid)>;\n    using G = function<Monoid(Monoid, OperatorMonoid)>;\n    using\
     \ H = function<OperatorMonoid(OperatorMonoid, OperatorMonoid)>;\n    const F f;\n\
     \    const G g;\n    const H h;\n    const Monoid M1;\n    const OperatorMonoid\
@@ -180,7 +172,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-DSL_2_G.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 20:04:35+09:00'
+  timestamp: '2020-11-22 22:28:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DSL_2_G.test.cpp

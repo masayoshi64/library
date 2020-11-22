@@ -54,35 +54,27 @@ data:
     \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
     \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
     \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\n// graph template\ntemplate <typename T>\nstruct\
-    \ edge {\n    int src, to;\n    T cost;\n\n    edge(int to, T cost) : src(-1),\
-    \ to(to), cost(cost) {}\n\n    edge(int src, int to, T cost) : src(src), to(to),\
-    \ cost(cost) {}\n\n    edge& operator=(const int& x) {\n        to = x;\n    \
-    \    return *this;\n    }\n\n    bool operator<(const edge<T>& r) const { return\
-    \ cost < r.cost; }\n\n    operator int() const { return to; }\n};\ntemplate <typename\
-    \ T>\nusing Edges = vector<edge<T>>;\ntemplate <typename T>\nusing WeightedGraph\
-    \ = vector<Edges<T>>;\nusing UnWeightedGraph = vector<vector<int>>;\nstruct Timer\
-    \ {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n   \
-    \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
+    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
+    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
+    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
+    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
+    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
-    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-ALDS1_14_B.test.cpp\"\
-    \n// library\n#line 1 \"library/string/RollingHash.cpp\"\nstruct RollingHash {\n\
-    \    vector<unsigned long long> hashed, power;\n    const unsigned long long MASK30\
-    \ = (1ULL << 30) - 1;\n    const unsigned long long MASK31 = (1ULL << 31) - 1;\n\
-    \    const unsigned long long MOD = (1ULL << 61) - 1;\n    const unsigned long\
-    \ long MASK61 = MOD;\n\n    RollingHash(const string &s, unsigned long long base\
-    \ = 10007) {\n        int sz = (int)s.size();\n        hashed.assign(sz + 1, 0);\n\
-    \        power.assign(sz + 1, 0);\n        power[0] = 1;\n        for (int i =\
-    \ 0; i < sz; i++) {\n            power[i + 1] = CalcMod(Mul(power[i], base));\n\
-    \            hashed[i + 1] = CalcMod(Mul(hashed[i], base) + s[i]);\n        }\n\
-    \    }\n\n    // a*b mod 2^61-1\u3092\u8FD4\u3059\u95A2\u6570(\u6700\u5F8C\u306B\
-    Mod\u3092\u53D6\u308B)\n    long long Mul(unsigned long long a, unsigned long\
-    \ long b) {\n        unsigned long long au = a >> 31;\n        unsigned long long\
-    \ ad = a & MASK31;\n        unsigned long long bu = b >> 31;\n        unsigned\
+    #line 5 \"verify/aoj-ALDS1_14_B.test.cpp\"\n// library\n#line 1 \"library/string/RollingHash.cpp\"\
+    \nstruct RollingHash {\n    vector<unsigned long long> hashed, power;\n    const\
+    \ unsigned long long MASK30 = (1ULL << 30) - 1;\n    const unsigned long long\
+    \ MASK31 = (1ULL << 31) - 1;\n    const unsigned long long MOD = (1ULL << 61)\
+    \ - 1;\n    const unsigned long long MASK61 = MOD;\n\n    RollingHash(const string\
+    \ &s, unsigned long long base = 10007) {\n        int sz = (int)s.size();\n  \
+    \      hashed.assign(sz + 1, 0);\n        power.assign(sz + 1, 0);\n        power[0]\
+    \ = 1;\n        for (int i = 0; i < sz; i++) {\n            power[i + 1] = CalcMod(Mul(power[i],\
+    \ base));\n            hashed[i + 1] = CalcMod(Mul(hashed[i], base) + s[i]);\n\
+    \        }\n    }\n\n    // a*b mod 2^61-1\u3092\u8FD4\u3059\u95A2\u6570(\u6700\
+    \u5F8C\u306BMod\u3092\u53D6\u308B)\n    long long Mul(unsigned long long a, unsigned\
+    \ long long b) {\n        unsigned long long au = a >> 31;\n        unsigned long\
+    \ long ad = a & MASK31;\n        unsigned long long bu = b >> 31;\n        unsigned\
     \ long long bd = b & MASK31;\n        unsigned long long mid = ad * bu + au *\
     \ bd;\n        unsigned long long midu = mid >> 30;\n        unsigned long long\
     \ midd = mid & MASK30;\n        return au * bu * 2 + midu + (midd << 31) + ad\
@@ -116,7 +108,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-ALDS1_14_B.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 19:34:52+09:00'
+  timestamp: '2020-11-22 22:28:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-ALDS1_14_B.test.cpp

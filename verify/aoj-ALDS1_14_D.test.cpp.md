@@ -54,36 +54,28 @@ data:
     \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
     \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
     \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\n// graph template\ntemplate <typename T>\nstruct\
-    \ edge {\n    int src, to;\n    T cost;\n\n    edge(int to, T cost) : src(-1),\
-    \ to(to), cost(cost) {}\n\n    edge(int src, int to, T cost) : src(src), to(to),\
-    \ cost(cost) {}\n\n    edge& operator=(const int& x) {\n        to = x;\n    \
-    \    return *this;\n    }\n\n    bool operator<(const edge<T>& r) const { return\
-    \ cost < r.cost; }\n\n    operator int() const { return to; }\n};\ntemplate <typename\
-    \ T>\nusing Edges = vector<edge<T>>;\ntemplate <typename T>\nusing WeightedGraph\
-    \ = vector<Edges<T>>;\nusing UnWeightedGraph = vector<vector<int>>;\nstruct Timer\
-    \ {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n   \
-    \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
+    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
+    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
+    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
+    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
+    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
-    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-ALDS1_14_D.test.cpp\"\
-    \n// library\n#line 1 \"library/string/SuffixArray.cpp\"\nstruct SuffixArray {\n\
-    \    vector<int> SA;\n    const string s;\n\n    SuffixArray(const string &str)\
-    \ : s(str) {\n        SA.resize(s.size());\n        iota(begin(SA), end(SA), 0);\n\
-    \        sort(begin(SA), end(SA),\n             [&](int a, int b) { return s[a]\
-    \ == s[b] ? a > b : s[a] < s[b]; });\n        vector<int> classes(s.size()), c(s.begin(),\
-    \ s.end()), cnt(s.size());\n        for (int len = 1; len < s.size(); len <<=\
-    \ 1) {\n            for (int i = 0; i < s.size(); i++) {\n                if (i\
-    \ > 0 && c[SA[i - 1]] == c[SA[i]] &&\n                    SA[i - 1] + len < s.size()\
-    \ &&\n                    c[SA[i - 1] + len / 2] == c[SA[i] + len / 2]) {\n  \
-    \                  classes[SA[i]] = classes[SA[i - 1]];\n                } else\
-    \ {\n                    classes[SA[i]] = i;\n                }\n            }\n\
-    \            iota(begin(cnt), end(cnt), 0);\n            copy(begin(SA), end(SA),\
-    \ begin(c));\n            for (int i = 0; i < s.size(); i++) {\n             \
-    \   int s1 = c[i] - len;\n                if (s1 >= 0) SA[cnt[classes[s1]]++]\
+    #line 5 \"verify/aoj-ALDS1_14_D.test.cpp\"\n// library\n#line 1 \"library/string/SuffixArray.cpp\"\
+    \nstruct SuffixArray {\n    vector<int> SA;\n    const string s;\n\n    SuffixArray(const\
+    \ string &str) : s(str) {\n        SA.resize(s.size());\n        iota(begin(SA),\
+    \ end(SA), 0);\n        sort(begin(SA), end(SA),\n             [&](int a, int\
+    \ b) { return s[a] == s[b] ? a > b : s[a] < s[b]; });\n        vector<int> classes(s.size()),\
+    \ c(s.begin(), s.end()), cnt(s.size());\n        for (int len = 1; len < s.size();\
+    \ len <<= 1) {\n            for (int i = 0; i < s.size(); i++) {\n           \
+    \     if (i > 0 && c[SA[i - 1]] == c[SA[i]] &&\n                    SA[i - 1]\
+    \ + len < s.size() &&\n                    c[SA[i - 1] + len / 2] == c[SA[i] +\
+    \ len / 2]) {\n                    classes[SA[i]] = classes[SA[i - 1]];\n    \
+    \            } else {\n                    classes[SA[i]] = i;\n             \
+    \   }\n            }\n            iota(begin(cnt), end(cnt), 0);\n           \
+    \ copy(begin(SA), end(SA), begin(c));\n            for (int i = 0; i < s.size();\
+    \ i++) {\n                int s1 = c[i] - len;\n                if (s1 >= 0) SA[cnt[classes[s1]]++]\
     \ = s1;\n            }\n            classes.swap(c);\n        }\n    }\n\n   \
     \ int operator[](int k) const { return SA[k]; }\n\n    int size() const { return\
     \ s.size(); }\n\n    bool lt_substr(const string &t, int si = 0, int ti = 0) {\n\
@@ -118,7 +110,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-ALDS1_14_D.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 19:34:52+09:00'
+  timestamp: '2020-11-22 22:28:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-ALDS1_14_D.test.cpp

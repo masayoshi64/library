@@ -53,41 +53,33 @@ data:
     \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
     \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
     \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\n// graph template\ntemplate <typename T>\nstruct\
-    \ edge {\n    int src, to;\n    T cost;\n\n    edge(int to, T cost) : src(-1),\
-    \ to(to), cost(cost) {}\n\n    edge(int src, int to, T cost) : src(src), to(to),\
-    \ cost(cost) {}\n\n    edge& operator=(const int& x) {\n        to = x;\n    \
-    \    return *this;\n    }\n\n    bool operator<(const edge<T>& r) const { return\
-    \ cost < r.cost; }\n\n    operator int() const { return to; }\n};\ntemplate <typename\
-    \ T>\nusing Edges = vector<edge<T>>;\ntemplate <typename T>\nusing WeightedGraph\
-    \ = vector<Edges<T>>;\nusing UnWeightedGraph = vector<vector<int>>;\nstruct Timer\
-    \ {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n   \
-    \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
+    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
+    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
+    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
+    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
+    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
-    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 3 \"verify/yuki-184.test.cpp\"\
-    \n// library\n#line 1 \"library/math/BitMatrix.cpp\"\n\ntemplate <int MAX_ROW,\
-    \ int MAX_COL>\nstruct BitMatrix {\n    int H, W, rank;\n    vector<int> top;\
-    \  // top bit\n    bitset<MAX_COL> A[MAX_ROW];\n    BitMatrix(int h = 1, int w\
-    \ = 1) : H(h), W(w), rank(0) { top.resize(h); }\n    void build(bool is_extended\
-    \ = false) {\n        rep(col, W) {\n            if (is_extended && col == W -\
-    \ 1) break;\n            int row = rank;\n            for (; row < H; ++row) {\n\
-    \                if (A[row][col]) {\n                    swap(A[rank], A[row]);\n\
-    \                    break;\n                }\n            }\n            if\
-    \ (row == H) continue;\n            top[rank] = col;\n            rep(k, H) {\n\
-    \                if (k == rank) continue;\n                if (A[k][col]) A[k]\
-    \ ^= A[rank];\n            }\n            ++rank;\n        }\n    }\n    int solve(vector<int>&\
-    \ res) {\n        // if it has no solution then return -1\n        for (int row\
-    \ = rank; row < H; ++row)\n            if (A[row][W - 1]) return -1;\n       \
-    \ res.assign(W - 1, 0);\n        for (int i = 0; i < rank; ++i) res[i] = A[i][W\
-    \ - 1];\n        return rank;\n    }\n    inline bitset<MAX_COL>& operator[](int\
-    \ i) { return A[i]; }\n};\n#line 5 \"verify/yuki-184.test.cpp\"\nint main() {\n\
-    \    int n;\n    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n    vl a(n);\n\
-    \    scan(a);\n    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n    print(((ll)1\
-    \ << bm.rank));\n}\n"
+    #line 3 \"verify/yuki-184.test.cpp\"\n// library\n#line 1 \"library/math/BitMatrix.cpp\"\
+    \n\ntemplate <int MAX_ROW, int MAX_COL>\nstruct BitMatrix {\n    int H, W, rank;\n\
+    \    vector<int> top;  // top bit\n    bitset<MAX_COL> A[MAX_ROW];\n    BitMatrix(int\
+    \ h = 1, int w = 1) : H(h), W(w), rank(0) { top.resize(h); }\n    void build(bool\
+    \ is_extended = false) {\n        rep(col, W) {\n            if (is_extended &&\
+    \ col == W - 1) break;\n            int row = rank;\n            for (; row <\
+    \ H; ++row) {\n                if (A[row][col]) {\n                    swap(A[rank],\
+    \ A[row]);\n                    break;\n                }\n            }\n   \
+    \         if (row == H) continue;\n            top[rank] = col;\n            rep(k,\
+    \ H) {\n                if (k == rank) continue;\n                if (A[k][col])\
+    \ A[k] ^= A[rank];\n            }\n            ++rank;\n        }\n    }\n   \
+    \ int solve(vector<int>& res) {\n        // if it has no solution then return\
+    \ -1\n        for (int row = rank; row < H; ++row)\n            if (A[row][W -\
+    \ 1]) return -1;\n        res.assign(W - 1, 0);\n        for (int i = 0; i < rank;\
+    \ ++i) res[i] = A[i][W - 1];\n        return rank;\n    }\n    inline bitset<MAX_COL>&\
+    \ operator[](int i) { return A[i]; }\n};\n#line 5 \"verify/yuki-184.test.cpp\"\
+    \nint main() {\n    int n;\n    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n\
+    \    vl a(n);\n    scan(a);\n    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n\
+    \    print(((ll)1 << bm.rank));\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/184\"\n#include \"library/template/template.cpp\"\
     \n// library\n#include \"library/math/BitMatrix.cpp\"\nint main() {\n    int n;\n\
     \    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n    vl a(n);\n    scan(a);\n\
@@ -99,7 +91,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-184.test.cpp
   requiredBy: []
-  timestamp: '2020-11-20 19:34:52+09:00'
+  timestamp: '2020-11-22 22:28:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki-184.test.cpp

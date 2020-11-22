@@ -54,40 +54,32 @@ data:
     \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
     \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
     \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\n// graph template\ntemplate <typename T>\nstruct\
-    \ edge {\n    int src, to;\n    T cost;\n\n    edge(int to, T cost) : src(-1),\
-    \ to(to), cost(cost) {}\n\n    edge(int src, int to, T cost) : src(src), to(to),\
-    \ cost(cost) {}\n\n    edge& operator=(const int& x) {\n        to = x;\n    \
-    \    return *this;\n    }\n\n    bool operator<(const edge<T>& r) const { return\
-    \ cost < r.cost; }\n\n    operator int() const { return to; }\n};\ntemplate <typename\
-    \ T>\nusing Edges = vector<edge<T>>;\ntemplate <typename T>\nusing WeightedGraph\
-    \ = vector<Edges<T>>;\nusing UnWeightedGraph = vector<vector<int>>;\nstruct Timer\
-    \ {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n   \
-    \ int lap() {\n        // return x ms.\n        return (clock() - start_time)\
+    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
+    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
+    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
+    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
+    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    \ntemplate <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
-    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j) { return a[i] < a[j]; });\n    return id;\n}\n#line 5 \"verify/aoj-DSL_2_B.test.cpp\"\
-    \n// library\n#line 1 \"library/structure/BIT/BIT.cpp\"\ntemplate <typename T>\n\
-    struct BIT {\n    vector<T> data;\n\n    BIT(int sz) { data.assign(++sz, 0); }\n\
-    \    //[0, k)\n    T sum(int k) {\n        T ret = 0;\n        for (; k > 0; k\
-    \ -= k & -k) ret += data[k];\n        return (ret);\n    }\n\n    T sum(int l,\
-    \ int r) { return sum(r) - sum(l); }\n\n    void add(int k, T x) {\n        for\
-    \ (++k; k < data.size(); k += k & -k) data[k] += x;\n    }\n\n    // 0-indexed\u3067\
-    k\u756A\u76EE\u306E\u5024\u3092\u8FD4\u3059\u3002\n    int search(long long k)\
-    \ {\n        ++k;\n        int res = 0;\n        int N = 1;\n        while (N\
-    \ < (int)data.size()) N *= 2;\n        for (int i = N / 2; i > 0; i /= 2) {\n\
-    \            if (res + i < (int)data.size() && data[res + i] < k) {\n        \
-    \        k = k - data[res + i];\n                res = res + i;\n            }\n\
-    \        }\n        return res;\n    }\n\n    // for debug\n    void show() {\n\
-    \        rep(i, SZ(data) - 1) cout << sum(i + 1) - sum(i) << ' ';\n        cout\
-    \ << endl;\n    }\n};\n#line 7 \"verify/aoj-DSL_2_B.test.cpp\"\nint main() {\n\
-    \    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i, q) {\n   \
-    \     int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0) {\n     \
-    \       x--;\n            bit.add(x, y);\n        } else {\n            x--;\n\
-    \            print(bit.sum(x, y));\n        }\n    }\n}\n"
+    #line 5 \"verify/aoj-DSL_2_B.test.cpp\"\n// library\n#line 1 \"library/structure/BIT/BIT.cpp\"\
+    \ntemplate <typename T>\nstruct BIT {\n    vector<T> data;\n\n    BIT(int sz)\
+    \ { data.assign(++sz, 0); }\n    //[0, k)\n    T sum(int k) {\n        T ret =\
+    \ 0;\n        for (; k > 0; k -= k & -k) ret += data[k];\n        return (ret);\n\
+    \    }\n\n    T sum(int l, int r) { return sum(r) - sum(l); }\n\n    void add(int\
+    \ k, T x) {\n        for (++k; k < data.size(); k += k & -k) data[k] += x;\n \
+    \   }\n\n    // 0-indexed\u3067k\u756A\u76EE\u306E\u5024\u3092\u8FD4\u3059\u3002\
+    \n    int search(long long k) {\n        ++k;\n        int res = 0;\n        int\
+    \ N = 1;\n        while (N < (int)data.size()) N *= 2;\n        for (int i = N\
+    \ / 2; i > 0; i /= 2) {\n            if (res + i < (int)data.size() && data[res\
+    \ + i] < k) {\n                k = k - data[res + i];\n                res = res\
+    \ + i;\n            }\n        }\n        return res;\n    }\n\n    // for debug\n\
+    \    void show() {\n        rep(i, SZ(data) - 1) cout << sum(i + 1) - sum(i) <<\
+    \ ' ';\n        cout << endl;\n    }\n};\n#line 7 \"verify/aoj-DSL_2_B.test.cpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i,\
+    \ q) {\n        int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0)\
+    \ {\n            x--;\n            bit.add(x, y);\n        } else {\n        \
+    \    x--;\n            print(bit.sum(x, y));\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/BIT/BIT.cpp\"\
     \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i,\
@@ -100,7 +92,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-DSL_2_B.test.cpp
   requiredBy: []
-  timestamp: '2020-11-22 22:24:03+09:00'
+  timestamp: '2020-11-22 22:28:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DSL_2_B.test.cpp
