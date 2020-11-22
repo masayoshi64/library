@@ -101,30 +101,14 @@ uint64_t my_rand(void) {
     return x = x ^ (x << 17);
 }
 int popcnt(ull x) { return __builtin_popcountll(x); }
-// graph template
 template <typename T>
-struct edge {
-    int src, to;
-    T cost;
-
-    edge(int to, T cost) : src(-1), to(to), cost(cost) {}
-
-    edge(int src, int to, T cost) : src(src), to(to), cost(cost) {}
-
-    edge& operator=(const int& x) {
-        to = x;
-        return *this;
-    }
-
-    bool operator<(const edge<T>& r) const { return cost < r.cost; }
-
-    operator int() const { return to; }
-};
-template <typename T>
-using Edges = vector<edge<T>>;
-template <typename T>
-using WeightedGraph = vector<Edges<T>>;
-using UnWeightedGraph = vector<vector<int>>;
+vector<int> IOTA(vector<T> a) {
+    int n = a.size();
+    vector<int> id(n);
+    iota(all(id), 0);
+    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });
+    return id;
+}
 struct Timer {
     clock_t start_time;
     void start() { start_time = clock(); }
@@ -140,12 +124,3 @@ struct Timer {
 #define endl '\n'
 const long double eps = 0.000000000000001;
 const long double PI = 3.141592653589793;
-
-template <typename T>
-vector<int> IOTA(vector<T> a) {
-    int n = a.size();
-    vector<int> id(n);
-    iota(all(id), 0);
-    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });
-    return id;
-}
