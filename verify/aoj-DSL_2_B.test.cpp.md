@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/structure/BIT/BIT.cpp
     title: library/structure/BIT/BIT.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
@@ -86,13 +86,13 @@ data:
     \ << endl;\n    }\n};\n#line 7 \"verify/aoj-DSL_2_B.test.cpp\"\nint main() {\n\
     \    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i, q) {\n   \
     \     int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0) {\n     \
-    \       x--;\n            bit.add(i, y);\n        } else {\n            x--;\n\
+    \       x--;\n            bit.add(x, y);\n        } else {\n            x--;\n\
     \            print(bit.sum(x, y));\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/BIT/BIT.cpp\"\
     \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i,\
     \ q) {\n        int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0)\
-    \ {\n            x--;\n            bit.add(i, y);\n        } else {\n        \
+    \ {\n            x--;\n            bit.add(x, y);\n        } else {\n        \
     \    x--;\n            print(bit.sum(x, y));\n        }\n    }\n}"
   dependsOn:
   - library/template/template.cpp
@@ -100,8 +100,8 @@ data:
   isVerificationFile: true
   path: verify/aoj-DSL_2_B.test.cpp
   requiredBy: []
-  timestamp: '2020-11-21 10:59:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-11-22 22:24:03+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DSL_2_B.test.cpp
 layout: document

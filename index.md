@@ -1,11 +1,6 @@
 ---
 data:
   libraryCategories:
-  - name: developping
-    pages:
-    - icon: ':warning:'
-      path: developping/dfs_grid.cpp
-      title: developping/dfs_grid.cpp
   - name: library/convolution
     pages:
     - icon: ':heavy_check_mark:'
@@ -31,8 +26,14 @@ data:
       path: library/graph/distance/dijkstra.cpp
       title: library/graph/distance/dijkstra.cpp
     - icon: ':warning:'
+      path: library/graph/distance/grid_bfs.cpp
+      title: library/graph/distance/grid_bfs.cpp
+    - icon: ':warning:'
       path: library/graph/distance/multi_source_dijkstra.cpp
       title: library/graph/distance/multi_source_dijkstra.cpp
+    - icon: ':warning:'
+      path: library/graph/distance/n0bfs.cpp
+      title: library/graph/distance/n0bfs.cpp
     - icon: ':warning:'
       path: library/graph/distance/warshall_floyd.cpp
       title: library/graph/distance/warshall_floyd.cpp
@@ -94,6 +95,17 @@ data:
     - icon: ':warning:'
       path: library/others/Doubling.cpp
       title: library/others/Doubling.cpp
+    - icon: ':warning:'
+      path: library/others/rekkyo.cpp
+      title: library/others/rekkyo.cpp
+  - name: library/snippets
+    pages:
+    - icon: ':warning:'
+      path: library/snippets/dfs_grid.cpp
+      title: library/snippets/dfs_grid.cpp
+    - icon: ':warning:'
+      path: library/snippets/worm.cpp
+      title: library/snippets/worm.cpp
   - name: library/string
     pages:
     - icon: ':warning:'
@@ -107,7 +119,7 @@ data:
       title: library/string/SuffixArray.cpp
   - name: library/structure/BIT
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/structure/BIT/BIT.cpp
       title: library/structure/BIT/BIT.cpp
   - name: library/structure/UnionFind
@@ -134,7 +146,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: test
@@ -168,7 +180,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-DPL_5_G.test.cpp
       title: verify/aoj-DPL_5_G.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-DSL_2_B.test.cpp
       title: verify/aoj-DSL_2_B.test.cpp
     - icon: ':heavy_check_mark:'

@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-DSL_2_B.test.cpp
     title: verify/aoj-DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -70,7 +70,7 @@ data:
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -184,7 +184,7 @@ data:
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   timestamp: '2020-11-20 19:34:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-GRL_7_A.test.cpp
   - verify/aoj-GRL_6_A.test.cpp
