@@ -12,6 +12,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
       title: library/convolution/NTT.cpp
+  - name: library/dp
+    pages:
+    - icon: ':warning:'
+      path: library/dp/rekkyo.cpp
+      title: library/dp/rekkyo.cpp
   - name: library/graph/connected-components
     pages:
     - icon: ':heavy_check_mark:'
@@ -22,6 +27,9 @@ data:
       title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
     pages:
+    - icon: ':heavy_check_mark:'
+      path: library/graph/distance/bfs_dial.cpp
+      title: library/graph/distance/bfs_dial.cpp
     - icon: ':warning:'
       path: library/graph/distance/dijkstra.cpp
       title: library/graph/distance/dijkstra.cpp
@@ -31,9 +39,6 @@ data:
     - icon: ':warning:'
       path: library/graph/distance/multi_source_dijkstra.cpp
       title: library/graph/distance/multi_source_dijkstra.cpp
-    - icon: ':warning:'
-      path: library/graph/distance/n0bfs.cpp
-      title: library/graph/distance/n0bfs.cpp
     - icon: ':warning:'
       path: library/graph/distance/warshall_floyd.cpp
       title: library/graph/distance/warshall_floyd.cpp
@@ -95,9 +100,6 @@ data:
     - icon: ':warning:'
       path: library/others/Doubling.cpp
       title: library/others/Doubling.cpp
-    - icon: ':warning:'
-      path: library/others/rekkyo.cpp
-      title: library/others/rekkyo.cpp
   - name: library/snippets
     pages:
     - icon: ':warning:'
@@ -162,6 +164,9 @@ data:
     - icon: ':warning:'
       path: verify/yuki-1408.cpp
       title: verify/yuki-1408.cpp
+    - icon: ':warning:'
+      path: verify/yuki-545.cpp.cpp
+      title: verify/yuki-545.cpp.cpp
   verificationCategories:
   - name: verify
     pages:
@@ -171,6 +176,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-2446.test.cpp
       title: verify/aoj-2446.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-ALDS1_12_B.test.cpp
+      title: verify/aoj-ALDS1_12_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-ALDS1_14_B.test.cpp
       title: verify/aoj-ALDS1_14_B.test.cpp

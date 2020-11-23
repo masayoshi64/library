@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: verify/yuki-1408.cpp
     title: verify/yuki-1408.cpp
+  - icon: ':warning:'
+    path: verify/yuki-545.cpp.cpp
+    title: verify/yuki-545.cpp.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-2446.test.cpp
     title: verify/aoj-2446.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj-ALDS1_12_B.test.cpp
+    title: verify/aoj-ALDS1_12_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj-ALDS1_14_B.test.cpp
     title: verify/aoj-ALDS1_14_B.test.cpp
@@ -165,6 +171,7 @@ data:
   path: library/template/template.cpp
   requiredBy:
   - test/atcoder-abc136_d.cpp
+  - verify/yuki-545.cpp.cpp
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   timestamp: '2020-11-22 22:28:25+09:00'
@@ -187,6 +194,7 @@ data:
   - verify/aoj-GRL_6_B.test.cpp
   - verify/aoj-DSL_2_G.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
+  - verify/aoj-ALDS1_12_B.test.cpp
   - verify/aoj-DSL_2_B.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/template/template.cpp

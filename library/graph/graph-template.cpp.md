@@ -10,6 +10,9 @@ data:
     title: library/graph/connected-components/TwoSat.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/aoj-ALDS1_12_B.test.cpp
+    title: verify/aoj-ALDS1_12_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
   _pathExtension: cpp
@@ -58,6 +61,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-two_sat.test.cpp
+  - verify/aoj-ALDS1_12_B.test.cpp
 documentation_of: library/graph/graph-template.cpp
 layout: document
 redirect_from:
