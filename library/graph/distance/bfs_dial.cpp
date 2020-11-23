@@ -1,12 +1,13 @@
+// Dial's algorithm
 template <typename T>
-vector<T> n0bfs(const Graph<T> &g, int s) {
-    T max_cost = 0, max_dist + = 0;
+vector<T> bfs_dial(const Graph<T> &g, int s) {
+    T max_cost = 0, max_dist = 0;
     for (auto &es : g.g) {
         for (auto &e : es) max_cost = max(max_cost, e.cost);
     }
     ++max_cost;
-    const auto INF = numeric_limits<T>::max();
-    vector<T> dist(g.size(), INF);
+    const auto TINF = numeric_limits<T>::max();
+    vector<T> dist(g.size(), TINF);
     vector<queue<int> > ques(max_cost + 1);
     dist[s] = 0;
     ques[0].emplace(s);
