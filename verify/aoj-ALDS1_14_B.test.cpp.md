@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/string/RollingHash.cpp
     title: library/string/RollingHash.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []

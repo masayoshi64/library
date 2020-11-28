@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/connected-components/StronglyConnectedComponents.cpp
     title: library/graph/connected-components/StronglyConnectedComponents.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/graph-template.cpp
     title: library/graph/graph-template.cpp
   _extendedRequiredBy: []

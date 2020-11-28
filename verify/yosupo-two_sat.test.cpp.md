@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/connected-components/TwoSat.cpp
     title: library/graph/connected-components/TwoSat.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/graph-template.cpp
     title: library/graph/graph-template.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []

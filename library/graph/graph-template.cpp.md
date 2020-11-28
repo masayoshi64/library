@@ -15,11 +15,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki-1301.test.cpp
     title: verify/yuki-1301.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/graph-template.cpp\"\ntemplate <typename T\
@@ -61,7 +61,7 @@ data:
   - library/graph/connected-components/TwoSat.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
   timestamp: '2020-11-19 20:53:33+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki-1301.test.cpp
   - verify/yosupo-two_sat.test.cpp
