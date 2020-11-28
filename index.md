@@ -14,7 +14,7 @@ data:
       title: library/convolution/NTT.cpp
   - name: library/dp
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/dp/rekkyo.cpp
       title: library/dp/rekkyo.cpp
   - name: library/graph/connected-components
@@ -51,12 +51,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/flow/Dinic.cpp
       title: "Dinic(\u6700\u5927\u6D41)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/graph/flow/MinCostFlow.cpp
       title: library/graph/flow/MinCostFlow.cpp
   - name: library/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/graph/graph-template.cpp
       title: library/graph/graph-template.cpp
   - name: library/graph/tree
@@ -148,7 +148,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: test
@@ -164,9 +164,6 @@ data:
     - icon: ':warning:'
       path: verify/yuki-1408.cpp
       title: verify/yuki-1408.cpp
-    - icon: ':warning:'
-      path: verify/yuki-545.cpp.cpp
-      title: verify/yuki-545.cpp.cpp
   verificationCategories:
   - name: verify
     pages:
@@ -224,9 +221,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
+    - icon: ':x:'
+      path: verify/yuki-1301.test.cpp
+      title: verify/yuki-1301.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yuki-184.test.cpp
       title: verify/yuki-184.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yuki-545.test.cpp
+      title: verify/yuki-545.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yuki-650.test.cpp
       title: verify/yuki-650.test.cpp

@@ -11,9 +11,6 @@ data:
   - icon: ':warning:'
     path: verify/yuki-1408.cpp
     title: verify/yuki-1408.cpp
-  - icon: ':warning:'
-    path: verify/yuki-545.cpp.cpp
-    title: verify/yuki-545.cpp.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
@@ -69,14 +66,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
+  - icon: ':x:'
+    path: verify/yuki-1301.test.cpp
+    title: verify/yuki-1301.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yuki-184.test.cpp
     title: verify/yuki-184.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/yuki-545.test.cpp
+    title: verify/yuki-545.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -171,16 +174,17 @@ data:
   path: library/template/template.cpp
   requiredBy:
   - test/atcoder-abc136_d.cpp
-  - verify/yuki-545.cpp.cpp
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   timestamp: '2020-11-22 22:28:25+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj-GRL_7_A.test.cpp
   - verify/aoj-GRL_6_A.test.cpp
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/aoj-1595.test.cpp
+  - verify/yuki-1301.test.cpp
+  - verify/yuki-545.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
   - verify/yosupo-two_sat.test.cpp
   - verify/aoj-NTL_1_E.test.cpp

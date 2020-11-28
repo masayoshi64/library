@@ -1,20 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: library/dp/rekkyo.cpp
     title: library/dp/rekkyo.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://yukicoder.me/problems/no/545
     links:
     - https://yukicoder.me/problems/no/545
-  bundledCode: "#line 1 \"verify/yuki-545.cpp.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/545\"\
+  bundledCode: "#line 1 \"verify/yuki-545.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/545\"\
     \n\n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma\
     \ GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n//\
     \ types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
@@ -59,7 +61,7 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 4 \"verify/yuki-545.cpp.cpp\"\n// library\n#line 1 \"library/dp/rekkyo.cpp\"\
+    #line 4 \"verify/yuki-545.test.cpp\"\n// library\n#line 1 \"library/dp/rekkyo.cpp\"\
     \ntemplate <typename T>\nvector<T> rekkyo(const vector<T>& items) {\n    vector<T>\
     \ res = {0}, tmp, tmp1;\n    for (T item : items) {\n        for (auto val : res)\
     \ {\n            tmp.pb(item + val);\n        }\n        //\u30BD\u30FC\u30C8\u3055\
@@ -67,8 +69,8 @@ data:
     \        swap(res, tmp1);\n        tmp.clear();\n        tmp1.clear();\n    }\n\
     \    return res;\n}\n\n// vector<T> a = rekkyo({items.begin(), items.begin() +\
     \ n / 2});\n// vector<T> b = rekkyo({items.begin() + n / 2, items.end()});\n#line\
-    \ 6 \"verify/yuki-545.cpp.cpp\"\nint main() {\n    ll n;\n    cin >> n;\n    vl\
-    \ a(n), b(n);\n    rep(i, n) cin >> a[i] >> b[i];\n    rep(i, n) a[i] += b[i];\n\
+    \ 6 \"verify/yuki-545.test.cpp\"\nint main() {\n    ll n;\n    cin >> n;\n   \
+    \ vl a(n), b(n);\n    rep(i, n) cin >> a[i] >> b[i];\n    rep(i, n) a[i] += b[i];\n\
     \    ll sm = vsum(b);\n    auto x = rekkyo<ll>({a.begin(), a.begin() + n / 2});\n\
     \    auto y = rekkyo<ll>({a.begin() + n / 2, a.end()});\n    ll smx = accumulate(b.begin(),\
     \ b.begin() + n / 2, 0ll);\n    ll smy = accumulate(b.begin() + n / 2, b.end(),\
@@ -92,16 +94,16 @@ data:
   dependsOn:
   - library/template/template.cpp
   - library/dp/rekkyo.cpp
-  isVerificationFile: false
-  path: verify/yuki-545.cpp.cpp
+  isVerificationFile: true
+  path: verify/yuki-545.test.cpp
   requiredBy: []
-  timestamp: '2020-11-23 18:44:35+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2020-11-28 17:00:42+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/yuki-545.cpp.cpp
+documentation_of: verify/yuki-545.test.cpp
 layout: document
 redirect_from:
-- /library/verify/yuki-545.cpp.cpp
-- /library/verify/yuki-545.cpp.cpp.html
-title: verify/yuki-545.cpp.cpp
+- /verify/verify/yuki-545.test.cpp
+- /verify/verify/yuki-545.test.cpp.html
+title: verify/yuki-545.test.cpp
 ---

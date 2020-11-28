@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/yuki-545.cpp.cpp
-    title: verify/yuki-545.cpp.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/yuki-545.test.cpp
+    title: verify/yuki-545.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/dp/rekkyo.cpp\"\ntemplate <typename T>\nvector<T>\
@@ -28,11 +28,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/dp/rekkyo.cpp
-  requiredBy:
-  - verify/yuki-545.cpp.cpp
+  requiredBy: []
   timestamp: '2020-11-23 18:44:35+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/yuki-545.test.cpp
 documentation_of: library/dp/rekkyo.cpp
 layout: document
 redirect_from:
