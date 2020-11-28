@@ -12,7 +12,9 @@ int main() {
         cin >> u >> v >> c >> d;
         u--, v--;
         g.add_edge(u, v, 1, c);
+        g.add_edge(v, u, 1, c);
         g.add_edge(u, v, 1, d);
+        g.add_edge(v, u, 1, c);
     }
     print(g.min_cost_flow(0, n - 1, 2));
 }
