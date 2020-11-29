@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/FPS.power.test.cpp
+    title: verify/FPS.power.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
   _pathExtension: cpp
@@ -81,6 +84,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/FPS.power.test.cpp
 documentation_of: library/math/combination.cpp
 layout: document
 redirect_from:

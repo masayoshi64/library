@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/FPS.power.test.cpp
+    title: verify/FPS.power.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -193,6 +196,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
+  - verify/FPS.power.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/math/FormalPowerSeries.cpp
 layout: document

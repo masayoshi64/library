@@ -13,6 +13,9 @@ data:
     title: verify/yuki-1408.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/FPS.power.test.cpp
+    title: verify/FPS.power.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
     title: verify/aoj-1595.test.cpp
   - icon: ':heavy_check_mark:'
@@ -196,6 +199,7 @@ data:
   - verify/aoj-2446.test.cpp
   - verify/yuki-650.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
+  - verify/FPS.power.test.cpp
   - verify/aoj-DSL_2_G.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
   - verify/aoj-ALDS1_12_B.test.cpp
