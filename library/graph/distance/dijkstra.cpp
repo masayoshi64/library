@@ -13,7 +13,7 @@ vector<T> dijkstra(Graph<T> &g, int s) {
         tie(cost, idx) = que.top();
         que.pop();
         if (dist[idx] < cost) continue;
-        for (auto &e : g[idx]) {
+        for (auto &e : g.g[idx]) {
             auto next_cost = cost + e.cost;
             if (dist[e.to] <= next_cost) continue;
             dist[e.to] = next_cost;
