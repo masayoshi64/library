@@ -221,13 +221,16 @@ struct RSRAQ : LazySegmentTree<segobj<T>, T> {
     }
     T sum(int l, int r) { return this->query(l, r).val; }
 };
-template <class T>
-struct RSRRQ : LazySegmentTree<segobj<T>, T> {
-    using Seg = LazySegmentTree<segobj<T>, T>;
+
+// T = mintの時はnumerical_limits<mint>::max()を単位元の代わりにできないので
+// M = intをして使う。
+template <class T, class M = T>
+struct RSRRQ : LazySegmentTree<segobj<T>, M> {
+    using Seg = LazySegmentTree<segobj<T>, M>;
     using obj = segobj<T>;
     RSRRQ(int n)
-        : Seg(n, plus<obj>(), myreplace<obj, T>, myreplace<T>, segobj<T>(),
-              numeric_limits<T>::max()) {
+        : Seg(n, plus<obj>(), myreplace<obj, M>, myreplace<M>, segobj<T>(),
+              numeric_limits<M>::max()) {
         rep(i, n) this->set(i, segobj<T>(0, 1));
         this->build();
     }

@@ -5,12 +5,13 @@ struct StronglyConnectedComponents : Graph<T> {
    public:
     using Graph<T>::Graph;
     using Graph<T>::g;
-    vector<int> comp;
-    Graph<T> dag;
-    vector<vector<int> > group;
+    vector<int> comp;            // id of scc
+    Graph<T> dag;                // DAG
+    vector<vector<int> > group;  // lists of each scc
 
     void build() {
         rg = Graph<T>(g.size());
+        // add reversed edges
         for (int i = 0; i < g.size(); i++) {
             for (auto &e : g[i]) {
                 rg.add_directed_edge(e.to, e.from, e.cost);
@@ -18,6 +19,7 @@ struct StronglyConnectedComponents : Graph<T> {
         }
         comp.assign(g.size(), -1);
         used.assign(g.size(), 0);
+        // dfs for (not reversed) graph
         for (int i = 0; i < g.size(); i++) dfs(i);
         reverse(begin(order), end(order));
         int ptr = 0;
@@ -40,8 +42,8 @@ struct StronglyConnectedComponents : Graph<T> {
     int operator[](int k) const { return comp[k]; }
 
    private:
-    vector<int> order, used;
-    Graph<T> rg;
+    vector<int> order, used;  // order:post order
+    Graph<T> rg;              // reversed graph
 
     void dfs(int idx) {
         if (exchange(used[idx], true)) return;
