@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/graph-template.cpp
     title: library/graph/graph-template.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -87,11 +87,13 @@ data:
     #line 2 \"library/graph/connected-components/StronglyConnectedComponents.cpp\"\
     \n\ntemplate <typename T = int>\nstruct StronglyConnectedComponents : Graph<T>\
     \ {\n   public:\n    using Graph<T>::Graph;\n    using Graph<T>::g;\n    vector<int>\
-    \ comp;\n    Graph<T> dag;\n    vector<vector<int> > group;\n\n    void build()\
-    \ {\n        rg = Graph<T>(g.size());\n        for (int i = 0; i < g.size(); i++)\
-    \ {\n            for (auto &e : g[i]) {\n                rg.add_directed_edge(e.to,\
-    \ e.from, e.cost);\n            }\n        }\n        comp.assign(g.size(), -1);\n\
-    \        used.assign(g.size(), 0);\n        for (int i = 0; i < g.size(); i++)\
+    \ comp;            // id of scc\n    Graph<T> dag;                // DAG\n   \
+    \ vector<vector<int> > group;  // lists of each scc\n\n    void build() {\n  \
+    \      rg = Graph<T>(g.size());\n        // add reversed edges\n        for (int\
+    \ i = 0; i < g.size(); i++) {\n            for (auto &e : g[i]) {\n          \
+    \      rg.add_directed_edge(e.to, e.from, e.cost);\n            }\n        }\n\
+    \        comp.assign(g.size(), -1);\n        used.assign(g.size(), 0);\n     \
+    \   // dfs for (not reversed) graph\n        for (int i = 0; i < g.size(); i++)\
     \ dfs(i);\n        reverse(begin(order), end(order));\n        int ptr = 0;\n\
     \        for (int i : order)\n            if (comp[i] == -1) rdfs(i, ptr), ptr++;\n\
     \        dag = Graph<T>(ptr);\n        for (int i = 0; i < g.size(); i++) {\n\
@@ -100,15 +102,15 @@ data:
     \ y, e.cost);\n            }\n        }\n        group.resize(ptr);\n        for\
     \ (int i = 0; i < g.size(); i++) {\n            group[comp[i]].emplace_back(i);\n\
     \        }\n    }\n\n    int operator[](int k) const { return comp[k]; }\n\n \
-    \  private:\n    vector<int> order, used;\n    Graph<T> rg;\n\n    void dfs(int\
-    \ idx) {\n        if (exchange(used[idx], true)) return;\n        for (auto &to\
-    \ : g[idx]) dfs(to);\n        order.push_back(idx);\n    }\n\n    void rdfs(int\
-    \ idx, int cnt) {\n        if (comp[idx] != -1) return;\n        comp[idx] = cnt;\n\
-    \        for (auto &to : rg.g[idx]) rdfs(to, cnt);\n    }\n};\n#line 2 \"library/graph/connected-components/TwoSat.cpp\"\
-    \n\nstruct TwoSat : StronglyConnectedComponents<bool> {\n   public:\n    using\
-    \ StronglyConnectedComponents<bool>::g;\n    using StronglyConnectedComponents<bool>::comp;\n\
-    \    using StronglyConnectedComponents<bool>::add_edge;\n    size_t sz;\n\n  \
-    \  explicit TwoSat(size_t v)\n        : sz(v), StronglyConnectedComponents<bool>(v\
+    \  private:\n    vector<int> order, used;  // order:post order\n    Graph<T> rg;\
+    \              // reversed graph\n\n    void dfs(int idx) {\n        if (exchange(used[idx],\
+    \ true)) return;\n        for (auto &to : g[idx]) dfs(to);\n        order.push_back(idx);\n\
+    \    }\n\n    void rdfs(int idx, int cnt) {\n        if (comp[idx] != -1) return;\n\
+    \        comp[idx] = cnt;\n        for (auto &to : rg.g[idx]) rdfs(to, cnt);\n\
+    \    }\n};\n#line 2 \"library/graph/connected-components/TwoSat.cpp\"\n\nstruct\
+    \ TwoSat : StronglyConnectedComponents<bool> {\n   public:\n    using StronglyConnectedComponents<bool>::g;\n\
+    \    using StronglyConnectedComponents<bool>::comp;\n    using StronglyConnectedComponents<bool>::add_edge;\n\
+    \    size_t sz;\n\n    explicit TwoSat(size_t v)\n        : sz(v), StronglyConnectedComponents<bool>(v\
     \ + v) {}\n\n    void add_if(int u, int v) {\n        // u -> v <=> !v -> !u\n\
     \        add_directed_edge(u, v);\n        add_directed_edge(rev(v), rev(u));\n\
     \    }\n\n    void add_or(int u, int v) {\n        // u or v <=> !u -> v\n   \
@@ -150,7 +152,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-two_sat.test.cpp
   requiredBy: []
-  timestamp: '2020-11-22 22:28:25+09:00'
+  timestamp: '2020-12-15 21:38:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-two_sat.test.cpp

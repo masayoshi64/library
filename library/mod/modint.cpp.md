@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: typical/dp/hakone.cpp
+    title: typical/dp/hakone.cpp
+  - icon: ':warning:'
+    path: typical/dp/sort.cpp
+    title: typical/dp/sort.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/FPS.power.test.cpp
@@ -75,15 +81,17 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/mod/modint.cpp
-  requiredBy: []
+  requiredBy:
+  - typical/dp/hakone.cpp
+  - typical/dp/sort.cpp
   timestamp: '2020-11-19 00:26:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
-  - verify/aoj-DPL_5_G.test.cpp
   - verify/yuki-650.test.cpp
   - verify/FPS.power.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
+  - verify/aoj-DPL_5_G.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document
 redirect_from:

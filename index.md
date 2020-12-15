@@ -92,6 +92,9 @@ data:
       title: factorization(pollard)
   - name: library/mod
     pages:
+    - icon: ':warning:'
+      path: library/mod/mod_sqrt.cpp
+      title: library/mod/mod_sqrt.cpp
     - icon: ':heavy_check_mark:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
@@ -134,7 +137,7 @@ data:
       title: library/structure/UnionFind/merge_tree.cpp
   - name: library/structure/segtree
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: library/structure/segtree/DualSegmentTree.cpp
       title: "Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -151,7 +154,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: test
@@ -159,6 +162,14 @@ data:
     - icon: ':warning:'
       path: test/atcoder-abc136_d.cpp
       title: test/atcoder-abc136_d.cpp
+  - name: typical/dp
+    pages:
+    - icon: ':warning:'
+      path: typical/dp/hakone.cpp
+      title: typical/dp/hakone.cpp
+    - icon: ':warning:'
+      path: typical/dp/sort.cpp
+      title: typical/dp/sort.cpp
   - name: verify
     pages:
     - icon: ':warning:'
@@ -215,6 +226,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
+    - icon: ':x:'
+      path: verify/range_arithmetic_progression_add.test.cpp
+      title: verify/range_arithmetic_progression_add.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp

@@ -5,7 +5,7 @@ data:
     path: library/structure/segtree/LazySegmentTree.cpp
     title: "Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\
       \u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -146,18 +146,21 @@ data:
     \ Seg = LazySegmentTree<segobj<T>, T>;\n    RSRAQ(int n)\n        : Seg(n, plus<segobj<T>>(),\
     \ myadd<segobj<T>, T>, plus<T>(), segobj<T>(),\n              T()) {\n       \
     \ rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n    }\n  \
-    \  T sum(int l, int r) { return this->query(l, r).val; }\n};\ntemplate <class\
-    \ T>\nstruct RSRRQ : LazySegmentTree<segobj<T>, T> {\n    using Seg = LazySegmentTree<segobj<T>,\
-    \ T>;\n    using obj = segobj<T>;\n    RSRRQ(int n)\n        : Seg(n, plus<obj>(),\
-    \ myreplace<obj, T>, myreplace<T>, segobj<T>(),\n              numeric_limits<T>::max())\
-    \ {\n        rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n\
-    \    }\n    T sum(int l, int r) { return this->query(l, r).val; }\n};\n#line 7\
-    \ \"verify/aoj-DSL_2_G.test.cpp\"\nint main() {\n    int n, q;\n    cin >> n >>\
-    \ q;\n    RSRAQ<ll> seg(n);\n    rep(i, q) {\n        int t;\n        cin >> t;\n\
-    \        if (t == 0) {\n            int s, t, x;\n            cin >> s >> t >>\
-    \ x;\n            s--;\n            seg.update(s, t, x);\n        } else {\n \
-    \           int s, t;\n            cin >> s >> t;\n            s--;\n        \
-    \    print(seg.query(s, t));\n        }\n    }\n}\n"
+    \  T sum(int l, int r) { return this->query(l, r).val; }\n};\n\n// T = mint\u306E\
+    \u6642\u306Fnumerical_limits<mint>::max()\u3092\u5358\u4F4D\u5143\u306E\u4EE3\u308F\
+    \u308A\u306B\u3067\u304D\u306A\u3044\u306E\u3067\n// M = int\u3092\u3057\u3066\
+    \u4F7F\u3046\u3002\ntemplate <class T, class M = T>\nstruct RSRRQ : LazySegmentTree<segobj<T>,\
+    \ M> {\n    using Seg = LazySegmentTree<segobj<T>, M>;\n    using obj = segobj<T>;\n\
+    \    RSRRQ(int n)\n        : Seg(n, plus<obj>(), myreplace<obj, M>, myreplace<M>,\
+    \ segobj<T>(),\n              numeric_limits<M>::max()) {\n        rep(i, n) this->set(i,\
+    \ segobj<T>(0, 1));\n        this->build();\n    }\n    T sum(int l, int r) {\
+    \ return this->query(l, r).val; }\n};\n#line 7 \"verify/aoj-DSL_2_G.test.cpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    RSRAQ<ll> seg(n);\n   \
+    \ rep(i, q) {\n        int t;\n        cin >> t;\n        if (t == 0) {\n    \
+    \        int s, t, x;\n            cin >> s >> t >> x;\n            s--;\n   \
+    \         seg.update(s, t, x);\n        } else {\n            int s, t;\n    \
+    \        cin >> s >> t;\n            s--;\n            print(seg.query(s, t));\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/segtree/LazySegmentTree.cpp\"\
     \nint main() {\n    int n, q;\n    cin >> n >> q;\n    RSRAQ<ll> seg(n);\n   \
@@ -172,7 +175,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-DSL_2_G.test.cpp
   requiredBy: []
-  timestamp: '2020-11-22 22:28:25+09:00'
+  timestamp: '2020-12-15 21:38:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DSL_2_G.test.cpp

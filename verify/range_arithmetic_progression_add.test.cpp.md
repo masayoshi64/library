@@ -1,23 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: library/math/BitMatrix.cpp
-    title: library/math/BitMatrix.cpp
+  - icon: ':x:'
+    path: library/structure/segtree/DualSegmentTree.cpp
+    title: "Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/184
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165
     links:
-    - https://yukicoder.me/problems/no/184
-  bundledCode: "#line 1 \"verify/yuki-184.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/184\"\
-    \n#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165
+  bundledCode: "#line 1 \"verify/range_arithmetic_progression_add.test.cpp\"\n#define\
+    \ PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\n\n\
+    #line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
@@ -61,43 +62,53 @@ data:
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
     \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
     \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 3 \"verify/yuki-184.test.cpp\"\n// library\n#line 1 \"library/math/BitMatrix.cpp\"\
-    \n\ntemplate <int MAX_ROW, int MAX_COL>\nstruct BitMatrix {\n    int H, W, rank;\n\
-    \    vector<int> top;  // top bit\n    bitset<MAX_COL> A[MAX_ROW];\n    BitMatrix(int\
-    \ h = 1, int w = 1) : H(h), W(w), rank(0) { top.resize(h); }\n    void build(bool\
-    \ is_extended = false) {\n        rep(col, W) {\n            if (is_extended &&\
-    \ col == W - 1) break;\n            int row = rank;\n            for (; row <\
-    \ H; ++row) {\n                if (A[row][col]) {\n                    swap(A[rank],\
-    \ A[row]);\n                    break;\n                }\n            }\n   \
-    \         if (row == H) continue;\n            top[rank] = col;\n            rep(k,\
-    \ H) {\n                if (k == rank) continue;\n                if (A[k][col])\
-    \ A[k] ^= A[rank];\n            }\n            ++rank;\n        }\n    }\n   \
-    \ int solve(vector<int>& res) {\n        // if it has no solution then return\
-    \ -1\n        for (int row = rank; row < H; ++row)\n            if (A[row][W -\
-    \ 1]) return -1;\n        res.assign(W - 1, 0);\n        for (int i = 0; i < rank;\
-    \ ++i) res[i] = A[i][W - 1];\n        return rank;\n    }\n    inline bitset<MAX_COL>&\
-    \ operator[](int i) { return A[i]; }\n};\n#line 5 \"verify/yuki-184.test.cpp\"\
-    \nint main() {\n    int n;\n    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n\
-    \    vl a(n);\n    scan(a);\n    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n\
-    \    print(((ll)1 << bm.rank));\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/184\"\n#include \"library/template/template.cpp\"\
-    \n// library\n#include \"library/math/BitMatrix.cpp\"\nint main() {\n    int n;\n\
-    \    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n    vl a(n);\n    scan(a);\n\
-    \    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n    print(((ll)1 << bm.rank));\n\
-    }"
+    #line 4 \"verify/range_arithmetic_progression_add.test.cpp\"\n// library\n#line\
+    \ 1 \"library/structure/segtree/DualSegmentTree.cpp\"\n/**\n * @brief Dual-Segment-Tree(\u53CC\
+    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/dual-segment-tree.md\n\
+    \ */\n\ntemplate <typename OperatorMonoid, typename H>\nstruct DualSegmentTree\
+    \ {\n    int sz, height;\n    vector<OperatorMonoid> lazy;\n    const H h;\n \
+    \   const OperatorMonoid OM0;\n\n    DualSegmentTree(int n, const H h, const OperatorMonoid&\
+    \ OM0)\n        : h(h), OM0(OM0) {\n        sz = 1;\n        height = 0;\n   \
+    \     while (sz < n) sz <<= 1, height++;\n        lazy.assign(2 * sz, OM0);\n\
+    \    }\n\n    inline void propagate(int k) {\n        if (lazy[k] != OM0) {\n\
+    \            lazy[2 * k + 0] = h(lazy[2 * k + 0], lazy[k]);\n            lazy[2\
+    \ * k + 1] = h(lazy[2 * k + 1], lazy[k]);\n            lazy[k] = OM0;\n      \
+    \  }\n    }\n\n    inline void thrust(int k) {\n        for (int i = height; i\
+    \ > 0; i--) propagate(k >> i);\n    }\n\n    void update(int a, int b, const OperatorMonoid&\
+    \ x) {\n        thrust(a += sz);\n        thrust(b += sz - 1);\n        for (int\
+    \ l = a, r = b + 1; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) lazy[l]\
+    \ = h(lazy[l], x), ++l;\n            if (r & 1) --r, lazy[r] = h(lazy[r], x);\n\
+    \        }\n    }\n\n    OperatorMonoid operator[](int k) {\n        thrust(k\
+    \ += sz);\n        return lazy[k];\n    }\n};\n\ntemplate <typename OperatorMonoid,\
+    \ typename H>\nDualSegmentTree<OperatorMonoid, H> get_dual_segment_tree(\n   \
+    \ int N, const H& h, const OperatorMonoid& OM0) {\n    return {N, h, OM0};\n}\n\
+    #line 6 \"verify/range_arithmetic_progression_add.test.cpp\"\n\nint main() {\n\
+    \    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p, Pi q) {\n       \
+    \ return mp(p.first + q.first, p.second + q.second);\n    };\n    auto dp = get_dual_segment_tree<Pi>(n,\
+    \ h, mp(0, 0));\n\n    rep(i, q) {\n        int l, k;\n        cin >> l >> k;\n\
+    \        l--;\n        dp.update(l, l + k, mp(1 - l, 1));\n    }\n    rep(i, n)\
+    \ cout << dp[i].first + dp[i].second * i << ' ';\n    cout << endl;\n}\n"
+  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/segtree/DualSegmentTree.cpp\"\
+    \n\nint main() {\n    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p,\
+    \ Pi q) {\n        return mp(p.first + q.first, p.second + q.second);\n    };\n\
+    \    auto dp = get_dual_segment_tree<Pi>(n, h, mp(0, 0));\n\n    rep(i, q) {\n\
+    \        int l, k;\n        cin >> l >> k;\n        l--;\n        dp.update(l,\
+    \ l + k, mp(1 - l, 1));\n    }\n    rep(i, n) cout << dp[i].first + dp[i].second\
+    \ * i << ' ';\n    cout << endl;\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/math/BitMatrix.cpp
+  - library/structure/segtree/DualSegmentTree.cpp
   isVerificationFile: true
-  path: verify/yuki-184.test.cpp
+  path: verify/range_arithmetic_progression_add.test.cpp
   requiredBy: []
-  timestamp: '2020-11-22 22:28:25+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-15 21:38:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/yuki-184.test.cpp
+documentation_of: verify/range_arithmetic_progression_add.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/yuki-184.test.cpp
-- /verify/verify/yuki-184.test.cpp.html
-title: verify/yuki-184.test.cpp
+- /verify/verify/range_arithmetic_progression_add.test.cpp
+- /verify/verify/range_arithmetic_progression_add.test.cpp.html
+title: verify/range_arithmetic_progression_add.test.cpp
 ---

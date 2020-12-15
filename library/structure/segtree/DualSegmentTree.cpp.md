@@ -2,9 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/range_arithmetic_progression_add.test.cpp
+    title: verify/range_arithmetic_progression_add.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/dual-segment-tree.md
     document_title: "Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
@@ -54,8 +57,9 @@ data:
   path: library/structure/segtree/DualSegmentTree.cpp
   requiredBy: []
   timestamp: '2020-11-29 19:14:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/range_arithmetic_progression_add.test.cpp
 documentation_of: library/structure/segtree/DualSegmentTree.cpp
 layout: document
 redirect_from:

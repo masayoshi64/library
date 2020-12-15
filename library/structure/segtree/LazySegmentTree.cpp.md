@@ -96,12 +96,15 @@ data:
     \ Seg = LazySegmentTree<segobj<T>, T>;\n    RSRAQ(int n)\n        : Seg(n, plus<segobj<T>>(),\
     \ myadd<segobj<T>, T>, plus<T>(), segobj<T>(),\n              T()) {\n       \
     \ rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n    }\n  \
-    \  T sum(int l, int r) { return this->query(l, r).val; }\n};\ntemplate <class\
-    \ T>\nstruct RSRRQ : LazySegmentTree<segobj<T>, T> {\n    using Seg = LazySegmentTree<segobj<T>,\
-    \ T>;\n    using obj = segobj<T>;\n    RSRRQ(int n)\n        : Seg(n, plus<obj>(),\
-    \ myreplace<obj, T>, myreplace<T>, segobj<T>(),\n              numeric_limits<T>::max())\
-    \ {\n        rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n\
-    \    }\n    T sum(int l, int r) { return this->query(l, r).val; }\n};\n"
+    \  T sum(int l, int r) { return this->query(l, r).val; }\n};\n\n// T = mint\u306E\
+    \u6642\u306Fnumerical_limits<mint>::max()\u3092\u5358\u4F4D\u5143\u306E\u4EE3\u308F\
+    \u308A\u306B\u3067\u304D\u306A\u3044\u306E\u3067\n// M = int\u3092\u3057\u3066\
+    \u4F7F\u3046\u3002\ntemplate <class T, class M = T>\nstruct RSRRQ : LazySegmentTree<segobj<T>,\
+    \ M> {\n    using Seg = LazySegmentTree<segobj<T>, M>;\n    using obj = segobj<T>;\n\
+    \    RSRRQ(int n)\n        : Seg(n, plus<obj>(), myreplace<obj, M>, myreplace<M>,\
+    \ segobj<T>(),\n              numeric_limits<M>::max()) {\n        rep(i, n) this->set(i,\
+    \ segobj<T>(0, 1));\n        this->build();\n    }\n    T sum(int l, int r) {\
+    \ return this->query(l, r).val; }\n};\n"
   code: "/**\n * @brief Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\
     \u30F3\u30C8\u6728)\n * @docs docs/lazy-segment-tree.md\n */\ntemplate <typename\
     \ Monoid, typename OperatorMonoid>\nstruct LazySegmentTree {\n    int n, sz, height;\n\
@@ -184,17 +187,20 @@ data:
     \ Seg = LazySegmentTree<segobj<T>, T>;\n    RSRAQ(int n)\n        : Seg(n, plus<segobj<T>>(),\
     \ myadd<segobj<T>, T>, plus<T>(), segobj<T>(),\n              T()) {\n       \
     \ rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n    }\n  \
-    \  T sum(int l, int r) { return this->query(l, r).val; }\n};\ntemplate <class\
-    \ T>\nstruct RSRRQ : LazySegmentTree<segobj<T>, T> {\n    using Seg = LazySegmentTree<segobj<T>,\
-    \ T>;\n    using obj = segobj<T>;\n    RSRRQ(int n)\n        : Seg(n, plus<obj>(),\
-    \ myreplace<obj, T>, myreplace<T>, segobj<T>(),\n              numeric_limits<T>::max())\
-    \ {\n        rep(i, n) this->set(i, segobj<T>(0, 1));\n        this->build();\n\
-    \    }\n    T sum(int l, int r) { return this->query(l, r).val; }\n};"
+    \  T sum(int l, int r) { return this->query(l, r).val; }\n};\n\n// T = mint\u306E\
+    \u6642\u306Fnumerical_limits<mint>::max()\u3092\u5358\u4F4D\u5143\u306E\u4EE3\u308F\
+    \u308A\u306B\u3067\u304D\u306A\u3044\u306E\u3067\n// M = int\u3092\u3057\u3066\
+    \u4F7F\u3046\u3002\ntemplate <class T, class M = T>\nstruct RSRRQ : LazySegmentTree<segobj<T>,\
+    \ M> {\n    using Seg = LazySegmentTree<segobj<T>, M>;\n    using obj = segobj<T>;\n\
+    \    RSRRQ(int n)\n        : Seg(n, plus<obj>(), myreplace<obj, M>, myreplace<M>,\
+    \ segobj<T>(),\n              numeric_limits<M>::max()) {\n        rep(i, n) this->set(i,\
+    \ segobj<T>(0, 1));\n        this->build();\n    }\n    T sum(int l, int r) {\
+    \ return this->query(l, r).val; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: library/structure/segtree/LazySegmentTree.cpp
   requiredBy: []
-  timestamp: '2020-11-18 22:08:45+09:00'
+  timestamp: '2020-12-15 21:38:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-DSL_2_G.test.cpp
