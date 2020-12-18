@@ -240,8 +240,8 @@ data:
     \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
     \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
     \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n\n \
-    \   inline int get() { return x; }\n};\n#line 8 \"verify/FPS.power.test.cpp\"\n\
-    using mint = modint<998244353>;\nusing FPS = FormalPowerSeries<mint>;\nNTT<mint>\
+    \   constexpr int get() const { return x; }\n};\n#line 8 \"verify/FPS.power.test.cpp\"\
+    \nusing mint = modint<998244353>;\nusing FPS = FormalPowerSeries<mint>;\nNTT<mint>\
     \ ntt;\nFPS mult_ntt(const FPS::P& a, const FPS::P& b) {\n    auto ret = ntt.multiply(a,\
     \ b);\n    return FPS::P(ret.begin(), ret.end());\n}\n// FPS::set_fft(mult_ntt);\
     \ in main\nint main() {\n    FPS::set_fft(mult_ntt);\n    int n;\n    cin >> n;\n\
@@ -267,7 +267,7 @@ data:
   isVerificationFile: true
   path: verify/FPS.power.test.cpp
   requiredBy: []
-  timestamp: '2020-11-29 19:14:21+09:00'
+  timestamp: '2020-12-18 23:34:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/FPS.power.test.cpp

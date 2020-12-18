@@ -58,14 +58,14 @@ data:
   isVerificationFile: false
   path: library/graph/graph-template.cpp
   requiredBy:
-  - library/graph/connected-components/TwoSat.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
+  - library/graph/connected-components/TwoSat.cpp
   timestamp: '2020-11-19 20:53:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-two_sat.test.cpp
-  - verify/yuki-1301.test.cpp
   - verify/aoj-ALDS1_12_B.test.cpp
+  - verify/yuki-1301.test.cpp
 documentation_of: library/graph/graph-template.cpp
 layout: document
 redirect_from:

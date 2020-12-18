@@ -86,23 +86,25 @@ data:
     \    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p, Pi q) {\n       \
     \ return mp(p.first + q.first, p.second + q.second);\n    };\n    auto dp = get_dual_segment_tree<Pi>(n,\
     \ h, mp(0, 0));\n\n    rep(i, q) {\n        int l, k;\n        cin >> l >> k;\n\
-    \        l--;\n        dp.update(l, l + k, mp(1 - l, 1));\n    }\n    rep(i, n)\
-    \ cout << dp[i].first + dp[i].second * i << ' ';\n    cout << endl;\n}\n"
+    \        l--;\n        dp.update(l, l + k, mp(1 - l, 1));\n    }\n    rep(i, n\
+    \ - 1) cout << dp[i].first + dp[i].second * i << ' ';\n    cout << dp[n - 1].first\
+    \ + dp[n - 1].second * (n - 1) << endl;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/segtree/DualSegmentTree.cpp\"\
     \n\nint main() {\n    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p,\
     \ Pi q) {\n        return mp(p.first + q.first, p.second + q.second);\n    };\n\
     \    auto dp = get_dual_segment_tree<Pi>(n, h, mp(0, 0));\n\n    rep(i, q) {\n\
     \        int l, k;\n        cin >> l >> k;\n        l--;\n        dp.update(l,\
-    \ l + k, mp(1 - l, 1));\n    }\n    rep(i, n) cout << dp[i].first + dp[i].second\
-    \ * i << ' ';\n    cout << endl;\n}"
+    \ l + k, mp(1 - l, 1));\n    }\n    rep(i, n - 1) cout << dp[i].first + dp[i].second\
+    \ * i << ' ';\n    cout << dp[n - 1].first + dp[n - 1].second * (n - 1) << endl;\n\
+    }"
   dependsOn:
   - library/template/template.cpp
   - library/structure/segtree/DualSegmentTree.cpp
   isVerificationFile: true
   path: verify/range_arithmetic_progression_add.test.cpp
   requiredBy: []
-  timestamp: '2020-12-15 21:38:21+09:00'
+  timestamp: '2020-12-18 23:34:41+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/range_arithmetic_progression_add.test.cpp

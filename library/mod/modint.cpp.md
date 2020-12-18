@@ -52,7 +52,7 @@ data:
     \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
     \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n\n    inline int get() { return x; }\n};\n"
+    \ { return mod; }\n\n    constexpr int get() const { return x; }\n};\n"
   code: "template <int mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\
     \n    modint(long long y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\
     \n    modint& operator+=(const modint& p) {\n        if ((x += p.x) >= mod) x\
@@ -77,21 +77,21 @@ data:
     \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
     \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
     \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n\n \
-    \   inline int get() { return x; }\n};"
+    \   constexpr int get() const { return x; }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: library/mod/modint.cpp
   requiredBy:
   - typical/dp/hakone.cpp
   - typical/dp/sort.cpp
-  timestamp: '2020-11-19 00:26:15+09:00'
+  timestamp: '2020-12-18 23:34:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yuki-650.test.cpp
   - verify/FPS.power.test.cpp
-  - verify/yosupo-convolution_mod.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-convolution_mod.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document
 redirect_from:

@@ -81,6 +81,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/combination.cpp
       title: Combination(P, C, H, Stirling number, Bell number)
+    - icon: ':warning:'
+      path: library/math/convert_base.cpp
+      title: library/math/convert_base.cpp
     - icon: ':heavy_check_mark:'
       path: library/math/extgcd.cpp
       title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
@@ -92,6 +95,9 @@ data:
       title: factorization(pollard)
   - name: library/mod
     pages:
+    - icon: ':warning:'
+      path: library/mod/ArbitaryModInt.cpp
+      title: library/mod/ArbitaryModInt.cpp
     - icon: ':warning:'
       path: library/mod/mod_sqrt.cpp
       title: library/mod/mod_sqrt.cpp

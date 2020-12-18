@@ -83,21 +83,21 @@ data:
     \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
     \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n\n    inline int get() { return x; }\n};\n#line 6 \"typical/dp/sort.cpp\"\
-    \nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n// library\nint main()\
-    \ {\n    int n, w;\n    cin >> n >> w;\n    vi weight(n);\n    scan(weight);\n\
-    \    if (vsum(weight) <= w) {\n        print(1);\n        return 0;\n    }\n \
-    \   sort(rall(weight));\n    vector<mint> dp(w + 1);\n    mint ans = 0;\n    vl\
-    \ cumsum(n + 1);\n    rep(i, n) cumsum[i + 1] = cumsum[i] + weight[i];\n    dp[0]\
-    \ = 1;\n    rep(i, n) {\n        vector<mint> tmp(w + 1);\n        rep(j, w +\
-    \ 1) {\n            if (j + weight[i] <= w) tmp[j + weight[i]] += dp[j];\n   \
-    \         tmp[j] += dp[j];\n            ll sm = j + cumsum[n] - cumsum[i + 1];\n\
-    \            // \u6700\u5F8C\u306B\u64AE\u3089\u306A\u3044\u306E\u304Ci\u306E\u5834\
-    \u5408,\n            // i\u756A\u76EE\u304C\u5165\u3089\u306A\u3051\u308C\u3070\
-    i\u756A\u76EE\u3088\u308A\u524D\u306E\u3082\u306E\u306F\u5165\u3089\u306A\u3044\
-    \u306E\u3067\n            // i\u756A\u76EE\u3060\u3051\u8ABF\u3079\u308C\u3070\
-    \u3044\u3044\n            if (sm <= w && sm + weight[i] > w) ans += dp[j];\n \
-    \       }\n        dp = tmp;\n    }\n    print(ans);\n}\n"
+    \ { return mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 6\
+    \ \"typical/dp/sort.cpp\"\nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n\
+    // library\nint main() {\n    int n, w;\n    cin >> n >> w;\n    vi weight(n);\n\
+    \    scan(weight);\n    if (vsum(weight) <= w) {\n        print(1);\n        return\
+    \ 0;\n    }\n    sort(rall(weight));\n    vector<mint> dp(w + 1);\n    mint ans\
+    \ = 0;\n    vl cumsum(n + 1);\n    rep(i, n) cumsum[i + 1] = cumsum[i] + weight[i];\n\
+    \    dp[0] = 1;\n    rep(i, n) {\n        vector<mint> tmp(w + 1);\n        rep(j,\
+    \ w + 1) {\n            if (j + weight[i] <= w) tmp[j + weight[i]] += dp[j];\n\
+    \            tmp[j] += dp[j];\n            ll sm = j + cumsum[n] - cumsum[i +\
+    \ 1];\n            // \u6700\u5F8C\u306B\u64AE\u3089\u306A\u3044\u306E\u304Ci\u306E\
+    \u5834\u5408,\n            // i\u756A\u76EE\u304C\u5165\u3089\u306A\u3051\u308C\
+    \u3070i\u756A\u76EE\u3088\u308A\u524D\u306E\u3082\u306E\u306F\u5165\u3089\u306A\
+    \u3044\u306E\u3067\n            // i\u756A\u76EE\u3060\u3051\u8ABF\u3079\u308C\
+    \u3070\u3044\u3044\n            if (sm <= w && sm + weight[i] > w) ans += dp[j];\n\
+    \        }\n        dp = tmp;\n    }\n    print(ans);\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595\"\
     \n\n#include \"library/template/template.cpp\"\n//\n#include \"library/mod/modint.cpp\"\
     \nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n// library\nint main()\
@@ -120,7 +120,7 @@ data:
   isVerificationFile: false
   path: typical/dp/sort.cpp
   requiredBy: []
-  timestamp: '2020-12-15 21:38:21+09:00'
+  timestamp: '2020-12-18 23:34:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: typical/dp/sort.cpp

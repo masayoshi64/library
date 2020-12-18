@@ -83,18 +83,19 @@ data:
     \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
     \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n\n    inline int get() { return x; }\n};\n#line 6 \"typical/dp/hakone.cpp\"\
-    \nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n// library\nint main()\
-    \ {\n    int n;\n    cin >> n;\n    vc c(n);\n    scan(c);\n    vector<mint> dp(n\
-    \ + 1);  // dp[i]:=\u4FDD\u7559\u3057\u305F\u9806\u4F4D\u306E\u6570\n    dp[0]\
-    \ = 1;\n    // \u524D\u304B\u3089\u898B\u3066\u3044\u304F\n    rep(i, n) {\n \
-    \       vector<mint> tmp(n + 1);\n        if (c[i] == '-') {\n            continue;\n\
-    \        }\n        rep(nokori, n + 1) {\n            if (c[i] == 'D') {\n   \
-    \             tmp[nokori] += dp[nokori] * nokori;\n                if (nokori\
-    \ - 1 >= 0)\n                    tmp[nokori - 1] += dp[nokori] * nokori * nokori;\n\
-    \            } else {\n                if (nokori + 1 <= n) tmp[nokori + 1] +=\
-    \ dp[nokori];\n                tmp[nokori] += dp[nokori] * nokori;\n         \
-    \   }\n        }\n        dp = tmp;\n    }\n    print(dp[0]);\n}\n"
+    \ { return mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 6\
+    \ \"typical/dp/hakone.cpp\"\nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n\
+    // library\nint main() {\n    int n;\n    cin >> n;\n    vc c(n);\n    scan(c);\n\
+    \    vector<mint> dp(n + 1);  // dp[i]:=\u4FDD\u7559\u3057\u305F\u9806\u4F4D\u306E\
+    \u6570\n    dp[0] = 1;\n    // \u524D\u304B\u3089\u898B\u3066\u3044\u304F\n  \
+    \  rep(i, n) {\n        vector<mint> tmp(n + 1);\n        if (c[i] == '-') {\n\
+    \            continue;\n        }\n        rep(nokori, n + 1) {\n            if\
+    \ (c[i] == 'D') {\n                tmp[nokori] += dp[nokori] * nokori;\n     \
+    \           if (nokori - 1 >= 0)\n                    tmp[nokori - 1] += dp[nokori]\
+    \ * nokori * nokori;\n            } else {\n                if (nokori + 1 <=\
+    \ n) tmp[nokori + 1] += dp[nokori];\n                tmp[nokori] += dp[nokori]\
+    \ * nokori;\n            }\n        }\n        dp = tmp;\n    }\n    print(dp[0]);\n\
+    }\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595\"\
     \n\n#include \"library/template/template.cpp\"\n//\n#include \"library/mod/modint.cpp\"\
     \nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n// library\nint main()\
@@ -114,7 +115,7 @@ data:
   isVerificationFile: false
   path: typical/dp/hakone.cpp
   requiredBy: []
-  timestamp: '2020-12-15 21:38:21+09:00'
+  timestamp: '2020-12-18 23:34:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: typical/dp/hakone.cpp

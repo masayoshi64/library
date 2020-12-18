@@ -207,7 +207,7 @@ data:
     \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
     \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
     \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n\n \
-    \   inline int get() { return x; }\n};\n#line 7 \"verify/yosupo-convolution_mod.test.cpp\"\
+    \   constexpr int get() const { return x; }\n};\n#line 7 \"verify/yosupo-convolution_mod.test.cpp\"\
     \nusing mint = modint<998244353>;\nusing FPS = FormalPowerSeries<mint>;\nNTT<mint>\
     \ ntt;\nFPS mult_ntt(const FPS::P& a, const FPS::P& b) {\n    auto ret = ntt.multiply(a,\
     \ b);\n    return FPS::P(ret.begin(), ret.end());\n}\nFPS mult(const FPS::P& a,\
@@ -237,7 +237,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-convolution_mod.test.cpp
   requiredBy: []
-  timestamp: '2020-11-22 22:28:25+09:00'
+  timestamp: '2020-12-18 23:34:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod.test.cpp
