@@ -9,10 +9,7 @@
 using mint = modint<1000000007>;
 using FPS = FormalPowerSeries<mint>;
 FPS mult_fft(const FPS::P& a, const FPS::P& b) {
-    vi aa(a.size()), bb(b.size());
-    rep(i, a.size()) aa[i] = a[i].x;
-    rep(i, b.size()) bb[i] = b[i].x;
-    auto ret = multiply<1000000007>(aa, bb);
+    auto ret = FFT::multiply(a, b);
     return FPS::P(ret.begin(), ret.end());
 }
 // FPS::set_fft(mult_ntt); in main

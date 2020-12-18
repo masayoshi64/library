@@ -11,7 +11,8 @@ int main() {
     cin >> m;
     ll x, d;
     cin >> x >> d;
-    LongestCommonPrefixArray lcp() rep(k, 1, m + 1) {
+    LongestCommonPrefixArray lcp();
+    rep(k, 1, m + 1) {
         int i = (x / (n - 1));
         int j = (x % (n - 1));
         if (i > j)

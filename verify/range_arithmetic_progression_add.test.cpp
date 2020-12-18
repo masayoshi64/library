@@ -19,6 +19,6 @@ int main() {
         l--;
         dp.update(l, l + k, mp(1 - l, 1));
     }
-    rep(i, n) cout << dp[i].first + dp[i].second * i << ' ';
-    cout << endl;
+    rep(i, n - 1) cout << dp[i].first + dp[i].second * i << ' ';
+    cout << dp[n - 1].first + dp[n - 1].second * (n - 1) << endl;
 }
