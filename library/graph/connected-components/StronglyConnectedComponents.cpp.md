@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/graph/graph-template.cpp
     title: library/graph/graph-template.cpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/graph/connected-components/TwoSat.cpp
     title: library/graph/connected-components/TwoSat.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/graph-template.cpp\"\ntemplate <typename T\
@@ -86,7 +86,7 @@ data:
   requiredBy:
   - library/graph/connected-components/TwoSat.cpp
   timestamp: '2020-12-15 21:38:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yosupo-two_sat.test.cpp
 documentation_of: library/graph/connected-components/StronglyConnectedComponents.cpp

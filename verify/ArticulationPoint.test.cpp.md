@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: library/structure/BIT/BIT.cpp
-    title: library/structure/BIT/BIT.cpp
+    path: library/graph/others/LowLink.cpp
+    title: library/graph/others/LowLink.cpp
   - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
@@ -13,17 +13,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
-  bundledCode: "#line 1 \"verify/aoj-DSL_2_B.test.cpp\"\n#define PROBLEM \\\n    \"\
-    http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\n\n#line 1\
-    \ \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC optimize(\"\
-    Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\nusing ll =\
-    \ long long;\nusing ull = unsigned long long;\nusing ld = long double;\ntypedef\
-    \ pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\ntypedef\
-    \ vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing mat\
-    \ = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
+    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
+  bundledCode: "#line 1 \"verify/ArticulationPoint.test.cpp\"\n#define PROBLEM \\\n\
+    \    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\n\n\
+    #line 1 \"library/template/template.cpp\"\n/* #region header */\n\n#pragma GCC\
+    \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
+    using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
+    typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
+    typedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing\
+    \ mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
     \ long>> vvl;\ntypedef vector<vector<char>> vvc;\n// abreviations\n#define all(x)\
     \ (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define rep_(i,\
     \ a_, b_, a, b, ...) for (ll i = (a), max_i = (b); i < max_i; i++)\n#define rep(i,\
@@ -78,44 +78,50 @@ data:
     \            else\n                add_edge(a, b, c);\n        }\n    }\n};\n\n\
     /* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF 4000000004000000000LL\n\
     #define endl '\\n'\nconst long double eps = 0.000000000000001;\nconst long double\
-    \ PI = 3.141592653589793;\n#line 5 \"verify/aoj-DSL_2_B.test.cpp\"\n// library\n\
-    #line 1 \"library/structure/BIT/BIT.cpp\"\ntemplate <typename T>\nstruct BIT {\n\
-    \    vector<T> data;\n\n    BIT(int sz) { data.assign(++sz, 0); }\n    //[0, k)\n\
-    \    T sum(int k) {\n        T ret = 0;\n        for (; k > 0; k -= k & -k) ret\
-    \ += data[k];\n        return (ret);\n    }\n\n    T sum(int l, int r) { return\
-    \ sum(r) - sum(l); }\n\n    void add(int k, T x) {\n        for (++k; k < data.size();\
-    \ k += k & -k) data[k] += x;\n    }\n\n    // 0-indexed\u3067k\u756A\u76EE\u306E\
-    \u5024\u3092\u8FD4\u3059\u3002\n    int search(long long k) {\n        ++k;\n\
-    \        int res = 0;\n        int N = 1;\n        while (N < (int)data.size())\
-    \ N *= 2;\n        for (int i = N / 2; i > 0; i /= 2) {\n            if (res +\
-    \ i < (int)data.size() && data[res + i] < k) {\n                k = k - data[res\
-    \ + i];\n                res = res + i;\n            }\n        }\n        return\
-    \ res;\n    }\n\n    // for debug\n    void show() {\n        rep(i, SZ(data)\
-    \ - 1) cout << sum(i + 1) - sum(i) << ' ';\n        cout << endl;\n    }\n};\n\
-    #line 7 \"verify/aoj-DSL_2_B.test.cpp\"\nint main() {\n    int n, q;\n    cin\
-    \ >> n >> q;\n    BIT<ll> bit(n);\n    rep(i, q) {\n        int t, x, y;\n   \
-    \     cin >> t >> x >> y;\n        if (t == 0) {\n            x--;\n         \
-    \   bit.add(x, y);\n        } else {\n            x--;\n            print(bit.sum(x,\
-    \ y));\n        }\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
-    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/BIT/BIT.cpp\"\
-    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll> bit(n);\n    rep(i,\
-    \ q) {\n        int t, x, y;\n        cin >> t >> x >> y;\n        if (t == 0)\
-    \ {\n            x--;\n            bit.add(x, y);\n        } else {\n        \
-    \    x--;\n            print(bit.sum(x, y));\n        }\n    }\n}"
+    \ PI = 3.141592653589793;\n#line 5 \"verify/ArticulationPoint.test.cpp\"\n// library\n\
+    #line 1 \"library/graph/others/LowLink.cpp\"\n\ntemplate <typename T = int>\n\
+    struct LowLink : Graph<T> {\n   public:\n    using Graph<T>::Graph;\n    vector<int>\
+    \ ord, low, articulation;\n    vector<Edge<T> > bridge;\n    using Graph<T>::g;\n\
+    \n    virtual void build() {\n        used.assign(g.size(), 0);\n        ord.assign(g.size(),\
+    \ 0);\n        low.assign(g.size(), 0);\n        int k = 0;\n        for (int\
+    \ i = 0; i < (int)g.size(); i++) {\n            if (!used[i]) k = dfs(i, k, -1);\n\
+    \        }\n    }\n\n    explicit LowLink(const Graph<T> &g) : Graph<T>(g) {}\n\
+    \n   private:\n    vector<int> used;\n\n    int dfs(int idx, int k, int par) {\n\
+    \        used[idx] = true;\n        ord[idx] = k++;\n        low[idx] = ord[idx];\n\
+    \        bool is_articulation = false;\n        int cnt = 0;\n        for (auto\
+    \ &to : g[idx]) {\n            if (!used[to]) {  //\u5F8C\u9000\u8FBA\u3067\u306A\
+    \u3044\u5834\u5408\n                ++cnt;\n                k = dfs(to, k, idx);\n\
+    \                low[idx] = min(low[idx], low[to]);\n                //\u6839\u3067\
+    \u306F\u306A\u304F\u81EA\u5206\u306Eord<=\u5B50\u306Elow\u306A\u3089\u95A2\u7BC0\
+    \u70B9\n                is_articulation |= par >= 0 && low[to] >= ord[idx];\n\
+    \                //\u81EA\u5206\u306Eord<\u5B50\u306Elow\u306A\u3089\u6A4B\n \
+    \               if (ord[idx] < low[to]) bridge.emplace_back(to);\n           \
+    \ } else {  //\u5F8C\u9000\u8FBA\u306E\u5834\u5408\n                low[idx] =\
+    \ min(low[idx], ord[to]);\n            }\n        }\n        is_articulation |=\
+    \ par == -1 && cnt > 1;  // dfs\u6728\u306E\u9802\u70B9\u306E\u5834\u5408\n  \
+    \      if (is_articulation) articulation.push_back(idx);\n        return k;\n\
+    \    }\n};\n#line 7 \"verify/ArticulationPoint.test.cpp\"\nint main() {\n    int\
+    \ v, e;\n    cin >> v >> e;\n    Graph g(v);\n    g.read(e, 0);\n    LowLink lg(g);\n\
+    \    lg.build();\n    sort(all(lg.articulation));\n    for (auto x : lg.articulation)\
+    \ {\n        print(x);\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/graph/others/LowLink.cpp\"\
+    \nint main() {\n    int v, e;\n    cin >> v >> e;\n    Graph g(v);\n    g.read(e,\
+    \ 0);\n    LowLink lg(g);\n    lg.build();\n    sort(all(lg.articulation));\n\
+    \    for (auto x : lg.articulation) {\n        print(x);\n    }\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/structure/BIT/BIT.cpp
+  - library/graph/others/LowLink.cpp
   isVerificationFile: true
-  path: verify/aoj-DSL_2_B.test.cpp
+  path: verify/ArticulationPoint.test.cpp
   requiredBy: []
   timestamp: '2020-12-23 20:37:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj-DSL_2_B.test.cpp
+documentation_of: verify/ArticulationPoint.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj-DSL_2_B.test.cpp
-- /verify/verify/aoj-DSL_2_B.test.cpp.html
-title: verify/aoj-DSL_2_B.test.cpp
+- /verify/verify/ArticulationPoint.test.cpp
+- /verify/verify/ArticulationPoint.test.cpp.html
+title: verify/ArticulationPoint.test.cpp
 ---

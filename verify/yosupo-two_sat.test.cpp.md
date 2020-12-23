@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/graph/connected-components/StronglyConnectedComponents.cpp
     title: library/graph/connected-components/StronglyConnectedComponents.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/graph/connected-components/TwoSat.cpp
     title: library/graph/connected-components/TwoSat.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/graph/graph-template.cpp
     title: library/graph/graph-template.cpp
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/two_sat
@@ -56,27 +56,43 @@ data:
     \        (x *= x);\n        n >>= 1;\n    }\n    return ret;\n}\nll modpow(ll\
     \ x, ll n, const ll mod) {\n    ll ret = 1;\n    while (n > 0) {\n        if (n\
     \ & 1) (ret *= x);\n        (x *= x);\n        n >>= 1;\n        x %= mod;\n \
-    \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
-    \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
-    \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
-    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
-    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
-    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
-    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
-    \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
-    \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
-    \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 3 \"verify/yosupo-two_sat.test.cpp\"\n// library\n#line 1 \"library/graph/graph-template.cpp\"\
-    \ntemplate <typename T = int>\nstruct Edge {\n    int from, to;\n    T cost;\n\
-    \    int idx;\n\n    Edge() = default;\n\n    Edge(int from, int to, T cost =\
-    \ 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n\n\
-    \    operator int() const { return to; }\n};\n\ntemplate <typename T = int>\n\
-    struct Graph {\n    vector<vector<Edge<T> > > g;\n    int es;\n\n    Graph() =\
-    \ default;\n\n    explicit Graph(int n) : g(n), es(0) {}\n\n    size_t size()\
+    \       ret %= mod;\n    }\n    return ret;\n}\nll safemod(ll x, ll mod) { return\
+    \ (x % mod + mod) % mod; }\nuint64_t my_rand(void) {\n    static uint64_t x =\
+    \ 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x = x ^ (x >> 7);\n    return\
+    \ x = x ^ (x << 17);\n}\nint popcnt(ull x) { return __builtin_popcountll(x); }\n\
+    template <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\nstruct Timer {\n    clock_t\
+    \ start_time;\n    void start() { start_time = clock(); }\n    int lap() {\n \
+    \       // return x ms.\n        return (clock() - start_time) * 1000 / CLOCKS_PER_SEC;\n\
+    \    }\n};\ntemplate <typename T = int>\nstruct Edge {\n    int from, to;\n  \
+    \  T cost;\n    int idx;\n\n    Edge() = default;\n\n    Edge(int from, int to,\
+    \ T cost = 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n\n    operator int() const { return to; }\n};\n\ntemplate <typename T =\
+    \ int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n\n    Graph()\
+    \ = default;\n\n    explicit Graph(int n) : g(n), es(0) {}\n\n    size_t size()\
     \ const { return g.size(); }\n\n    void add_directed_edge(int from, int to, T\
     \ cost = 1) {\n        g[from].emplace_back(from, to, cost, es++);\n    }\n\n\
     \    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
+    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n\n\
+    \    void read(int M, int padding = -1, bool weighted = false,\n             \
+    \ bool directed = false) {\n        for (int i = 0; i < M; i++) {\n          \
+    \  int a, b;\n            cin >> a >> b;\n            a += padding;\n        \
+    \    b += padding;\n            T c = T(1);\n            if (weighted) cin >>\
+    \ c;\n            if (directed)\n                add_directed_edge(a, b, c);\n\
+    \            else\n                add_edge(a, b, c);\n        }\n    }\n};\n\n\
+    /* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF 4000000004000000000LL\n\
+    #define endl '\\n'\nconst long double eps = 0.000000000000001;\nconst long double\
+    \ PI = 3.141592653589793;\n#line 3 \"verify/yosupo-two_sat.test.cpp\"\n// library\n\
+    #line 1 \"library/graph/graph-template.cpp\"\ntemplate <typename T = int>\nstruct\
+    \ Edge {\n    int from, to;\n    T cost;\n    int idx;\n\n    Edge() = default;\n\
+    \n    Edge(int from, int to, T cost = 1, int idx = -1)\n        : from(from),\
+    \ to(to), cost(cost), idx(idx) {}\n\n    operator int() const { return to; }\n\
+    };\n\ntemplate <typename T = int>\nstruct Graph {\n    vector<vector<Edge<T> >\
+    \ > g;\n    int es;\n\n    Graph() = default;\n\n    explicit Graph(int n) : g(n),\
+    \ es(0) {}\n\n    size_t size() const { return g.size(); }\n\n    void add_directed_edge(int\
+    \ from, int to, T cost = 1) {\n        g[from].emplace_back(from, to, cost, es++);\n\
+    \    }\n\n    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
     \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n\n\
     \    void read(int M, int padding = -1, bool weighted = false,\n             \
     \ bool directed = false) {\n        for (int i = 0; i < M; i++) {\n          \
@@ -152,8 +168,8 @@ data:
   isVerificationFile: true
   path: verify/yosupo-two_sat.test.cpp
   requiredBy: []
-  timestamp: '2020-12-15 21:38:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-23 20:37:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yosupo-two_sat.test.cpp
 layout: document

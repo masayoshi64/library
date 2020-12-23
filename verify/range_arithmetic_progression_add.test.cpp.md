@@ -51,44 +51,61 @@ data:
     \        (x *= x);\n        n >>= 1;\n    }\n    return ret;\n}\nll modpow(ll\
     \ x, ll n, const ll mod) {\n    ll ret = 1;\n    while (n > 0) {\n        if (n\
     \ & 1) (ret *= x);\n        (x *= x);\n        n >>= 1;\n        x %= mod;\n \
-    \       ret %= mod;\n    }\n    return ret;\n}\n\nuint64_t my_rand(void) {\n \
-    \   static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x =\
-    \ x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
-    \ a) {\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
-    \    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });\n    return id;\n\
-    }\nstruct Timer {\n    clock_t start_time;\n    void start() { start_time = clock();\
-    \ }\n    int lap() {\n        // return x ms.\n        return (clock() - start_time)\
-    \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\n/* #endregion*/\n// constant\n#define inf\
-    \ 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\n'\nconst long\
-    \ double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 4 \"verify/range_arithmetic_progression_add.test.cpp\"\n// library\n#line\
-    \ 1 \"library/structure/segtree/DualSegmentTree.cpp\"\n/**\n * @brief Dual-Segment-Tree(\u53CC\
-    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n * @docs docs/dual-segment-tree.md\n\
-    \ */\n\ntemplate <typename OperatorMonoid, typename H>\nstruct DualSegmentTree\
-    \ {\n    int sz, height;\n    vector<OperatorMonoid> lazy;\n    const H h;\n \
-    \   const OperatorMonoid OM0;\n\n    DualSegmentTree(int n, const H h, const OperatorMonoid&\
-    \ OM0)\n        : h(h), OM0(OM0) {\n        sz = 1;\n        height = 0;\n   \
-    \     while (sz < n) sz <<= 1, height++;\n        lazy.assign(2 * sz, OM0);\n\
-    \    }\n\n    inline void propagate(int k) {\n        if (lazy[k] != OM0) {\n\
-    \            lazy[2 * k + 0] = h(lazy[2 * k + 0], lazy[k]);\n            lazy[2\
-    \ * k + 1] = h(lazy[2 * k + 1], lazy[k]);\n            lazy[k] = OM0;\n      \
-    \  }\n    }\n\n    inline void thrust(int k) {\n        for (int i = height; i\
-    \ > 0; i--) propagate(k >> i);\n    }\n\n    void update(int a, int b, const OperatorMonoid&\
-    \ x) {\n        thrust(a += sz);\n        thrust(b += sz - 1);\n        for (int\
-    \ l = a, r = b + 1; l < r; l >>= 1, r >>= 1) {\n            if (l & 1) lazy[l]\
-    \ = h(lazy[l], x), ++l;\n            if (r & 1) --r, lazy[r] = h(lazy[r], x);\n\
-    \        }\n    }\n\n    OperatorMonoid operator[](int k) {\n        thrust(k\
-    \ += sz);\n        return lazy[k];\n    }\n};\n\ntemplate <typename OperatorMonoid,\
-    \ typename H>\nDualSegmentTree<OperatorMonoid, H> get_dual_segment_tree(\n   \
-    \ int N, const H& h, const OperatorMonoid& OM0) {\n    return {N, h, OM0};\n}\n\
-    #line 6 \"verify/range_arithmetic_progression_add.test.cpp\"\n\nint main() {\n\
-    \    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p, Pi q) {\n       \
-    \ return mp(p.first + q.first, p.second + q.second);\n    };\n    auto dp = get_dual_segment_tree<Pi>(n,\
-    \ h, mp(0, 0));\n\n    rep(i, q) {\n        int l, k;\n        cin >> l >> k;\n\
-    \        l--;\n        dp.update(l, l + k, mp(1 - l, 1));\n    }\n    rep(i, n\
-    \ - 1) cout << dp[i].first + dp[i].second * i << ' ';\n    cout << dp[n - 1].first\
-    \ + dp[n - 1].second * (n - 1) << endl;\n}\n"
+    \       ret %= mod;\n    }\n    return ret;\n}\nll safemod(ll x, ll mod) { return\
+    \ (x % mod + mod) % mod; }\nuint64_t my_rand(void) {\n    static uint64_t x =\
+    \ 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x = x ^ (x >> 7);\n    return\
+    \ x = x ^ (x << 17);\n}\nint popcnt(ull x) { return __builtin_popcountll(x); }\n\
+    template <typename T>\nvector<int> IOTA(vector<T> a) {\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j) { return a[i] < a[j]; });\n    return id;\n}\nstruct Timer {\n    clock_t\
+    \ start_time;\n    void start() { start_time = clock(); }\n    int lap() {\n \
+    \       // return x ms.\n        return (clock() - start_time) * 1000 / CLOCKS_PER_SEC;\n\
+    \    }\n};\ntemplate <typename T = int>\nstruct Edge {\n    int from, to;\n  \
+    \  T cost;\n    int idx;\n\n    Edge() = default;\n\n    Edge(int from, int to,\
+    \ T cost = 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
+    \ {}\n\n    operator int() const { return to; }\n};\n\ntemplate <typename T =\
+    \ int>\nstruct Graph {\n    vector<vector<Edge<T>>> g;\n    int es;\n\n    Graph()\
+    \ = default;\n\n    explicit Graph(int n) : g(n), es(0) {}\n\n    size_t size()\
+    \ const { return g.size(); }\n\n    void add_directed_edge(int from, int to, T\
+    \ cost = 1) {\n        g[from].emplace_back(from, to, cost, es++);\n    }\n\n\
+    \    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
+    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n\n\
+    \    void read(int M, int padding = -1, bool weighted = false,\n             \
+    \ bool directed = false) {\n        for (int i = 0; i < M; i++) {\n          \
+    \  int a, b;\n            cin >> a >> b;\n            a += padding;\n        \
+    \    b += padding;\n            T c = T(1);\n            if (weighted) cin >>\
+    \ c;\n            if (directed)\n                add_directed_edge(a, b, c);\n\
+    \            else\n                add_edge(a, b, c);\n        }\n    }\n};\n\n\
+    /* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF 4000000004000000000LL\n\
+    #define endl '\\n'\nconst long double eps = 0.000000000000001;\nconst long double\
+    \ PI = 3.141592653589793;\n#line 4 \"verify/range_arithmetic_progression_add.test.cpp\"\
+    \n// library\n#line 1 \"library/structure/segtree/DualSegmentTree.cpp\"\n/**\n\
+    \ * @brief Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+    )\n * @docs docs/dual-segment-tree.md\n */\n\ntemplate <typename OperatorMonoid,\
+    \ typename H>\nstruct DualSegmentTree {\n    int sz, height;\n    vector<OperatorMonoid>\
+    \ lazy;\n    const H h;\n    const OperatorMonoid OM0;\n\n    DualSegmentTree(int\
+    \ n, const H h, const OperatorMonoid& OM0)\n        : h(h), OM0(OM0) {\n     \
+    \   sz = 1;\n        height = 0;\n        while (sz < n) sz <<= 1, height++;\n\
+    \        lazy.assign(2 * sz, OM0);\n    }\n\n    inline void propagate(int k)\
+    \ {\n        if (lazy[k] != OM0) {\n            lazy[2 * k + 0] = h(lazy[2 * k\
+    \ + 0], lazy[k]);\n            lazy[2 * k + 1] = h(lazy[2 * k + 1], lazy[k]);\n\
+    \            lazy[k] = OM0;\n        }\n    }\n\n    inline void thrust(int k)\
+    \ {\n        for (int i = height; i > 0; i--) propagate(k >> i);\n    }\n\n  \
+    \  void update(int a, int b, const OperatorMonoid& x) {\n        thrust(a += sz);\n\
+    \        thrust(b += sz - 1);\n        for (int l = a, r = b + 1; l < r; l >>=\
+    \ 1, r >>= 1) {\n            if (l & 1) lazy[l] = h(lazy[l], x), ++l;\n      \
+    \      if (r & 1) --r, lazy[r] = h(lazy[r], x);\n        }\n    }\n\n    OperatorMonoid\
+    \ operator[](int k) {\n        thrust(k += sz);\n        return lazy[k];\n   \
+    \ }\n};\n\ntemplate <typename OperatorMonoid, typename H>\nDualSegmentTree<OperatorMonoid,\
+    \ H> get_dual_segment_tree(\n    int N, const H& h, const OperatorMonoid& OM0)\
+    \ {\n    return {N, h, OM0};\n}\n#line 6 \"verify/range_arithmetic_progression_add.test.cpp\"\
+    \n\nint main() {\n    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p,\
+    \ Pi q) {\n        return mp(p.first + q.first, p.second + q.second);\n    };\n\
+    \    auto dp = get_dual_segment_tree<Pi>(n, h, mp(0, 0));\n\n    rep(i, q) {\n\
+    \        int l, k;\n        cin >> l >> k;\n        l--;\n        dp.update(l,\
+    \ l + k, mp(1 - l, 1));\n    }\n    rep(i, n - 1) cout << dp[i].first + dp[i].second\
+    \ * i << ' ';\n    cout << dp[n - 1].first + dp[n - 1].second * (n - 1) << endl;\n\
+    }\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/structure/segtree/DualSegmentTree.cpp\"\
     \n\nint main() {\n    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p,\
@@ -104,7 +121,7 @@ data:
   isVerificationFile: true
   path: verify/range_arithmetic_progression_add.test.cpp
   requiredBy: []
-  timestamp: '2020-12-18 23:34:41+09:00'
+  timestamp: '2020-12-23 20:37:13+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/range_arithmetic_progression_add.test.cpp

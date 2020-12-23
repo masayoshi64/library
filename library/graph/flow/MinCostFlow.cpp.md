@@ -6,11 +6,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_6_B.test.cpp
     title: verify/aoj-GRL_6_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yuki-1301.test.cpp
     title: verify/yuki-1301.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/flow/MinCostFlow.cpp\"\ntemplate <typename\
@@ -89,7 +89,7 @@ data:
   path: library/graph/flow/MinCostFlow.cpp
   requiredBy: []
   timestamp: '2020-11-20 13:17:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yuki-1301.test.cpp
   - verify/aoj-GRL_6_B.test.cpp

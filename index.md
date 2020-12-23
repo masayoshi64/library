@@ -19,15 +19,15 @@ data:
       title: library/dp/rekkyo.cpp
   - name: library/graph/connected-components
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/graph/connected-components/StronglyConnectedComponents.cpp
       title: library/graph/connected-components/StronglyConnectedComponents.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/graph/connected-components/TwoSat.cpp
       title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/graph/distance/bfs_dial.cpp
       title: library/graph/distance/bfs_dial.cpp
     - icon: ':warning:'
@@ -51,14 +51,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/flow/Dinic.cpp
       title: "Dinic(\u6700\u5927\u6D41)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/graph/flow/MinCostFlow.cpp
       title: library/graph/flow/MinCostFlow.cpp
   - name: library/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/graph/graph-template.cpp
       title: library/graph/graph-template.cpp
+  - name: library/graph/others
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: library/graph/others/LowLink.cpp
+      title: library/graph/others/LowLink.cpp
   - name: library/graph/tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -93,6 +98,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/pollard.cpp
       title: factorization(pollard)
+    - icon: ':warning:'
+      path: library/math/sparse_mul_div.cpp
+      title: library/math/sparse_mul_div.cpp
   - name: library/mod
     pages:
     - icon: ':warning:'
@@ -188,6 +196,9 @@ data:
   - name: verify
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/ArticulationPoint.test.cpp
+      title: verify/ArticulationPoint.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/FPS.power.test.cpp
       title: verify/FPS.power.test.cpp
     - icon: ':heavy_check_mark:'
@@ -196,7 +207,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-2446.test.cpp
       title: verify/aoj-2446.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj-ALDS1_12_B.test.cpp
       title: verify/aoj-ALDS1_12_B.test.cpp
     - icon: ':heavy_check_mark:'
@@ -244,10 +255,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-range_kth_smallest.test.cpp
       title: verify/yosupo-range_kth_smallest.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/yuki-1301.test.cpp
       title: verify/yuki-1301.test.cpp
     - icon: ':heavy_check_mark:'
