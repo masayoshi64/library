@@ -1,12 +1,8 @@
-/**
- * @brief Dual-Segment-Tree(双対セグメント木)
- * @docs docs/dual-segment-tree.md
- */
-
-template <typename OperatorMonoid, typename H>
+template <typename OperatorMonoid>
 struct DualSegmentTree {
     int sz, height;
     vector<OperatorMonoid> lazy;
+    using H = function<OperatorMonoid(OperatorMonoid, OperatorMonoid)>;
     const H h;
     const OperatorMonoid OM0;
 
@@ -45,8 +41,14 @@ struct DualSegmentTree {
     }
 };
 
-template <typename OperatorMonoid, typename H>
-DualSegmentTree<OperatorMonoid, H> get_dual_segment_tree(
-    int N, const H& h, const OperatorMonoid& OM0) {
-    return {N, h, OM0};
+template <class T, class F = T>
+T myreplace(T x, F y) {
+    if (y != numeric_limits<F>::max()) x = y;
+    return x;
 }
+
+template <class T>
+struct RRQ : DualSegmentTree<T> {
+    using Seg = DualSegmentTree<T>;
+    RRQ(int n) : Seg(n, myreplace<T>, numeric_limits<T>::max()) {}
+};

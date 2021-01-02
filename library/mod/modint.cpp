@@ -1,23 +1,23 @@
-template <int mod>
+template <int Mod>
 struct modint {
     int x;
 
     modint() : x(0) {}
 
-    modint(long long y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}
+    modint(long long y) : x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}
 
     modint& operator+=(const modint& p) {
-        if ((x += p.x) >= mod) x -= mod;
+        if ((x += p.x) >= Mod) x -= Mod;
         return *this;
     }
 
     modint& operator-=(const modint& p) {
-        if ((x += mod - p.x) >= mod) x -= mod;
+        if ((x += Mod - p.x) >= Mod) x -= Mod;
         return *this;
     }
 
     modint& operator*=(const modint& p) {
-        x = (int)(1LL * x * p.x % mod);
+        x = (int)(1LL * x * p.x % Mod);
         return *this;
     }
 
@@ -41,7 +41,7 @@ struct modint {
     bool operator!=(const modint& p) const { return x != p.x; }
 
     modint inverse() const {
-        int a = x, b = mod, u = 1, v = 0, t;
+        int a = x, b = Mod, u = 1, v = 0, t;
         while (b > 0) {
             t = a / b;
             swap(a -= t * b, b);
@@ -67,11 +67,11 @@ struct modint {
     friend istream& operator>>(istream& is, modint& a) {
         long long t;
         is >> t;
-        a = modint<mod>(t);
+        a = modint<Mod>(t);
         return (is);
     }
 
-    static int get_mod() { return mod; }
+    static int get_mod() { return Mod; }
 
     constexpr int get() const { return x; }
 };
