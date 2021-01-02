@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':x:'
     path: library/structure/segtree/DualSegmentTree.cpp
-    title: "Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    title: library/structure/segtree/DualSegmentTree.cpp
   - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
@@ -79,11 +79,10 @@ data:
     /* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF 4000000004000000000LL\n\
     #define endl '\\n'\nconst long double eps = 0.000000000000001;\nconst long double\
     \ PI = 3.141592653589793;\n#line 4 \"verify/range_arithmetic_progression_add.test.cpp\"\
-    \n// library\n#line 1 \"library/structure/segtree/DualSegmentTree.cpp\"\n/**\n\
-    \ * @brief Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\n * @docs docs/dual-segment-tree.md\n */\n\ntemplate <typename OperatorMonoid,\
-    \ typename H>\nstruct DualSegmentTree {\n    int sz, height;\n    vector<OperatorMonoid>\
-    \ lazy;\n    const H h;\n    const OperatorMonoid OM0;\n\n    DualSegmentTree(int\
+    \n// library\n#line 1 \"library/structure/segtree/DualSegmentTree.cpp\"\ntemplate\
+    \ <typename OperatorMonoid>\nstruct DualSegmentTree {\n    int sz, height;\n \
+    \   vector<OperatorMonoid> lazy;\n    using H = function<OperatorMonoid(OperatorMonoid,\
+    \ OperatorMonoid)>;\n    const H h;\n    const OperatorMonoid OM0;\n\n    DualSegmentTree(int\
     \ n, const H h, const OperatorMonoid& OM0)\n        : h(h), OM0(OM0) {\n     \
     \   sz = 1;\n        height = 0;\n        while (sz < n) sz <<= 1, height++;\n\
     \        lazy.assign(2 * sz, OM0);\n    }\n\n    inline void propagate(int k)\
@@ -96,9 +95,10 @@ data:
     \ 1, r >>= 1) {\n            if (l & 1) lazy[l] = h(lazy[l], x), ++l;\n      \
     \      if (r & 1) --r, lazy[r] = h(lazy[r], x);\n        }\n    }\n\n    OperatorMonoid\
     \ operator[](int k) {\n        thrust(k += sz);\n        return lazy[k];\n   \
-    \ }\n};\n\ntemplate <typename OperatorMonoid, typename H>\nDualSegmentTree<OperatorMonoid,\
-    \ H> get_dual_segment_tree(\n    int N, const H& h, const OperatorMonoid& OM0)\
-    \ {\n    return {N, h, OM0};\n}\n#line 6 \"verify/range_arithmetic_progression_add.test.cpp\"\
+    \ }\n};\n\ntemplate <class T, class F = T>\nT myreplace(T x, F y) {\n    if (y\
+    \ != numeric_limits<F>::max()) x = y;\n    return x;\n}\n\ntemplate <class T>\n\
+    struct RRQ : DualSegmentTree<T> {\n    using Seg = DualSegmentTree<T>;\n    RRQ(int\
+    \ n) : Seg(n, myreplace<T>, numeric_limits<T>::max()) {}\n};\n#line 6 \"verify/range_arithmetic_progression_add.test.cpp\"\
     \n\nint main() {\n    int n, q;\n    cin >> n >> q;\n\n    auto h = [&](Pi p,\
     \ Pi q) {\n        return mp(p.first + q.first, p.second + q.second);\n    };\n\
     \    auto dp = get_dual_segment_tree<Pi>(n, h, mp(0, 0));\n\n    rep(i, q) {\n\
@@ -121,7 +121,7 @@ data:
   isVerificationFile: true
   path: verify/range_arithmetic_progression_add.test.cpp
   requiredBy: []
-  timestamp: '2020-12-23 20:37:13+09:00'
+  timestamp: '2021-01-02 17:35:14+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/range_arithmetic_progression_add.test.cpp

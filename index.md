@@ -147,13 +147,16 @@ data:
       path: library/structure/UnionFind/UnionFind.cpp
       title: UnionFind
     - icon: ':warning:'
+      path: library/structure/UnionFind/UnionFindUndo.cpp
+      title: library/structure/UnionFind/UnionFindUndo.cpp
+    - icon: ':warning:'
       path: library/structure/UnionFind/merge_tree.cpp
       title: library/structure/UnionFind/merge_tree.cpp
   - name: library/structure/segtree
     pages:
     - icon: ':x:'
       path: library/structure/segtree/DualSegmentTree.cpp
-      title: "Dual-Segment-Tree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+      title: library/structure/segtree/DualSegmentTree.cpp
     - icon: ':heavy_check_mark:'
       path: library/structure/segtree/LazySegmentTree.cpp
       title: "Lazy-Segment-Tree(\u9045\u5EF6\u4F1D\u642C\u30BB\u30B0\u30E1\u30F3\u30C8\

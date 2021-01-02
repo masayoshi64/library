@@ -28,13 +28,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"library/mod/modint.cpp\"\ntemplate <int mod>\nstruct modint\
+  bundledCode: "#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\
     \ {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >=\
-    \ 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n    modint& operator+=(const modint&\
-    \ p) {\n        if ((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n\
-    \n    modint& operator-=(const modint& p) {\n        if ((x += mod - p.x) >= mod)\
-    \ x -= mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
-    \ p) {\n        x = (int)(1LL * x * p.x % mod);\n        return *this;\n    }\n\
+    \ 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const modint&\
+    \ p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n    }\n\
+    \n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x) >= Mod)\
+    \ x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
+    \ p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n    }\n\
     \n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n \
     \       return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
     \ }\n\n    modint operator+(const modint& p) const { return modint(*this) += p;\
@@ -43,7 +43,7 @@ data:
     \ }\n\n    modint operator/(const modint& p) const { return modint(*this) /= p;\
     \ }\n\n    bool operator==(const modint& p) const { return x == p.x; }\n\n   \
     \ bool operator!=(const modint& p) const { return x != p.x; }\n\n    modint inverse()\
-    \ const {\n        int a = x, b = mod, u = 1, v = 0, t;\n        while (b > 0)\
+    \ const {\n        int a = x, b = Mod, u = 1, v = 0, t;\n        while (b > 0)\
     \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
     \ -= t * v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
     \ n) const {\n        modint ret(1), mul(x);\n        while (n > 0) {\n      \
@@ -51,15 +51,15 @@ data:
     \        }\n        return ret;\n    }\n\n    friend ostream& operator<<(ostream&\
     \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
-    \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n\n    constexpr int get() const { return x; }\n};\n"
-  code: "template <int mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\
-    \n    modint(long long y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\
-    \n    modint& operator+=(const modint& p) {\n        if ((x += p.x) >= mod) x\
-    \ -= mod;\n        return *this;\n    }\n\n    modint& operator-=(const modint&\
-    \ p) {\n        if ((x += mod - p.x) >= mod) x -= mod;\n        return *this;\n\
+    \        a = modint<Mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
+    \ { return Mod; }\n\n    constexpr int get() const { return x; }\n};\n"
+  code: "template <int Mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\
+    \n    modint(long long y) : x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\
+    \n    modint& operator+=(const modint& p) {\n        if ((x += p.x) >= Mod) x\
+    \ -= Mod;\n        return *this;\n    }\n\n    modint& operator-=(const modint&\
+    \ p) {\n        if ((x += Mod - p.x) >= Mod) x -= Mod;\n        return *this;\n\
     \    }\n\n    modint& operator*=(const modint& p) {\n        x = (int)(1LL * x\
-    \ * p.x % mod);\n        return *this;\n    }\n\n    modint& operator/=(const\
+    \ * p.x % Mod);\n        return *this;\n    }\n\n    modint& operator/=(const\
     \ modint& p) {\n        *this *= p.inverse();\n        return *this;\n    }\n\n\
     \    modint operator-() const { return modint(-x); }\n\n    modint operator+(const\
     \ modint& p) const { return modint(*this) += p; }\n\n    modint operator-(const\
@@ -68,15 +68,15 @@ data:
     \ modint& p) const { return modint(*this) /= p; }\n\n    bool operator==(const\
     \ modint& p) const { return x == p.x; }\n\n    bool operator!=(const modint& p)\
     \ const { return x != p.x; }\n\n    modint inverse() const {\n        int a =\
-    \ x, b = mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
+    \ x, b = Mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
     \            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
     \        return modint(u);\n    }\n\n    modint pow(int64_t n) const {\n     \
     \   modint ret(1), mul(x);\n        while (n > 0) {\n            if (n & 1) ret\
     \ *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n        return\
     \ ret;\n    }\n\n    friend ostream& operator<<(ostream& os, const modint& p)\
     \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
-    \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<mod>(t);\n\
-    \        return (is);\n    }\n\n    static int get_mod() { return mod; }\n\n \
+    \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<Mod>(t);\n\
+    \        return (is);\n    }\n\n    static int get_mod() { return Mod; }\n\n \
     \   constexpr int get() const { return x; }\n};\n"
   dependsOn: []
   isVerificationFile: false
@@ -84,7 +84,7 @@ data:
   requiredBy:
   - typical/dp/hakone.cpp
   - typical/dp/sort.cpp
-  timestamp: '2020-12-18 23:34:41+09:00'
+  timestamp: '2021-01-02 17:35:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki-650.test.cpp

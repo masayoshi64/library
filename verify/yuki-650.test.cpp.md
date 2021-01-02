@@ -180,13 +180,13 @@ data:
     \ j = i + 1; j < width(); j++) {\n                T a = B[j][i];\n           \
     \     for (int k = 0; k < width(); k++) {\n                    B[j][k] -= B[i][k]\
     \ * a;\n                }\n            }\n        }\n        return (ret);\n \
-    \   }\n};\n#line 1 \"library/mod/modint.cpp\"\ntemplate <int mod>\nstruct modint\
+    \   }\n};\n#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\
     \ {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >=\
-    \ 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n    modint& operator+=(const modint&\
-    \ p) {\n        if ((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n\
-    \n    modint& operator-=(const modint& p) {\n        if ((x += mod - p.x) >= mod)\
-    \ x -= mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
-    \ p) {\n        x = (int)(1LL * x * p.x % mod);\n        return *this;\n    }\n\
+    \ 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const modint&\
+    \ p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n    }\n\
+    \n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x) >= Mod)\
+    \ x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
+    \ p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n    }\n\
     \n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n \
     \       return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
     \ }\n\n    modint operator+(const modint& p) const { return modint(*this) += p;\
@@ -195,7 +195,7 @@ data:
     \ }\n\n    modint operator/(const modint& p) const { return modint(*this) /= p;\
     \ }\n\n    bool operator==(const modint& p) const { return x == p.x; }\n\n   \
     \ bool operator!=(const modint& p) const { return x != p.x; }\n\n    modint inverse()\
-    \ const {\n        int a = x, b = mod, u = 1, v = 0, t;\n        while (b > 0)\
+    \ const {\n        int a = x, b = Mod, u = 1, v = 0, t;\n        while (b > 0)\
     \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
     \ -= t * v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
     \ n) const {\n        modint ret(1), mul(x);\n        while (n > 0) {\n      \
@@ -203,8 +203,8 @@ data:
     \        }\n        return ret;\n    }\n\n    friend ostream& operator<<(ostream&\
     \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
-    \        a = modint<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 1\
+    \        a = modint<Mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
+    \ { return Mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 1\
     \ \"library/structure/segtree/SegmentTree.cpp\"\n/**\n * @brief Segment Tree\n\
     \ * @docs docs/segmenttree.md\n */\ntemplate <typename Monoid>\nstruct SegmentTree\
     \ {\n    using F = function<Monoid(Monoid, Monoid)>;\n\n    int sz;\n    vector<Monoid>\
@@ -285,7 +285,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2020-12-23 20:37:13+09:00'
+  timestamp: '2021-01-02 17:35:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp
