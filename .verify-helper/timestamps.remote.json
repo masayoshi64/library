@@ -3,6 +3,7 @@
 "verify/FPS.power.test.cpp": "2021-01-02 17:35:14 +0900",
 "verify/aoj-1595.test.cpp": "2020-12-23 20:37:13 +0900",
 "verify/aoj-2446.test.cpp": "2020-12-23 20:37:13 +0900",
+"verify/aoj-ALDS1_12_B.test.cpp": "2021-01-04 10:14:35 +0900",
 "verify/aoj-ALDS1_14_B.test.cpp": "2020-12-23 20:37:13 +0900",
 "verify/aoj-ALDS1_14_D.test.cpp": "2020-12-23 20:37:13 +0900",
 "verify/aoj-DPL_5_G.test.cpp": "2021-01-02 17:35:14 +0900",
@@ -19,5 +20,5 @@
 "verify/yosupo-range_kth_smallest.test.cpp": "2020-12-23 20:37:13 +0900",
 "verify/yuki-184.test.cpp": "2020-12-23 20:37:13 +0900",
 "verify/yuki-545.test.cpp": "2020-12-23 20:37:13 +0900",
-"verify/yuki-650.test.cpp": "2021-01-02 17:35:14 +0900"
+"verify/yuki-650.test.cpp": "2021-01-04 10:14:35 +0900"
 }
