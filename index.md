@@ -27,7 +27,7 @@ data:
       title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/distance/bfs_dial.cpp
       title: library/graph/distance/bfs_dial.cpp
     - icon: ':warning:'
@@ -210,7 +210,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-2446.test.cpp
       title: verify/aoj-2446.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-ALDS1_12_B.test.cpp
       title: verify/aoj-ALDS1_12_B.test.cpp
     - icon: ':heavy_check_mark:'

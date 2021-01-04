@@ -138,34 +138,34 @@ data:
     \    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}\n\n    Matrix(size_t\
     \ n) : A(n, vector<T>(n, 0)){};\n\n    Matrix(vector<vector<T>> a) { A = a; }\n\
     \n    size_t height() const { return (A.size()); }\n\n    size_t width() const\
-    \ { return (A[0].size()); }\n\n    inline const vector<T> &operator[](int k) const\
-    \ { return (A.at(k)); }\n\n    inline vector<T> &operator[](int k) { return (A.at(k));\
+    \ { return (A[0].size()); }\n\n    inline const vector<T>& operator[](int k) const\
+    \ { return (A.at(k)); }\n\n    inline vector<T>& operator[](int k) { return (A.at(k));\
     \ }\n\n    static Matrix I(size_t n) {\n        Matrix mat(n);\n        for (int\
-    \ i = 0; i < n; i++) mat[i][i] = 1;\n        return (mat);\n    }\n\n    Matrix\
-    \ &operator+=(const Matrix &B) {\n        size_t n = height(), m = width();\n\
-    \        assert(n == B.height() && m == B.width());\n        for (int i = 0; i\
+    \ i = 0; i < n; i++) mat[i][i] = 1;\n        return (mat);\n    }\n\n    Matrix&\
+    \ operator+=(const Matrix& B) {\n        size_t n = height(), m = width();\n \
+    \       assert(n == B.height() && m == B.width());\n        for (int i = 0; i\
     \ < n; i++)\n            for (int j = 0; j < m; j++) (*this)[i][j] += B[i][j];\n\
-    \        return (*this);\n    }\n\n    Matrix &operator-=(const Matrix &B) {\n\
+    \        return (*this);\n    }\n\n    Matrix& operator-=(const Matrix& B) {\n\
     \        size_t n = height(), m = width();\n        assert(n == B.height() &&\
     \ m == B.width());\n        for (int i = 0; i < n; i++)\n            for (int\
     \ j = 0; j < m; j++) (*this)[i][j] -= B[i][j];\n        return (*this);\n    }\n\
-    \n    Matrix &operator*=(const Matrix &B) {\n        size_t n = height(), m =\
+    \n    Matrix& operator*=(const Matrix& B) {\n        size_t n = height(), m =\
     \ B.width(), p = width();\n        assert(p == B.height());\n        vector<vector<T>>\
     \ C(n, vector<T>(m, 0));\n        for (int i = 0; i < n; i++)\n            for\
     \ (int j = 0; j < m; j++)\n                for (int k = 0; k < p; k++)\n     \
     \               C[i][j] = (C[i][j] + (*this)[i][k] * B[k][j]);\n        A.swap(C);\n\
-    \        return (*this);\n    }\n\n    Matrix &operator^=(long long k) {\n   \
+    \        return (*this);\n    }\n\n    Matrix& operator^=(long long k) {\n   \
     \     Matrix B = Matrix::I(height());\n        while (k > 0) {\n            if\
     \ (k & 1) B *= *this;\n            *this *= *this;\n            k >>= 1LL;\n \
     \       }\n        A.swap(B.A);\n        return (*this);\n    }\n\n    Matrix\
-    \ operator+(const Matrix &B) const { return (Matrix(*this) += B); }\n\n    Matrix\
-    \ operator-(const Matrix &B) const { return (Matrix(*this) -= B); }\n\n    Matrix\
-    \ operator*(const Matrix &B) const { return (Matrix(*this) *= B); }\n\n    Matrix\
+    \ operator+(const Matrix& B) const { return (Matrix(*this) += B); }\n\n    Matrix\
+    \ operator-(const Matrix& B) const { return (Matrix(*this) -= B); }\n\n    Matrix\
+    \ operator*(const Matrix& B) const { return (Matrix(*this) *= B); }\n\n    Matrix\
     \ operator^(const long long k) const { return (Matrix(*this) ^= k); }\n\n    Matrix\
     \ pow(long long n) {\n        Matrix ret = I(height());\n        Matrix x = Matrix(*this);\n\
     \        while (n > 0) {\n            if (n & 1) (ret *= x);\n            (x *=\
     \ x);\n            n >>= 1;\n        }\n        return ret;\n    }\n\n    friend\
-    \ ostream &operator<<(ostream &os, Matrix &p) {\n        size_t n = p.height(),\
+    \ ostream& operator<<(ostream& os, Matrix& p) {\n        size_t n = p.height(),\
     \ m = p.width();\n        for (int i = 0; i < n; i++) {\n            os << \"\
     [\";\n            for (int j = 0; j < m; j++) {\n                os << p[i][j]\
     \ << (j + 1 == m ? \"]\\n\" : \",\");\n            }\n        }\n        return\
@@ -180,15 +180,17 @@ data:
     \ j = i + 1; j < width(); j++) {\n                T a = B[j][i];\n           \
     \     for (int k = 0; k < width(); k++) {\n                    B[j][k] -= B[i][k]\
     \ * a;\n                }\n            }\n        }\n        return (ret);\n \
-    \   }\n};\n#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\
-    \ {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >=\
-    \ 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const modint&\
-    \ p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n    }\n\
-    \n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x) >= Mod)\
-    \ x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
-    \ p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n    }\n\
-    \n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n \
-    \       return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
+    \   }\n\n    Matrix transpose() {\n        Matrix ret(width(), height());\n  \
+    \      rep(i, height()) { rep(j, width()) ret[j][i] = A[i][j]; }\n        return\
+    \ ret;\n    }\n};\n#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct\
+    \ modint {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) :\
+    \ x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const\
+    \ modint& p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n\
+    \    }\n\n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x)\
+    \ >= Mod) x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const\
+    \ modint& p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n\
+    \    }\n\n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n\
+    \        return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
     \ }\n\n    modint operator+(const modint& p) const { return modint(*this) += p;\
     \ }\n\n    modint operator-(const modint& p) const { return modint(*this) -= p;\
     \ }\n\n    modint operator*(const modint& p) const { return modint(*this) *= p;\
@@ -285,7 +287,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2021-01-02 17:35:14+09:00'
+  timestamp: '2021-01-04 10:14:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp

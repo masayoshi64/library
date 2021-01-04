@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-ALDS1_12_B.test.cpp
     title: verify/aoj-ALDS1_12_B.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/distance/bfs_dial.cpp\"\n// Dial's algorithm\n\
@@ -42,7 +42,7 @@ data:
   path: library/graph/distance/bfs_dial.cpp
   requiredBy: []
   timestamp: '2020-11-23 18:44:35+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-ALDS1_12_B.test.cpp
 documentation_of: library/graph/distance/bfs_dial.cpp
