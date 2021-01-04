@@ -3,7 +3,7 @@
 
 #include "library/template/template.cpp"
 //
-#include "library/graph/graph-template.cpp"
+//#include "library/graph/graph-template.cpp"
 // library
 #include "library/graph/distance/bfs_dial.cpp"
 int main() {
