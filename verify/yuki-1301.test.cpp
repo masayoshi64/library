@@ -2,7 +2,7 @@
 #include "library/template/template.cpp"
 // library
 #include "library/graph/flow/MinCostFlow.cpp"
-#include "library/graph/graph-template.cpp"
+//#include "library/graph/graph-template.cpp"
 int main() {
     int n, m;
     cin >> n >> m;

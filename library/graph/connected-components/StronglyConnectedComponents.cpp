@@ -1,4 +1,3 @@
-#include "library/graph/graph-template.cpp"
 
 template <typename T = int>
 struct StronglyConnectedComponents : Graph<T> {
