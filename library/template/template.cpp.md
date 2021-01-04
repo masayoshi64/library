@@ -78,10 +78,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-range_kth_smallest.test.cpp
     title: verify/yosupo-range_kth_smallest.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki-1301.test.cpp
     title: verify/yuki-1301.test.cpp
   - icon: ':heavy_check_mark:'

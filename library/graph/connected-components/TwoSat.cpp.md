@@ -1,38 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/connected-components/StronglyConnectedComponents.cpp
     title: library/graph/connected-components/StronglyConnectedComponents.cpp
-  - icon: ':x:'
-    path: library/graph/graph-template.cpp
-    title: library/graph/graph-template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo-two_sat.test.cpp
     title: verify/yosupo-two_sat.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"library/graph/graph-template.cpp\"\ntemplate <typename T\
-    \ = int>\nstruct Edge {\n    int from, to;\n    T cost;\n    int idx;\n\n    Edge()\
-    \ = default;\n\n    Edge(int from, int to, T cost = 1, int idx = -1)\n       \
-    \ : from(from), to(to), cost(cost), idx(idx) {}\n\n    operator int() const {\
-    \ return to; }\n};\n\ntemplate <typename T = int>\nstruct Graph {\n    vector<vector<Edge<T>\
-    \ > > g;\n    int es;\n\n    Graph() = default;\n\n    explicit Graph(int n) :\
-    \ g(n), es(0) {}\n\n    size_t size() const { return g.size(); }\n\n    void add_directed_edge(int\
-    \ from, int to, T cost = 1) {\n        g[from].emplace_back(from, to, cost, es++);\n\
-    \    }\n\n    void add_edge(int from, int to, T cost = 1) {\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n\n\
-    \    void read(int M, int padding = -1, bool weighted = false,\n             \
-    \ bool directed = false) {\n        for (int i = 0; i < M; i++) {\n          \
-    \  int a, b;\n            cin >> a >> b;\n            a += padding;\n        \
-    \    b += padding;\n            T c = T(1);\n            if (weighted) cin >>\
-    \ c;\n            if (directed)\n                add_directed_edge(a, b, c);\n\
-    \            else\n                add_edge(a, b, c);\n        }\n    }\n};\n\
-    #line 2 \"library/graph/connected-components/StronglyConnectedComponents.cpp\"\
+  bundledCode: "#line 1 \"library/graph/connected-components/StronglyConnectedComponents.cpp\"\
     \n\ntemplate <typename T = int>\nstruct StronglyConnectedComponents : Graph<T>\
     \ {\n   public:\n    using Graph<T>::Graph;\n    using Graph<T>::g;\n    vector<int>\
     \ comp;            // id of scc\n    Graph<T> dag;                // DAG\n   \
@@ -92,12 +73,11 @@ data:
     \  return ret;\n    }\n};"
   dependsOn:
   - library/graph/connected-components/StronglyConnectedComponents.cpp
-  - library/graph/graph-template.cpp
   isVerificationFile: false
   path: library/graph/connected-components/TwoSat.cpp
   requiredBy: []
-  timestamp: '2020-12-15 21:38:21+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-01-04 10:26:13+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-two_sat.test.cpp
 documentation_of: library/graph/connected-components/TwoSat.cpp

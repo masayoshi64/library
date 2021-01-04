@@ -1,22 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: library/graph/connected-components/StronglyConnectedComponents.cpp
-    title: library/graph/connected-components/StronglyConnectedComponents.cpp
-  - icon: ':x:'
-    path: library/graph/connected-components/TwoSat.cpp
-    title: library/graph/connected-components/TwoSat.cpp
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/yosupo-two_sat.test.cpp
-    title: verify/yosupo-two_sat.test.cpp
-  - icon: ':x:'
-    path: verify/yuki-1301.test.cpp
-    title: verify/yuki-1301.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/graph/graph-template.cpp\"\ntemplate <typename T\
@@ -54,14 +42,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/graph/graph-template.cpp
-  requiredBy:
-  - library/graph/connected-components/StronglyConnectedComponents.cpp
-  - library/graph/connected-components/TwoSat.cpp
+  requiredBy: []
   timestamp: '2020-11-19 20:53:33+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/yosupo-two_sat.test.cpp
-  - verify/yuki-1301.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: library/graph/graph-template.cpp
 layout: document
 redirect_from:
