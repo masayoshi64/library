@@ -27,6 +27,9 @@ data:
       title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
     pages:
+    - icon: ':warning:'
+      path: library/graph/distance/TSP.cpp
+      title: library/graph/distance/TSP.cpp
     - icon: ':heavy_check_mark:'
       path: library/graph/distance/bfs_dial.cpp
       title: library/graph/distance/bfs_dial.cpp

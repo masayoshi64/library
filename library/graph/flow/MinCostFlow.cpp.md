@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-1301.test.cpp
     title: verify/yuki-1301.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -91,8 +92,8 @@ data:
   timestamp: '2020-11-20 13:17:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yuki-1301.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
+  - verify/yuki-1301.test.cpp
 documentation_of: library/graph/flow/MinCostFlow.cpp
 layout: document
 redirect_from:

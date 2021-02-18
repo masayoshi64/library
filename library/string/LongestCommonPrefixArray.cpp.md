@@ -9,6 +9,7 @@ data:
     path: verify/yuki-1408.cpp
     title: verify/yuki-1408.cpp
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:

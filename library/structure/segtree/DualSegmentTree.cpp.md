@@ -6,6 +6,7 @@ data:
   - icon: ':x:'
     path: verify/range_arithmetic_progression_add.test.cpp
     title: verify/range_arithmetic_progression_add.test.cpp
+  _isVerificationFailed: true
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:

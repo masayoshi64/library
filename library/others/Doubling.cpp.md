@@ -6,6 +6,7 @@ data:
     path: test/atcoder-abc136_d.cpp
     title: test/atcoder-abc136_d.cpp
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:

@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_7_A.test.cpp
     title: verify/aoj-GRL_7_A.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
