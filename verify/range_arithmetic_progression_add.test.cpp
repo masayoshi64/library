@@ -5,16 +5,16 @@
 #include "library/structure/segtree/DualSegmentTree.cpp"
 
 int main() {
-    int n, q;
+    ll n, q;
     cin >> n >> q;
 
-    auto h = [&](Pi p, Pi q) {
+    auto h = [&](Pl p, Pl q) {
         return mp(p.first + q.first, p.second + q.second);
     };
-    auto dp = DualSegmentTree<Pi>(n, h, mp(0, 0));
+    auto dp = DualSegmentTree<Pl>(n, h, mp(0, 0));
 
     rep(i, q) {
-        int l, k;
+        ll l, k;
         cin >> l >> k;
         l--;
         dp.update(l, l + k, mp(1 - l, 1));
