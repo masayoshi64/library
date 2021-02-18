@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/dp/rekkyo.cpp
     title: library/dp/rekkyo.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []

@@ -157,7 +157,7 @@ data:
       title: library/structure/UnionFind/merge_tree.cpp
   - name: library/structure/segtree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/structure/segtree/DualSegmentTree.cpp
       title: library/structure/segtree/DualSegmentTree.cpp
     - icon: ':heavy_check_mark:'
@@ -174,9 +174,14 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
+  - name: library/utils
+    pages:
+    - icon: ':warning:'
+      path: library/utils/transpose.cpp
+      title: library/utils/transpose.cpp
   - name: test
     pages:
     - icon: ':warning:'
@@ -249,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/range_arithmetic_progression_add.test.cpp
       title: verify/range_arithmetic_progression_add.test.cpp
     - icon: ':heavy_check_mark:'
