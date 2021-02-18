@@ -11,7 +11,7 @@ int main() {
     auto h = [&](Pi p, Pi q) {
         return mp(p.first + q.first, p.second + q.second);
     };
-    auto dp = get_dual_segment_tree<Pi>(n, h, mp(0, 0));
+    auto dp = DualSegmentTree<Pi>(n, h, mp(0, 0));
 
     rep(i, q) {
         int l, k;
