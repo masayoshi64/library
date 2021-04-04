@@ -12,13 +12,13 @@ struct SegmentTree {
     const F f;
     const Monoid M1;
 
-    SegmentTree(int n, const F f, const Monoid &M1) : f(f), M1(M1) {
+    SegmentTree(int n, const F f, const Monoid& M1) : f(f), M1(M1) {
         sz = 1;
         while (sz < n) sz <<= 1;
         seg.assign(2 * sz, M1);
     }
 
-    void set(int k, const Monoid &x) { seg[k + sz] = x; }
+    void set(int k, const Monoid& x) { seg[k + sz] = x; }
 
     void build() {
         for (int k = sz - 1; k > 0; k--) {
@@ -26,7 +26,7 @@ struct SegmentTree {
         }
     }
 
-    void update(int k, const Monoid &x) {
+    void update(int k, const Monoid& x) {
         k += sz;
         seg[k] = x;
         while (k >>= 1) {
@@ -43,10 +43,10 @@ struct SegmentTree {
         return f(L, R);
     }
 
-    Monoid operator[](const int &k) const { return seg[k + sz]; }
+    Monoid operator[](const int& k) const { return seg[k + sz]; }
 
     template <typename C>
-    int find_subtree(int a, const C &check, Monoid &M, bool type) {
+    int find_subtree(int a, const C& check, Monoid& M, bool type) {
         while (a < sz) {
             Monoid nxt =
                 type ? f(seg[2 * a + type], M) : f(M, seg[2 * a + type]);
@@ -58,9 +58,9 @@ struct SegmentTree {
         return a - sz;
     }
 
-    // check(seg[i])を満たす最小のb<=iを返す.なければ-1
+    // check(seg.query(b, i))を満たす最小のb<=iを返す.なければ-1
     template <typename C>
-    int find_first(int a, const C &check) {
+    int find_first(int a, const C& check) {
         Monoid L = M1;
         if (a <= 0) {
             if (check(f(L, seg[1]))) return find_subtree(1, check, L, false);
@@ -78,9 +78,9 @@ struct SegmentTree {
         return -1;
     }
 
-    // check(seg[i])を満たす最小のi<bを返す.なければ-1
+    // check(seg.query(i, b))を満たす最小のi<bを返す.なければ-1
     template <typename C>
-    int find_last(int b, const C &check) {
+    int find_last(int b, const C& check) {
         Monoid R = M1;
         if (b >= sz) {
             if (check(f(seg[1], R))) return find_subtree(1, check, R, true);
