@@ -84,8 +84,8 @@ data:
   isVerificationFile: false
   path: library/string/SuffixArray.cpp
   requiredBy:
-  - library/string/LongestCommonPrefixArray.cpp
   - verify/yuki-1408.cpp
+  - library/string/LongestCommonPrefixArray.cpp
   timestamp: '2020-11-19 13:05:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

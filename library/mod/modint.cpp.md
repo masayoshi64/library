@@ -83,16 +83,16 @@ data:
   isVerificationFile: false
   path: library/mod/modint.cpp
   requiredBy:
-  - typical/dp/sort.cpp
   - typical/dp/hakone.cpp
+  - typical/dp/sort.cpp
   timestamp: '2021-01-02 17:35:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yosupo-convolution_mod.test.cpp
+  - verify/FPS.power.test.cpp
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yuki-650.test.cpp
-  - verify/FPS.power.test.cpp
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document
 redirect_from:

@@ -196,9 +196,9 @@ data:
   timestamp: '2020-11-18 22:08:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yosupo-convolution_mod.test.cpp
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/FPS.power.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
+  - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/math/FormalPowerSeries.cpp
 layout: document
 redirect_from:
