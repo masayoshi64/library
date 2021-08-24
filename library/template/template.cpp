@@ -1,5 +1,5 @@
+#pragma once
 /* #region header */
-
 #pragma GCC optimize("Ofast")
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,19 +33,23 @@ typedef vector<vector<char>> vvc;
 //入出力
 #define print(x) cout << x << endl
 template <class T>
-ostream& operator<<(ostream& os, const vector<T>& v) {
-    for (auto& e : v) cout << e << " ";
+ostream &operator<<(ostream &os, const vector<T> &v)
+{
+    for (auto &e : v)
+        cout << e << " ";
     cout << endl;
     return os;
 }
-void scan(int& a) { cin >> a; }
-void scan(long long& a) { cin >> a; }
-void scan(char& a) { cin >> a; }
-void scan(double& a) { cin >> a; }
-void scan(string& a) { cin >> a; }
+void scan(int &a) { cin >> a; }
+void scan(long long &a) { cin >> a; }
+void scan(char &a) { cin >> a; }
+void scan(double &a) { cin >> a; }
+void scan(string &a) { cin >> a; }
 template <class T>
-void scan(vector<T>& a) {
-    for (auto& i : a) scan(i);
+void scan(vector<T> &a)
+{
+    for (auto &i : a)
+        scan(i);
 }
 #define vsum(x) accumulate(all(x), 0LL)
 #define vmax(a) *max_element(all(a))
@@ -57,35 +61,45 @@ void scan(vector<T>& a) {
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 template <class T>
-bool chmax(T& a, const T& b) {
-    if (a < b) {
+bool chmax(T &a, const T &b)
+{
+    if (a < b)
+    {
         a = b;
         return 1;
     }
     return 0;
 }
 template <class T>
-bool chmin(T& a, const T& b) {
-    if (b < a) {
+bool chmin(T &a, const T &b)
+{
+    if (b < a)
+    {
         a = b;
         return 1;
     }
     return 0;
 }
 template <typename T>
-T mypow(T x, ll n) {
+T mypow(T x, ll n)
+{
     T ret = 1;
-    while (n > 0) {
-        if (n & 1) (ret *= x);
+    while (n > 0)
+    {
+        if (n & 1)
+            (ret *= x);
         (x *= x);
         n >>= 1;
     }
     return ret;
 }
-ll modpow(ll x, ll n, const ll mod) {
+ll modpow(ll x, ll n, const ll mod)
+{
     ll ret = 1;
-    while (n > 0) {
-        if (n & 1) (ret *= x);
+    while (n > 0)
+    {
+        if (n & 1)
+            (ret *= x);
         (x *= x);
         n >>= 1;
         x %= mod;
@@ -94,7 +108,8 @@ ll modpow(ll x, ll n, const ll mod) {
     return ret;
 }
 ll safemod(ll x, ll mod) { return (x % mod + mod) % mod; }
-uint64_t my_rand(void) {
+uint64_t my_rand(void)
+{
     static uint64_t x = 88172645463325252ULL;
     x = x ^ (x << 13);
     x = x ^ (x >> 7);
@@ -102,23 +117,28 @@ uint64_t my_rand(void) {
 }
 int popcnt(ull x) { return __builtin_popcountll(x); }
 template <typename T>
-vector<int> IOTA(vector<T> a) {
+vector<int> IOTA(vector<T> a)
+{
     int n = a.size();
     vector<int> id(n);
     iota(all(id), 0);
-    sort(all(id), [&](int i, int j) { return a[i] < a[j]; });
+    sort(all(id), [&](int i, int j)
+         { return a[i] < a[j]; });
     return id;
 }
-struct Timer {
+struct Timer
+{
     clock_t start_time;
     void start() { start_time = clock(); }
-    int lap() {
+    int lap()
+    {
         // return x ms.
         return (clock() - start_time) * 1000 / CLOCKS_PER_SEC;
     }
 };
 template <typename T = int>
-struct Edge {
+struct Edge
+{
     int from, to;
     T cost;
     int idx;
@@ -132,7 +152,8 @@ struct Edge {
 };
 
 template <typename T = int>
-struct Graph {
+struct Graph
+{
     vector<vector<Edge<T>>> g;
     int es;
 
@@ -142,24 +163,29 @@ struct Graph {
 
     size_t size() const { return g.size(); }
 
-    void add_directed_edge(int from, int to, T cost = 1) {
+    void add_directed_edge(int from, int to, T cost = 1)
+    {
         g[from].emplace_back(from, to, cost, es++);
     }
 
-    void add_edge(int from, int to, T cost = 1) {
+    void add_edge(int from, int to, T cost = 1)
+    {
         g[from].emplace_back(from, to, cost, es);
         g[to].emplace_back(to, from, cost, es++);
     }
 
     void read(int M, int padding = -1, bool weighted = false,
-              bool directed = false) {
-        for (int i = 0; i < M; i++) {
+              bool directed = false)
+    {
+        for (int i = 0; i < M; i++)
+        {
             int a, b;
             cin >> a >> b;
             a += padding;
             b += padding;
             T c = T(1);
-            if (weighted) cin >> c;
+            if (weighted)
+                cin >> c;
             if (directed)
                 add_directed_edge(a, b, c);
             else

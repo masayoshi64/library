@@ -4,7 +4,6 @@
 #include "library/mod/modint.cpp"
 //
 #include "library/convolution/FFT.cpp"
-#include "library/math/FormalPowerSeries.cpp"
 using mint = modint<1000000007>;
 FFT fft;
 int main()

@@ -1,3 +1,4 @@
+#pragma once
 #include "../../library/template/template.cpp"
 #include "../../library/convolution/NTT.cpp"
 struct FFT
@@ -32,7 +33,7 @@ struct FFT
     }
 
     template <typename Mint>
-    vector<mint> multiply(const vector<Mint> &x, const vector<Mint> &y)
+    vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)
     {
         if (x.size() == 0 && y.size() == 0)
             return {};
