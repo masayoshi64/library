@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/convolution/NTT.cpp
     title: library/convolution/NTT.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/math/FormalPowerSeries.cpp
     title: library/math/FormalPowerSeries.cpp
   - icon: ':heavy_check_mark:'
     path: library/math/combination.cpp
     title: Combination(P, C, H, Stirling number, Bell number)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -88,36 +88,36 @@ data:
     /* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF 4000000004000000000LL\n\
     #define endl '\\n'\nconst long double eps = 0.000000000000001;\nconst long double\
     \ PI = 3.141592653589793;\n#line 3 \"verify/FPS.power.test.cpp\"\n// library\n\
-    #line 1 \"library/convolution/NTT.cpp\"\ntemplate <typename Mint>\nstruct NTT\
-    \ {\n    vector<Mint> dw, idw;\n    int max_base;\n    Mint root;\n\n    NTT()\
-    \ {\n        const unsigned Mod = Mint::get_mod();\n        assert(Mod >= 3 &&\
-    \ Mod % 2 == 1);\n        auto tmp = Mod - 1;\n        max_base = 0;\n       \
-    \ while (tmp % 2 == 0) tmp >>= 1, max_base++;\n        root = 2;\n        while\
-    \ (root.pow((Mod - 1) >> 1) == 1) root += 1;\n        assert(root.pow(Mod - 1)\
-    \ == 1);\n        dw.resize(max_base);\n        idw.resize(max_base);\n      \
-    \  for (int i = 0; i < max_base; i++) {\n            dw[i] = -root.pow((Mod -\
-    \ 1) >> (i + 2));\n            idw[i] = Mint(1) / dw[i];\n        }\n    }\n\n\
-    \    void ntt(vector<Mint> &a) {\n        const int n = (int)a.size();\n     \
-    \   assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n\
-    \        for (int m = n; m >>= 1;) {\n            Mint w = 1;\n            for\
-    \ (int s = 0, k = 0; s < n; s += 2 * m) {\n                for (int i = s, j =\
-    \ s + m; i < s + m; ++i, ++j) {\n                    auto x = a[i], y = a[j] *\
-    \ w;\n                    a[i] = x + y, a[j] = x - y;\n                }\n   \
-    \             w *= dw[__builtin_ctz(++k)];\n            }\n        }\n    }\n\n\
-    \    void intt(vector<Mint> &a, bool f = true) {\n        const int n = (int)a.size();\n\
-    \        assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n\
-    \        for (int m = 1; m < n; m *= 2) {\n            Mint w = 1;\n         \
-    \   for (int s = 0, k = 0; s < n; s += 2 * m) {\n                for (int i =\
-    \ s, j = s + m; i < s + m; ++i, ++j) {\n                    auto x = a[i], y =\
-    \ a[j];\n                    a[i] = x + y, a[j] = (x - y) * w;\n             \
-    \   }\n                w *= idw[__builtin_ctz(++k)];\n            }\n        }\n\
-    \        if (f) {\n            Mint inv_sz = Mint(1) / n;\n            for (int\
-    \ i = 0; i < n; i++) a[i] *= inv_sz;\n        }\n    }\n\n    vector<Mint> multiply(vector<Mint>\
-    \ a, vector<Mint> b) {\n        int need = a.size() + b.size() - 1;\n        int\
-    \ nbase = 1;\n        while ((1 << nbase) < need) nbase++;\n        int sz = 1\
-    \ << nbase;\n        a.resize(sz, 0);\n        b.resize(sz, 0);\n        ntt(a);\n\
-    \        ntt(b);\n        Mint inv_sz = Mint(1) / sz;\n        for (int i = 0;\
-    \ i < sz; i++) a[i] *= b[i] * inv_sz;\n        intt(a, false);\n        a.resize(need);\n\
+    #line 1 \"library/convolution/NTT.cpp\"\ntemplate <typename Mint>\nstruct NTT\n\
+    {\n    vector<Mint> root_pow, root_pow_inv;\n    int max_base;\n    Mint root;\
+    \ //\u539F\u59CB\u6839\n\n    NTT()\n    {\n        const unsigned Mod = Mint::get_mod();\n\
+    \        auto tmp = Mod - 1;\n        max_base = 0;\n        while (tmp % 2 ==\
+    \ 0)\n            tmp >>= 1, max_base++;\n        root = 2;\n        while (root.pow((Mod\
+    \ - 1) >> 1) == 1)\n            root += 1;\n        root_pow.resize(max_base);\n\
+    \        root_pow_inv.resize(max_base);\n        for (int i = 0; i < max_base;\
+    \ i++)\n        {\n            root_pow[i] = -root.pow((Mod - 1) >> (i + 2));\n\
+    \            root_pow_inv[i] = Mint(1) / root_pow[i];\n        }\n    }\n\n  \
+    \  void ntt(vector<Mint> &a)\n    {\n        const int n = a.size();\n       \
+    \ assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n\
+    \        for (int m = n / 2; m >= 1; m >>= 1)\n        {\n            Mint w =\
+    \ 1;\n            for (int s = 0, k = 0; s < n; s += 2 * m)\n            {\n \
+    \               for (int i = s, j = s + m; i < s + m; ++i, ++j)\n            \
+    \    {\n                    auto x = a[i], y = a[j] * w;\n                   \
+    \ a[i] = x + y, a[j] = x - y;\n                }\n                w *= root_pow[__builtin_ctz(++k)];\n\
+    \            }\n        }\n    }\n\n    void intt(vector<Mint> &a)\n    {\n  \
+    \      const int n = a.size();\n        assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n)\
+    \ <= max_base);\n        for (int m = 1; m < n; m *= 2)\n        {\n         \
+    \   Mint w = 1;\n            for (int s = 0, k = 0; s < n; s += 2 * m)\n     \
+    \       {\n                for (int i = s, j = s + m; i < s + m; ++i, ++j)\n \
+    \               {\n                    auto x = a[i], y = a[j];\n            \
+    \        a[i] = x + y, a[j] = (x - y) * w;\n                }\n              \
+    \  w *= root_pow_inv[__builtin_ctz(++k)];\n            }\n        }\n    }\n\n\
+    \    vector<Mint> multiply(vector<Mint> a, vector<Mint> b)\n    {\n        const\
+    \ int need = a.size() + b.size() - 1;\n        int nbase = 1;\n        while ((1\
+    \ << nbase) < need)\n            nbase++;\n        int sz = 1 << nbase;\n    \
+    \    a.resize(sz, 0);\n        b.resize(sz, 0);\n        ntt(a);\n        ntt(b);\n\
+    \        Mint inv_sz = Mint(1) / sz;\n        for (int i = 0; i < sz; i++)\n \
+    \           a[i] *= b[i] * inv_sz;\n        intt(a);\n        a.resize(need);\n\
     \        return a;\n    }\n};\n#line 1 \"library/math/FormalPowerSeries.cpp\"\n\
     template <typename T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
     \    using P = FormalPowerSeries;\n\n    using MULT = function<P(P, P)>;\n\n \
@@ -285,7 +285,7 @@ data:
   isVerificationFile: true
   path: verify/FPS.power.test.cpp
   requiredBy: []
-  timestamp: '2021-01-02 17:35:14+09:00'
+  timestamp: '2021-08-24 20:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/FPS.power.test.cpp

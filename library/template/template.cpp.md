@@ -72,7 +72,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
@@ -93,9 +93,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/template/template.cpp\"\n/* #region header */\n\n\
@@ -223,39 +223,39 @@ data:
   isVerificationFile: false
   path: library/template/template.cpp
   requiredBy:
-  - test/atcoder-abc136_d.cpp
-  - verify/yuki-1408.cpp
-  - verify/aoj.cpp
-  - typical/dp/hakone.cpp
   - typical/dp/sort.cpp
+  - typical/dp/hakone.cpp
+  - verify/aoj.cpp
+  - verify/yuki-1408.cpp
+  - test/atcoder-abc136_d.cpp
   timestamp: '2020-12-23 20:37:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/aoj-DPL_5_G.test.cpp
+  - verify/aoj-GRL_7_A.test.cpp
+  - verify/aoj-DSL_2_B.test.cpp
+  - verify/aoj-DSL_2_G.test.cpp
+  - verify/yosupo-two_sat.test.cpp
+  - verify/ArticulationPoint.test.cpp
+  - verify/range_arithmetic_progression_add.test.cpp
+  - verify/aoj-dsl-1-a.test.cpp
+  - verify/aoj-GRL_6_A.test.cpp
+  - verify/aoj-GRL_6_B.test.cpp
+  - verify/aoj-ALDS1_14_B.test.cpp
+  - verify/aoj-ALDS1_12_B.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
+  - verify/yuki-545.test.cpp
+  - verify/yuki-1301.test.cpp
+  - verify/yuki-650.test.cpp
+  - verify/aoj-1595.test.cpp
+  - verify/aoj-NTL_1_E.test.cpp
+  - verify/FPS.power.test.cpp
   - verify/yuki-184.test.cpp
   - verify/aoj-2446.test.cpp
-  - verify/FPS.power.test.cpp
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yosupo-range_kth_smallest.test.cpp
-  - verify/aoj-NTL_1_A.test.cpp
-  - verify/yuki-545.test.cpp
-  - verify/aoj-DSL_2_G.test.cpp
-  - verify/aoj-1595.test.cpp
-  - verify/ArticulationPoint.test.cpp
-  - verify/aoj-ALDS1_14_B.test.cpp
-  - verify/yosupo-two_sat.test.cpp
-  - verify/yuki-650.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
-  - verify/aoj-dsl-1-a.test.cpp
-  - verify/aoj-NTL_1_E.test.cpp
-  - verify/aoj-ALDS1_12_B.test.cpp
-  - verify/range_arithmetic_progression_add.test.cpp
-  - verify/yuki-1301.test.cpp
-  - verify/aoj-GRL_6_A.test.cpp
-  - verify/aoj-DPL_5_G.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
-  - verify/aoj-GRL_7_A.test.cpp
-  - verify/aoj-GRL_6_B.test.cpp
-  - verify/aoj-DSL_2_B.test.cpp
+  - verify/aoj-NTL_1_A.test.cpp
 documentation_of: library/template/template.cpp
 layout: document
 redirect_from:
