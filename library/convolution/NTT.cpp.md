@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: library/convolution/FFT.cpp
+    title: library/convolution/FFT.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/FPS.power.test.cpp
@@ -81,7 +84,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/convolution/NTT.cpp
-  requiredBy: []
+  requiredBy:
+  - library/convolution/FFT.cpp
   timestamp: '2021-08-24 20:56:32+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
