@@ -1,12 +1,14 @@
-struct ArbitraryNTT
+#include "../../library/template/template.cpp"
+#include "../../library/convolution/NTT.cpp"
+struct FFT
 {
     using i64 = int64_t;
     static const int32_t m0 = 167772161;
     static const int32_t m1 = 469762049;
     static const int32_t m2 = 754974721;
-    using mint0 = MontgomeryModInt<m0>;
-    using mint1 = MontgomeryModInt<m1>;
-    using mint2 = MontgomeryModInt<m2>;
+    using mint0 = modint<m0>;
+    using mint1 = modint<m1>;
+    using mint2 = modint<m2>;
     const int32_t r01 = 104391568;
     const int32_t r02 = 323560596;
     const int32_t r12 = 399692502;
@@ -14,7 +16,7 @@ struct ArbitraryNTT
     const i64 w1 = m0;
     const i64 w2 = i64(m0) * m1;
 
-    ArbitraryNTT()
+    FFT()
     {
     }
     template <typename T, typename submint>
