@@ -49,5 +49,3 @@ redirect_from:
 - /library/library/structure/UnionFind/UnionFind.cpp.html
 title: UnionFind
 ---
-# Union Find
-union findです。
