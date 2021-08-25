@@ -46,6 +46,7 @@ title: Fast Zeta Transform
 ---
 ## メモ
 - 包除原理を高速に計算するために$f[S] = (-1)^{|S|}cnt[S]$とする場合が多い
+
 ## FZT
 ```c++
 g = FZT(f);
