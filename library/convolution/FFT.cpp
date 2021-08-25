@@ -5,6 +5,7 @@
 /**
  * @brief Fast Fourier Transform
  * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp
+ * @docs docs/FFT.md
  */
 struct FFT
 {
