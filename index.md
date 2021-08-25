@@ -8,7 +8,7 @@ data:
       title: Fast Fourier Transform
     - icon: ':heavy_check_mark:'
       path: library/convolution/FZT.cpp
-      title: library/convolution/FZT.cpp
+      title: Fast Zeta Transform
     - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
       title: Number Theoretic Transform
