@@ -1,31 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/convolution/NTT.cpp
     title: Number Theoretic Transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/FFT.md
     document_title: Fast Fourier Transform
     links:
     - https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp
-  bundledCode: "#line 2 \"library/convolution/FFT.cpp\"\n#include <bits/stdc++.h>\n\
-    #line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint {\n    int\
-    \ x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >= 0 ? y % Mod\
-    \ : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const modint& p) {\n\
-    \        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n    }\n\n  \
-    \  modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x) >= Mod)\
+  bundledCode: "#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\
+    \ {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >=\
+    \ 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const modint&\
+    \ p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n    }\n\
+    \n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x) >= Mod)\
     \ x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
     \ p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n    }\n\
     \n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n \
@@ -79,7 +78,7 @@ data:
     \ nbase;\n        a.resize(sz, 0);\n        b.resize(sz, 0);\n        ntt(a);\n\
     \        ntt(b);\n        Mint inv_sz = Mint(1) / sz;\n        for (int i = 0;\
     \ i < sz; i++)\n            a[i] *= b[i] * inv_sz;\n        intt(a);\n       \
-    \ a.resize(need);\n        return a;\n    }\n};\n#line 5 \"library/convolution/FFT.cpp\"\
+    \ a.resize(need);\n        return a;\n    }\n};\n#line 4 \"library/convolution/FFT.cpp\"\
     \n/**\n * @brief Fast Fourier Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
     \ * @docs docs/FFT.md\n */\nstruct FFT\n{\nprivate:\n    using i64 = int64_t;\n\
     \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
@@ -126,9 +125,8 @@ data:
     \            T b = (n1 + m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a)\
     \ * r02r12 + (m2 - b) * r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n\
     \        }\n        return ret;\n    }\n};\n"
-  code: "#pragma once\n#include <bits/stdc++.h>\n#include \"../../library/mod/modint.cpp\"\
-    \n#include \"../../library/convolution/NTT.cpp\"\n/**\n * @brief Fast Fourier\
-    \ Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
+  code: "#pragma once\n#include \"library/mod/modint.cpp\"\n#include \"library/convolution/NTT.cpp\"\
+    \n/**\n * @brief Fast Fourier Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
     \ * @docs docs/FFT.md\n */\nstruct FFT\n{\nprivate:\n    using i64 = int64_t;\n\
     \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
     \    static const int32_t m2 = 754974721;\n    using mint0 = modint<m0>;\n   \
@@ -180,8 +178,8 @@ data:
   isVerificationFile: false
   path: library/convolution/FFT.cpp
   requiredBy: []
-  timestamp: '2021-08-25 11:38:38+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-08-25 11:45:14+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/convolution/FFT.cpp

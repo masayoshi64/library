@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/convolution/NTT.cpp
     title: Number Theoretic Transform
   - icon: ':heavy_check_mark:'
     path: library/math/FormalPowerSeries.cpp
     title: library/math/FormalPowerSeries.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
