@@ -1,4 +1,9 @@
 #pragma once
+/**
+ * @brief Number Theoretic Transformation
+ * @docs docs/NTT.md
+ * @param modint
+ */
 template <typename Mint>
 struct NTT
 {
