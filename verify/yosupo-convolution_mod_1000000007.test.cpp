@@ -1,8 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod_1000000007"
 #include "library/template/template.cpp"
 // library
-#include "library/mod/modint.cpp"
-//
 #include "library/convolution/FFT.cpp"
 using mint = modint<1000000007>;
 FFT fft;
