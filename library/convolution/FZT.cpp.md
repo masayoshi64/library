@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/aoj-2446.test.cpp
-    title: verify/aoj-2446.test.cpp
+    path: verify/FZT.test.cpp
+    title: verify/FZT.test.cpp
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
   timestamp: '2021-08-25 10:21:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj-2446.test.cpp
+  - verify/FZT.test.cpp
 documentation_of: library/convolution/FZT.cpp
 layout: document
 redirect_from:
@@ -44,3 +44,18 @@ redirect_from:
 - /library/library/convolution/FZT.cpp.html
 title: Fast Zeta Transform
 ---
+## メモ
+- 包除原理を高速に計算するために$f[S] = (-1)^{|S|}cnt[S]$とする場合が多い
+## FZT
+```c++
+g = FZT(f);
+```
+$$
+g[T] = \sum_{S \subset T}f[S]
+$$
+が計算できる。
+$f[S] = (-1)^{|S|}cnt[S]$なら
+$$
+g[S] = \sum_{T \subset S}(-1)^{|S|}cnt[S]
+$$
+だから包除原理そのもの

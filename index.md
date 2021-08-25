@@ -213,11 +213,11 @@ data:
       path: verify/FPS.power.test.cpp
       title: verify/FPS.power.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/FZT.test.cpp
+      title: verify/FZT.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-1595.test.cpp
       title: verify/aoj-1595.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj-2446.test.cpp
-      title: verify/aoj-2446.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-ALDS1_12_B.test.cpp
       title: verify/aoj-ALDS1_12_B.test.cpp

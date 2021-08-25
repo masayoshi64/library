@@ -28,11 +28,11 @@ data:
     path: verify/FPS.power.test.cpp
     title: verify/FPS.power.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/FZT.test.cpp
+    title: verify/FZT.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-1595.test.cpp
     title: verify/aoj-1595.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj-2446.test.cpp
-    title: verify/aoj-2446.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj-ALDS1_12_B.test.cpp
     title: verify/aoj-ALDS1_12_B.test.cpp
@@ -252,9 +252,9 @@ data:
   - verify/yuki-650.test.cpp
   - verify/aoj-1595.test.cpp
   - verify/aoj-NTL_1_E.test.cpp
+  - verify/FZT.test.cpp
   - verify/FPS.power.test.cpp
   - verify/yuki-184.test.cpp
-  - verify/aoj-2446.test.cpp
   - verify/yosupo-range_kth_smallest.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
   - verify/yosupo-convolution_mod.test.cpp
