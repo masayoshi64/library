@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: library/convolution/NTT.cpp
-    title: library/convolution/NTT.cpp
+    title: Number Theoretic Transformation
   - icon: ':heavy_check_mark:'
     path: library/math/FormalPowerSeries.cpp
     title: library/math/FormalPowerSeries.cpp
@@ -89,9 +89,10 @@ data:
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
     const long double PI = 3.141592653589793;\n#line 3 \"verify/FPS.power.test.cpp\"\
-    \n// library\n#line 2 \"library/convolution/NTT.cpp\"\ntemplate <typename Mint>\n\
-    struct NTT\n{\n    vector<Mint> root_pow, root_pow_inv;\n    int max_base;\n \
-    \   Mint root; //\u539F\u59CB\u6839\n\n    NTT()\n    {\n        const unsigned\
+    \n// library\n#line 2 \"library/convolution/NTT.cpp\"\n/**\n * @brief Number Theoretic\
+    \ Transformation\n * @docs docs/NTT.md\n * @param modint\n */\ntemplate <typename\
+    \ Mint>\nstruct NTT\n{\n    vector<Mint> root_pow, root_pow_inv;\n    int max_base;\n\
+    \    Mint root; //\u539F\u59CB\u6839\n\n    NTT()\n    {\n        const unsigned\
     \ Mod = Mint::get_mod();\n        auto tmp = Mod - 1;\n        max_base = 0;\n\
     \        while (tmp % 2 == 0)\n            tmp >>= 1, max_base++;\n        root\
     \ = 2;\n        while (root.pow((Mod - 1) >> 1) == 1)\n            root += 1;\n\
@@ -287,7 +288,7 @@ data:
   isVerificationFile: true
   path: verify/FPS.power.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-25 09:59:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/FPS.power.test.cpp

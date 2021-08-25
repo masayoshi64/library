@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: library/convolution/NTT.cpp
-    title: library/convolution/NTT.cpp
+    title: Number Theoretic Transformation
   - icon: ':heavy_check_mark:'
     path: library/math/FormalPowerSeries.cpp
     title: library/math/FormalPowerSeries.cpp
@@ -87,55 +87,56 @@ data:
     #define inf 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\\
     n'\nconst long double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
     #line 3 \"verify/yosupo-convolution_mod.test.cpp\"\n// library\n#line 2 \"library/convolution/NTT.cpp\"\
-    \ntemplate <typename Mint>\nstruct NTT\n{\n    vector<Mint> root_pow, root_pow_inv;\n\
-    \    int max_base;\n    Mint root; //\u539F\u59CB\u6839\n\n    NTT()\n    {\n\
-    \        const unsigned Mod = Mint::get_mod();\n        auto tmp = Mod - 1;\n\
-    \        max_base = 0;\n        while (tmp % 2 == 0)\n            tmp >>= 1, max_base++;\n\
-    \        root = 2;\n        while (root.pow((Mod - 1) >> 1) == 1)\n          \
-    \  root += 1;\n        root_pow.resize(max_base);\n        root_pow_inv.resize(max_base);\n\
-    \        for (int i = 0; i < max_base; i++)\n        {\n            root_pow[i]\
-    \ = -root.pow((Mod - 1) >> (i + 2));\n            root_pow_inv[i] = Mint(1) /\
-    \ root_pow[i];\n        }\n    }\n\n    void ntt(vector<Mint> &a)\n    {\n   \
-    \     const int n = a.size();\n        assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n)\
-    \ <= max_base);\n        for (int m = n / 2; m >= 1; m >>= 1)\n        {\n   \
-    \         Mint w = 1;\n            for (int s = 0, k = 0; s < n; s += 2 * m)\n\
-    \            {\n                for (int i = s, j = s + m; i < s + m; ++i, ++j)\n\
-    \                {\n                    auto x = a[i], y = a[j] * w;\n       \
-    \             a[i] = x + y, a[j] = x - y;\n                }\n               \
-    \ w *= root_pow[__builtin_ctz(++k)];\n            }\n        }\n    }\n\n    void\
-    \ intt(vector<Mint> &a)\n    {\n        const int n = a.size();\n        assert((n\
+    \n/**\n * @brief Number Theoretic Transformation\n * @docs docs/NTT.md\n * @param\
+    \ modint\n */\ntemplate <typename Mint>\nstruct NTT\n{\n    vector<Mint> root_pow,\
+    \ root_pow_inv;\n    int max_base;\n    Mint root; //\u539F\u59CB\u6839\n\n  \
+    \  NTT()\n    {\n        const unsigned Mod = Mint::get_mod();\n        auto tmp\
+    \ = Mod - 1;\n        max_base = 0;\n        while (tmp % 2 == 0)\n          \
+    \  tmp >>= 1, max_base++;\n        root = 2;\n        while (root.pow((Mod - 1)\
+    \ >> 1) == 1)\n            root += 1;\n        root_pow.resize(max_base);\n  \
+    \      root_pow_inv.resize(max_base);\n        for (int i = 0; i < max_base; i++)\n\
+    \        {\n            root_pow[i] = -root.pow((Mod - 1) >> (i + 2));\n     \
+    \       root_pow_inv[i] = Mint(1) / root_pow[i];\n        }\n    }\n\n    void\
+    \ ntt(vector<Mint> &a)\n    {\n        const int n = a.size();\n        assert((n\
     \ & (n - 1)) == 0);\n        assert(__builtin_ctz(n) <= max_base);\n        for\
-    \ (int m = 1; m < n; m *= 2)\n        {\n            Mint w = 1;\n           \
-    \ for (int s = 0, k = 0; s < n; s += 2 * m)\n            {\n                for\
-    \ (int i = s, j = s + m; i < s + m; ++i, ++j)\n                {\n           \
-    \         auto x = a[i], y = a[j];\n                    a[i] = x + y, a[j] = (x\
-    \ - y) * w;\n                }\n                w *= root_pow_inv[__builtin_ctz(++k)];\n\
-    \            }\n        }\n    }\n\n    vector<Mint> multiply(vector<Mint> a,\
-    \ vector<Mint> b)\n    {\n        const int need = a.size() + b.size() - 1;\n\
-    \        int nbase = 1;\n        while ((1 << nbase) < need)\n            nbase++;\n\
-    \        int sz = 1 << nbase;\n        a.resize(sz, 0);\n        b.resize(sz,\
-    \ 0);\n        ntt(a);\n        ntt(b);\n        Mint inv_sz = Mint(1) / sz;\n\
-    \        for (int i = 0; i < sz; i++)\n            a[i] *= b[i] * inv_sz;\n  \
-    \      intt(a);\n        a.resize(need);\n        return a;\n    }\n};\n#line\
-    \ 1 \"library/math/FormalPowerSeries.cpp\"\ntemplate <typename T>\nstruct FormalPowerSeries\
-    \ : vector<T> {\n    using vector<T>::vector;\n    using P = FormalPowerSeries;\n\
-    \n    using MULT = function<P(P, P)>;\n\n    static MULT& get_mult() {\n     \
-    \   static MULT mult = nullptr;\n        return mult;\n    }\n\n    static void\
-    \ set_fft(MULT f) { get_mult() = f; }\n\n    // \u672B\u5C3E\u306E0\u3092\u6D88\
-    \u3059\n    void shrink() {\n        while (this->size() && this->back() == T(0))\
-    \ this->pop_back();\n    }\n\n    P operator+(const P& r) const { return P(*this)\
-    \ += r; }\n\n    P operator+(const T& v) const { return P(*this) += v; }\n\n \
-    \   P operator-(const P& r) const { return P(*this) -= r; }\n\n    P operator-(const\
-    \ T& v) const { return P(*this) -= v; }\n\n    P operator*(const P& r) const {\
-    \ return P(*this) *= r; }\n\n    P operator*(const T& v) const { return P(*this)\
-    \ *= v; }\n\n    P operator/(const P& r) const { return P(*this) /= r; }\n\n \
-    \   P operator%(const P& r) const { return P(*this) %= r; }\n\n    P& operator+=(const\
-    \ P& r) {\n        if (r.size() > this->size()) this->resize(r.size());\n    \
-    \    for (int i = 0; i < r.size(); i++) (*this)[i] += r[i];\n        return *this;\n\
-    \    }\n\n    P& operator+=(const T& r) {\n        if (this->empty()) this->resize(1);\n\
-    \        (*this)[0] += r;\n        return *this;\n    }\n\n    P& operator-=(const\
-    \ P& r) {\n        if (r.size() > this->size()) this->resize(r.size());\n    \
-    \    for (int i = 0; i < r.size(); i++) (*this)[i] -= r[i];\n        shrink();\n\
+    \ (int m = n / 2; m >= 1; m >>= 1)\n        {\n            Mint w = 1;\n     \
+    \       for (int s = 0, k = 0; s < n; s += 2 * m)\n            {\n           \
+    \     for (int i = s, j = s + m; i < s + m; ++i, ++j)\n                {\n   \
+    \                 auto x = a[i], y = a[j] * w;\n                    a[i] = x +\
+    \ y, a[j] = x - y;\n                }\n                w *= root_pow[__builtin_ctz(++k)];\n\
+    \            }\n        }\n    }\n\n    void intt(vector<Mint> &a)\n    {\n  \
+    \      const int n = a.size();\n        assert((n & (n - 1)) == 0);\n        assert(__builtin_ctz(n)\
+    \ <= max_base);\n        for (int m = 1; m < n; m *= 2)\n        {\n         \
+    \   Mint w = 1;\n            for (int s = 0, k = 0; s < n; s += 2 * m)\n     \
+    \       {\n                for (int i = s, j = s + m; i < s + m; ++i, ++j)\n \
+    \               {\n                    auto x = a[i], y = a[j];\n            \
+    \        a[i] = x + y, a[j] = (x - y) * w;\n                }\n              \
+    \  w *= root_pow_inv[__builtin_ctz(++k)];\n            }\n        }\n    }\n\n\
+    \    vector<Mint> multiply(vector<Mint> a, vector<Mint> b)\n    {\n        const\
+    \ int need = a.size() + b.size() - 1;\n        int nbase = 1;\n        while ((1\
+    \ << nbase) < need)\n            nbase++;\n        int sz = 1 << nbase;\n    \
+    \    a.resize(sz, 0);\n        b.resize(sz, 0);\n        ntt(a);\n        ntt(b);\n\
+    \        Mint inv_sz = Mint(1) / sz;\n        for (int i = 0; i < sz; i++)\n \
+    \           a[i] *= b[i] * inv_sz;\n        intt(a);\n        a.resize(need);\n\
+    \        return a;\n    }\n};\n#line 1 \"library/math/FormalPowerSeries.cpp\"\n\
+    template <typename T>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
+    \    using P = FormalPowerSeries;\n\n    using MULT = function<P(P, P)>;\n\n \
+    \   static MULT& get_mult() {\n        static MULT mult = nullptr;\n        return\
+    \ mult;\n    }\n\n    static void set_fft(MULT f) { get_mult() = f; }\n\n    //\
+    \ \u672B\u5C3E\u306E0\u3092\u6D88\u3059\n    void shrink() {\n        while (this->size()\
+    \ && this->back() == T(0)) this->pop_back();\n    }\n\n    P operator+(const P&\
+    \ r) const { return P(*this) += r; }\n\n    P operator+(const T& v) const { return\
+    \ P(*this) += v; }\n\n    P operator-(const P& r) const { return P(*this) -= r;\
+    \ }\n\n    P operator-(const T& v) const { return P(*this) -= v; }\n\n    P operator*(const\
+    \ P& r) const { return P(*this) *= r; }\n\n    P operator*(const T& v) const {\
+    \ return P(*this) *= v; }\n\n    P operator/(const P& r) const { return P(*this)\
+    \ /= r; }\n\n    P operator%(const P& r) const { return P(*this) %= r; }\n\n \
+    \   P& operator+=(const P& r) {\n        if (r.size() > this->size()) this->resize(r.size());\n\
+    \        for (int i = 0; i < r.size(); i++) (*this)[i] += r[i];\n        return\
+    \ *this;\n    }\n\n    P& operator+=(const T& r) {\n        if (this->empty())\
+    \ this->resize(1);\n        (*this)[0] += r;\n        return *this;\n    }\n\n\
+    \    P& operator-=(const P& r) {\n        if (r.size() > this->size()) this->resize(r.size());\n\
+    \        for (int i = 0; i < r.size(); i++) (*this)[i] -= r[i];\n        shrink();\n\
     \        return *this;\n    }\n\n    P& operator-=(const T& r) {\n        if (this->empty())\
     \ this->resize(1);\n        (*this)[0] -= r;\n        shrink();\n        return\
     \ *this;\n    }\n\n    P& operator*=(const T& v) {\n        const int n = (int)this->size();\n\
@@ -257,7 +258,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-convolution_mod.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-25 09:59:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod.test.cpp
