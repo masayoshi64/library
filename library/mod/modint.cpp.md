@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':x:'
+    path: library/convolution/FFT.cpp
+    title: Fast Fourier Transform
   - icon: ':warning:'
     path: typical/dp/hakone.cpp
     title: typical/dp/hakone.cpp
@@ -18,15 +21,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: verify/yosupo-convolution_mod_1000000007.test.cpp
+    title: verify/yosupo-convolution_mod_1000000007.test.cpp
+  - icon: ':x:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\
@@ -85,10 +91,12 @@ data:
   requiredBy:
   - typical/dp/sort.cpp
   - typical/dp/hakone.cpp
+  - library/convolution/FFT.cpp
   timestamp: '2021-01-02 17:35:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yuki-650.test.cpp
   - verify/FPS.power.test.cpp

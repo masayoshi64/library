@@ -3,13 +3,13 @@ data:
   libraryCategories:
   - name: library/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/convolution/FFT.cpp
       title: Fast Fourier Transform
     - icon: ':heavy_check_mark:'
       path: library/convolution/FZT.cpp
       title: Fast Zeta Transform
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/convolution/NTT.cpp
       title: Number Theoretic Transform
   - name: library/dp
@@ -19,10 +19,10 @@ data:
       title: library/dp/rekkyo.cpp
   - name: library/graph/connected-components
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/connected-components/StronglyConnectedComponents.cpp
       title: library/graph/connected-components/StronglyConnectedComponents.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/connected-components/TwoSat.cpp
       title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
@@ -112,7 +112,7 @@ data:
     - icon: ':warning:'
       path: library/mod/mod_sqrt.cpp
       title: library/mod/mod_sqrt.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
   - name: library/others
@@ -174,7 +174,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: library/utils
@@ -260,13 +260,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/yosupo-convolution_mod_1000000007.test.cpp
       title: verify/yosupo-convolution_mod_1000000007.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-range_kth_smallest.test.cpp
       title: verify/yosupo-range_kth_smallest.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
     - icon: ':heavy_check_mark:'

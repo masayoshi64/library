@@ -1,23 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/convolution/FFT.cpp
     title: Fast Fourier Transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/convolution/NTT.cpp
     title: Number Theoretic Transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: library/mod/modint.cpp
+    title: library/mod/modint.cpp
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -112,7 +115,32 @@ data:
     \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
     \        a = modint<Mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
     \ { return Mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 5\
-    \ \"verify/yosupo-convolution_mod_1000000007.test.cpp\"\n//\n#line 2 \"library/convolution/NTT.cpp\"\
+    \ \"verify/yosupo-convolution_mod_1000000007.test.cpp\"\n//\n#line 1 \"library/mod/modint.cpp\"\
+    \ntemplate <int Mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\n\
+    \    modint(long long y) : x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\
+    \n    modint& operator+=(const modint& p) {\n        if ((x += p.x) >= Mod) x\
+    \ -= Mod;\n        return *this;\n    }\n\n    modint& operator-=(const modint&\
+    \ p) {\n        if ((x += Mod - p.x) >= Mod) x -= Mod;\n        return *this;\n\
+    \    }\n\n    modint& operator*=(const modint& p) {\n        x = (int)(1LL * x\
+    \ * p.x % Mod);\n        return *this;\n    }\n\n    modint& operator/=(const\
+    \ modint& p) {\n        *this *= p.inverse();\n        return *this;\n    }\n\n\
+    \    modint operator-() const { return modint(-x); }\n\n    modint operator+(const\
+    \ modint& p) const { return modint(*this) += p; }\n\n    modint operator-(const\
+    \ modint& p) const { return modint(*this) -= p; }\n\n    modint operator*(const\
+    \ modint& p) const { return modint(*this) *= p; }\n\n    modint operator/(const\
+    \ modint& p) const { return modint(*this) /= p; }\n\n    bool operator==(const\
+    \ modint& p) const { return x == p.x; }\n\n    bool operator!=(const modint& p)\
+    \ const { return x != p.x; }\n\n    modint inverse() const {\n        int a =\
+    \ x, b = Mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
+    \            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
+    \        return modint(u);\n    }\n\n    modint pow(int64_t n) const {\n     \
+    \   modint ret(1), mul(x);\n        while (n > 0) {\n            if (n & 1) ret\
+    \ *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n        return\
+    \ ret;\n    }\n\n    friend ostream& operator<<(ostream& os, const modint& p)\
+    \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
+    \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<Mod>(t);\n\
+    \        return (is);\n    }\n\n    static int get_mod() { return Mod; }\n\n \
+    \   constexpr int get() const { return x; }\n};\n#line 2 \"library/convolution/NTT.cpp\"\
     \n/**\n * @brief Number Theoretic Transform\n * @docs docs/NTT.md\n * @param modint\n\
     \ */\ntemplate <typename Mint>\nstruct NTT\n{\nprivate:\n    vector<Mint> root_pow,\
     \ root_pow_inv;\n    int max_base;\n    Mint root; //\u539F\u59CB\u6839\n\n  \
@@ -145,8 +173,8 @@ data:
     \ nbase;\n        a.resize(sz, 0);\n        b.resize(sz, 0);\n        ntt(a);\n\
     \        ntt(b);\n        Mint inv_sz = Mint(1) / sz;\n        for (int i = 0;\
     \ i < sz; i++)\n            a[i] *= b[i] * inv_sz;\n        intt(a);\n       \
-    \ a.resize(need);\n        return a;\n    }\n};\n#line 4 \"library/convolution/FFT.cpp\"\
-    \n\n/**\n * @brief Fast Fourier Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
+    \ a.resize(need);\n        return a;\n    }\n};\n#line 5 \"library/convolution/FFT.cpp\"\
+    \n/**\n * @brief Fast Fourier Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
     \ * @docs docs/FFT.md\n */\nstruct FFT\n{\nprivate:\n    using i64 = int64_t;\n\
     \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
     \    static const int32_t m2 = 754974721;\n    using mint0 = modint<m0>;\n   \
@@ -207,12 +235,13 @@ data:
   - library/template/template.cpp
   - library/mod/modint.cpp
   - library/convolution/FFT.cpp
+  - library/mod/modint.cpp
   - library/convolution/NTT.cpp
   isVerificationFile: true
   path: verify/yosupo-convolution_mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2021-08-25 10:38:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-08-25 11:38:38+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod_1000000007.test.cpp
 layout: document
