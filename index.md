@@ -11,7 +11,7 @@ data:
       title: library/convolution/FZT.cpp
     - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
-      title: Number Theoretic Transformation
+      title: Number Theoretic Transform
   - name: library/dp
     pages:
     - icon: ':heavy_check_mark:'

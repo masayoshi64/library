@@ -1,3 +1,4 @@
+## メモ
 - yosupo judgeで75msくらい（入出力高速化あり）
 
 - [速いmodint](https://ei1333.github.io/library/math/combinatorics/montgomery-mod-int.cpp)を使うといいかもしれない
