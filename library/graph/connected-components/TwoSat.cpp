@@ -1,13 +1,13 @@
-#include "library/graph/connected-components/StronglyConnectedComponents.cpp"
+#include "../../library/graph/connected-components/StronglyConnectedComponents.cpp"
 
 struct TwoSat : StronglyConnectedComponents<bool> {
    public:
     using StronglyConnectedComponents<bool>::g;
     using StronglyConnectedComponents<bool>::comp;
     using StronglyConnectedComponents<bool>::add_edge;
-    size_t sz;
+    int sz;
 
-    explicit TwoSat(size_t v)
+    explicit TwoSat(int v)
         : sz(v), StronglyConnectedComponents<bool>(v + v) {}
 
     void add_if(int u, int v) {

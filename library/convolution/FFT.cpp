@@ -1,8 +1,14 @@
 #pragma once
 #include "../../library/template/template.cpp"
 #include "../../library/convolution/NTT.cpp"
+
+/**
+ * @brief Fast Fourier Transform
+ * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp
+ */
 struct FFT
 {
+private:
     using i64 = int64_t;
     static const int32_t m0 = 167772161;
     static const int32_t m1 = 469762049;
@@ -16,11 +22,8 @@ struct FFT
     const int32_t r02r12 = i64(r02) * r12 % m2;
     const i64 w1 = m0;
     const i64 w2 = i64(m0) * m1;
-
-    FFT()
-    {
-    }
     template <typename T, typename submint>
+
     vector<submint> mul(const vector<T> &a, const vector<T> &b)
     {
         static NTT<submint> ntt;
@@ -32,6 +35,15 @@ struct FFT
         return ntt.multiply(s, t);
     }
 
+public:
+    FFT()
+    {
+    }
+
+    /**
+     * @brief 任意modによるmodintの畳み込み
+     * @arg vector<modint<mod>>
+     */
     template <typename Mint>
     vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)
     {
@@ -67,6 +79,10 @@ struct FFT
         return ret;
     }
 
+    /**
+     * @brief int, long long用の畳み込み
+     * @arg vector<long long>を想定
+     */
     template <typename T>
     vector<T> multiply_ll(const vector<T> &s, const vector<T> &t)
     {
