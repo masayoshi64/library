@@ -7,28 +7,10 @@
 template <typename Mint>
 struct NTT
 {
+private:
     vector<Mint> root_pow, root_pow_inv;
     int max_base;
     Mint root; //原始根
-
-    NTT()
-    {
-        const unsigned Mod = Mint::get_mod();
-        auto tmp = Mod - 1;
-        max_base = 0;
-        while (tmp % 2 == 0)
-            tmp >>= 1, max_base++;
-        root = 2;
-        while (root.pow((Mod - 1) >> 1) == 1)
-            root += 1;
-        root_pow.resize(max_base);
-        root_pow_inv.resize(max_base);
-        for (int i = 0; i < max_base; i++)
-        {
-            root_pow[i] = -root.pow((Mod - 1) >> (i + 2));
-            root_pow_inv[i] = Mint(1) / root_pow[i];
-        }
-    }
 
     void ntt(vector<Mint> &a)
     {
@@ -70,6 +52,30 @@ struct NTT
         }
     }
 
+public:
+    NTT()
+    {
+        const unsigned Mod = Mint::get_mod();
+        auto tmp = Mod - 1;
+        max_base = 0;
+        while (tmp % 2 == 0)
+            tmp >>= 1, max_base++;
+        root = 2;
+        while (root.pow((Mod - 1) >> 1) == 1)
+            root += 1;
+        root_pow.resize(max_base);
+        root_pow_inv.resize(max_base);
+        for (int i = 0; i < max_base; i++)
+        {
+            root_pow[i] = -root.pow((Mod - 1) >> (i + 2));
+            root_pow_inv[i] = Mint(1) / root_pow[i];
+        }
+    }
+
+    /**
+     * @brief 畳み込み
+     * @param vector<modint<mod>>
+     */
     vector<Mint> multiply(vector<Mint> a, vector<Mint> b)
     {
         const int need = a.size() + b.size() - 1;
