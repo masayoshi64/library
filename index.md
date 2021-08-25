@@ -5,7 +5,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: library/convolution/FFT.cpp
-      title: library/convolution/FFT.cpp
+      title: Fast Fourier Transform
     - icon: ':heavy_check_mark:'
       path: library/convolution/FZT.cpp
       title: library/convolution/FZT.cpp
@@ -19,10 +19,10 @@ data:
       title: library/dp/rekkyo.cpp
   - name: library/graph/connected-components
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: library/graph/connected-components/StronglyConnectedComponents.cpp
       title: library/graph/connected-components/StronglyConnectedComponents.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: library/graph/connected-components/TwoSat.cpp
       title: library/graph/connected-components/TwoSat.cpp
   - name: library/graph/distance
@@ -266,7 +266,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-range_kth_smallest.test.cpp
       title: verify/yosupo-range_kth_smallest.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/yosupo-two_sat.test.cpp
       title: verify/yosupo-two_sat.test.cpp
     - icon: ':heavy_check_mark:'

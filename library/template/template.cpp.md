@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: library/convolution/FFT.cpp
-    title: library/convolution/FFT.cpp
+    title: Fast Fourier Transform
   - icon: ':warning:'
     path: test/atcoder-abc136_d.cpp
     title: test/atcoder-abc136_d.cpp
@@ -81,9 +81,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-range_kth_smallest.test.cpp
     title: verify/yosupo-range_kth_smallest.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/yosupo-two_sat.test.cpp
-    title: verify/yosupo-two_sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yuki-1301.test.cpp
     title: verify/yuki-1301.test.cpp
@@ -242,7 +239,6 @@ data:
   - verify/aoj-GRL_7_A.test.cpp
   - verify/aoj-DSL_2_B.test.cpp
   - verify/aoj-DSL_2_G.test.cpp
-  - verify/yosupo-two_sat.test.cpp
   - verify/ArticulationPoint.test.cpp
   - verify/range_arithmetic_progression_add.test.cpp
   - verify/aoj-dsl-1-a.test.cpp

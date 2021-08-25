@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: library/convolution/FFT.cpp
-    title: library/convolution/FFT.cpp
+    title: Fast Fourier Transform
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/FPS.power.test.cpp

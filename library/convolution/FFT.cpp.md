@@ -16,7 +16,9 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    document_title: Fast Fourier Transform
+    links:
+    - https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp
   bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
     #pragma GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n\
     // types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
@@ -109,22 +111,25 @@ data:
     \ 0);\n        ntt(a);\n        ntt(b);\n        Mint inv_sz = Mint(1) / sz;\n\
     \        for (int i = 0; i < sz; i++)\n            a[i] *= b[i] * inv_sz;\n  \
     \      intt(a);\n        a.resize(need);\n        return a;\n    }\n};\n#line\
-    \ 4 \"library/convolution/FFT.cpp\"\nstruct FFT\n{\n    using i64 = int64_t;\n\
-    \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
-    \    static const int32_t m2 = 754974721;\n    using mint0 = modint<m0>;\n   \
-    \ using mint1 = modint<m1>;\n    using mint2 = modint<m2>;\n    const int32_t\
-    \ r01 = 104391568;\n    const int32_t r02 = 323560596;\n    const int32_t r12\
-    \ = 399692502;\n    const int32_t r02r12 = i64(r02) * r12 % m2;\n    const i64\
-    \ w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n\n    FFT()\n    {\n    }\n    template\
-    \ <typename T, typename submint>\n    vector<submint> mul(const vector<T> &a,\
+    \ 4 \"library/convolution/FFT.cpp\"\n\n/**\n * @brief Fast Fourier Transform\n\
+    \ * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n */\nstruct\
+    \ FFT\n{\nprivate:\n    using i64 = int64_t;\n    static const int32_t m0 = 167772161;\n\
+    \    static const int32_t m1 = 469762049;\n    static const int32_t m2 = 754974721;\n\
+    \    using mint0 = modint<m0>;\n    using mint1 = modint<m1>;\n    using mint2\
+    \ = modint<m2>;\n    const int32_t r01 = 104391568;\n    const int32_t r02 = 323560596;\n\
+    \    const int32_t r12 = 399692502;\n    const int32_t r02r12 = i64(r02) * r12\
+    \ % m2;\n    const i64 w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n    template\
+    \ <typename T, typename submint>\n\n    vector<submint> mul(const vector<T> &a,\
     \ const vector<T> &b)\n    {\n        static NTT<submint> ntt;\n        vector<submint>\
     \ s(a.size()), t(b.size());\n        for (int i = 0; i < (int)a.size(); ++i)\n\
     \            s[i] = i64(a[i] % submint::get_mod());\n        for (int i = 0; i\
     \ < (int)b.size(); ++i)\n            t[i] = i64(b[i] % submint::get_mod());\n\
-    \        return ntt.multiply(s, t);\n    }\n\n    template <typename Mint>\n \
-    \   vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)\n    {\n\
-    \        if (x.size() == 0 && y.size() == 0)\n            return {};\n       \
-    \ if (min<int>(x.size(), y.size()) < 128)\n        {\n            vector<Mint>\
+    \        return ntt.multiply(s, t);\n    }\n\npublic:\n    FFT()\n    {\n    }\n\
+    \n    /**\n     * @brief \u4EFB\u610Fmod\u306B\u3088\u308Bmodint\u306E\u7573\u307F\
+    \u8FBC\u307F\n     * @arg vector<modint<mod>>\n     */\n    template <typename\
+    \ Mint>\n    vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)\n\
+    \    {\n        if (x.size() == 0 && y.size() == 0)\n            return {};\n\
+    \        if (min<int>(x.size(), y.size()) < 128)\n        {\n            vector<Mint>\
     \ ret(x.size() + y.size() - 1);\n            for (int i = 0; i < (int)x.size();\
     \ ++i)\n                for (int j = 0; j < (int)y.size(); ++j)\n            \
     \        ret[i + j] += x[i] * y[j];\n            return ret;\n        }\n    \
@@ -137,37 +142,41 @@ data:
     \        {\n            int n1 = d1[i].get(), n2 = d2[i].get(), a = d0[i].get();\n\
     \            int b = i64(n1 + m1 - a) * r01 % m1;\n            int c = (i64(n2\
     \ + m2 - a) * r02r12 + i64(m2 - b) * r12) % m2;\n            ret[i] = W1 * b +\
-    \ W2 * c + a;\n        }\n        return ret;\n    }\n\n    template <typename\
-    \ T>\n    vector<T> multiply_ll(const vector<T> &s, const vector<T> &t)\n    {\n\
-    \        if (s.size() == 0 && t.size() == 0)\n            return {};\n       \
-    \ if (min<int>(s.size(), t.size()) < 128)\n        {\n            vector<T> ret(s.size()\
-    \ + t.size() - 1);\n            for (int i = 0; i < (int)s.size(); ++i)\n    \
-    \            for (int j = 0; j < (int)t.size(); ++j)\n                    ret[i\
-    \ + j] += i64(s[i]) * t[j];\n            return ret;\n        }\n        auto\
-    \ d0 = mul<T, mint0>(s, t);\n        auto d1 = mul<T, mint1>(s, t);\n        auto\
-    \ d2 = mul<T, mint2>(s, t);\n        int n = d0.size();\n        vector<T> ret(n);\n\
-    \        for (int i = 0; i < n; i++)\n        {\n            i64 n1 = d1[i].get(),\
-    \ n2 = d2[i].get();\n            i64 a = d0[i].get();\n            T b = (n1 +\
-    \ m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a) * r02r12 + (m2 - b) *\
-    \ r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n        }\n        return\
-    \ ret;\n    }\n};\n"
+    \ W2 * c + a;\n        }\n        return ret;\n    }\n\n    /**\n     * @brief\
+    \ int, long long\u7528\u306E\u7573\u307F\u8FBC\u307F\n     * @arg vector<long\
+    \ long>\u3092\u60F3\u5B9A\n     */\n    template <typename T>\n    vector<T> multiply_ll(const\
+    \ vector<T> &s, const vector<T> &t)\n    {\n        if (s.size() == 0 && t.size()\
+    \ == 0)\n            return {};\n        if (min<int>(s.size(), t.size()) < 128)\n\
+    \        {\n            vector<T> ret(s.size() + t.size() - 1);\n            for\
+    \ (int i = 0; i < (int)s.size(); ++i)\n                for (int j = 0; j < (int)t.size();\
+    \ ++j)\n                    ret[i + j] += i64(s[i]) * t[j];\n            return\
+    \ ret;\n        }\n        auto d0 = mul<T, mint0>(s, t);\n        auto d1 = mul<T,\
+    \ mint1>(s, t);\n        auto d2 = mul<T, mint2>(s, t);\n        int n = d0.size();\n\
+    \        vector<T> ret(n);\n        for (int i = 0; i < n; i++)\n        {\n \
+    \           i64 n1 = d1[i].get(), n2 = d2[i].get();\n            i64 a = d0[i].get();\n\
+    \            T b = (n1 + m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a)\
+    \ * r02r12 + (m2 - b) * r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n\
+    \        }\n        return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"../../library/template/template.cpp\"\n#include\
-    \ \"../../library/convolution/NTT.cpp\"\nstruct FFT\n{\n    using i64 = int64_t;\n\
-    \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
-    \    static const int32_t m2 = 754974721;\n    using mint0 = modint<m0>;\n   \
-    \ using mint1 = modint<m1>;\n    using mint2 = modint<m2>;\n    const int32_t\
-    \ r01 = 104391568;\n    const int32_t r02 = 323560596;\n    const int32_t r12\
-    \ = 399692502;\n    const int32_t r02r12 = i64(r02) * r12 % m2;\n    const i64\
-    \ w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n\n    FFT()\n    {\n    }\n    template\
-    \ <typename T, typename submint>\n    vector<submint> mul(const vector<T> &a,\
+    \ \"../../library/convolution/NTT.cpp\"\n\n/**\n * @brief Fast Fourier Transform\n\
+    \ * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n */\nstruct\
+    \ FFT\n{\nprivate:\n    using i64 = int64_t;\n    static const int32_t m0 = 167772161;\n\
+    \    static const int32_t m1 = 469762049;\n    static const int32_t m2 = 754974721;\n\
+    \    using mint0 = modint<m0>;\n    using mint1 = modint<m1>;\n    using mint2\
+    \ = modint<m2>;\n    const int32_t r01 = 104391568;\n    const int32_t r02 = 323560596;\n\
+    \    const int32_t r12 = 399692502;\n    const int32_t r02r12 = i64(r02) * r12\
+    \ % m2;\n    const i64 w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n    template\
+    \ <typename T, typename submint>\n\n    vector<submint> mul(const vector<T> &a,\
     \ const vector<T> &b)\n    {\n        static NTT<submint> ntt;\n        vector<submint>\
     \ s(a.size()), t(b.size());\n        for (int i = 0; i < (int)a.size(); ++i)\n\
     \            s[i] = i64(a[i] % submint::get_mod());\n        for (int i = 0; i\
     \ < (int)b.size(); ++i)\n            t[i] = i64(b[i] % submint::get_mod());\n\
-    \        return ntt.multiply(s, t);\n    }\n\n    template <typename Mint>\n \
-    \   vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)\n    {\n\
-    \        if (x.size() == 0 && y.size() == 0)\n            return {};\n       \
-    \ if (min<int>(x.size(), y.size()) < 128)\n        {\n            vector<Mint>\
+    \        return ntt.multiply(s, t);\n    }\n\npublic:\n    FFT()\n    {\n    }\n\
+    \n    /**\n     * @brief \u4EFB\u610Fmod\u306B\u3088\u308Bmodint\u306E\u7573\u307F\
+    \u8FBC\u307F\n     * @arg vector<modint<mod>>\n     */\n    template <typename\
+    \ Mint>\n    vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)\n\
+    \    {\n        if (x.size() == 0 && y.size() == 0)\n            return {};\n\
+    \        if (min<int>(x.size(), y.size()) < 128)\n        {\n            vector<Mint>\
     \ ret(x.size() + y.size() - 1);\n            for (int i = 0; i < (int)x.size();\
     \ ++i)\n                for (int j = 0; j < (int)y.size(); ++j)\n            \
     \        ret[i + j] += x[i] * y[j];\n            return ret;\n        }\n    \
@@ -180,27 +189,28 @@ data:
     \        {\n            int n1 = d1[i].get(), n2 = d2[i].get(), a = d0[i].get();\n\
     \            int b = i64(n1 + m1 - a) * r01 % m1;\n            int c = (i64(n2\
     \ + m2 - a) * r02r12 + i64(m2 - b) * r12) % m2;\n            ret[i] = W1 * b +\
-    \ W2 * c + a;\n        }\n        return ret;\n    }\n\n    template <typename\
-    \ T>\n    vector<T> multiply_ll(const vector<T> &s, const vector<T> &t)\n    {\n\
-    \        if (s.size() == 0 && t.size() == 0)\n            return {};\n       \
-    \ if (min<int>(s.size(), t.size()) < 128)\n        {\n            vector<T> ret(s.size()\
-    \ + t.size() - 1);\n            for (int i = 0; i < (int)s.size(); ++i)\n    \
-    \            for (int j = 0; j < (int)t.size(); ++j)\n                    ret[i\
-    \ + j] += i64(s[i]) * t[j];\n            return ret;\n        }\n        auto\
-    \ d0 = mul<T, mint0>(s, t);\n        auto d1 = mul<T, mint1>(s, t);\n        auto\
-    \ d2 = mul<T, mint2>(s, t);\n        int n = d0.size();\n        vector<T> ret(n);\n\
-    \        for (int i = 0; i < n; i++)\n        {\n            i64 n1 = d1[i].get(),\
-    \ n2 = d2[i].get();\n            i64 a = d0[i].get();\n            T b = (n1 +\
-    \ m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a) * r02r12 + (m2 - b) *\
-    \ r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n        }\n        return\
-    \ ret;\n    }\n};\n"
+    \ W2 * c + a;\n        }\n        return ret;\n    }\n\n    /**\n     * @brief\
+    \ int, long long\u7528\u306E\u7573\u307F\u8FBC\u307F\n     * @arg vector<long\
+    \ long>\u3092\u60F3\u5B9A\n     */\n    template <typename T>\n    vector<T> multiply_ll(const\
+    \ vector<T> &s, const vector<T> &t)\n    {\n        if (s.size() == 0 && t.size()\
+    \ == 0)\n            return {};\n        if (min<int>(s.size(), t.size()) < 128)\n\
+    \        {\n            vector<T> ret(s.size() + t.size() - 1);\n            for\
+    \ (int i = 0; i < (int)s.size(); ++i)\n                for (int j = 0; j < (int)t.size();\
+    \ ++j)\n                    ret[i + j] += i64(s[i]) * t[j];\n            return\
+    \ ret;\n        }\n        auto d0 = mul<T, mint0>(s, t);\n        auto d1 = mul<T,\
+    \ mint1>(s, t);\n        auto d2 = mul<T, mint2>(s, t);\n        int n = d0.size();\n\
+    \        vector<T> ret(n);\n        for (int i = 0; i < n; i++)\n        {\n \
+    \           i64 n1 = d1[i].get(), n2 = d2[i].get();\n            i64 a = d0[i].get();\n\
+    \            T b = (n1 + m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a)\
+    \ * r02r12 + (m2 - b) * r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n\
+    \        }\n        return ret;\n    }\n};\n"
   dependsOn:
   - library/template/template.cpp
   - library/convolution/NTT.cpp
   isVerificationFile: false
   path: library/convolution/FFT.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-25 09:28:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
@@ -209,5 +219,5 @@ layout: document
 redirect_from:
 - /library/library/convolution/FFT.cpp
 - /library/library/convolution/FFT.cpp.html
-title: library/convolution/FFT.cpp
+title: Fast Fourier Transform
 ---
