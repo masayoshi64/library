@@ -1,4 +1,3 @@
-# Combination
 ## Stirling
 n個の区別できる玉をk個のグループに分割する場合の数（グループのサイズは1以上）
 O(klog(n))

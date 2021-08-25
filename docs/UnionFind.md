@@ -1,2 +1,0 @@
-# Union Find
-union findです。
