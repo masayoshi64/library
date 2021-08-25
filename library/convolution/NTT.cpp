@@ -1,6 +1,6 @@
 #pragma once
 /**
- * @brief Number Theoretic Transformation
+ * @brief Number Theoretic Transform
  * @docs docs/NTT.md
  * @param modint
  */
