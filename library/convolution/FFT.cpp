@@ -1,7 +1,7 @@
 #pragma once
-#include "../../library/template/template.cpp"
+#include <bits/stdc++.h>
+#include "../../library/mod/modint.cpp"
 #include "../../library/convolution/NTT.cpp"
-
 /**
  * @brief Fast Fourier Transform
  * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp

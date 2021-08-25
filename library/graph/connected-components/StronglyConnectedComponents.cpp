@@ -1,5 +1,4 @@
 #pragma once
-#include "../../library/template/template.cpp"
 template <typename T = int>
 struct StronglyConnectedComponents : Graph<T>
 {
