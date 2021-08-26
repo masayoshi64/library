@@ -1,4 +1,11 @@
 #pragma once
+
+/**
+ * @brief Strongly Connected Components
+ * @arg int: type of weight
+ * @docs docs/StronglyConnectedComponents
+ */
+#include "library/template/template.cpp"
 template <typename T = int>
 struct StronglyConnectedComponents : Graph<T>
 {
