@@ -1,3 +1,4 @@
+#include "library/mod/modint.cpp"
 #include "library/convolution/FFT.cpp"
 
 /**
@@ -5,12 +6,14 @@
  * @see https://ei1333.github.io/library/math/fps/formal-power-series.cpp
  * @arg modint<mod>
  */
-template <typename T>
+struct MULT
+{
+};
+template <typename T, auto &fft>
 struct FormalPowerSeries : vector<T>
 {
     using vector<T>::vector;
     using P = FormalPowerSeries;
-    using Conv = FFT<T>;
 
     P pre(int deg) const
     {
@@ -66,7 +69,6 @@ struct FormalPowerSeries : vector<T>
         return *this;
     }
 
-    // https://judge.yosupo.jp/problem/convolution_mod
     P &operator*=(const P &r)
     {
         if (this->empty() || r.empty())
@@ -74,7 +76,7 @@ struct FormalPowerSeries : vector<T>
             this->clear();
             return *this;
         }
-        auto ret = Conv::multiply(*this, r);
+        auto ret = fft.multiply(*this, r);
         return *this = {begin(ret), end(ret)};
     }
 
@@ -186,7 +188,6 @@ struct FormalPowerSeries : vector<T>
         return ret;
     }
 
-    // https://judge.yosupo.jp/problem/inv_of_formal_power_series
     // F(0) must not be 0
     P inv(int deg = -1) const
     {
@@ -202,7 +203,6 @@ struct FormalPowerSeries : vector<T>
         return ret.pre(deg);
     }
 
-    // https://judge.yosupo.jp/problem/log_of_formal_power_series
     // F(0) must be 1
     P log(int deg = -1) const
     {
@@ -213,7 +213,6 @@ struct FormalPowerSeries : vector<T>
         return (this->diff() * this->inv(deg)).pre(deg - 1).integral();
     }
 
-    // https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
     P sqrt(
         int deg = -1, const function<T(T)> &get_sqrt = [](T)
                       { return T(1); }) const
@@ -259,7 +258,6 @@ struct FormalPowerSeries : vector<T>
         return sqrt(deg, get_sqrt);
     }
 
-    // https://judge.yosupo.jp/problem/exp_of_formal_power_series
     // F(0) must be 0
     P exp(int deg = -1) const
     {
@@ -277,7 +275,6 @@ struct FormalPowerSeries : vector<T>
         return ret.pre(deg);
     }
 
-    // https://judge.yosupo.jp/problem/pow_of_formal_power_series
     P pow(int64_t k, int deg = -1) const
     {
         const int n = (int)this->size();
@@ -300,7 +297,6 @@ struct FormalPowerSeries : vector<T>
         return *this;
     }
 
-    // https://yukicoder.me/problems/no/215
     P mod_pow(int64_t k, P g) const
     {
         P modinv = g.rev().inv();
@@ -331,7 +327,6 @@ struct FormalPowerSeries : vector<T>
         return ret;
     }
 
-    // https://judge.yosupo.jp/problem/polynomial_taylor_shift
     P taylor_shift(T c) const
     {
         int n = (int)this->size();
@@ -356,6 +351,3 @@ struct FormalPowerSeries : vector<T>
         return p;
     }
 };
-
-template <typename Mint>
-using FPS = FormalPowerSeries<Mint>;
