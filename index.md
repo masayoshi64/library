@@ -32,10 +32,10 @@ data:
       title: library/graph/distance/TSP.cpp
     - icon: ':heavy_check_mark:'
       path: library/graph/distance/bfs_dial.cpp
-      title: library/graph/distance/bfs_dial.cpp
+      title: bfs dial
     - icon: ':warning:'
       path: library/graph/distance/dijkstra.cpp
-      title: library/graph/distance/dijkstra.cpp
+      title: dijkstra
     - icon: ':warning:'
       path: library/graph/distance/grid_bfs.cpp
       title: library/graph/distance/grid_bfs.cpp

@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/connected-components/TwoSat.cpp
     title: 2-SAT
+  - icon: ':heavy_check_mark:'
+    path: library/graph/distance/bfs_dial.cpp
+    title: bfs dial
+  - icon: ':warning:'
+    path: library/graph/distance/dijkstra.cpp
+    title: dijkstra
   - icon: ':warning:'
     path: test/atcoder-abc136_d.cpp
     title: test/atcoder-abc136_d.cpp
@@ -234,6 +240,8 @@ data:
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   - test/atcoder-abc136_d.cpp
+  - library/graph/distance/bfs_dial.cpp
+  - library/graph/distance/dijkstra.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
   - library/graph/connected-components/TwoSat.cpp
   timestamp: '2021-08-24 21:28:40+09:00'

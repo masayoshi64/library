@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: library/graph/distance/bfs_dial.cpp
-    title: library/graph/distance/bfs_dial.cpp
+    title: bfs dial
   - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
@@ -81,19 +81,21 @@ data:
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
     const long double PI = 3.141592653589793;\n#line 5 \"verify/aoj-ALDS1_12_B.test.cpp\"\
-    \n//\n//#include \"library/graph/graph-template.cpp\"\n// library\n#line 1 \"\
-    library/graph/distance/bfs_dial.cpp\"\n// Dial's algorithm\ntemplate <typename\
-    \ T>\nvector<T> bfs_dial(const Graph<T> &g, int s) {\n    T max_cost = 0, max_dist\
-    \ = 0;\n    for (auto &es : g.g) {\n        for (auto &e : es) max_cost = max(max_cost,\
-    \ e.cost);\n    }\n    ++max_cost;\n    const auto TINF = numeric_limits<T>::max();\n\
-    \    vector<T> dist(g.size(), TINF);\n    vector<queue<int> > ques(max_cost +\
-    \ 1);\n    dist[s] = 0;\n    ques[0].emplace(s);\n    for (T cost = 0; cost <=\
-    \ max_dist; cost++) {\n        auto &que = ques[cost % max_cost];\n        while\
-    \ (!que.empty()) {\n            int idx = que.front();\n            que.pop();\n\
-    \            if (dist[idx] < cost) continue;\n            for (auto &e : g.g[idx])\
-    \ {\n                auto next_cost = cost + e.cost;\n                if (dist[e.to]\
-    \ <= next_cost) continue;\n                dist[e.to] = next_cost;\n         \
-    \       max_dist = max(max_dist, dist[e.to]);\n                ques[dist[e.to]\
+    \n//\n//#include \"library/graph/graph-template.cpp\"\n// library\n#line 2 \"\
+    library/graph/distance/bfs_dial.cpp\"\n/**\n * @brief bfs dial\n * @arg graph,\
+    \ start\n * @docs docs/bfs_dial.md\n * @details O(|V|max_cost)\n */\ntemplate\
+    \ <typename T>\nvector<T> bfs_dial(const Graph<T> &g, int s)\n{\n    T max_cost\
+    \ = 0, max_dist = 0;\n    for (auto &es : g.g)\n    {\n        for (auto &e :\
+    \ es)\n            max_cost = max(max_cost, e.cost);\n    }\n    ++max_cost;\n\
+    \    const auto TINF = numeric_limits<T>::max();\n    vector<T> dist(g.size(),\
+    \ TINF);\n    vector<queue<int>> ques(max_cost + 1);\n    dist[s] = 0;\n    ques[0].emplace(s);\n\
+    \    for (T cost = 0; cost <= max_dist; cost++)\n    {\n        auto &que = ques[cost\
+    \ % max_cost];\n        while (!que.empty())\n        {\n            int idx =\
+    \ que.front();\n            que.pop();\n            if (dist[idx] < cost)\n  \
+    \              continue;\n            for (auto &e : g.g[idx])\n            {\n\
+    \                auto next_cost = cost + e.cost;\n                if (dist[e.to]\
+    \ <= next_cost)\n                    continue;\n                dist[e.to] = next_cost;\n\
+    \                max_dist = max(max_dist, dist[e.to]);\n                ques[dist[e.to]\
     \ % max_cost].emplace(e.to);\n            }\n        }\n    }\n    return dist;\n\
     }\n#line 9 \"verify/aoj-ALDS1_12_B.test.cpp\"\nint main() {\n    int n;\n    cin\
     \ >> n;\n    Graph g(n);\n    rep(i, n) {\n        int u, k;\n        cin >> u\
@@ -114,7 +116,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-ALDS1_12_B.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-26 20:16:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-ALDS1_12_B.test.cpp
