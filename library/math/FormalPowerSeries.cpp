@@ -96,7 +96,6 @@ struct FormalPowerSeries : vector<T>
         return *this -= *this / r * r;
     }
 
-    // https://judge.yosupo.jp/problem/division_of_polynomials
     pair<P, P> div_mod(const P &r)
     {
         P q = *this / r;
