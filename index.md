@@ -21,10 +21,10 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: library/graph/connected-components/StronglyConnectedComponents.cpp
-      title: library/graph/connected-components/StronglyConnectedComponents.cpp
+      title: Strongly Connected Components
     - icon: ':heavy_check_mark:'
       path: library/graph/connected-components/TwoSat.cpp
-      title: library/graph/connected-components/TwoSat.cpp
+      title: 2-SAT
   - name: library/graph/distance
     pages:
     - icon: ':warning:'

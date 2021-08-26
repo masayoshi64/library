@@ -197,13 +197,14 @@ data:
     \           i64 n1 = d1[i].get(), n2 = d2[i].get();\n            i64 a = d0[i].get();\n\
     \            T b = (n1 + m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a)\
     \ * r02r12 + (m2 - b) * r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n\
-    \        }\n        return ret;\n    }\n};\n#line 3 \"library/math/FormalPowerSeries.cpp\"\
+    \        }\n        return ret;\n    }\n};\n#line 4 \"library/math/FormalPowerSeries.cpp\"\
     \n\n/**\n * @brief Formal Power Series\n * @see https://ei1333.github.io/library/math/fps/formal-power-series.cpp\n\
-    \ * @arg modint<mod>\n */\nstruct MULT\n{\n};\ntemplate <typename T, auto &fft>\n\
-    struct FormalPowerSeries : vector<T>\n{\n    using vector<T>::vector;\n    using\
-    \ P = FormalPowerSeries;\n\n    P pre(int deg) const\n    {\n        return P(begin(*this),\
-    \ begin(*this) + min((int)this->size(), deg));\n    }\n\n    P rev(int deg = -1)\
-    \ const\n    {\n        P ret(*this);\n        if (deg != -1)\n            ret.resize(deg,\
+    \ * @arg modint<mod>, fft (has a method 'multiply')\n * @docs docs/FormalPowerSeries\n\
+    \ */\nstruct MULT\n{\n};\ntemplate <typename T, auto &fft>\nstruct FormalPowerSeries\
+    \ : vector<T>\n{\n    using vector<T>::vector;\n    using P = FormalPowerSeries;\n\
+    \n    P pre(int deg) const\n    {\n        return P(begin(*this), begin(*this)\
+    \ + min((int)this->size(), deg));\n    }\n\n    P rev(int deg = -1) const\n  \
+    \  {\n        P ret(*this);\n        if (deg != -1)\n            ret.resize(deg,\
     \ T(0));\n        reverse(begin(ret), end(ret));\n        return ret;\n    }\n\
     \n    void shrink()\n    {\n        while (this->size() && this->back() == T(0))\n\
     \            this->pop_back();\n    }\n\n    P operator+(const P &r) const { return\
@@ -226,13 +227,12 @@ data:
     \          return *this;\n        }\n        int n = this->size() - r.size() +\
     \ 1;\n        return *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n\
     \    }\n\n    P &operator%=(const P &r)\n    {\n        return *this -= *this\
-    \ / r * r;\n    }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n\
-    \    pair<P, P> div_mod(const P &r)\n    {\n        P q = *this / r;\n       \
-    \ return make_pair(q, *this - q * r);\n    }\n\n    P operator-() const\n    {\n\
-    \        P ret(this->size());\n        for (int i = 0; i < this->size(); i++)\n\
-    \            ret[i] = -(*this)[i];\n        return ret;\n    }\n\n    P &operator+=(const\
-    \ T &r)\n    {\n        if (this->empty())\n            this->resize(1);\n   \
-    \     (*this)[0] += r;\n        return *this;\n    }\n\n    P &operator-=(const\
+    \ / r * r;\n    }\n\n    pair<P, P> div_mod(const P &r)\n    {\n        P q =\
+    \ *this / r;\n        return make_pair(q, *this - q * r);\n    }\n\n    P operator-()\
+    \ const\n    {\n        P ret(this->size());\n        for (int i = 0; i < this->size();\
+    \ i++)\n            ret[i] = -(*this)[i];\n        return ret;\n    }\n\n    P\
+    \ &operator+=(const T &r)\n    {\n        if (this->empty())\n            this->resize(1);\n\
+    \        (*this)[0] += r;\n        return *this;\n    }\n\n    P &operator-=(const\
     \ T &r)\n    {\n        if (this->empty())\n            this->resize(1);\n   \
     \     (*this)[0] -= r;\n        return *this;\n    }\n\n    P &operator*=(const\
     \ T &v)\n    {\n        for (int i = 0; i < this->size(); i++)\n            (*this)[i]\
@@ -363,7 +363,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-FPS.power.test.cpp
   requiredBy: []
-  timestamp: '2021-08-26 11:11:30+09:00'
+  timestamp: '2021-08-26 18:08:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki-FPS.power.test.cpp

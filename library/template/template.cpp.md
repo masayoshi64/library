@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: library/graph/connected-components/StronglyConnectedComponents.cpp
+    title: Strongly Connected Components
+  - icon: ':heavy_check_mark:'
+    path: library/graph/connected-components/TwoSat.cpp
+    title: 2-SAT
   - icon: ':warning:'
     path: test/atcoder-abc136_d.cpp
     title: test/atcoder-abc136_d.cpp
@@ -228,6 +234,8 @@ data:
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   - test/atcoder-abc136_d.cpp
+  - library/graph/connected-components/StronglyConnectedComponents.cpp
+  - library/graph/connected-components/TwoSat.cpp
   timestamp: '2021-08-24 21:28:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

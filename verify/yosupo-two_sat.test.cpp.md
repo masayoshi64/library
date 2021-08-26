@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: library/graph/connected-components/StronglyConnectedComponents.cpp
-    title: library/graph/connected-components/StronglyConnectedComponents.cpp
+    title: Strongly Connected Components
   - icon: ':heavy_check_mark:'
     path: library/graph/connected-components/TwoSat.cpp
-    title: library/graph/connected-components/TwoSat.cpp
+    title: 2-SAT
   - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
@@ -84,6 +84,8 @@ data:
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
     const long double PI = 3.141592653589793;\n#line 3 \"verify/yosupo-two_sat.test.cpp\"\
     \n// library\n#line 2 \"library/graph/connected-components/StronglyConnectedComponents.cpp\"\
+    \n\n/**\n * @brief Strongly Connected Components\n * @arg int: type of weight\n\
+    \ * @docs docs/StronglyConnectedComponents\n */\n#line 9 \"library/graph/connected-components/StronglyConnectedComponents.cpp\"\
     \ntemplate <typename T = int>\nstruct StronglyConnectedComponents : Graph<T>\n\
     {\npublic:\n    using Graph<T>::Graph;\n    using Graph<T>::g;\n    vector<int>\
     \ comp;          // id of scc\n    Graph<T> dag;              // DAG\n    vector<vector<int>>\
@@ -107,7 +109,8 @@ data:
     \        order.push_back(idx);\n    }\n\n    void rdfs(int idx, int cnt)\n   \
     \ {\n        if (comp[idx] != -1)\n            return;\n        comp[idx] = cnt;\n\
     \        for (auto &to : rg.g[idx])\n            rdfs(to, cnt);\n    }\n};\n#line\
-    \ 2 \"library/graph/connected-components/TwoSat.cpp\"\n\nstruct TwoSat : StronglyConnectedComponents<bool>\n\
+    \ 2 \"library/graph/connected-components/TwoSat.cpp\"\n/**\n * @brief 2-SAT\n\
+    \ * @docs docs/TwoSat.md\n */\nstruct TwoSat : StronglyConnectedComponents<bool>\n\
     {\npublic:\n    using StronglyConnectedComponents<bool>::g;\n    using StronglyConnectedComponents<bool>::comp;\n\
     \    using StronglyConnectedComponents<bool>::add_edge;\n    int sz;\n\n    explicit\
     \ TwoSat(int v)\n        : sz(v), StronglyConnectedComponents<bool>(v + v) {}\n\
@@ -152,7 +155,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo-two_sat.test.cpp
   requiredBy: []
-  timestamp: '2021-08-25 11:38:38+09:00'
+  timestamp: '2021-08-26 18:19:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-two_sat.test.cpp
