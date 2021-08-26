@@ -1,3 +1,4 @@
+#pragma once
 #include "library/mod/modint.cpp"
 #include "library/convolution/FFT.cpp"
 
