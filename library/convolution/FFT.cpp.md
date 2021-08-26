@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/convolution/NTT.cpp
     title: Number Theoretic Transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/FFT.md
     document_title: Fast Fourier Transform
@@ -80,27 +80,27 @@ data:
     \ i < sz; i++)\n            a[i] *= b[i] * inv_sz;\n        intt(a);\n       \
     \ a.resize(need);\n        return a;\n    }\n};\n#line 4 \"library/convolution/FFT.cpp\"\
     \n/**\n * @brief Fast Fourier Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
-    \ * @docs docs/FFT.md\n */\nstruct FFT\n{\nprivate:\n    using i64 = int64_t;\n\
-    \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
-    \    static const int32_t m2 = 754974721;\n    using mint0 = modint<m0>;\n   \
-    \ using mint1 = modint<m1>;\n    using mint2 = modint<m2>;\n    const int32_t\
-    \ r01 = 104391568;\n    const int32_t r02 = 323560596;\n    const int32_t r12\
-    \ = 399692502;\n    const int32_t r02r12 = i64(r02) * r12 % m2;\n    const i64\
-    \ w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n    template <typename T, typename\
-    \ submint>\n\n    vector<submint> mul(const vector<T> &a, const vector<T> &b)\n\
-    \    {\n        static NTT<submint> ntt;\n        vector<submint> s(a.size()),\
-    \ t(b.size());\n        for (int i = 0; i < (int)a.size(); ++i)\n            s[i]\
-    \ = i64(a[i] % submint::get_mod());\n        for (int i = 0; i < (int)b.size();\
-    \ ++i)\n            t[i] = i64(b[i] % submint::get_mod());\n        return ntt.multiply(s,\
-    \ t);\n    }\n\npublic:\n    FFT()\n    {\n    }\n\n    /**\n     * @brief \u4EFB\
-    \u610Fmod\u306B\u3088\u308Bmodint\u306E\u7573\u307F\u8FBC\u307F\n     * @arg vector<modint<mod>>\n\
-    \     */\n    template <typename Mint>\n    vector<Mint> multiply(const vector<Mint>\
-    \ &x, const vector<Mint> &y)\n    {\n        if (x.size() == 0 && y.size() ==\
-    \ 0)\n            return {};\n        if (min<int>(x.size(), y.size()) < 128)\n\
-    \        {\n            vector<Mint> ret(x.size() + y.size() - 1);\n         \
-    \   for (int i = 0; i < (int)x.size(); ++i)\n                for (int j = 0; j\
-    \ < (int)y.size(); ++j)\n                    ret[i + j] += x[i] * y[j];\n    \
-    \        return ret;\n        }\n        vector<int> s(x.size()), t(y.size());\n\
+    \ * @docs docs/FFT.md\n */\n\ntemplate <typename Mint>\nstruct FFT\n{\nprivate:\n\
+    \    using i64 = int64_t;\n    static const int32_t m0 = 167772161;\n    static\
+    \ const int32_t m1 = 469762049;\n    static const int32_t m2 = 754974721;\n  \
+    \  using mint0 = modint<m0>;\n    using mint1 = modint<m1>;\n    using mint2 =\
+    \ modint<m2>;\n    const int32_t r01 = 104391568;\n    const int32_t r02 = 323560596;\n\
+    \    const int32_t r12 = 399692502;\n    const int32_t r02r12 = i64(r02) * r12\
+    \ % m2;\n    const i64 w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n    template\
+    \ <typename T, typename submint>\n\n    vector<submint> mul(const vector<T> &a,\
+    \ const vector<T> &b)\n    {\n        static NTT<submint> ntt;\n        vector<submint>\
+    \ s(a.size()), t(b.size());\n        for (int i = 0; i < (int)a.size(); ++i)\n\
+    \            s[i] = i64(a[i] % submint::get_mod());\n        for (int i = 0; i\
+    \ < (int)b.size(); ++i)\n            t[i] = i64(b[i] % submint::get_mod());\n\
+    \        return ntt.multiply(s, t);\n    }\n\npublic:\n    FFT()\n    {\n    }\n\
+    \n    /**\n     * @brief \u4EFB\u610Fmod\u306B\u3088\u308Bmodint\u306E\u7573\u307F\
+    \u8FBC\u307F\n     * @arg vector<modint<mod>>\n     */\n    vector<Mint> multiply(const\
+    \ vector<Mint> &x, const vector<Mint> &y)\n    {\n        if (x.size() == 0 &&\
+    \ y.size() == 0)\n            return {};\n        if (min<int>(x.size(), y.size())\
+    \ < 128)\n        {\n            vector<Mint> ret(x.size() + y.size() - 1);\n\
+    \            for (int i = 0; i < (int)x.size(); ++i)\n                for (int\
+    \ j = 0; j < (int)y.size(); ++j)\n                    ret[i + j] += x[i] * y[j];\n\
+    \            return ret;\n        }\n        vector<int> s(x.size()), t(y.size());\n\
     \        for (int i = 0; i < (int)x.size(); ++i)\n            s[i] = x[i].get();\n\
     \        for (int i = 0; i < (int)y.size(); ++i)\n            t[i] = y[i].get();\n\
     \        auto d0 = mul<int, mint0>(s, t);\n        auto d1 = mul<int, mint1>(s,\
@@ -127,27 +127,27 @@ data:
     \        }\n        return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"library/mod/modint.cpp\"\n#include \"library/convolution/NTT.cpp\"\
     \n/**\n * @brief Fast Fourier Transform\n * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp\n\
-    \ * @docs docs/FFT.md\n */\nstruct FFT\n{\nprivate:\n    using i64 = int64_t;\n\
-    \    static const int32_t m0 = 167772161;\n    static const int32_t m1 = 469762049;\n\
-    \    static const int32_t m2 = 754974721;\n    using mint0 = modint<m0>;\n   \
-    \ using mint1 = modint<m1>;\n    using mint2 = modint<m2>;\n    const int32_t\
-    \ r01 = 104391568;\n    const int32_t r02 = 323560596;\n    const int32_t r12\
-    \ = 399692502;\n    const int32_t r02r12 = i64(r02) * r12 % m2;\n    const i64\
-    \ w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n    template <typename T, typename\
-    \ submint>\n\n    vector<submint> mul(const vector<T> &a, const vector<T> &b)\n\
-    \    {\n        static NTT<submint> ntt;\n        vector<submint> s(a.size()),\
-    \ t(b.size());\n        for (int i = 0; i < (int)a.size(); ++i)\n            s[i]\
-    \ = i64(a[i] % submint::get_mod());\n        for (int i = 0; i < (int)b.size();\
-    \ ++i)\n            t[i] = i64(b[i] % submint::get_mod());\n        return ntt.multiply(s,\
-    \ t);\n    }\n\npublic:\n    FFT()\n    {\n    }\n\n    /**\n     * @brief \u4EFB\
-    \u610Fmod\u306B\u3088\u308Bmodint\u306E\u7573\u307F\u8FBC\u307F\n     * @arg vector<modint<mod>>\n\
-    \     */\n    template <typename Mint>\n    vector<Mint> multiply(const vector<Mint>\
-    \ &x, const vector<Mint> &y)\n    {\n        if (x.size() == 0 && y.size() ==\
-    \ 0)\n            return {};\n        if (min<int>(x.size(), y.size()) < 128)\n\
-    \        {\n            vector<Mint> ret(x.size() + y.size() - 1);\n         \
-    \   for (int i = 0; i < (int)x.size(); ++i)\n                for (int j = 0; j\
-    \ < (int)y.size(); ++j)\n                    ret[i + j] += x[i] * y[j];\n    \
-    \        return ret;\n        }\n        vector<int> s(x.size()), t(y.size());\n\
+    \ * @docs docs/FFT.md\n */\n\ntemplate <typename Mint>\nstruct FFT\n{\nprivate:\n\
+    \    using i64 = int64_t;\n    static const int32_t m0 = 167772161;\n    static\
+    \ const int32_t m1 = 469762049;\n    static const int32_t m2 = 754974721;\n  \
+    \  using mint0 = modint<m0>;\n    using mint1 = modint<m1>;\n    using mint2 =\
+    \ modint<m2>;\n    const int32_t r01 = 104391568;\n    const int32_t r02 = 323560596;\n\
+    \    const int32_t r12 = 399692502;\n    const int32_t r02r12 = i64(r02) * r12\
+    \ % m2;\n    const i64 w1 = m0;\n    const i64 w2 = i64(m0) * m1;\n    template\
+    \ <typename T, typename submint>\n\n    vector<submint> mul(const vector<T> &a,\
+    \ const vector<T> &b)\n    {\n        static NTT<submint> ntt;\n        vector<submint>\
+    \ s(a.size()), t(b.size());\n        for (int i = 0; i < (int)a.size(); ++i)\n\
+    \            s[i] = i64(a[i] % submint::get_mod());\n        for (int i = 0; i\
+    \ < (int)b.size(); ++i)\n            t[i] = i64(b[i] % submint::get_mod());\n\
+    \        return ntt.multiply(s, t);\n    }\n\npublic:\n    FFT()\n    {\n    }\n\
+    \n    /**\n     * @brief \u4EFB\u610Fmod\u306B\u3088\u308Bmodint\u306E\u7573\u307F\
+    \u8FBC\u307F\n     * @arg vector<modint<mod>>\n     */\n    vector<Mint> multiply(const\
+    \ vector<Mint> &x, const vector<Mint> &y)\n    {\n        if (x.size() == 0 &&\
+    \ y.size() == 0)\n            return {};\n        if (min<int>(x.size(), y.size())\
+    \ < 128)\n        {\n            vector<Mint> ret(x.size() + y.size() - 1);\n\
+    \            for (int i = 0; i < (int)x.size(); ++i)\n                for (int\
+    \ j = 0; j < (int)y.size(); ++j)\n                    ret[i + j] += x[i] * y[j];\n\
+    \            return ret;\n        }\n        vector<int> s(x.size()), t(y.size());\n\
     \        for (int i = 0; i < (int)x.size(); ++i)\n            s[i] = x[i].get();\n\
     \        for (int i = 0; i < (int)y.size(); ++i)\n            t[i] = y[i].get();\n\
     \        auto d0 = mul<int, mint0>(s, t);\n        auto d1 = mul<int, mint1>(s,\
@@ -178,8 +178,8 @@ data:
   isVerificationFile: false
   path: library/convolution/FFT.cpp
   requiredBy: []
-  timestamp: '2021-08-25 11:45:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-08-26 10:18:37+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/convolution/FFT.cpp

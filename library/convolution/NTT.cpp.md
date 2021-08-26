@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/convolution/FFT.cpp
     title: Fast Fourier Transform
   _extendedVerifiedWith:
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/NTT.md
     document_title: Number Theoretic Transform
@@ -95,7 +95,7 @@ data:
   requiredBy:
   - library/convolution/FFT.cpp
   timestamp: '2021-08-25 10:10:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/FPS.power.test.cpp

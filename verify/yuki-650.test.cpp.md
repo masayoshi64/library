@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/math/Matrix.cpp
     title: library/math/Matrix.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
   - icon: ':heavy_check_mark:'
     path: library/structure/segtree/SegmentTree.cpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
