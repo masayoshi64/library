@@ -3,13 +3,13 @@ data:
   libraryCategories:
   - name: library/convolution
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/convolution/FFT.cpp
       title: Fast Fourier Transform
     - icon: ':heavy_check_mark:'
       path: library/convolution/FZT.cpp
       title: Fast Zeta Transform
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/convolution/NTT.cpp
       title: Number Theoretic Transform
   - name: library/dp
@@ -80,7 +80,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/BitMatrix.cpp
       title: library/math/BitMatrix.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/math/FormalPowerSeries.cpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -112,7 +112,7 @@ data:
     - icon: ':warning:'
       path: library/mod/mod_sqrt.cpp
       title: library/mod/mod_sqrt.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
   - name: library/others
@@ -174,7 +174,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: library/utils
@@ -254,9 +254,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/range_arithmetic_progression_add.test.cpp
       title: verify/range_arithmetic_progression_add.test.cpp
-    - icon: ':x:'
-      path: verify/yosupo-convolution_mod.test.cpp
-      title: verify/yosupo-convolution_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/yosupo-convolution_mod_1000000007.test.cpp
       title: verify/yosupo-convolution_mod_1000000007.test.cpp

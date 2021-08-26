@@ -2,25 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/convolution/FFT.cpp
     title: Fast Fourier Transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/math/FormalPowerSeries.cpp
     title: Formal Power Series
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/yosupo-convolution_mod.test.cpp
-    title: verify/yosupo-convolution_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yosupo-convolution_mod_1000000007.test.cpp
     title: verify/yosupo-convolution_mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/NTT.md
     document_title: Number Theoretic Transform
@@ -99,11 +96,10 @@ data:
   - library/math/FormalPowerSeries.cpp
   - library/convolution/FFT.cpp
   timestamp: '2021-08-25 10:10:22+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yuki-FPS.power.test.cpp
-  - verify/yosupo-convolution_mod.test.cpp
 documentation_of: library/convolution/NTT.cpp
 layout: document
 redirect_from:
