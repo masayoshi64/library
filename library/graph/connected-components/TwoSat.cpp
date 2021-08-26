@@ -1,5 +1,8 @@
 #include "library/graph/connected-components/StronglyConnectedComponents.cpp"
-
+/**
+ * @brief 2-SAT
+ * @docs docs/TwoSat.md
+ */
 struct TwoSat : StronglyConnectedComponents<bool>
 {
 public:
