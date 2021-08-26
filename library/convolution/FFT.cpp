@@ -6,6 +6,8 @@
  * @see https://nyaannyaan.github.io/library/ntt/arbitrary-ntt.hpp
  * @docs docs/FFT.md
  */
+
+template <typename Mint>
 struct FFT
 {
 private:
@@ -44,7 +46,6 @@ public:
      * @brief 任意modによるmodintの畳み込み
      * @arg vector<modint<mod>>
      */
-    template <typename Mint>
     vector<Mint> multiply(const vector<Mint> &x, const vector<Mint> &y)
     {
         if (x.size() == 0 && y.size() == 0)
