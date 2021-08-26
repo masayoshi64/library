@@ -3,7 +3,7 @@
 // library
 #include "library/convolution/FFT.cpp"
 using mint = modint<1000000007>;
-FFT fft;
+FFT<mint> fft;
 int main()
 {
     int n, m;
