@@ -4,7 +4,8 @@
 /**
  * @brief Formal Power Series
  * @see https://ei1333.github.io/library/math/fps/formal-power-series.cpp
- * @arg modint<mod>
+ * @arg modint<mod>, fft (has a method 'multiply')
+ * @docs docs/FormalPowerSeries
  */
 struct MULT
 {
