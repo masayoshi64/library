@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/math/Matrix.cpp
     title: library/math/Matrix.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
   - icon: ':heavy_check_mark:'
     path: library/structure/segtree/SegmentTree.cpp
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -184,76 +184,77 @@ data:
     \ * a;\n                }\n            }\n        }\n        return (ret);\n \
     \   }\n\n    Matrix transpose() {\n        Matrix ret(width(), height());\n  \
     \      rep(i, height()) { rep(j, width()) ret[j][i] = A[i][j]; }\n        return\
-    \ ret;\n    }\n};\n#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct\
-    \ modint {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) :\
-    \ x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const\
-    \ modint& p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n\
-    \    }\n\n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x)\
-    \ >= Mod) x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const\
-    \ modint& p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n\
-    \    }\n\n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n\
-    \        return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
-    \ }\n\n    modint operator+(const modint& p) const { return modint(*this) += p;\
-    \ }\n\n    modint operator-(const modint& p) const { return modint(*this) -= p;\
-    \ }\n\n    modint operator*(const modint& p) const { return modint(*this) *= p;\
-    \ }\n\n    modint operator/(const modint& p) const { return modint(*this) /= p;\
-    \ }\n\n    bool operator==(const modint& p) const { return x == p.x; }\n\n   \
-    \ bool operator!=(const modint& p) const { return x != p.x; }\n\n    modint inverse()\
-    \ const {\n        int a = x, b = Mod, u = 1, v = 0, t;\n        while (b > 0)\
-    \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
-    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
-    \ n) const {\n        modint ret(1), mul(x);\n        while (n > 0) {\n      \
-    \      if (n & 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n\
-    \        }\n        return ret;\n    }\n\n    friend ostream& operator<<(ostream&\
-    \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
-    \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
-    \        a = modint<Mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return Mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 1\
-    \ \"library/structure/segtree/SegmentTree.cpp\"\n/**\n * @brief Segment Tree\n\
-    \ * @docs docs/segmenttree.md\n */\ntemplate <typename Monoid>\nstruct SegmentTree\
-    \ {\n    using F = function<Monoid(Monoid, Monoid)>;\n\n    int sz;\n    vector<Monoid>\
-    \ seg;\n\n    const F f;\n    const Monoid M1;\n\n    SegmentTree(int n, const\
-    \ F f, const Monoid& M1) : f(f), M1(M1) {\n        sz = 1;\n        while (sz\
-    \ < n) sz <<= 1;\n        seg.assign(2 * sz, M1);\n    }\n\n    void set(int k,\
-    \ const Monoid& x) { seg[k + sz] = x; }\n\n    void build() {\n        for (int\
-    \ k = sz - 1; k > 0; k--) {\n            seg[k] = f(seg[2 * k + 0], seg[2 * k\
-    \ + 1]);\n        }\n    }\n\n    void update(int k, const Monoid& x) {\n    \
-    \    k += sz;\n        seg[k] = x;\n        while (k >>= 1) {\n            seg[k]\
-    \ = f(seg[2 * k + 0], seg[2 * k + 1]);\n        }\n    }\n\n    Monoid query(int\
-    \ a, int b) {\n        Monoid L = M1, R = M1;\n        for (a += sz, b += sz;\
-    \ a < b; a >>= 1, b >>= 1) {\n            if (a & 1) L = f(L, seg[a++]);\n   \
-    \         if (b & 1) R = f(seg[--b], R);\n        }\n        return f(L, R);\n\
-    \    }\n\n    Monoid operator[](const int& k) const { return seg[k + sz]; }\n\n\
-    \    template <typename C>\n    int find_subtree(int a, const C& check, Monoid&\
-    \ M, bool type) {\n        while (a < sz) {\n            Monoid nxt =\n      \
-    \          type ? f(seg[2 * a + type], M) : f(M, seg[2 * a + type]);\n       \
-    \     if (check(nxt))\n                a = 2 * a + type;\n            else\n \
-    \               M = nxt, a = 2 * a + 1 - type;\n        }\n        return a -\
-    \ sz;\n    }\n\n    // check(seg.query(b, i))\u3092\u6E80\u305F\u3059\u6700\u5C0F\
-    \u306Eb<=i\u3092\u8FD4\u3059.\u306A\u3051\u308C\u3070-1\n    template <typename\
-    \ C>\n    int find_first(int a, const C& check) {\n        Monoid L = M1;\n  \
-    \      if (a <= 0) {\n            if (check(f(L, seg[1]))) return find_subtree(1,\
-    \ check, L, false);\n            return -1;\n        }\n        int b = sz;\n\
+    \ ret;\n    }\n};\n#line 2 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct\
+    \ modint\n{\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) :\
+    \ x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint &operator+=(const\
+    \ modint &p)\n    {\n        if ((x += p.x) >= Mod)\n            x -= Mod;\n \
+    \       return *this;\n    }\n\n    modint &operator-=(const modint &p)\n    {\n\
+    \        if ((x += Mod - p.x) >= Mod)\n            x -= Mod;\n        return *this;\n\
+    \    }\n\n    modint &operator*=(const modint &p)\n    {\n        x = (int)(1LL\
+    \ * x * p.x % Mod);\n        return *this;\n    }\n\n    modint &operator/=(const\
+    \ modint &p)\n    {\n        *this *= p.inverse();\n        return *this;\n  \
+    \  }\n\n    modint operator-() const { return modint(-x); }\n\n    modint operator+(const\
+    \ modint &p) const { return modint(*this) += p; }\n\n    modint operator-(const\
+    \ modint &p) const { return modint(*this) -= p; }\n\n    modint operator*(const\
+    \ modint &p) const { return modint(*this) *= p; }\n\n    modint operator/(const\
+    \ modint &p) const { return modint(*this) /= p; }\n\n    bool operator==(const\
+    \ modint &p) const { return x == p.x; }\n\n    bool operator!=(const modint &p)\
+    \ const { return x != p.x; }\n\n    modint inverse() const\n    {\n        int\
+    \ a = x, b = Mod, u = 1, v = 0, t;\n        while (b > 0)\n        {\n       \
+    \     t = a / b;\n            swap(a -= t * b, b);\n            swap(u -= t *\
+    \ v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
+    \ n) const\n    {\n        modint ret(1), mul(x);\n        while (n > 0)\n   \
+    \     {\n            if (n & 1)\n                ret *= mul;\n            mul\
+    \ *= mul;\n            n >>= 1;\n        }\n        return ret;\n    }\n\n   \
+    \ friend ostream &operator<<(ostream &os, const modint &p)\n    {\n        return\
+    \ os << p.x;\n    }\n\n    friend istream &operator>>(istream &is, modint &a)\n\
+    \    {\n        long long t;\n        is >> t;\n        a = modint<Mod>(t);\n\
+    \        return (is);\n    }\n\n    static int get_mod() { return Mod; }\n\n \
+    \   constexpr int get() const { return x; }\n};\n#line 1 \"library/structure/segtree/SegmentTree.cpp\"\
+    \n/**\n * @brief Segment Tree\n * @docs docs/segmenttree.md\n */\ntemplate <typename\
+    \ Monoid>\nstruct SegmentTree {\n    using F = function<Monoid(Monoid, Monoid)>;\n\
+    \n    int sz;\n    vector<Monoid> seg;\n\n    const F f;\n    const Monoid M1;\n\
+    \n    SegmentTree(int n, const F f, const Monoid& M1) : f(f), M1(M1) {\n     \
+    \   sz = 1;\n        while (sz < n) sz <<= 1;\n        seg.assign(2 * sz, M1);\n\
+    \    }\n\n    void set(int k, const Monoid& x) { seg[k + sz] = x; }\n\n    void\
+    \ build() {\n        for (int k = sz - 1; k > 0; k--) {\n            seg[k] =\
+    \ f(seg[2 * k + 0], seg[2 * k + 1]);\n        }\n    }\n\n    void update(int\
+    \ k, const Monoid& x) {\n        k += sz;\n        seg[k] = x;\n        while\
+    \ (k >>= 1) {\n            seg[k] = f(seg[2 * k + 0], seg[2 * k + 1]);\n     \
+    \   }\n    }\n\n    Monoid query(int a, int b) {\n        Monoid L = M1, R = M1;\n\
     \        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1) {\n            if (a\
-    \ & 1) {\n                Monoid nxt = f(L, seg[a]);\n                if (check(nxt))\
-    \ return find_subtree(a, check, L, false);\n                L = nxt;\n       \
-    \         ++a;\n            }\n        }\n        return -1;\n    }\n\n    //\
-    \ check(seg.query(i, b))\u3092\u6E80\u305F\u3059\u6700\u5C0F\u306Ei<b\u3092\u8FD4\
-    \u3059.\u306A\u3051\u308C\u3070-1\n    template <typename C>\n    int find_last(int\
-    \ b, const C& check) {\n        Monoid R = M1;\n        if (b >= sz) {\n     \
-    \       if (check(f(seg[1], R))) return find_subtree(1, check, R, true);\n   \
-    \         return -1;\n        }\n        int a = sz;\n        for (b += sz; a\
-    \ < b; a >>= 1, b >>= 1) {\n            if (b & 1) {\n                Monoid nxt\
-    \ = f(seg[--b], R);\n                if (check(nxt)) return find_subtree(b, check,\
-    \ R, true);\n                R = nxt;\n            }\n        }\n        return\
-    \ -1;\n    }\n};\n#line 8 \"verify/yuki-650.test.cpp\"\nusing mint = modint<1000000007>;\n\
-    using mmat = Matrix<mint>;\nint main() {\n    int n, q;\n    cin >> n;\n    HLD\
-    \ hld(n);\n    vector<Pi> etov(n - 1);\n    rep(i, n - 1) {\n        int a, b;\n\
-    \        cin >> a >> b;\n        hld.add_edge(a, b);\n        etov[i] = mp(a,\
-    \ b);\n    }\n    cin >> q;\n    SegmentTree<mmat> seg(\n        n, [&](mmat a,\
-    \ mmat b) { return a * b; }, mmat::I(2));\n    hld.build();\n    rep(_, q) {\n\
-    \        char t;\n        cin >> t;\n        if (t == 'g') {\n            int\
-    \ u, v;\n            cin >> u >> v;\n            mmat res = hld.query_edge(\n\
+    \ & 1) L = f(L, seg[a++]);\n            if (b & 1) R = f(seg[--b], R);\n     \
+    \   }\n        return f(L, R);\n    }\n\n    Monoid operator[](const int& k) const\
+    \ { return seg[k + sz]; }\n\n    template <typename C>\n    int find_subtree(int\
+    \ a, const C& check, Monoid& M, bool type) {\n        while (a < sz) {\n     \
+    \       Monoid nxt =\n                type ? f(seg[2 * a + type], M) : f(M, seg[2\
+    \ * a + type]);\n            if (check(nxt))\n                a = 2 * a + type;\n\
+    \            else\n                M = nxt, a = 2 * a + 1 - type;\n        }\n\
+    \        return a - sz;\n    }\n\n    // check(seg.query(b, i))\u3092\u6E80\u305F\
+    \u3059\u6700\u5C0F\u306Eb<=i\u3092\u8FD4\u3059.\u306A\u3051\u308C\u3070-1\n  \
+    \  template <typename C>\n    int find_first(int a, const C& check) {\n      \
+    \  Monoid L = M1;\n        if (a <= 0) {\n            if (check(f(L, seg[1])))\
+    \ return find_subtree(1, check, L, false);\n            return -1;\n        }\n\
+    \        int b = sz;\n        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1)\
+    \ {\n            if (a & 1) {\n                Monoid nxt = f(L, seg[a]);\n  \
+    \              if (check(nxt)) return find_subtree(a, check, L, false);\n    \
+    \            L = nxt;\n                ++a;\n            }\n        }\n      \
+    \  return -1;\n    }\n\n    // check(seg.query(i, b))\u3092\u6E80\u305F\u3059\u6700\
+    \u5C0F\u306Ei<b\u3092\u8FD4\u3059.\u306A\u3051\u308C\u3070-1\n    template <typename\
+    \ C>\n    int find_last(int b, const C& check) {\n        Monoid R = M1;\n   \
+    \     if (b >= sz) {\n            if (check(f(seg[1], R))) return find_subtree(1,\
+    \ check, R, true);\n            return -1;\n        }\n        int a = sz;\n \
+    \       for (b += sz; a < b; a >>= 1, b >>= 1) {\n            if (b & 1) {\n \
+    \               Monoid nxt = f(seg[--b], R);\n                if (check(nxt))\
+    \ return find_subtree(b, check, R, true);\n                R = nxt;\n        \
+    \    }\n        }\n        return -1;\n    }\n};\n#line 8 \"verify/yuki-650.test.cpp\"\
+    \nusing mint = modint<1000000007>;\nusing mmat = Matrix<mint>;\nint main() {\n\
+    \    int n, q;\n    cin >> n;\n    HLD hld(n);\n    vector<Pi> etov(n - 1);\n\
+    \    rep(i, n - 1) {\n        int a, b;\n        cin >> a >> b;\n        hld.add_edge(a,\
+    \ b);\n        etov[i] = mp(a, b);\n    }\n    cin >> q;\n    SegmentTree<mmat>\
+    \ seg(\n        n, [&](mmat a, mmat b) { return a * b; }, mmat::I(2));\n    hld.build();\n\
+    \    rep(_, q) {\n        char t;\n        cin >> t;\n        if (t == 'g') {\n\
+    \            int u, v;\n            cin >> u >> v;\n            mmat res = hld.query_edge(\n\
     \                u, v, mmat::I(2),\n                [&](int a, int b) { return\
     \ seg.query(a, b + 1); },\n                [&](mmat a, mmat b) { return a * b;\
     \ });\n            cout << res[0][0] << \" \" << res[0][1] << \" \" << res[1][0]\
@@ -289,7 +290,7 @@ data:
   isVerificationFile: true
   path: verify/yuki-650.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-26 10:32:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yuki-650.test.cpp

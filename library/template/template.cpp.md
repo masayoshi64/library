@@ -22,9 +22,6 @@ data:
     path: verify/ArticulationPoint.test.cpp
     title: verify/ArticulationPoint.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/FPS.power.test.cpp
-    title: verify/FPS.power.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/FZT.test.cpp
     title: verify/FZT.test.cpp
   - icon: ':heavy_check_mark:'
@@ -69,7 +66,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/range_arithmetic_progression_add.test.cpp
     title: verify/range_arithmetic_progression_add.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -93,9 +90,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/yuki-FPS.power.test.cpp
+    title: verify/yuki-FPS.power.test.cpp
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
@@ -232,7 +232,7 @@ data:
   - verify/yuki-1408.cpp
   - test/atcoder-abc136_d.cpp
   timestamp: '2021-08-24 21:28:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
   - verify/aoj-GRL_7_A.test.cpp
@@ -253,7 +253,7 @@ data:
   - verify/aoj-1595.test.cpp
   - verify/aoj-NTL_1_E.test.cpp
   - verify/FZT.test.cpp
-  - verify/FPS.power.test.cpp
+  - verify/yuki-FPS.power.test.cpp
   - verify/yuki-184.test.cpp
   - verify/yosupo-range_kth_smallest.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp

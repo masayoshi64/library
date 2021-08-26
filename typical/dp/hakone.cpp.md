@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -78,43 +78,44 @@ data:
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
     const long double PI = 3.141592653589793;\n#line 4 \"typical/dp/hakone.cpp\"\n\
-    //\n#line 1 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint {\n\
+    //\n#line 2 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\n{\n\
     \    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >= 0 ?\
-    \ y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint& operator+=(const modint&\
-    \ p) {\n        if ((x += p.x) >= Mod) x -= Mod;\n        return *this;\n    }\n\
-    \n    modint& operator-=(const modint& p) {\n        if ((x += Mod - p.x) >= Mod)\
-    \ x -= Mod;\n        return *this;\n    }\n\n    modint& operator*=(const modint&\
-    \ p) {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n    }\n\
-    \n    modint& operator/=(const modint& p) {\n        *this *= p.inverse();\n \
-    \       return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
-    \ }\n\n    modint operator+(const modint& p) const { return modint(*this) += p;\
-    \ }\n\n    modint operator-(const modint& p) const { return modint(*this) -= p;\
-    \ }\n\n    modint operator*(const modint& p) const { return modint(*this) *= p;\
-    \ }\n\n    modint operator/(const modint& p) const { return modint(*this) /= p;\
-    \ }\n\n    bool operator==(const modint& p) const { return x == p.x; }\n\n   \
-    \ bool operator!=(const modint& p) const { return x != p.x; }\n\n    modint inverse()\
-    \ const {\n        int a = x, b = Mod, u = 1, v = 0, t;\n        while (b > 0)\
-    \ {\n            t = a / b;\n            swap(a -= t * b, b);\n            swap(u\
-    \ -= t * v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
-    \ n) const {\n        modint ret(1), mul(x);\n        while (n > 0) {\n      \
-    \      if (n & 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n\
-    \        }\n        return ret;\n    }\n\n    friend ostream& operator<<(ostream&\
-    \ os, const modint& p) {\n        return os << p.x;\n    }\n\n    friend istream&\
-    \ operator>>(istream& is, modint& a) {\n        long long t;\n        is >> t;\n\
-    \        a = modint<Mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ { return Mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 6\
-    \ \"typical/dp/hakone.cpp\"\nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n\
-    // library\nint main() {\n    int n;\n    cin >> n;\n    vc c(n);\n    scan(c);\n\
-    \    vector<mint> dp(n + 1);  // dp[i]:=\u4FDD\u7559\u3057\u305F\u9806\u4F4D\u306E\
-    \u6570\n    dp[0] = 1;\n    // \u524D\u304B\u3089\u898B\u3066\u3044\u304F\n  \
-    \  rep(i, n) {\n        vector<mint> tmp(n + 1);\n        if (c[i] == '-') {\n\
-    \            continue;\n        }\n        rep(nokori, n + 1) {\n            if\
-    \ (c[i] == 'D') {\n                tmp[nokori] += dp[nokori] * nokori;\n     \
-    \           if (nokori - 1 >= 0)\n                    tmp[nokori - 1] += dp[nokori]\
-    \ * nokori * nokori;\n            } else {\n                if (nokori + 1 <=\
-    \ n) tmp[nokori + 1] += dp[nokori];\n                tmp[nokori] += dp[nokori]\
-    \ * nokori;\n            }\n        }\n        dp = tmp;\n    }\n    print(dp[0]);\n\
-    }\n"
+    \ y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint &operator+=(const modint\
+    \ &p)\n    {\n        if ((x += p.x) >= Mod)\n            x -= Mod;\n        return\
+    \ *this;\n    }\n\n    modint &operator-=(const modint &p)\n    {\n        if\
+    \ ((x += Mod - p.x) >= Mod)\n            x -= Mod;\n        return *this;\n  \
+    \  }\n\n    modint &operator*=(const modint &p)\n    {\n        x = (int)(1LL\
+    \ * x * p.x % Mod);\n        return *this;\n    }\n\n    modint &operator/=(const\
+    \ modint &p)\n    {\n        *this *= p.inverse();\n        return *this;\n  \
+    \  }\n\n    modint operator-() const { return modint(-x); }\n\n    modint operator+(const\
+    \ modint &p) const { return modint(*this) += p; }\n\n    modint operator-(const\
+    \ modint &p) const { return modint(*this) -= p; }\n\n    modint operator*(const\
+    \ modint &p) const { return modint(*this) *= p; }\n\n    modint operator/(const\
+    \ modint &p) const { return modint(*this) /= p; }\n\n    bool operator==(const\
+    \ modint &p) const { return x == p.x; }\n\n    bool operator!=(const modint &p)\
+    \ const { return x != p.x; }\n\n    modint inverse() const\n    {\n        int\
+    \ a = x, b = Mod, u = 1, v = 0, t;\n        while (b > 0)\n        {\n       \
+    \     t = a / b;\n            swap(a -= t * b, b);\n            swap(u -= t *\
+    \ v, v);\n        }\n        return modint(u);\n    }\n\n    modint pow(int64_t\
+    \ n) const\n    {\n        modint ret(1), mul(x);\n        while (n > 0)\n   \
+    \     {\n            if (n & 1)\n                ret *= mul;\n            mul\
+    \ *= mul;\n            n >>= 1;\n        }\n        return ret;\n    }\n\n   \
+    \ friend ostream &operator<<(ostream &os, const modint &p)\n    {\n        return\
+    \ os << p.x;\n    }\n\n    friend istream &operator>>(istream &is, modint &a)\n\
+    \    {\n        long long t;\n        is >> t;\n        a = modint<Mod>(t);\n\
+    \        return (is);\n    }\n\n    static int get_mod() { return Mod; }\n\n \
+    \   constexpr int get() const { return x; }\n};\n#line 6 \"typical/dp/hakone.cpp\"\
+    \nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n// library\nint main()\
+    \ {\n    int n;\n    cin >> n;\n    vc c(n);\n    scan(c);\n    vector<mint> dp(n\
+    \ + 1);  // dp[i]:=\u4FDD\u7559\u3057\u305F\u9806\u4F4D\u306E\u6570\n    dp[0]\
+    \ = 1;\n    // \u524D\u304B\u3089\u898B\u3066\u3044\u304F\n    rep(i, n) {\n \
+    \       vector<mint> tmp(n + 1);\n        if (c[i] == '-') {\n            continue;\n\
+    \        }\n        rep(nokori, n + 1) {\n            if (c[i] == 'D') {\n   \
+    \             tmp[nokori] += dp[nokori] * nokori;\n                if (nokori\
+    \ - 1 >= 0)\n                    tmp[nokori - 1] += dp[nokori] * nokori * nokori;\n\
+    \            } else {\n                if (nokori + 1 <= n) tmp[nokori + 1] +=\
+    \ dp[nokori];\n                tmp[nokori] += dp[nokori] * nokori;\n         \
+    \   }\n        }\n        dp = tmp;\n    }\n    print(dp[0]);\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595\"\
     \n\n#include \"library/template/template.cpp\"\n//\n#include \"library/mod/modint.cpp\"\
     \nconst ll mod = 1000000007;\nusing mint = modint<mod>;\n// library\nint main()\
@@ -134,7 +135,7 @@ data:
   isVerificationFile: false
   path: typical/dp/hakone.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-26 10:32:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: typical/dp/hakone.cpp

@@ -4,14 +4,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/FPS.power.test.cpp
-    title: verify/FPS.power.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/yuki-FPS.power.test.cpp
+    title: verify/yuki-FPS.power.test.cpp
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/Combination.md
     document_title: Combination(P, C, H, Stirling number, Bell number)
@@ -82,10 +82,10 @@ data:
   path: library/math/combination.cpp
   requiredBy: []
   timestamp: '2020-11-14 13:31:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
-  - verify/FPS.power.test.cpp
+  - verify/yuki-FPS.power.test.cpp
 documentation_of: library/math/combination.cpp
 layout: document
 redirect_from:

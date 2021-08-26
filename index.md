@@ -3,13 +3,13 @@ data:
   libraryCategories:
   - name: library/convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/convolution/FFT.cpp
       title: Fast Fourier Transform
     - icon: ':heavy_check_mark:'
       path: library/convolution/FZT.cpp
       title: Fast Zeta Transform
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/convolution/NTT.cpp
       title: Number Theoretic Transform
   - name: library/dp
@@ -80,13 +80,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/BitMatrix.cpp
       title: library/math/BitMatrix.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/math/FormalPowerSeries.cpp
-      title: library/math/FormalPowerSeries.cpp
+      title: Formal Power Series
     - icon: ':heavy_check_mark:'
       path: library/math/Matrix.cpp
       title: library/math/Matrix.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/math/combination.cpp
       title: Combination(P, C, H, Stirling number, Bell number)
     - icon: ':warning:'
@@ -112,7 +112,7 @@ data:
     - icon: ':warning:'
       path: library/mod/mod_sqrt.cpp
       title: library/mod/mod_sqrt.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/mod/modint.cpp
       title: library/mod/modint.cpp
   - name: library/others
@@ -174,7 +174,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: library/utils
@@ -209,9 +209,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/ArticulationPoint.test.cpp
       title: verify/ArticulationPoint.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/FPS.power.test.cpp
-      title: verify/FPS.power.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/FZT.test.cpp
       title: verify/FZT.test.cpp
@@ -257,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/range_arithmetic_progression_add.test.cpp
       title: verify/range_arithmetic_progression_add.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/yosupo-convolution_mod.test.cpp
       title: verify/yosupo-convolution_mod.test.cpp
     - icon: ':heavy_check_mark:'
@@ -281,5 +278,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yuki-650.test.cpp
       title: verify/yuki-650.test.cpp
+    - icon: ':x:'
+      path: verify/yuki-FPS.power.test.cpp
+      title: verify/yuki-FPS.power.test.cpp
 layout: toppage
 ---

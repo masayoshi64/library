@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/math/combination.cpp
     title: Combination(P, C, H, Stirling number, Bell number)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
@@ -114,32 +114,33 @@ data:
     \        if (n < k) k = n;\n        vector<T> sm(k + 1);\n        sm[0] = 1;\n\
     \        rep(j, 1, k + 1) { sm[j] = sm[j - 1] + (T)(j % 2 ? -1 : 1) / _fact[j];\
     \ }\n        T res = 0;\n        rep(i, k + 1) { res += mypow<T>(i, n) / _fact[i]\
-    \ * sm[k - i]; }\n        return res;\n    }\n};\n#line 1 \"library/mod/modint.cpp\"\
-    \ntemplate <int Mod>\nstruct modint {\n    int x;\n\n    modint() : x(0) {}\n\n\
-    \    modint(long long y) : x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\
-    \n    modint& operator+=(const modint& p) {\n        if ((x += p.x) >= Mod) x\
-    \ -= Mod;\n        return *this;\n    }\n\n    modint& operator-=(const modint&\
-    \ p) {\n        if ((x += Mod - p.x) >= Mod) x -= Mod;\n        return *this;\n\
-    \    }\n\n    modint& operator*=(const modint& p) {\n        x = (int)(1LL * x\
-    \ * p.x % Mod);\n        return *this;\n    }\n\n    modint& operator/=(const\
-    \ modint& p) {\n        *this *= p.inverse();\n        return *this;\n    }\n\n\
-    \    modint operator-() const { return modint(-x); }\n\n    modint operator+(const\
-    \ modint& p) const { return modint(*this) += p; }\n\n    modint operator-(const\
-    \ modint& p) const { return modint(*this) -= p; }\n\n    modint operator*(const\
-    \ modint& p) const { return modint(*this) *= p; }\n\n    modint operator/(const\
-    \ modint& p) const { return modint(*this) /= p; }\n\n    bool operator==(const\
-    \ modint& p) const { return x == p.x; }\n\n    bool operator!=(const modint& p)\
-    \ const { return x != p.x; }\n\n    modint inverse() const {\n        int a =\
-    \ x, b = Mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
-    \            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
-    \        return modint(u);\n    }\n\n    modint pow(int64_t n) const {\n     \
-    \   modint ret(1), mul(x);\n        while (n > 0) {\n            if (n & 1) ret\
-    \ *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n        return\
-    \ ret;\n    }\n\n    friend ostream& operator<<(ostream& os, const modint& p)\
-    \ {\n        return os << p.x;\n    }\n\n    friend istream& operator>>(istream&\
-    \ is, modint& a) {\n        long long t;\n        is >> t;\n        a = modint<Mod>(t);\n\
-    \        return (is);\n    }\n\n    static int get_mod() { return Mod; }\n\n \
-    \   constexpr int get() const { return x; }\n};\n#line 7 \"verify/aoj-DPL_5_G.test.cpp\"\
+    \ * sm[k - i]; }\n        return res;\n    }\n};\n#line 2 \"library/mod/modint.cpp\"\
+    \ntemplate <int Mod>\nstruct modint\n{\n    int x;\n\n    modint() : x(0) {}\n\
+    \n    modint(long long y) : x(y >= 0 ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\
+    \n    modint &operator+=(const modint &p)\n    {\n        if ((x += p.x) >= Mod)\n\
+    \            x -= Mod;\n        return *this;\n    }\n\n    modint &operator-=(const\
+    \ modint &p)\n    {\n        if ((x += Mod - p.x) >= Mod)\n            x -= Mod;\n\
+    \        return *this;\n    }\n\n    modint &operator*=(const modint &p)\n   \
+    \ {\n        x = (int)(1LL * x * p.x % Mod);\n        return *this;\n    }\n\n\
+    \    modint &operator/=(const modint &p)\n    {\n        *this *= p.inverse();\n\
+    \        return *this;\n    }\n\n    modint operator-() const { return modint(-x);\
+    \ }\n\n    modint operator+(const modint &p) const { return modint(*this) += p;\
+    \ }\n\n    modint operator-(const modint &p) const { return modint(*this) -= p;\
+    \ }\n\n    modint operator*(const modint &p) const { return modint(*this) *= p;\
+    \ }\n\n    modint operator/(const modint &p) const { return modint(*this) /= p;\
+    \ }\n\n    bool operator==(const modint &p) const { return x == p.x; }\n\n   \
+    \ bool operator!=(const modint &p) const { return x != p.x; }\n\n    modint inverse()\
+    \ const\n    {\n        int a = x, b = Mod, u = 1, v = 0, t;\n        while (b\
+    \ > 0)\n        {\n            t = a / b;\n            swap(a -= t * b, b);\n\
+    \            swap(u -= t * v, v);\n        }\n        return modint(u);\n    }\n\
+    \n    modint pow(int64_t n) const\n    {\n        modint ret(1), mul(x);\n   \
+    \     while (n > 0)\n        {\n            if (n & 1)\n                ret *=\
+    \ mul;\n            mul *= mul;\n            n >>= 1;\n        }\n        return\
+    \ ret;\n    }\n\n    friend ostream &operator<<(ostream &os, const modint &p)\n\
+    \    {\n        return os << p.x;\n    }\n\n    friend istream &operator>>(istream\
+    \ &is, modint &a)\n    {\n        long long t;\n        is >> t;\n        a =\
+    \ modint<Mod>(t);\n        return (is);\n    }\n\n    static int get_mod() { return\
+    \ Mod; }\n\n    constexpr int get() const { return x; }\n};\n#line 7 \"verify/aoj-DPL_5_G.test.cpp\"\
     \n#define mod 1000000007ll\nusing mint = modint<mod>;\nint main() {\n    int n,\
     \ k;\n    cin >> n >> k;\n    Combination<mint> comb(n);\n    print(comb.Bell(n,\
     \ k));\n    return 0;\n}\n"
@@ -155,7 +156,7 @@ data:
   isVerificationFile: true
   path: verify/aoj-DPL_5_G.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
+  timestamp: '2021-08-26 10:32:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-DPL_5_G.test.cpp
