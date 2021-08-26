@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/convolution/FFT.cpp
     title: Fast Fourier Transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/convolution/NTT.cpp
     title: Number Theoretic Transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/mod/modint.cpp
     title: library/mod/modint.cpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
@@ -192,14 +192,14 @@ data:
     \            T b = (n1 + m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a)\
     \ * r02r12 + (m2 - b) * r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n\
     \        }\n        return ret;\n    }\n};\n#line 5 \"verify/yosupo-convolution_mod_1000000007.test.cpp\"\
-    \nusing mint = modint<1000000007>;\nFFT fft;\nint main()\n{\n    int n, m;\n \
-    \   cin >> n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n\
+    \nusing mint = modint<1000000007>;\nFFT<mint> fft;\nint main()\n{\n    int n,\
+    \ m;\n    cin >> n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n\
     \    rep(i, m) cin >> b[i];\n    auto c = fft.multiply(a, b);\n    rep(i, n +\
     \ m - 1) { cout << c[i] << ' '; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
     \n#include \"library/template/template.cpp\"\n// library\n#include \"library/convolution/FFT.cpp\"\
-    \nusing mint = modint<1000000007>;\nFFT fft;\nint main()\n{\n    int n, m;\n \
-    \   cin >> n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n\
+    \nusing mint = modint<1000000007>;\nFFT<mint> fft;\nint main()\n{\n    int n,\
+    \ m;\n    cin >> n >> m;\n    vector<mint> a(n), b(m);\n    rep(i, n) cin >> a[i];\n\
     \    rep(i, m) cin >> b[i];\n    auto c = fft.multiply(a, b);\n    rep(i, n +\
     \ m - 1) { cout << c[i] << ' '; }\n    cout << endl;\n}"
   dependsOn:
@@ -210,8 +210,8 @@ data:
   isVerificationFile: true
   path: verify/yosupo-convolution_mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2021-08-26 10:18:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-26 10:24:58+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo-convolution_mod_1000000007.test.cpp
 layout: document
