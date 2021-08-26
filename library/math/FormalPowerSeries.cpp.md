@@ -15,25 +15,17 @@ data:
   - icon: ':x:'
     path: verify/yosupo-convolution_mod.test.cpp
     title: verify/yosupo-convolution_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Formal Power Series
     links:
     - https://ei1333.github.io/library/math/fps/formal-power-series.cpp
-    - https://judge.yosupo.jp/problem/convolution_mod
     - https://judge.yosupo.jp/problem/division_of_polynomials
-    - https://judge.yosupo.jp/problem/exp_of_formal_power_series
-    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
-    - https://judge.yosupo.jp/problem/log_of_formal_power_series
-    - https://judge.yosupo.jp/problem/polynomial_taylor_shift
-    - https://judge.yosupo.jp/problem/pow_of_formal_power_series
-    - https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
-    - https://yukicoder.me/problems/no/215
   bundledCode: "#line 2 \"library/mod/modint.cpp\"\ntemplate <int Mod>\nstruct modint\n\
     {\n    int x;\n\n    modint() : x(0) {}\n\n    modint(long long y) : x(y >= 0\
     \ ? y % Mod : (Mod - (-y) % Mod) % Mod) {}\n\n    modint &operator+=(const modint\
@@ -139,11 +131,11 @@ data:
     \           i64 n1 = d1[i].get(), n2 = d2[i].get();\n            i64 a = d0[i].get();\n\
     \            T b = (n1 + m1 - a) * r01 % m1;\n            T c = ((n2 + m2 - a)\
     \ * r02r12 + (m2 - b) * r12) % m2;\n            ret[i] = a + b * w1 + c * w2;\n\
-    \        }\n        return ret;\n    }\n};\n#line 2 \"library/math/FormalPowerSeries.cpp\"\
+    \        }\n        return ret;\n    }\n};\n#line 3 \"library/math/FormalPowerSeries.cpp\"\
     \n\n/**\n * @brief Formal Power Series\n * @see https://ei1333.github.io/library/math/fps/formal-power-series.cpp\n\
-    \ * @arg modint<mod>\n */\ntemplate <typename T>\nstruct FormalPowerSeries : vector<T>\n\
-    {\n    using vector<T>::vector;\n    using P = FormalPowerSeries;\n    using Conv\
-    \ = FFT<T>;\n\n    P pre(int deg) const\n    {\n        return P(begin(*this),\
+    \ * @arg modint<mod>\n */\nstruct MULT\n{\n};\ntemplate <typename T, auto &fft>\n\
+    struct FormalPowerSeries : vector<T>\n{\n    using vector<T>::vector;\n    using\
+    \ P = FormalPowerSeries;\n\n    P pre(int deg) const\n    {\n        return P(begin(*this),\
     \ begin(*this) + min((int)this->size(), deg));\n    }\n\n    P rev(int deg = -1)\
     \ const\n    {\n        P ret(*this);\n        if (deg != -1)\n            ret.resize(deg,\
     \ T(0));\n        reverse(begin(ret), end(ret));\n        return ret;\n    }\n\
@@ -160,15 +152,15 @@ data:
     \        return *this;\n    }\n\n    P &operator-=(const P &r)\n    {\n      \
     \  if (r.size() > this->size())\n            this->resize(r.size());\n       \
     \ for (int i = 0; i < r.size(); i++)\n            (*this)[i] -= r[i];\n      \
-    \  return *this;\n    }\n\n    // https://judge.yosupo.jp/problem/convolution_mod\n\
-    \    P &operator*=(const P &r)\n    {\n        if (this->empty() || r.empty())\n\
-    \        {\n            this->clear();\n            return *this;\n        }\n\
-    \        auto ret = Conv::multiply(*this, r);\n        return *this = {begin(ret),\
-    \ end(ret)};\n    }\n\n    P &operator/=(const P &r)\n    {\n        if (this->size()\
-    \ < r.size())\n        {\n            this->clear();\n            return *this;\n\
-    \        }\n        int n = this->size() - r.size() + 1;\n        return *this\
-    \ = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n    }\n\n    P &operator%=(const\
-    \ P &r)\n    {\n        return *this -= *this / r * r;\n    }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n\
+    \  return *this;\n    }\n\n    P &operator*=(const P &r)\n    {\n        if (this->empty()\
+    \ || r.empty())\n        {\n            this->clear();\n            return *this;\n\
+    \        }\n        auto ret = fft.multiply(*this, r);\n        return *this =\
+    \ {begin(ret), end(ret)};\n    }\n\n    P &operator/=(const P &r)\n    {\n   \
+    \     if (this->size() < r.size())\n        {\n            this->clear();\n  \
+    \          return *this;\n        }\n        int n = this->size() - r.size() +\
+    \ 1;\n        return *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n\
+    \    }\n\n    P &operator%=(const P &r)\n    {\n        return *this -= *this\
+    \ / r * r;\n    }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n\
     \    pair<P, P> div_mod(const P &r)\n    {\n        P q = *this / r;\n       \
     \ return make_pair(q, *this - q * r);\n    }\n\n    P operator-() const\n    {\n\
     \        P ret(this->size());\n        for (int i = 0; i < this->size(); i++)\n\
@@ -193,50 +185,47 @@ data:
     \        return ret;\n    }\n\n    P integral() const\n    {\n        const int\
     \ n = (int)this->size();\n        P ret(n + 1);\n        ret[0] = T(0);\n    \
     \    for (int i = 0; i < n; i++)\n            ret[i + 1] = (*this)[i] / T(i +\
-    \ 1);\n        return ret;\n    }\n\n    // https://judge.yosupo.jp/problem/inv_of_formal_power_series\n\
-    \    // F(0) must not be 0\n    P inv(int deg = -1) const\n    {\n        assert(((*this)[0])\
-    \ != T(0));\n        const int n = (int)this->size();\n        if (deg == -1)\n\
-    \            deg = n;\n        P ret({T(1) / (*this)[0]});\n        for (int i\
-    \ = 1; i < deg; i <<= 1)\n        {\n            ret = (ret + ret - ret * ret\
-    \ * pre(i << 1)).pre(i << 1);\n        }\n        return ret.pre(deg);\n    }\n\
-    \n    // https://judge.yosupo.jp/problem/log_of_formal_power_series\n    // F(0)\
-    \ must be 1\n    P log(int deg = -1) const\n    {\n        assert((*this)[0] ==\
-    \ T(1));\n        const int n = (int)this->size();\n        if (deg == -1)\n \
-    \           deg = n;\n        return (this->diff() * this->inv(deg)).pre(deg -\
-    \ 1).integral();\n    }\n\n    // https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\n\
-    \    P sqrt(\n        int deg = -1, const function<T(T)> &get_sqrt = [](T)\n \
-    \                     { return T(1); }) const\n    {\n        const int n = (int)this->size();\n\
-    \        if (deg == -1)\n            deg = n;\n        if ((*this)[0] == T(0))\n\
-    \        {\n            for (int i = 1; i < n; i++)\n            {\n         \
-    \       if ((*this)[i] != T(0))\n                {\n                    if (i\
-    \ & 1)\n                        return {};\n                    if (deg - i /\
-    \ 2 <= 0)\n                        break;\n                    auto ret = (*this\
-    \ >> i).sqrt(deg - i / 2, get_sqrt);\n                    if (ret.empty())\n \
-    \                       return {};\n                    ret = ret << (i / 2);\n\
-    \                    if (ret.size() < deg)\n                        ret.resize(deg,\
-    \ T(0));\n                    return ret;\n                }\n            }\n\
-    \            return P(deg, 0);\n        }\n        auto sqr = T(get_sqrt((*this)[0]));\n\
-    \        if (sqr * sqr != (*this)[0])\n            return {};\n        P ret{sqr};\n\
-    \        T inv2 = T(1) / T(2);\n        for (int i = 1; i < deg; i <<= 1)\n  \
-    \      {\n            ret = (ret + pre(i << 1) * ret.inv(i << 1)) * inv2;\n  \
-    \      }\n        return ret.pre(deg);\n    }\n\n    P sqrt(const function<T(T)>\
-    \ &get_sqrt, int deg = -1) const\n    {\n        return sqrt(deg, get_sqrt);\n\
-    \    }\n\n    // https://judge.yosupo.jp/problem/exp_of_formal_power_series\n\
-    \    // F(0) must be 0\n    P exp(int deg = -1) const\n    {\n        if (deg\
-    \ == -1)\n            deg = this->size();\n        assert((*this)[0] == T(0));\n\
-    \        const int n = (int)this->size();\n        if (deg == -1)\n          \
-    \  deg = n;\n        P ret({T(1)});\n        for (int i = 1; i < deg; i <<= 1)\n\
-    \        {\n            ret = (ret * (pre(i << 1) + T(1) - ret.log(i << 1))).pre(i\
-    \ << 1);\n        }\n        return ret.pre(deg);\n    }\n\n    // https://judge.yosupo.jp/problem/pow_of_formal_power_series\n\
-    \    P pow(int64_t k, int deg = -1) const\n    {\n        const int n = (int)this->size();\n\
-    \        if (deg == -1)\n            deg = n;\n        for (int i = 0; i < n;\
-    \ i++)\n        {\n            if ((*this)[i] != T(0))\n            {\n      \
-    \          T rev = T(1) / (*this)[i];\n                P ret = (((*this * rev)\
-    \ >> i).log() * k).exp() * ((*this)[i].pow(k));\n                if (i * k > deg)\n\
-    \                    return P(deg, T(0));\n                ret = (ret << (i *\
-    \ k)).pre(deg);\n                if (ret.size() < deg)\n                    ret.resize(deg,\
-    \ T(0));\n                return ret;\n            }\n        }\n        return\
-    \ *this;\n    }\n\n    // https://yukicoder.me/problems/no/215\n    P mod_pow(int64_t\
+    \ 1);\n        return ret;\n    }\n\n    // F(0) must not be 0\n    P inv(int\
+    \ deg = -1) const\n    {\n        assert(((*this)[0]) != T(0));\n        const\
+    \ int n = (int)this->size();\n        if (deg == -1)\n            deg = n;\n \
+    \       P ret({T(1) / (*this)[0]});\n        for (int i = 1; i < deg; i <<= 1)\n\
+    \        {\n            ret = (ret + ret - ret * ret * pre(i << 1)).pre(i << 1);\n\
+    \        }\n        return ret.pre(deg);\n    }\n\n    // F(0) must be 1\n   \
+    \ P log(int deg = -1) const\n    {\n        assert((*this)[0] == T(1));\n    \
+    \    const int n = (int)this->size();\n        if (deg == -1)\n            deg\
+    \ = n;\n        return (this->diff() * this->inv(deg)).pre(deg - 1).integral();\n\
+    \    }\n\n    P sqrt(\n        int deg = -1, const function<T(T)> &get_sqrt =\
+    \ [](T)\n                      { return T(1); }) const\n    {\n        const int\
+    \ n = (int)this->size();\n        if (deg == -1)\n            deg = n;\n     \
+    \   if ((*this)[0] == T(0))\n        {\n            for (int i = 1; i < n; i++)\n\
+    \            {\n                if ((*this)[i] != T(0))\n                {\n \
+    \                   if (i & 1)\n                        return {};\n         \
+    \           if (deg - i / 2 <= 0)\n                        break;\n          \
+    \          auto ret = (*this >> i).sqrt(deg - i / 2, get_sqrt);\n            \
+    \        if (ret.empty())\n                        return {};\n              \
+    \      ret = ret << (i / 2);\n                    if (ret.size() < deg)\n    \
+    \                    ret.resize(deg, T(0));\n                    return ret;\n\
+    \                }\n            }\n            return P(deg, 0);\n        }\n\
+    \        auto sqr = T(get_sqrt((*this)[0]));\n        if (sqr * sqr != (*this)[0])\n\
+    \            return {};\n        P ret{sqr};\n        T inv2 = T(1) / T(2);\n\
+    \        for (int i = 1; i < deg; i <<= 1)\n        {\n            ret = (ret\
+    \ + pre(i << 1) * ret.inv(i << 1)) * inv2;\n        }\n        return ret.pre(deg);\n\
+    \    }\n\n    P sqrt(const function<T(T)> &get_sqrt, int deg = -1) const\n   \
+    \ {\n        return sqrt(deg, get_sqrt);\n    }\n\n    // F(0) must be 0\n   \
+    \ P exp(int deg = -1) const\n    {\n        if (deg == -1)\n            deg =\
+    \ this->size();\n        assert((*this)[0] == T(0));\n        const int n = (int)this->size();\n\
+    \        if (deg == -1)\n            deg = n;\n        P ret({T(1)});\n      \
+    \  for (int i = 1; i < deg; i <<= 1)\n        {\n            ret = (ret * (pre(i\
+    \ << 1) + T(1) - ret.log(i << 1))).pre(i << 1);\n        }\n        return ret.pre(deg);\n\
+    \    }\n\n    P pow(int64_t k, int deg = -1) const\n    {\n        const int n\
+    \ = (int)this->size();\n        if (deg == -1)\n            deg = n;\n       \
+    \ for (int i = 0; i < n; i++)\n        {\n            if ((*this)[i] != T(0))\n\
+    \            {\n                T rev = T(1) / (*this)[i];\n                P\
+    \ ret = (((*this * rev) >> i).log() * k).exp() * ((*this)[i].pow(k));\n      \
+    \          if (i * k > deg)\n                    return P(deg, T(0));\n      \
+    \          ret = (ret << (i * k)).pre(deg);\n                if (ret.size() <\
+    \ deg)\n                    ret.resize(deg, T(0));\n                return ret;\n\
+    \            }\n        }\n        return *this;\n    }\n\n    P mod_pow(int64_t\
     \ k, P g) const\n    {\n        P modinv = g.rev().inv();\n        auto get_div\
     \ = [&](P base)\n        {\n            if (base.size() < g.size())\n        \
     \    {\n                base.clear();\n                return base;\n        \
@@ -246,23 +235,21 @@ data:
     \            ret *= x;\n                ret -= get_div(ret) * g;\n           \
     \     ret.shrink();\n            }\n            x *= x;\n            x -= get_div(x)\
     \ * g;\n            x.shrink();\n            k >>= 1;\n        }\n        return\
-    \ ret;\n    }\n\n    // https://judge.yosupo.jp/problem/polynomial_taylor_shift\n\
-    \    P taylor_shift(T c) const\n    {\n        int n = (int)this->size();\n  \
-    \      vector<T> fact(n), rfact(n);\n        fact[0] = rfact[0] = T(1);\n    \
-    \    for (int i = 1; i < n; i++)\n            fact[i] = fact[i - 1] * T(i);\n\
+    \ ret;\n    }\n\n    P taylor_shift(T c) const\n    {\n        int n = (int)this->size();\n\
+    \        vector<T> fact(n), rfact(n);\n        fact[0] = rfact[0] = T(1);\n  \
+    \      for (int i = 1; i < n; i++)\n            fact[i] = fact[i - 1] * T(i);\n\
     \        rfact[n - 1] = T(1) / fact[n - 1];\n        for (int i = n - 1; i > 1;\
     \ i--)\n            rfact[i - 1] = rfact[i] * T(i);\n        P p(*this);\n   \
     \     for (int i = 0; i < n; i++)\n            p[i] *= fact[i];\n        p = p.rev();\n\
     \        P bs(n, T(1));\n        for (int i = 1; i < n; i++)\n            bs[i]\
     \ = bs[i - 1] * c * rfact[i] * fact[i - 1];\n        p = (p * bs).pre(n);\n  \
     \      p = p.rev();\n        for (int i = 0; i < n; i++)\n            p[i] *=\
-    \ rfact[i];\n        return p;\n    }\n};\n\ntemplate <typename Mint>\nusing FPS\
-    \ = FormalPowerSeries<Mint>;\n"
-  code: "#include \"library/convolution/FFT.cpp\"\n\n/**\n * @brief Formal Power Series\n\
-    \ * @see https://ei1333.github.io/library/math/fps/formal-power-series.cpp\n *\
-    \ @arg modint<mod>\n */\ntemplate <typename T>\nstruct FormalPowerSeries : vector<T>\n\
-    {\n    using vector<T>::vector;\n    using P = FormalPowerSeries;\n    using Conv\
-    \ = FFT<T>;\n\n    P pre(int deg) const\n    {\n        return P(begin(*this),\
+    \ rfact[i];\n        return p;\n    }\n};\n"
+  code: "#include \"library/mod/modint.cpp\"\n#include \"library/convolution/FFT.cpp\"\
+    \n\n/**\n * @brief Formal Power Series\n * @see https://ei1333.github.io/library/math/fps/formal-power-series.cpp\n\
+    \ * @arg modint<mod>\n */\nstruct MULT\n{\n};\ntemplate <typename T, auto &fft>\n\
+    struct FormalPowerSeries : vector<T>\n{\n    using vector<T>::vector;\n    using\
+    \ P = FormalPowerSeries;\n\n    P pre(int deg) const\n    {\n        return P(begin(*this),\
     \ begin(*this) + min((int)this->size(), deg));\n    }\n\n    P rev(int deg = -1)\
     \ const\n    {\n        P ret(*this);\n        if (deg != -1)\n            ret.resize(deg,\
     \ T(0));\n        reverse(begin(ret), end(ret));\n        return ret;\n    }\n\
@@ -279,15 +266,15 @@ data:
     \        return *this;\n    }\n\n    P &operator-=(const P &r)\n    {\n      \
     \  if (r.size() > this->size())\n            this->resize(r.size());\n       \
     \ for (int i = 0; i < r.size(); i++)\n            (*this)[i] -= r[i];\n      \
-    \  return *this;\n    }\n\n    // https://judge.yosupo.jp/problem/convolution_mod\n\
-    \    P &operator*=(const P &r)\n    {\n        if (this->empty() || r.empty())\n\
-    \        {\n            this->clear();\n            return *this;\n        }\n\
-    \        auto ret = Conv::multiply(*this, r);\n        return *this = {begin(ret),\
-    \ end(ret)};\n    }\n\n    P &operator/=(const P &r)\n    {\n        if (this->size()\
-    \ < r.size())\n        {\n            this->clear();\n            return *this;\n\
-    \        }\n        int n = this->size() - r.size() + 1;\n        return *this\
-    \ = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n    }\n\n    P &operator%=(const\
-    \ P &r)\n    {\n        return *this -= *this / r * r;\n    }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n\
+    \  return *this;\n    }\n\n    P &operator*=(const P &r)\n    {\n        if (this->empty()\
+    \ || r.empty())\n        {\n            this->clear();\n            return *this;\n\
+    \        }\n        auto ret = fft.multiply(*this, r);\n        return *this =\
+    \ {begin(ret), end(ret)};\n    }\n\n    P &operator/=(const P &r)\n    {\n   \
+    \     if (this->size() < r.size())\n        {\n            this->clear();\n  \
+    \          return *this;\n        }\n        int n = this->size() - r.size() +\
+    \ 1;\n        return *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n\
+    \    }\n\n    P &operator%=(const P &r)\n    {\n        return *this -= *this\
+    \ / r * r;\n    }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n\
     \    pair<P, P> div_mod(const P &r)\n    {\n        P q = *this / r;\n       \
     \ return make_pair(q, *this - q * r);\n    }\n\n    P operator-() const\n    {\n\
     \        P ret(this->size());\n        for (int i = 0; i < this->size(); i++)\n\
@@ -312,50 +299,47 @@ data:
     \        return ret;\n    }\n\n    P integral() const\n    {\n        const int\
     \ n = (int)this->size();\n        P ret(n + 1);\n        ret[0] = T(0);\n    \
     \    for (int i = 0; i < n; i++)\n            ret[i + 1] = (*this)[i] / T(i +\
-    \ 1);\n        return ret;\n    }\n\n    // https://judge.yosupo.jp/problem/inv_of_formal_power_series\n\
-    \    // F(0) must not be 0\n    P inv(int deg = -1) const\n    {\n        assert(((*this)[0])\
-    \ != T(0));\n        const int n = (int)this->size();\n        if (deg == -1)\n\
-    \            deg = n;\n        P ret({T(1) / (*this)[0]});\n        for (int i\
-    \ = 1; i < deg; i <<= 1)\n        {\n            ret = (ret + ret - ret * ret\
-    \ * pre(i << 1)).pre(i << 1);\n        }\n        return ret.pre(deg);\n    }\n\
-    \n    // https://judge.yosupo.jp/problem/log_of_formal_power_series\n    // F(0)\
-    \ must be 1\n    P log(int deg = -1) const\n    {\n        assert((*this)[0] ==\
-    \ T(1));\n        const int n = (int)this->size();\n        if (deg == -1)\n \
-    \           deg = n;\n        return (this->diff() * this->inv(deg)).pre(deg -\
-    \ 1).integral();\n    }\n\n    // https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\n\
-    \    P sqrt(\n        int deg = -1, const function<T(T)> &get_sqrt = [](T)\n \
-    \                     { return T(1); }) const\n    {\n        const int n = (int)this->size();\n\
-    \        if (deg == -1)\n            deg = n;\n        if ((*this)[0] == T(0))\n\
-    \        {\n            for (int i = 1; i < n; i++)\n            {\n         \
-    \       if ((*this)[i] != T(0))\n                {\n                    if (i\
-    \ & 1)\n                        return {};\n                    if (deg - i /\
-    \ 2 <= 0)\n                        break;\n                    auto ret = (*this\
-    \ >> i).sqrt(deg - i / 2, get_sqrt);\n                    if (ret.empty())\n \
-    \                       return {};\n                    ret = ret << (i / 2);\n\
-    \                    if (ret.size() < deg)\n                        ret.resize(deg,\
-    \ T(0));\n                    return ret;\n                }\n            }\n\
-    \            return P(deg, 0);\n        }\n        auto sqr = T(get_sqrt((*this)[0]));\n\
-    \        if (sqr * sqr != (*this)[0])\n            return {};\n        P ret{sqr};\n\
-    \        T inv2 = T(1) / T(2);\n        for (int i = 1; i < deg; i <<= 1)\n  \
-    \      {\n            ret = (ret + pre(i << 1) * ret.inv(i << 1)) * inv2;\n  \
-    \      }\n        return ret.pre(deg);\n    }\n\n    P sqrt(const function<T(T)>\
-    \ &get_sqrt, int deg = -1) const\n    {\n        return sqrt(deg, get_sqrt);\n\
-    \    }\n\n    // https://judge.yosupo.jp/problem/exp_of_formal_power_series\n\
-    \    // F(0) must be 0\n    P exp(int deg = -1) const\n    {\n        if (deg\
-    \ == -1)\n            deg = this->size();\n        assert((*this)[0] == T(0));\n\
-    \        const int n = (int)this->size();\n        if (deg == -1)\n          \
-    \  deg = n;\n        P ret({T(1)});\n        for (int i = 1; i < deg; i <<= 1)\n\
-    \        {\n            ret = (ret * (pre(i << 1) + T(1) - ret.log(i << 1))).pre(i\
-    \ << 1);\n        }\n        return ret.pre(deg);\n    }\n\n    // https://judge.yosupo.jp/problem/pow_of_formal_power_series\n\
-    \    P pow(int64_t k, int deg = -1) const\n    {\n        const int n = (int)this->size();\n\
-    \        if (deg == -1)\n            deg = n;\n        for (int i = 0; i < n;\
-    \ i++)\n        {\n            if ((*this)[i] != T(0))\n            {\n      \
-    \          T rev = T(1) / (*this)[i];\n                P ret = (((*this * rev)\
-    \ >> i).log() * k).exp() * ((*this)[i].pow(k));\n                if (i * k > deg)\n\
-    \                    return P(deg, T(0));\n                ret = (ret << (i *\
-    \ k)).pre(deg);\n                if (ret.size() < deg)\n                    ret.resize(deg,\
-    \ T(0));\n                return ret;\n            }\n        }\n        return\
-    \ *this;\n    }\n\n    // https://yukicoder.me/problems/no/215\n    P mod_pow(int64_t\
+    \ 1);\n        return ret;\n    }\n\n    // F(0) must not be 0\n    P inv(int\
+    \ deg = -1) const\n    {\n        assert(((*this)[0]) != T(0));\n        const\
+    \ int n = (int)this->size();\n        if (deg == -1)\n            deg = n;\n \
+    \       P ret({T(1) / (*this)[0]});\n        for (int i = 1; i < deg; i <<= 1)\n\
+    \        {\n            ret = (ret + ret - ret * ret * pre(i << 1)).pre(i << 1);\n\
+    \        }\n        return ret.pre(deg);\n    }\n\n    // F(0) must be 1\n   \
+    \ P log(int deg = -1) const\n    {\n        assert((*this)[0] == T(1));\n    \
+    \    const int n = (int)this->size();\n        if (deg == -1)\n            deg\
+    \ = n;\n        return (this->diff() * this->inv(deg)).pre(deg - 1).integral();\n\
+    \    }\n\n    P sqrt(\n        int deg = -1, const function<T(T)> &get_sqrt =\
+    \ [](T)\n                      { return T(1); }) const\n    {\n        const int\
+    \ n = (int)this->size();\n        if (deg == -1)\n            deg = n;\n     \
+    \   if ((*this)[0] == T(0))\n        {\n            for (int i = 1; i < n; i++)\n\
+    \            {\n                if ((*this)[i] != T(0))\n                {\n \
+    \                   if (i & 1)\n                        return {};\n         \
+    \           if (deg - i / 2 <= 0)\n                        break;\n          \
+    \          auto ret = (*this >> i).sqrt(deg - i / 2, get_sqrt);\n            \
+    \        if (ret.empty())\n                        return {};\n              \
+    \      ret = ret << (i / 2);\n                    if (ret.size() < deg)\n    \
+    \                    ret.resize(deg, T(0));\n                    return ret;\n\
+    \                }\n            }\n            return P(deg, 0);\n        }\n\
+    \        auto sqr = T(get_sqrt((*this)[0]));\n        if (sqr * sqr != (*this)[0])\n\
+    \            return {};\n        P ret{sqr};\n        T inv2 = T(1) / T(2);\n\
+    \        for (int i = 1; i < deg; i <<= 1)\n        {\n            ret = (ret\
+    \ + pre(i << 1) * ret.inv(i << 1)) * inv2;\n        }\n        return ret.pre(deg);\n\
+    \    }\n\n    P sqrt(const function<T(T)> &get_sqrt, int deg = -1) const\n   \
+    \ {\n        return sqrt(deg, get_sqrt);\n    }\n\n    // F(0) must be 0\n   \
+    \ P exp(int deg = -1) const\n    {\n        if (deg == -1)\n            deg =\
+    \ this->size();\n        assert((*this)[0] == T(0));\n        const int n = (int)this->size();\n\
+    \        if (deg == -1)\n            deg = n;\n        P ret({T(1)});\n      \
+    \  for (int i = 1; i < deg; i <<= 1)\n        {\n            ret = (ret * (pre(i\
+    \ << 1) + T(1) - ret.log(i << 1))).pre(i << 1);\n        }\n        return ret.pre(deg);\n\
+    \    }\n\n    P pow(int64_t k, int deg = -1) const\n    {\n        const int n\
+    \ = (int)this->size();\n        if (deg == -1)\n            deg = n;\n       \
+    \ for (int i = 0; i < n; i++)\n        {\n            if ((*this)[i] != T(0))\n\
+    \            {\n                T rev = T(1) / (*this)[i];\n                P\
+    \ ret = (((*this * rev) >> i).log() * k).exp() * ((*this)[i].pow(k));\n      \
+    \          if (i * k > deg)\n                    return P(deg, T(0));\n      \
+    \          ret = (ret << (i * k)).pre(deg);\n                if (ret.size() <\
+    \ deg)\n                    ret.resize(deg, T(0));\n                return ret;\n\
+    \            }\n        }\n        return *this;\n    }\n\n    P mod_pow(int64_t\
     \ k, P g) const\n    {\n        P modinv = g.rev().inv();\n        auto get_div\
     \ = [&](P base)\n        {\n            if (base.size() < g.size())\n        \
     \    {\n                base.clear();\n                return base;\n        \
@@ -365,27 +349,25 @@ data:
     \            ret *= x;\n                ret -= get_div(ret) * g;\n           \
     \     ret.shrink();\n            }\n            x *= x;\n            x -= get_div(x)\
     \ * g;\n            x.shrink();\n            k >>= 1;\n        }\n        return\
-    \ ret;\n    }\n\n    // https://judge.yosupo.jp/problem/polynomial_taylor_shift\n\
-    \    P taylor_shift(T c) const\n    {\n        int n = (int)this->size();\n  \
-    \      vector<T> fact(n), rfact(n);\n        fact[0] = rfact[0] = T(1);\n    \
-    \    for (int i = 1; i < n; i++)\n            fact[i] = fact[i - 1] * T(i);\n\
+    \ ret;\n    }\n\n    P taylor_shift(T c) const\n    {\n        int n = (int)this->size();\n\
+    \        vector<T> fact(n), rfact(n);\n        fact[0] = rfact[0] = T(1);\n  \
+    \      for (int i = 1; i < n; i++)\n            fact[i] = fact[i - 1] * T(i);\n\
     \        rfact[n - 1] = T(1) / fact[n - 1];\n        for (int i = n - 1; i > 1;\
     \ i--)\n            rfact[i - 1] = rfact[i] * T(i);\n        P p(*this);\n   \
     \     for (int i = 0; i < n; i++)\n            p[i] *= fact[i];\n        p = p.rev();\n\
     \        P bs(n, T(1));\n        for (int i = 1; i < n; i++)\n            bs[i]\
     \ = bs[i - 1] * c * rfact[i] * fact[i - 1];\n        p = (p * bs).pre(n);\n  \
     \      p = p.rev();\n        for (int i = 0; i < n; i++)\n            p[i] *=\
-    \ rfact[i];\n        return p;\n    }\n};\n\ntemplate <typename Mint>\nusing FPS\
-    \ = FormalPowerSeries<Mint>;"
+    \ rfact[i];\n        return p;\n    }\n};\n"
   dependsOn:
-  - library/convolution/FFT.cpp
   - library/mod/modint.cpp
+  - library/convolution/FFT.cpp
   - library/convolution/NTT.cpp
   isVerificationFile: false
   path: library/math/FormalPowerSeries.cpp
   requiredBy: []
-  timestamp: '2021-08-26 10:32:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-08-26 11:11:30+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yuki-FPS.power.test.cpp
   - verify/yosupo-convolution_mod.test.cpp

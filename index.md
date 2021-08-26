@@ -80,13 +80,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/BitMatrix.cpp
       title: library/math/BitMatrix.cpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: library/math/FormalPowerSeries.cpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
       path: library/math/Matrix.cpp
       title: library/math/Matrix.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/math/combination.cpp
       title: Combination(P, C, H, Stirling number, Bell number)
     - icon: ':warning:'
@@ -278,7 +278,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yuki-650.test.cpp
       title: verify/yuki-650.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yuki-FPS.power.test.cpp
       title: verify/yuki-FPS.power.test.cpp
 layout: toppage

@@ -90,7 +90,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-650.test.cpp
     title: verify/yuki-650.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
   _isVerificationFailed: true

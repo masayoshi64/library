@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DPL_5_G.test.cpp
     title: verify/aoj-DPL_5_G.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/Combination.md
     document_title: Combination(P, C, H, Stirling number, Bell number)
@@ -82,7 +82,7 @@ data:
   path: library/math/combination.cpp
   requiredBy: []
   timestamp: '2020-11-14 13:31:01+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
   - verify/yuki-FPS.power.test.cpp
