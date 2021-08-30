@@ -1,7 +1,10 @@
 #define PROBLEM "https://atcoder.jp/contests/abc216/tasks/abc216_g"
 #include "library/graph/distance/dijkstra.cpp"
 #include "library/template/template.cpp"
-
+/**
+ * @brief 牛ゲー
+ * @docs docs/cow_game.md
+ */
 int main() {
     int n, m;
     cin >> n >> m;
