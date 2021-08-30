@@ -195,6 +195,11 @@ data:
     - icon: ':warning:'
       path: typical/dp/sort.cpp
       title: typical/dp/sort.cpp
+  - name: typical/others
+    pages:
+    - icon: ':warning:'
+      path: typical/others/cow_game.cpp
+      title: typical/others/cow_game.cpp
   - name: verify
     pages:
     - icon: ':warning:'

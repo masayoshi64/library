@@ -1,26 +1,27 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: library/graph/distance/dijkstra.cpp
+    title: dijkstra
   - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: typical/others/cow_game.cpp
-    title: typical/others/cow_game.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: dijkstra
-    links: []
-  bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
-    #pragma GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    // types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
-    \ double;\ntypedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll>\
-    \ vl;\ntypedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\n\
-    using mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
+    links:
+    - https://atcoder.jp/contests/abc216/tasks/abc216_g
+  bundledCode: "#line 1 \"typical/others/cow_game.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc216/tasks/abc216_g\"\
+    \n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
+    \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
+    using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
+    typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
+    typedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing\
+    \ mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
     \ long>> vvl;\ntypedef vector<vector<char>> vvc;\n// abreviations\n#define all(x)\
     \ (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define rep_(i,\
     \ a_, b_, a, b, ...) for (ll i = (a), max_i = (b); i < max_i; i++)\n#define rep(i,\
@@ -86,31 +87,36 @@ data:
     \        for (auto &e : g.g[idx]) {\n            auto next_cost = cost + e.cost;\n\
     \            if (dist[e.to] <= next_cost) continue;\n            dist[e.to] =\
     \ next_cost;\n            que.emplace(dist[e.to], e.to);\n        }\n    }\n \
-    \   return dist;\n}\n"
-  code: "#pragma once\n#include \"library/template/template.cpp\"\n/**\n * @brief\
-    \ dijkstra\n */\ntemplate <typename T>\nvector<T> dijkstra(Graph<T> &g, int s)\
-    \ {\n    const auto TINF = numeric_limits<T>::max();\n    vector<T> dist(g.size(),\
-    \ TINF);\n\n    using Pi = pair<T, int>;\n    priority_queue<Pi, vector<Pi>, greater<Pi>>\
-    \ que;\n    dist[s] = 0;\n    que.emplace(dist[s], s);\n    while (!que.empty())\
-    \ {\n        T cost;\n        int idx;\n        tie(cost, idx) = que.top();\n\
-    \        que.pop();\n        if (dist[idx] < cost) continue;\n        for (auto\
-    \ &e : g.g[idx]) {\n            auto next_cost = cost + e.cost;\n            if\
-    \ (dist[e.to] <= next_cost) continue;\n            dist[e.to] = next_cost;\n \
-    \           que.emplace(dist[e.to], e.to);\n        }\n    }\n    return dist;\n\
-    }"
+    \   return dist;\n}\n#line 4 \"typical/others/cow_game.cpp\"\n\nint main() {\n\
+    \    int n, m;\n    cin >> n >> m;\n    Graph<ll> g(n + 1);\n    rep(i, n) {\n\
+    \        g.add_directed_edge(i, i + 1, 1);\n        g.add_directed_edge(i + 1,\
+    \ i, 0);\n    }\n    rep(i, m) {\n        ll l, r, x;\n        cin >> l >> r >>\
+    \ x;\n        l--;\n        g.add_directed_edge(l, r, r - l - x);\n    }\n   \
+    \ auto dist = dijkstra(g, 0);\n    rep(i, n) {\n        if (dist[i + 1] - dist[i])\n\
+    \            cout << \"0 \";\n        else\n            cout << \"1 \";\n    }\n\
+    \    cout << endl;\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc216/tasks/abc216_g\"\n#include\
+    \ \"library/graph/distance/dijkstra.cpp\"\n#include \"library/template/template.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<ll> g(n + 1);\n\
+    \    rep(i, n) {\n        g.add_directed_edge(i, i + 1, 1);\n        g.add_directed_edge(i\
+    \ + 1, i, 0);\n    }\n    rep(i, m) {\n        ll l, r, x;\n        cin >> l >>\
+    \ r >> x;\n        l--;\n        g.add_directed_edge(l, r, r - l - x);\n    }\n\
+    \    auto dist = dijkstra(g, 0);\n    rep(i, n) {\n        if (dist[i + 1] - dist[i])\n\
+    \            cout << \"0 \";\n        else\n            cout << \"1 \";\n    }\n\
+    \    cout << endl;\n}\n"
   dependsOn:
+  - library/graph/distance/dijkstra.cpp
   - library/template/template.cpp
   isVerificationFile: false
-  path: library/graph/distance/dijkstra.cpp
-  requiredBy:
-  - typical/others/cow_game.cpp
-  timestamp: '2021-08-26 20:26:43+09:00'
+  path: typical/others/cow_game.cpp
+  requiredBy: []
+  timestamp: '2021-08-30 21:12:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: library/graph/distance/dijkstra.cpp
+documentation_of: typical/others/cow_game.cpp
 layout: document
 redirect_from:
-- /library/library/graph/distance/dijkstra.cpp
-- /library/library/graph/distance/dijkstra.cpp.html
-title: dijkstra
+- /library/typical/others/cow_game.cpp
+- /library/typical/others/cow_game.cpp.html
+title: typical/others/cow_game.cpp
 ---

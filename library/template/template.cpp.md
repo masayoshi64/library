@@ -24,6 +24,9 @@ data:
     path: typical/dp/sort.cpp
     title: typical/dp/sort.cpp
   - icon: ':warning:'
+    path: typical/others/cow_game.cpp
+    title: typical/others/cow_game.cpp
+  - icon: ':warning:'
     path: verify/aoj.cpp
     title: verify/aoj.cpp
   - icon: ':warning:'
@@ -235,6 +238,7 @@ data:
   isVerificationFile: false
   path: library/template/template.cpp
   requiredBy:
+  - typical/others/cow_game.cpp
   - typical/dp/sort.cpp
   - typical/dp/hakone.cpp
   - verify/aoj.cpp
