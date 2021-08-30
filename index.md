@@ -199,7 +199,7 @@ data:
     pages:
     - icon: ':warning:'
       path: typical/others/cow_game.cpp
-      title: typical/others/cow_game.cpp
+      title: "\u725B\u30B2\u30FC"
   - name: verify
     pages:
     - icon: ':warning:'

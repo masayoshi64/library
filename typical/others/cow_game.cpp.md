@@ -13,6 +13,8 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    _deprecated_at_docs: docs/cow_game.md
+    document_title: "\u725B\u30B2\u30FC"
     links:
     - https://atcoder.jp/contests/abc216/tasks/abc216_g
   bundledCode: "#line 1 \"typical/others/cow_game.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc216/tasks/abc216_g\"\
@@ -87,18 +89,19 @@ data:
     \        for (auto &e : g.g[idx]) {\n            auto next_cost = cost + e.cost;\n\
     \            if (dist[e.to] <= next_cost) continue;\n            dist[e.to] =\
     \ next_cost;\n            que.emplace(dist[e.to], e.to);\n        }\n    }\n \
-    \   return dist;\n}\n#line 4 \"typical/others/cow_game.cpp\"\n\nint main() {\n\
-    \    int n, m;\n    cin >> n >> m;\n    Graph<ll> g(n + 1);\n    rep(i, n) {\n\
-    \        g.add_directed_edge(i, i + 1, 1);\n        g.add_directed_edge(i + 1,\
-    \ i, 0);\n    }\n    rep(i, m) {\n        ll l, r, x;\n        cin >> l >> r >>\
-    \ x;\n        l--;\n        g.add_directed_edge(l, r, r - l - x);\n    }\n   \
-    \ auto dist = dijkstra(g, 0);\n    rep(i, n) {\n        if (dist[i + 1] - dist[i])\n\
-    \            cout << \"0 \";\n        else\n            cout << \"1 \";\n    }\n\
-    \    cout << endl;\n}\n"
+    \   return dist;\n}\n#line 4 \"typical/others/cow_game.cpp\"\n/**\n * @brief \u725B\
+    \u30B2\u30FC\n * @docs docs/cow_game.md\n */\nint main() {\n    int n, m;\n  \
+    \  cin >> n >> m;\n    Graph<ll> g(n + 1);\n    rep(i, n) {\n        g.add_directed_edge(i,\
+    \ i + 1, 1);\n        g.add_directed_edge(i + 1, i, 0);\n    }\n    rep(i, m)\
+    \ {\n        ll l, r, x;\n        cin >> l >> r >> x;\n        l--;\n        g.add_directed_edge(l,\
+    \ r, r - l - x);\n    }\n    auto dist = dijkstra(g, 0);\n    rep(i, n) {\n  \
+    \      if (dist[i + 1] - dist[i])\n            cout << \"0 \";\n        else\n\
+    \            cout << \"1 \";\n    }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc216/tasks/abc216_g\"\n#include\
     \ \"library/graph/distance/dijkstra.cpp\"\n#include \"library/template/template.cpp\"\
-    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<ll> g(n + 1);\n\
-    \    rep(i, n) {\n        g.add_directed_edge(i, i + 1, 1);\n        g.add_directed_edge(i\
+    \n/**\n * @brief \u725B\u30B2\u30FC\n * @docs docs/cow_game.md\n */\nint main()\
+    \ {\n    int n, m;\n    cin >> n >> m;\n    Graph<ll> g(n + 1);\n    rep(i, n)\
+    \ {\n        g.add_directed_edge(i, i + 1, 1);\n        g.add_directed_edge(i\
     \ + 1, i, 0);\n    }\n    rep(i, m) {\n        ll l, r, x;\n        cin >> l >>\
     \ r >> x;\n        l--;\n        g.add_directed_edge(l, r, r - l - x);\n    }\n\
     \    auto dist = dijkstra(g, 0);\n    rep(i, n) {\n        if (dist[i + 1] - dist[i])\n\
@@ -110,7 +113,7 @@ data:
   isVerificationFile: false
   path: typical/others/cow_game.cpp
   requiredBy: []
-  timestamp: '2021-08-30 21:12:55+09:00'
+  timestamp: '2021-08-30 21:49:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: typical/others/cow_game.cpp
@@ -118,5 +121,14 @@ layout: document
 redirect_from:
 - /library/typical/others/cow_game.cpp
 - /library/typical/others/cow_game.cpp.html
-title: typical/others/cow_game.cpp
+title: "\u725B\u30B2\u30FC"
 ---
+## 概要
+以下の線形計画問題は最短路問題に帰着して解くことができる
+$$
+\min_x x_t-x_s \text{s.t. } x_i-x_j \leq w_{ij}
+$$
+
+## 方法
+頂点$i, j$間に長さ$w_{ij}$の辺をはってdijkstraかbellman-fordで$s, t$の最短路を求めると
+その長さが上の線形計画問題の最適値で、$x_i = dist[s][i]$が最適解になる。
