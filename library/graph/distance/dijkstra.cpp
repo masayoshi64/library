@@ -2,14 +2,13 @@
 #include "library/template/template.cpp"
 /**
  * @brief dijkstra
+ * @docs docs/dijkstra.md
  */
 template <typename T>
 vector<T> dijkstra(Graph<T> &g, int s) {
     const auto TINF = numeric_limits<T>::max();
     vector<T> dist(g.size(), TINF);
-
-    using Pi = pair<T, int>;
-    priority_queue<Pi, vector<Pi>, greater<Pi>> que;
+    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> que;
     dist[s] = 0;
     que.emplace(dist[s], s);
     while (!que.empty()) {
