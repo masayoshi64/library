@@ -80,23 +80,24 @@ data:
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
     const long double PI = 3.141592653589793;\n#line 3 \"library/graph/distance/dijkstra.cpp\"\
-    \n/**\n * @brief dijkstra\n */\ntemplate <typename T>\nvector<T> dijkstra(Graph<T>\
-    \ &g, int s) {\n    const auto TINF = numeric_limits<T>::max();\n    vector<T>\
-    \ dist(g.size(), TINF);\n\n    using Pi = pair<T, int>;\n    priority_queue<Pi,\
-    \ vector<Pi>, greater<Pi>> que;\n    dist[s] = 0;\n    que.emplace(dist[s], s);\n\
-    \    while (!que.empty()) {\n        T cost;\n        int idx;\n        tie(cost,\
-    \ idx) = que.top();\n        que.pop();\n        if (dist[idx] < cost) continue;\n\
-    \        for (auto &e : g.g[idx]) {\n            auto next_cost = cost + e.cost;\n\
-    \            if (dist[e.to] <= next_cost) continue;\n            dist[e.to] =\
-    \ next_cost;\n            que.emplace(dist[e.to], e.to);\n        }\n    }\n \
-    \   return dist;\n}\n#line 4 \"typical/others/cow_game.cpp\"\n/**\n * @brief \u725B\
-    \u30B2\u30FC\n * @docs docs/cow_game.md\n */\nint main() {\n    int n, m;\n  \
-    \  cin >> n >> m;\n    Graph<ll> g(n + 1);\n    rep(i, n) {\n        g.add_directed_edge(i,\
-    \ i + 1, 1);\n        g.add_directed_edge(i + 1, i, 0);\n    }\n    rep(i, m)\
-    \ {\n        ll l, r, x;\n        cin >> l >> r >> x;\n        l--;\n        g.add_directed_edge(l,\
-    \ r, r - l - x);\n    }\n    auto dist = dijkstra(g, 0);\n    rep(i, n) {\n  \
-    \      if (dist[i + 1] - dist[i])\n            cout << \"0 \";\n        else\n\
-    \            cout << \"1 \";\n    }\n    cout << endl;\n}\n"
+    \n/**\n * @brief dijkstra\n * @docs docs/dijkstra.md\n */\ntemplate <typename\
+    \ T>\nvector<T> dijkstra(Graph<T> &g, int s) {\n    const auto TINF = numeric_limits<T>::max();\n\
+    \    vector<T> dist(g.size(), TINF);\n    priority_queue<pair<T, int>, vector<pair<T,\
+    \ int>>, greater<pair<T, int>>> que;\n    dist[s] = 0;\n    que.emplace(dist[s],\
+    \ s);\n    while (!que.empty()) {\n        T cost;\n        int idx;\n       \
+    \ tie(cost, idx) = que.top();\n        que.pop();\n        if (dist[idx] < cost)\
+    \ continue;\n        for (auto &e : g.g[idx]) {\n            auto next_cost =\
+    \ cost + e.cost;\n            if (dist[e.to] <= next_cost) continue;\n       \
+    \     dist[e.to] = next_cost;\n            que.emplace(dist[e.to], e.to);\n  \
+    \      }\n    }\n    return dist;\n}\n#line 4 \"typical/others/cow_game.cpp\"\n\
+    /**\n * @brief \u725B\u30B2\u30FC\n * @docs docs/cow_game.md\n */\nint main()\
+    \ {\n    int n, m;\n    cin >> n >> m;\n    Graph<ll> g(n + 1);\n    rep(i, n)\
+    \ {\n        g.add_directed_edge(i, i + 1, 1);\n        g.add_directed_edge(i\
+    \ + 1, i, 0);\n    }\n    rep(i, m) {\n        ll l, r, x;\n        cin >> l >>\
+    \ r >> x;\n        l--;\n        g.add_directed_edge(l, r, r - l - x);\n    }\n\
+    \    auto dist = dijkstra(g, 0);\n    rep(i, n) {\n        if (dist[i + 1] - dist[i])\n\
+    \            cout << \"0 \";\n        else\n            cout << \"1 \";\n    }\n\
+    \    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc216/tasks/abc216_g\"\n#include\
     \ \"library/graph/distance/dijkstra.cpp\"\n#include \"library/template/template.cpp\"\
     \n/**\n * @brief \u725B\u30B2\u30FC\n * @docs docs/cow_game.md\n */\nint main()\
@@ -113,7 +114,7 @@ data:
   isVerificationFile: false
   path: typical/others/cow_game.cpp
   requiredBy: []
-  timestamp: '2021-08-30 21:49:30+09:00'
+  timestamp: '2021-09-01 21:55:11+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: typical/others/cow_game.cpp
