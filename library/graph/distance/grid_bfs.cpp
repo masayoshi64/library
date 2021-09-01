@@ -1,10 +1,12 @@
+#pragma once
+/**
+ * @brief grid bfs
+ */
 template <typename T>
-vector<vector<int> > grid_bfs(vector<T> &s, T start, const T &wall = "#",
-                              int dir_num = 4) {
-    const int vx[] = {0, 1, 0, -1, 1, 1, -1, -1},
-              vy[] = {1, 0, -1, 0, 1, -1, 1, -1};
-    vector<vector<int> > min_cost(s.size(), vector<int>(s[0].size(), -1));
-    queue<pair<int, int> > que;
+vector<vector<int>> grid_bfs(vector<T> &s, T start, const T &wall = "#", int dir_num = 4) {
+    const int vx[] = {0, 1, 0, -1, 1, 1, -1, -1}, vy[] = {1, 0, -1, 0, 1, -1, 1, -1};
+    vector<vector<int>> min_cost(s.size(), vector<int>(s[0].size(), -1));
+    queue<pair<int, int>> que;
     for (int i = 0; i < s.size(); i++) {
         for (int j = 0; j < s[i].size(); j++) {
             if (s[i][j] == start) {
@@ -18,8 +20,7 @@ vector<vector<int> > grid_bfs(vector<T> &s, T start, const T &wall = "#",
         que.pop();
         for (int i = 0; i < dir_num; i++) {
             int ny = p.first + vy[i], nx = p.second + vx[i];
-            if (nx < 0 || ny < 0 || nx >= s[0].size() || ny >= s.size())
-                continue;
+            if (nx < 0 || ny < 0 || nx >= s[0].size() || ny >= s.size()) continue;
             if (min_cost[ny][nx] != -1) continue;
             if (wall.find(s[ny][nx]) != string::npos) continue;
             min_cost[ny][nx] = min_cost[p.first][p.second] + 1;
