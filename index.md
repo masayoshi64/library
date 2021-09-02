@@ -38,10 +38,10 @@ data:
       title: dijkstra
     - icon: ':warning:'
       path: library/graph/distance/grid_bfs.cpp
-      title: library/graph/distance/grid_bfs.cpp
+      title: grid bfs
     - icon: ':warning:'
       path: library/graph/distance/multi_source_dijkstra.cpp
-      title: library/graph/distance/multi_source_dijkstra.cpp
+      title: multi-source dijkstra
     - icon: ':warning:'
       path: library/graph/distance/warshall_floyd.cpp
       title: library/graph/distance/warshall_floyd.cpp
