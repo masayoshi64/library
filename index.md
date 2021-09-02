@@ -55,11 +55,11 @@ data:
       title: "\u4E8C\u90E8\u30B0\u30E9\u30D5\u306E\u6700\u5927\u30DE\u30C3\u30C1\u30F3\
         \u30B0"
     - icon: ':heavy_check_mark:'
-      path: library/graph/flow/Dinic.cpp
-      title: "Dinic(\u6700\u5927\u6D41)"
-    - icon: ':heavy_check_mark:'
       path: library/graph/flow/MinCostFlow.cpp
       title: library/graph/flow/MinCostFlow.cpp
+    - icon: ':warning:'
+      path: library/graph/flow/max_flow.cpp
+      title: "\u6700\u5927\u6D41"
   - name: library/graph
     pages:
     - icon: ':warning:'
@@ -206,6 +206,9 @@ data:
   - name: verify
     pages:
     - icon: ':warning:'
+      path: verify/aoj-max_flow.cpp
+      title: verify/aoj-max_flow.cpp
+    - icon: ':warning:'
       path: verify/aoj.cpp
       title: verify/aoj.cpp
     - icon: ':warning:'
@@ -241,9 +244,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-DSL_2_G.test.cpp
       title: verify/aoj-DSL_2_G.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/aoj-GRL_6_A.test.cpp
-      title: verify/aoj-GRL_6_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-GRL_6_B.test.cpp
       title: verify/aoj-GRL_6_B.test.cpp

@@ -33,6 +33,9 @@ data:
     path: typical/others/cow_game.cpp
     title: "\u725B\u30B2\u30FC"
   - icon: ':warning:'
+    path: verify/aoj-max_flow.cpp
+    title: verify/aoj-max_flow.cpp
+  - icon: ':warning:'
     path: verify/aoj.cpp
     title: verify/aoj.cpp
   - icon: ':warning:'
@@ -66,9 +69,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-DSL_2_G.test.cpp
     title: verify/aoj-DSL_2_G.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj-GRL_6_A.test.cpp
-    title: verify/aoj-GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_6_B.test.cpp
     title: verify/aoj-GRL_6_B.test.cpp
@@ -256,6 +256,7 @@ data:
   - typical/others/cow_game.cpp
   - typical/dp/sort.cpp
   - typical/dp/hakone.cpp
+  - verify/aoj-max_flow.cpp
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   - test/atcoder-abc136_d.cpp
@@ -278,7 +279,6 @@ data:
   - verify/range_arithmetic_progression_add.test.cpp
   - verify/aoj-TSP.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
-  - verify/aoj-GRL_6_A.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
   - verify/aoj-ALDS1_14_B.test.cpp
   - verify/aoj-ALDS1_12_B.test.cpp
