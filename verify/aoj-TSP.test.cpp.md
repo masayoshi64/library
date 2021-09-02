@@ -2,26 +2,28 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: library/graph/distance/TSP.cpp
+    title: travelling salesman problem
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj-TSP.test.cpp
-    title: verify/aoj-TSP.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/TSP.md
-    document_title: travelling salesman problem
-    links: []
-  bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
-    #pragma GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    // types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
-    \ double;\ntypedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll>\
-    \ vl;\ntypedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\n\
-    using mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A&lang=ja
+    links:
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A&lang=ja
+  bundledCode: "#line 1 \"verify/aoj-TSP.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A&lang=ja\"\
+    \n\n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
+    \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
+    using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
+    typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
+    typedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing\
+    \ mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
     \ long>> vvl;\ntypedef vector<vector<char>> vvc;\n// abreviations\n#define all(x)\
     \ (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define rep_(i,\
     \ a_, b_, a, b, ...) for (ll i = (a), max_i = (b); i < max_i; i++)\n#define rep(i,\
@@ -77,40 +79,39 @@ data:
     \ b, c);\n            else\n                add_edge(a, b, c);\n        }\n  \
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
-    const long double PI = 3.141592653589793;\n#line 2 \"library/graph/distance/TSP.cpp\"\
-    \n/**\n * @brief travelling salesman problem\n * @arg graph, start\n * @docs docs/TSP.md\n\
-    \ * @details cycle: dp[all][s], path from s to t: dp[all^(1<<s)][t]\n */\ntemplate\
-    \ <typename T>\nvector<vector<T>> TSP(Graph<T> g, int s = 0) {\n    int n = g.g.size();\n\
-    \    T TINF = numeric_limits<T>::max();\n    vector<vector<T>> dp(1 << n, vector<T>(n,\
+    const long double PI = 3.141592653589793;\n#line 4 \"verify/aoj-TSP.test.cpp\"\
+    \n// library\n#line 2 \"library/graph/distance/TSP.cpp\"\n/**\n * @brief travelling\
+    \ salesman problem\n * @arg graph, start\n * @docs docs/TSP.md\n * @details cycle:\
+    \ dp[all][s], path from s to t: dp[all^(1<<s)][t]\n */\ntemplate <typename T>\n\
+    vector<vector<T>> TSP(Graph<T> g, int s = 0) {\n    int n = g.g.size();\n    T\
+    \ TINF = numeric_limits<T>::max();\n    vector<vector<T>> dp(1 << n, vector<T>(n,\
     \ TINF / 2));\n    dp[0][s] = 0;\n    int all = (1 << n) - 1;\n    rep(visited,\
     \ all + 1) {\n        rep(pv, n) {\n            for (auto &e : g.g[pv]) {\n  \
     \              if ((visited & (1 << e.to)) == 0 || dp[visited ^ (1 << e.to)][e.from]\
     \ == TINF) continue;\n                chmin(dp[visited][e.to], dp[visited ^ (1\
     \ << e.to)][e.from] + e.cost);\n            }\n        }\n    }\n    return dp;\n\
-    }\n"
-  code: "#include \"library/template/template.cpp\"\n/**\n * @brief travelling salesman\
-    \ problem\n * @arg graph, start\n * @docs docs/TSP.md\n * @details cycle: dp[all][s],\
-    \ path from s to t: dp[all^(1<<s)][t]\n */\ntemplate <typename T>\nvector<vector<T>>\
-    \ TSP(Graph<T> g, int s = 0) {\n    int n = g.g.size();\n    T TINF = numeric_limits<T>::max();\n\
-    \    vector<vector<T>> dp(1 << n, vector<T>(n, TINF / 2));\n    dp[0][s] = 0;\n\
-    \    int all = (1 << n) - 1;\n    rep(visited, all + 1) {\n        rep(pv, n)\
-    \ {\n            for (auto &e : g.g[pv]) {\n                if ((visited & (1\
-    \ << e.to)) == 0 || dp[visited ^ (1 << e.to)][e.from] == TINF) continue;\n   \
-    \             chmin(dp[visited][e.to], dp[visited ^ (1 << e.to)][e.from] + e.cost);\n\
-    \            }\n        }\n    }\n    return dp;\n}\n"
+    }\n#line 6 \"verify/aoj-TSP.test.cpp\"\nint main() {\n    int V, E;\n    cin >>\
+    \ V >> E;\n    Graph<int> g(V);\n    g.read(E, 0, true, true);\n    auto dp =\
+    \ TSP(g);\n    cout << (dp[(1 << V) - 1][0] < inf ? dp[(1 << V) - 1][0] : -1)\
+    \ << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A&lang=ja\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/graph/distance/TSP.cpp\"\
+    \nint main() {\n    int V, E;\n    cin >> V >> E;\n    Graph<int> g(V);\n    g.read(E,\
+    \ 0, true, true);\n    auto dp = TSP(g);\n    cout << (dp[(1 << V) - 1][0] < inf\
+    \ ? dp[(1 << V) - 1][0] : -1) << endl;\n}"
   dependsOn:
   - library/template/template.cpp
-  isVerificationFile: false
-  path: library/graph/distance/TSP.cpp
+  - library/graph/distance/TSP.cpp
+  isVerificationFile: true
+  path: verify/aoj-TSP.test.cpp
   requiredBy: []
-  timestamp: '2021-09-02 11:31:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aoj-TSP.test.cpp
-documentation_of: library/graph/distance/TSP.cpp
+  timestamp: '2021-09-02 11:31:17+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/aoj-TSP.test.cpp
 layout: document
 redirect_from:
-- /library/library/graph/distance/TSP.cpp
-- /library/library/graph/distance/TSP.cpp.html
-title: travelling salesman problem
+- /verify/verify/aoj-TSP.test.cpp
+- /verify/verify/aoj-TSP.test.cpp.html
+title: verify/aoj-TSP.test.cpp
 ---

@@ -27,9 +27,9 @@ data:
       title: 2-SAT
   - name: library/graph/distance
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/distance/TSP.cpp
-      title: library/graph/distance/TSP.cpp
+      title: travelling salesman problem
     - icon: ':heavy_check_mark:'
       path: library/graph/distance/bfs_dial.cpp
       title: bfs dial
@@ -253,6 +253,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-NTL_1_E.test.cpp
       title: verify/aoj-NTL_1_E.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj-TSP.test.cpp
+      title: verify/aoj-TSP.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp

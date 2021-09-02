@@ -9,6 +9,9 @@ data:
     path: library/graph/connected-components/TwoSat.cpp
     title: 2-SAT
   - icon: ':heavy_check_mark:'
+    path: library/graph/distance/TSP.cpp
+    title: travelling salesman problem
+  - icon: ':heavy_check_mark:'
     path: library/graph/distance/bfs_dial.cpp
     title: bfs dial
   - icon: ':warning:'
@@ -75,6 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-NTL_1_E.test.cpp
     title: verify/aoj-NTL_1_E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj-TSP.test.cpp
+    title: verify/aoj-TSP.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
@@ -245,6 +251,7 @@ data:
   - verify/yuki-1408.cpp
   - test/atcoder-abc136_d.cpp
   - library/graph/distance/bfs_dial.cpp
+  - library/graph/distance/TSP.cpp
   - library/graph/distance/dijkstra.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
   - library/graph/connected-components/TwoSat.cpp
@@ -258,6 +265,7 @@ data:
   - verify/yosupo-two_sat.test.cpp
   - verify/ArticulationPoint.test.cpp
   - verify/range_arithmetic_progression_add.test.cpp
+  - verify/aoj-TSP.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
   - verify/aoj-GRL_6_A.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
