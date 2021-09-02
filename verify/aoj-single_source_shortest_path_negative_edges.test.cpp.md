@@ -1,24 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: library/math/BitMatrix.cpp
-    title: library/math/BitMatrix.cpp
+  - icon: ':x:'
+    path: library/graph/distance/bellman_ford.cpp
+    title: bellman ford
   - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/184
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja
     links:
-    - https://yukicoder.me/problems/no/184
-  bundledCode: "#line 1 \"verify/yuki-184.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/184\"\
-    \n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja
+  bundledCode: "#line 1 \"verify/aoj-single_source_shortest_path_negative_edges.test.cpp\"\
+    \n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja\"\
+    \n\n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
     typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
@@ -79,44 +80,43 @@ data:
     \ b, c);\n            else\n                add_edge(a, b, c);\n        }\n  \
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
-    const long double PI = 3.141592653589793;\n#line 3 \"verify/yuki-184.test.cpp\"\
-    \n// library\n#line 1 \"library/math/BitMatrix.cpp\"\n\ntemplate <int MAX_ROW,\
-    \ int MAX_COL>\nstruct BitMatrix {\n    int H, W, rank;\n    vector<int> top;\
-    \  // top bit\n    bitset<MAX_COL> A[MAX_ROW];\n    BitMatrix(int h = 1, int w\
-    \ = 1) : H(h), W(w), rank(0) { top.resize(h); }\n    void build(bool is_extended\
-    \ = false) {\n        rep(col, W) {\n            if (is_extended && col == W -\
-    \ 1) break;\n            int row = rank;\n            for (; row < H; ++row) {\n\
-    \                if (A[row][col]) {\n                    swap(A[rank], A[row]);\n\
-    \                    break;\n                }\n            }\n            if\
-    \ (row == H) continue;\n            top[rank] = col;\n            rep(k, H) {\n\
-    \                if (k == rank) continue;\n                if (A[k][col]) A[k]\
-    \ ^= A[rank];\n            }\n            ++rank;\n        }\n    }\n    int solve(vector<int>&\
-    \ res) {\n        // if it has no solution then return -1\n        for (int row\
-    \ = rank; row < H; ++row)\n            if (A[row][W - 1]) return -1;\n       \
-    \ res.assign(W - 1, 0);\n        for (int i = 0; i < rank; ++i) res[i] = A[i][W\
-    \ - 1];\n        return rank;\n    }\n    inline bitset<MAX_COL>& operator[](int\
-    \ i) { return A[i]; }\n};\n#line 5 \"verify/yuki-184.test.cpp\"\nint main() {\n\
-    \    int n;\n    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n    vl a(n);\n\
-    \    scan(a);\n    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n    print(((ll)1\
-    \ << bm.rank));\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/184\"\n#include \"library/template/template.cpp\"\
-    \n// library\n#include \"library/math/BitMatrix.cpp\"\nint main() {\n    int n;\n\
-    \    cin >> n;\n    BitMatrix<100000, 61> bm(n, 61);\n    vl a(n);\n    scan(a);\n\
-    \    rep(i, n) { bm[i] = a[i]; }\n    bm.build();\n    print(((ll)1 << bm.rank));\n\
-    }"
+    const long double PI = 3.141592653589793;\n#line 4 \"verify/aoj-single_source_shortest_path_negative_edges.test.cpp\"\
+    \n// library\n#line 2 \"library/graph/distance/bellman_ford.cpp\"\n/**\n * @brief\
+    \ bellman ford\n * @docs docs/bellman_ford.md\n */\ntemplate <typename T>\nvector<T>\
+    \ bellman_ford(const Graph<T> &g, int s) {\n    int n = g.g.size();\n    const\
+    \ auto TINF = numeric_limits<T>::max();\n    vector<T> dist(n, TINF);\n    dist[s]\
+    \ = 0;\n    vector<Edge<T>> edges;\n    for (int v = 0; v < n; v++) {\n      \
+    \  for (auto e : g.g[v])\n            edges.push_back(e);\n    }\n    for (int\
+    \ i = 0; i < n - 1; i++) {\n        for (auto &e : edges) {\n            if (dist[e.from]\
+    \ == TINF) continue;\n            dist[e.to] = min(dist[e.to], dist[e.from] +\
+    \ e.cost);\n        }\n    }\n    for (auto &e : edges) {\n        if (dist[e.from]\
+    \ == TINF) continue;\n        if (dist[e.from] + e.cost < dist[e.to]) return vector<T>();\n\
+    \    }\n    return dist;\n}\n#line 6 \"verify/aoj-single_source_shortest_path_negative_edges.test.cpp\"\
+    \nint main() {\n    int V, E, r;\n    cin >> V >> E >> r;\n    Graph<int> g(V);\n\
+    \    g.read(E, 0, true, true);\n    auto dist = bellman_ford(g, r);\n    if (dist.size()\
+    \ == 0) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n  \
+    \  }\n    rep(i, V) {\n        if (dist[i] < inf)\n            cout << dist[i]\
+    \ << endl;\n        else\n            cout << \"INF\" << endl;\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/graph/distance/bellman_ford.cpp\"\
+    \nint main() {\n    int V, E, r;\n    cin >> V >> E >> r;\n    Graph<int> g(V);\n\
+    \    g.read(E, 0, true, true);\n    auto dist = bellman_ford(g, r);\n    if (dist.size()\
+    \ == 0) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n  \
+    \  }\n    rep(i, V) {\n        if (dist[i] < inf)\n            cout << dist[i]\
+    \ << endl;\n        else\n            cout << \"INF\" << endl;\n    }\n}"
   dependsOn:
   - library/template/template.cpp
-  - library/math/BitMatrix.cpp
+  - library/graph/distance/bellman_ford.cpp
   isVerificationFile: true
-  path: verify/yuki-184.test.cpp
+  path: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 21:28:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-02 12:21:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/yuki-184.test.cpp
+documentation_of: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/yuki-184.test.cpp
-- /verify/verify/yuki-184.test.cpp.html
-title: verify/yuki-184.test.cpp
+- /verify/verify/aoj-single_source_shortest_path_negative_edges.test.cpp
+- /verify/verify/aoj-single_source_shortest_path_negative_edges.test.cpp.html
+title: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
 ---

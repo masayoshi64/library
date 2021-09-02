@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/distance/TSP.cpp
     title: travelling salesman problem
+  - icon: ':x:'
+    path: library/graph/distance/bellman_ford.cpp
+    title: bellman ford
   - icon: ':heavy_check_mark:'
     path: library/graph/distance/bfs_dial.cpp
     title: bfs dial
@@ -87,6 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-single_source_shortest_path.test.cpp
     title: verify/aoj-single_source_shortest_path.test.cpp
+  - icon: ':x:'
+    path: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
+    title: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/range_arithmetic_progression_add.test.cpp
     title: verify/range_arithmetic_progression_add.test.cpp
@@ -114,9 +120,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
@@ -253,13 +259,14 @@ data:
   - verify/aoj.cpp
   - verify/yuki-1408.cpp
   - test/atcoder-abc136_d.cpp
+  - library/graph/distance/bellman_ford.cpp
   - library/graph/distance/bfs_dial.cpp
   - library/graph/distance/TSP.cpp
   - library/graph/distance/dijkstra.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
   - library/graph/connected-components/TwoSat.cpp
   timestamp: '2021-08-24 21:28:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj-DPL_5_G.test.cpp
   - verify/aoj-GRL_7_A.test.cpp
@@ -278,6 +285,7 @@ data:
   - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yuki-545.test.cpp
   - verify/yuki-1301.test.cpp
+  - verify/aoj-single_source_shortest_path_negative_edges.test.cpp
   - verify/yuki-650.test.cpp
   - verify/aoj-1595.test.cpp
   - verify/aoj-NTL_1_E.test.cpp

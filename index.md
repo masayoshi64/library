@@ -30,6 +30,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/distance/TSP.cpp
       title: travelling salesman problem
+    - icon: ':x:'
+      path: library/graph/distance/bellman_ford.cpp
+      title: bellman ford
     - icon: ':heavy_check_mark:'
       path: library/graph/distance/bfs_dial.cpp
       title: bfs dial
@@ -174,7 +177,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: library/utils
@@ -262,6 +265,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-single_source_shortest_path.test.cpp
       title: verify/aoj-single_source_shortest_path.test.cpp
+    - icon: ':x:'
+      path: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
+      title: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/range_arithmetic_progression_add.test.cpp
       title: verify/range_arithmetic_progression_add.test.cpp
