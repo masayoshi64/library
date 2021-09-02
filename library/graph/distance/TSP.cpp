@@ -12,12 +12,11 @@ vector<vector<T>> TSP(Graph<T> g, int s = 0) {
     vector<vector<T>> dp(1 << n, vector<T>(n, TINF / 2));
     dp[0][s] = 0;
     int all = (1 << n) - 1;
-    rep(visited, all) {
+    rep(visited, all + 1) {
         rep(pv, n) {
-            if (dp[S][pv] == TINF) continue;
             for (auto &e : g.g[pv]) {
-                if ((S & (1 << e.to)) == 0) continue;
-                chmin(dp[S][e.to], dp[S ^ (1 << e.to)][e.from] + e.cost);
+                if ((visited & (1 << e.to)) == 0 || dp[visited ^ (1 << e.to)][e.from] == TINF) continue;
+                chmin(dp[visited][e.to], dp[visited ^ (1 << e.to)][e.from] + e.cost);
             }
         }
     }
