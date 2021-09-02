@@ -1,21 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/flow/max_flow.cpp
     title: "\u6700\u5927\u6D41"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
-  bundledCode: "#line 1 \"verify/aoj-max_flow.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\"\
+  bundledCode: "#line 1 \"verify/aoj-max_flow.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\"\
     \n\n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
@@ -77,7 +79,7 @@ data:
     \ b, c);\n            else\n                add_edge(a, b, c);\n        }\n  \
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
-    const long double PI = 3.141592653589793;\n#line 4 \"verify/aoj-max_flow.cpp\"\
+    const long double PI = 3.141592653589793;\n#line 4 \"verify/aoj-max_flow.test.cpp\"\
     \n// library\n#line 1 \"library/graph/flow/max_flow.cpp\"\n/**\n * @brief \u6700\
     \u5927\u6D41\n * @docs docs/max_flow.md\n */\ntemplate <class Cap>\nstruct mf_graph\
     \ {\n  public:\n    mf_graph() : _n(0) {\n    }\n    explicit mf_graph(int n)\
@@ -131,10 +133,10 @@ data:
     \                }\n            }\n        }\n        return visited;\n    }\n\
     \n  private:\n    int _n;\n    struct _edge {\n        int to, rev;\n        Cap\
     \ cap;\n    };\n    std::vector<std::pair<int, int>> pos;\n    std::vector<std::vector<_edge>>\
-    \ g;\n};\n#line 6 \"verify/aoj-max_flow.cpp\"\nint main() {\n    int V, E;\n \
-    \   cin >> V >> E;\n    mf_graph<ll> mf(V);\n    rep(i, E) {\n        int u, v,\
-    \ c;\n        cin >> u >> v >> c;\n        mf.add_edge(u, v, c);\n    }\n    print(mf.flow(0,\
-    \ V - 1));\n}\n"
+    \ g;\n};\n#line 6 \"verify/aoj-max_flow.test.cpp\"\nint main() {\n    int V, E;\n\
+    \    cin >> V >> E;\n    mf_graph<ll> mf(V);\n    rep(i, E) {\n        int u,\
+    \ v, c;\n        cin >> u >> v >> c;\n        mf.add_edge(u, v, c);\n    }\n \
+    \   print(mf.flow(0, V - 1));\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/graph/flow/max_flow.cpp\"\
     \nint main() {\n    int V, E;\n    cin >> V >> E;\n    mf_graph<ll> mf(V);\n \
@@ -143,16 +145,16 @@ data:
   dependsOn:
   - library/template/template.cpp
   - library/graph/flow/max_flow.cpp
-  isVerificationFile: false
-  path: verify/aoj-max_flow.cpp
+  isVerificationFile: true
+  path: verify/aoj-max_flow.test.cpp
   requiredBy: []
-  timestamp: '2021-09-02 12:45:15+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2021-09-02 12:55:15+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj-max_flow.cpp
+documentation_of: verify/aoj-max_flow.test.cpp
 layout: document
 redirect_from:
-- /library/verify/aoj-max_flow.cpp
-- /library/verify/aoj-max_flow.cpp.html
-title: verify/aoj-max_flow.cpp
+- /verify/verify/aoj-max_flow.test.cpp
+- /verify/verify/aoj-max_flow.test.cpp.html
+title: verify/aoj-max_flow.test.cpp
 ---

@@ -30,7 +30,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/distance/TSP.cpp
       title: travelling salesman problem
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/distance/bellman_ford.cpp
       title: bellman ford
     - icon: ':heavy_check_mark:'
@@ -57,7 +57,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/flow/MinCostFlow.cpp
       title: library/graph/flow/MinCostFlow.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: library/graph/flow/max_flow.cpp
       title: "\u6700\u5927\u6D41"
   - name: library/graph
@@ -177,7 +177,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: library/utils
@@ -205,9 +205,6 @@ data:
       title: "\u725B\u30B2\u30FC"
   - name: verify
     pages:
-    - icon: ':warning:'
-      path: verify/aoj-max_flow.cpp
-      title: verify/aoj-max_flow.cpp
     - icon: ':warning:'
       path: verify/aoj.cpp
       title: verify/aoj.cpp
@@ -263,9 +260,12 @@ data:
       path: verify/aoj-dsl-1-a.test.cpp
       title: verify/aoj-dsl-1-a.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/aoj-max_flow.test.cpp
+      title: verify/aoj-max_flow.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-single_source_shortest_path.test.cpp
       title: verify/aoj-single_source_shortest_path.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
       title: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
     - icon: ':heavy_check_mark:'

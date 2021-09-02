@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
     title: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/bellman_ford.md
     document_title: bellman ford
@@ -105,7 +105,7 @@ data:
   path: library/graph/distance/bellman_ford.cpp
   requiredBy: []
   timestamp: '2021-09-02 12:21:57+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-single_source_shortest_path_negative_edges.test.cpp
 documentation_of: library/graph/distance/bellman_ford.cpp

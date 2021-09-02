@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/distance/bellman_ford.cpp
     title: bellman ford
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja
   bundledCode: "#line 1 \"verify/aoj-single_source_shortest_path_negative_edges.test.cpp\"\
-    \n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja\"\
+    \n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja\"\
     \n\n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
@@ -97,7 +97,7 @@ data:
     \ == 0) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n  \
     \  }\n    rep(i, V) {\n        if (dist[i] < inf)\n            cout << dist[i]\
     \ << endl;\n        else\n            cout << \"INF\" << endl;\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja\"\
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja\"\
     \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/graph/distance/bellman_ford.cpp\"\
     \nint main() {\n    int V, E, r;\n    cin >> V >> E >> r;\n    Graph<int> g(V);\n\
     \    g.read(E, 0, true, true);\n    auto dist = bellman_ford(g, r);\n    if (dist.size()\
@@ -110,8 +110,8 @@ data:
   isVerificationFile: true
   path: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
   requiredBy: []
-  timestamp: '2021-09-02 12:21:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-02 12:54:26+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-single_source_shortest_path_negative_edges.test.cpp
 layout: document

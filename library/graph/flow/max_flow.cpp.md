@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: verify/aoj-max_flow.cpp
-    title: verify/aoj-max_flow.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj-max_flow.test.cpp
+    title: verify/aoj-max_flow.test.cpp
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/max_flow.md
     document_title: "\u6700\u5927\u6D41"
@@ -123,11 +123,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: library/graph/flow/max_flow.cpp
-  requiredBy:
-  - verify/aoj-max_flow.cpp
+  requiredBy: []
   timestamp: '2021-09-02 12:45:15+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj-max_flow.test.cpp
 documentation_of: library/graph/flow/max_flow.cpp
 layout: document
 redirect_from:
