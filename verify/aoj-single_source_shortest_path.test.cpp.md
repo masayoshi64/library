@@ -2,29 +2,29 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: library/graph/distance/dijkstra.cpp
+    title: dijkstra
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: typical/others/cow_game.cpp
-    title: "\u725B\u30B2\u30FC"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj-single_source_shortest_path.test.cpp
-    title: verify/aoj-single_source_shortest_path.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/dijkstra.md
-    document_title: dijkstra
-    links: []
-  bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
-    #pragma GCC optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    // types\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
-    \ double;\ntypedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll>\
-    \ vl;\ntypedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\n\
-    using mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja
+    links:
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja
+  bundledCode: "#line 1 \"verify/aoj-single_source_shortest_path.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja\"\
+    \n\n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
+    \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
+    using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
+    typedef pair<ll, ll> Pl;\ntypedef pair<int, int> Pi;\ntypedef vector<ll> vl;\n\
+    typedef vector<int> vi;\ntypedef vector<char> vc;\ntemplate <typename T>\nusing\
+    \ mat = vector<vector<T>>;\ntypedef vector<vector<int>> vvi;\ntypedef vector<vector<long\
     \ long>> vvl;\ntypedef vector<vector<char>> vvc;\n// abreviations\n#define all(x)\
     \ (x).begin(), (x).end()\n#define rall(x) (x).rbegin(), (x).rend()\n#define rep_(i,\
     \ a_, b_, a, b, ...) for (ll i = (a), max_i = (b); i < max_i; i++)\n#define rep(i,\
@@ -80,18 +80,8 @@ data:
     \ b, c);\n            else\n                add_edge(a, b, c);\n        }\n  \
     \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
     \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
-    const long double PI = 3.141592653589793;\n#line 3 \"library/graph/distance/dijkstra.cpp\"\
-    \n/**\n * @brief dijkstra\n * @docs docs/dijkstra.md\n */\ntemplate <typename\
-    \ T>\nvector<T> dijkstra(Graph<T> &g, int s) {\n    const auto TINF = numeric_limits<T>::max();\n\
-    \    vector<T> dist(g.size(), TINF);\n    priority_queue<pair<T, int>, vector<pair<T,\
-    \ int>>, greater<pair<T, int>>> que;\n    dist[s] = 0;\n    que.emplace(dist[s],\
-    \ s);\n    while (!que.empty()) {\n        T cost;\n        int idx;\n       \
-    \ tie(cost, idx) = que.top();\n        que.pop();\n        if (dist[idx] < cost)\
-    \ continue;\n        for (auto &e : g.g[idx]) {\n            auto next_cost =\
-    \ cost + e.cost;\n            if (dist[e.to] <= next_cost) continue;\n       \
-    \     dist[e.to] = next_cost;\n            que.emplace(dist[e.to], e.to);\n  \
-    \      }\n    }\n    return dist;\n}\n"
-  code: "#pragma once\n#include \"library/template/template.cpp\"\n/**\n * @brief\
+    const long double PI = 3.141592653589793;\n#line 4 \"verify/aoj-single_source_shortest_path.test.cpp\"\
+    \n// library\n#line 3 \"library/graph/distance/dijkstra.cpp\"\n/**\n * @brief\
     \ dijkstra\n * @docs docs/dijkstra.md\n */\ntemplate <typename T>\nvector<T> dijkstra(Graph<T>\
     \ &g, int s) {\n    const auto TINF = numeric_limits<T>::max();\n    vector<T>\
     \ dist(g.size(), TINF);\n    priority_queue<pair<T, int>, vector<pair<T, int>>,\
@@ -101,25 +91,30 @@ data:
     \        for (auto &e : g.g[idx]) {\n            auto next_cost = cost + e.cost;\n\
     \            if (dist[e.to] <= next_cost) continue;\n            dist[e.to] =\
     \ next_cost;\n            que.emplace(dist[e.to], e.to);\n        }\n    }\n \
-    \   return dist;\n}"
+    \   return dist;\n}\n#line 6 \"verify/aoj-single_source_shortest_path.test.cpp\"\
+    \nint main() {\n    int V, E, r;\n    cin >> V >> E >> r;\n    Graph<int> g(V);\n\
+    \    g.read(E, 0, true, true);\n    auto dist = dijkstra(g, r);\n    rep(i, V)\
+    \ {\n        if (dist[i] < inf)\n            cout << dist[i] << endl;\n      \
+    \  else\n            cout << \"INF\" << endl;\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A&lang=ja\"\
+    \n\n#include \"library/template/template.cpp\"\n// library\n#include \"library/graph/distance/dijkstra.cpp\"\
+    \nint main() {\n    int V, E, r;\n    cin >> V >> E >> r;\n    Graph<int> g(V);\n\
+    \    g.read(E, 0, true, true);\n    auto dist = dijkstra(g, r);\n    rep(i, V)\
+    \ {\n        if (dist[i] < inf)\n            cout << dist[i] << endl;\n      \
+    \  else\n            cout << \"INF\" << endl;\n    }\n}"
   dependsOn:
   - library/template/template.cpp
-  isVerificationFile: false
-  path: library/graph/distance/dijkstra.cpp
-  requiredBy:
-  - typical/others/cow_game.cpp
-  timestamp: '2021-09-01 21:55:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aoj-single_source_shortest_path.test.cpp
-documentation_of: library/graph/distance/dijkstra.cpp
+  - library/graph/distance/dijkstra.cpp
+  isVerificationFile: true
+  path: verify/aoj-single_source_shortest_path.test.cpp
+  requiredBy: []
+  timestamp: '2021-09-02 11:46:53+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/aoj-single_source_shortest_path.test.cpp
 layout: document
 redirect_from:
-- /library/library/graph/distance/dijkstra.cpp
-- /library/library/graph/distance/dijkstra.cpp.html
-title: dijkstra
+- /verify/verify/aoj-single_source_shortest_path.test.cpp
+- /verify/verify/aoj-single_source_shortest_path.test.cpp.html
+title: verify/aoj-single_source_shortest_path.test.cpp
 ---
-## 使い方
-```c++
-vector<int> dist = dijkstra(g, s);
-```

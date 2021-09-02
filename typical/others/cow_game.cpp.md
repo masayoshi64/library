@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/distance/dijkstra.cpp
     title: dijkstra
   - icon: ':heavy_check_mark:'

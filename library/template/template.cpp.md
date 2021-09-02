@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: library/graph/distance/bfs_dial.cpp
     title: bfs dial
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: library/graph/distance/dijkstra.cpp
     title: dijkstra
   - icon: ':warning:'
@@ -84,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-dsl-1-a.test.cpp
     title: verify/aoj-dsl-1-a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj-single_source_shortest_path.test.cpp
+    title: verify/aoj-single_source_shortest_path.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/range_arithmetic_progression_add.test.cpp
     title: verify/range_arithmetic_progression_add.test.cpp
@@ -264,6 +267,7 @@ data:
   - verify/aoj-DSL_2_G.test.cpp
   - verify/yosupo-two_sat.test.cpp
   - verify/ArticulationPoint.test.cpp
+  - verify/aoj-single_source_shortest_path.test.cpp
   - verify/range_arithmetic_progression_add.test.cpp
   - verify/aoj-TSP.test.cpp
   - verify/aoj-dsl-1-a.test.cpp
