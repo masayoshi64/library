@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: test/atcoder-abc136_d.cpp
-    title: test/atcoder-abc136_d.cpp
+    path: verify/atcoder-Doubling.cpp
+    title: verify/atcoder-Doubling.cpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
@@ -36,7 +36,7 @@ data:
   isVerificationFile: false
   path: library/others/Doubling.cpp
   requiredBy:
-  - test/atcoder-abc136_d.cpp
+  - verify/atcoder-Doubling.cpp
   timestamp: '2020-11-20 20:38:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

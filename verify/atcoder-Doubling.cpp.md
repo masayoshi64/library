@@ -15,7 +15,7 @@ data:
   attributes:
     links:
     - https://atcoder.jp/contests/abc136/tasks/abc136_d
-  bundledCode: "#line 1 \"test/atcoder-abc136_d.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc136/tasks/abc136_d\"\
+  bundledCode: "#line 1 \"verify/atcoder-Doubling.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc136/tasks/abc136_d\"\
     \n\n#line 2 \"library/template/template.cpp\"\n/* #region header */\n#pragma GCC\
     \ optimize(\"Ofast\")\n#include <bits/stdc++.h>\nusing namespace std;\n// types\n\
     using ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
@@ -78,7 +78,7 @@ data:
     \   add_edge(a, b, c);\n        }\n    }\n};\n\n/* #endregion*/\n// constant\n\
     #define inf 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\\
     n'\nconst long double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n\
-    #line 4 \"test/atcoder-abc136_d.cpp\"\n// library\n#line 1 \"library/others/Doubling.cpp\"\
+    #line 4 \"verify/atcoder-Doubling.cpp\"\n// library\n#line 1 \"library/others/Doubling.cpp\"\
     \nstruct Doubling {\n    const int LOG;\n    vector<vector<int> > table;\n\n \
     \   Doubling(int sz, int64_t lim_t) : LOG(64 - __builtin_clzll(lim_t)) {\n   \
     \     table.assign(LOG, vector<int>(sz, -1));\n    }\n\n    void set_next(int\
@@ -88,7 +88,7 @@ data:
     \ -1;\n                else\n                    table[k + 1][i] = table[k][table[k][i]];\n\
     \            }\n        }\n    }\n\n    int query(int k, int64_t t) {\n      \
     \  for (int i = LOG - 1; i >= 0; i--) {\n            if ((t >> i) & 1) k = table[i][k];\n\
-    \        }\n        return k;\n    }\n};\n#line 6 \"test/atcoder-abc136_d.cpp\"\
+    \        }\n        return k;\n    }\n};\n#line 6 \"verify/atcoder-Doubling.cpp\"\
     \nint main() {\n    string s;\n    cin >> s;\n    int n = s.size();\n    Doubling\
     \ dl(n, 1000000000);\n    rep(i, n) { dl.set_next(i, (s[i] == 'L' ? i - 1 : i\
     \ + 1)); }\n    dl.build();\n    vi ans(n);\n    rep(i, n) { ans[dl.query(i, 1000000000)]++;\
@@ -103,15 +103,15 @@ data:
   - library/template/template.cpp
   - library/others/Doubling.cpp
   isVerificationFile: false
-  path: test/atcoder-abc136_d.cpp
+  path: verify/atcoder-Doubling.cpp
   requiredBy: []
-  timestamp: '2023-09-23 21:29:16+09:00'
+  timestamp: '2023-09-23 22:24:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: test/atcoder-abc136_d.cpp
+documentation_of: verify/atcoder-Doubling.cpp
 layout: document
 redirect_from:
-- /library/test/atcoder-abc136_d.cpp
-- /library/test/atcoder-abc136_d.cpp.html
-title: test/atcoder-abc136_d.cpp
+- /library/verify/atcoder-Doubling.cpp
+- /library/verify/atcoder-Doubling.cpp.html
+title: verify/atcoder-Doubling.cpp
 ---

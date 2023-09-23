@@ -123,14 +123,15 @@ data:
     - icon: ':warning:'
       path: library/others/Doubling.cpp
       title: library/others/Doubling.cpp
-  - name: library/snippets
-    pages:
     - icon: ':warning:'
-      path: library/snippets/dfs_grid.cpp
-      title: library/snippets/dfs_grid.cpp
+      path: library/others/dfs_grid.cpp
+      title: library/others/dfs_grid.cpp
     - icon: ':warning:'
-      path: library/snippets/worm.cpp
-      title: library/snippets/worm.cpp
+      path: library/others/transpose.cpp
+      title: library/others/transpose.cpp
+    - icon: ':warning:'
+      path: library/others/worm.cpp
+      title: library/others/worm.cpp
   - name: library/string
     pages:
     - icon: ':warning:'
@@ -180,16 +181,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/template/template.cpp
       title: library/template/template.cpp
-  - name: library/utils
-    pages:
-    - icon: ':warning:'
-      path: library/utils/transpose.cpp
-      title: library/utils/transpose.cpp
-  - name: test
-    pages:
-    - icon: ':warning:'
-      path: test/atcoder-abc136_d.cpp
-      title: test/atcoder-abc136_d.cpp
   - name: typical/dp
     pages:
     - icon: ':warning:'
@@ -208,6 +199,9 @@ data:
     - icon: ':warning:'
       path: verify/aoj.cpp
       title: verify/aoj.cpp
+    - icon: ':warning:'
+      path: verify/atcoder-Doubling.cpp
+      title: verify/atcoder-Doubling.cpp
     - icon: ':warning:'
       path: verify/yuki-1408.cpp
       title: verify/yuki-1408.cpp

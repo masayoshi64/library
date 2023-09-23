@@ -21,9 +21,6 @@ data:
     path: library/graph/distance/dijkstra.cpp
     title: dijkstra
   - icon: ':warning:'
-    path: test/atcoder-abc136_d.cpp
-    title: test/atcoder-abc136_d.cpp
-  - icon: ':warning:'
     path: typical/dp/hakone.cpp
     title: typical/dp/hakone.cpp
   - icon: ':warning:'
@@ -35,6 +32,9 @@ data:
   - icon: ':warning:'
     path: verify/aoj.cpp
     title: verify/aoj.cpp
+  - icon: ':warning:'
+    path: verify/atcoder-Doubling.cpp
+    title: verify/atcoder-Doubling.cpp
   - icon: ':warning:'
     path: verify/yuki-1408.cpp
     title: verify/yuki-1408.cpp
@@ -258,7 +258,7 @@ data:
   - library/graph/distance/bellman_ford.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
   - library/graph/connected-components/TwoSat.cpp
-  - test/atcoder-abc136_d.cpp
+  - verify/atcoder-Doubling.cpp
   - verify/yuki-1408.cpp
   - verify/aoj.cpp
   - typical/dp/hakone.cpp
