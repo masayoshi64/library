@@ -108,13 +108,6 @@ ll modpow(ll x, ll n, const ll mod)
     return ret;
 }
 ll safemod(ll x, ll mod) { return (x % mod + mod) % mod; }
-uint64_t my_rand(void)
-{
-    static uint64_t x = 88172645463325252ULL;
-    x = x ^ (x << 13);
-    x = x ^ (x >> 7);
-    return x = x ^ (x << 17);
-}
 int popcnt(ull x) { return __builtin_popcountll(x); }
 template <typename T>
 vector<int> IOTA(vector<T> a)
@@ -125,6 +118,12 @@ vector<int> IOTA(vector<T> a)
     sort(all(id), [&](int i, int j)
          { return a[i] < a[j]; });
     return id;
+}
+long long xor64(long long range) {
+    static uint64_t x = 88172645463325252ULL;
+    x ^= x << 13;
+    x ^= x >> 7;
+    return (x ^= x << 17) % range;
 }
 struct Timer
 {
