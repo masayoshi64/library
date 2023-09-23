@@ -19,5 +19,10 @@
 "verify/range_arithmetic_progression_add.test.cpp": "2023-09-23 21:29:16 +0900",
 "verify/yosupo-convolution_mod_1000000007.test.cpp": "2023-09-23 21:29:16 +0900",
 "verify/yosupo-range_kth_smallest.test.cpp": "2023-09-23 21:29:16 +0900",
-"verify/yosupo-two_sat.test.cpp": "2023-09-23 21:29:16 +0900"
+"verify/yosupo-two_sat.test.cpp": "2023-09-23 21:29:16 +0900",
+"verify/yuki-1301.test.cpp": "2023-09-23 21:29:16 +0900",
+"verify/yuki-184.test.cpp": "2023-09-23 21:29:16 +0900",
+"verify/yuki-545.test.cpp": "2023-09-23 21:29:16 +0900",
+"verify/yuki-650.test.cpp": "2023-09-23 21:29:16 +0900",
+"verify/yuki-FPS.power.test.cpp": "2023-09-23 21:29:16 +0900"
 }
