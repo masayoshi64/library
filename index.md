@@ -60,11 +60,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/flow/max_flow.cpp
       title: "\u6700\u5927\u6D41"
-  - name: library/graph
-    pages:
-    - icon: ':warning:'
-      path: library/graph/graph-template.cpp
-      title: library/graph/graph-template.cpp
   - name: library/graph/others
     pages:
     - icon: ':heavy_check_mark:'
