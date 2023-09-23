@@ -72,7 +72,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_7_A.test.cpp
     title: verify/aoj-GRL_7_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-NTL_1_A.test.cpp
     title: verify/aoj-NTL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -120,9 +120,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
@@ -265,7 +265,7 @@ data:
   - typical/dp/sort.cpp
   - typical/others/cow_game.cpp
   timestamp: '2023-09-23 21:29:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-1595.test.cpp
   - verify/aoj-single_source_shortest_path.test.cpp

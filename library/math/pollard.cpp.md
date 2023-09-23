@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/math/is_prime.cpp
     title: is_prime(miller-rabin)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/aoj-NTL_1_A.test.cpp
     title: verify/aoj-NTL_1_A.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: pollard.md
     document_title: factorization(pollard)
@@ -32,25 +32,25 @@ data:
     // about O(N^1/4logN)\nll pollard_single(ll n) {\n    auto f = [&](ll x) { return\
     \ (__int128_t(x) * x + 1) % n; };\n    // auto f = [&](ll x) { return (x * x +\
     \ 1) % n; };\n    if (is_prime(n)) return n;\n    if (n % 2 == 0) return 2;\n\
-    \    ll st = 0;\n    while (true) {\n        st = my_rand() % n;\n        ll x\
-    \ = st, y = f(x);\n        while (true) {\n            ll p = gcd((y - x + n),\
-    \ n);\n            if (p == 0 || p == n) break;\n            if (p != 1) return\
-    \ p;\n            x = f(x);\n            y = f(f(y));\n        }\n    }\n}\n\n\
-    vl pollard_rec(ll n) {\n    if (n == 1) return {};\n    ll x = pollard_single(n);\n\
-    \    if (x == n) return {x};\n    vl a = pollard_rec(x);\n    vl b = pollard_rec(n\
-    \ / x);\n    a.insert(a.end(), b.begin(), b.end());\n    return a;\n}\n\nmap<ll,\
-    \ int> pollard(ll n) {\n    map<ll, int> res;\n    for (ll a : pollard_rec(n))\
-    \ {\n        res[a]++;\n    }\n    return res;\n}\n"
+    \    ll st = 0;\n    while (true) {\n        st = xor64(n);\n        ll x = st,\
+    \ y = f(x);\n        while (true) {\n            ll p = gcd((y - x + n), n);\n\
+    \            if (p == 0 || p == n) break;\n            if (p != 1) return p;\n\
+    \            x = f(x);\n            y = f(f(y));\n        }\n    }\n}\n\nvl pollard_rec(ll\
+    \ n) {\n    if (n == 1) return {};\n    ll x = pollard_single(n);\n    if (x ==\
+    \ n) return {x};\n    vl a = pollard_rec(x);\n    vl b = pollard_rec(n / x);\n\
+    \    a.insert(a.end(), b.begin(), b.end());\n    return a;\n}\n\nmap<ll, int>\
+    \ pollard(ll n) {\n    map<ll, int> res;\n    for (ll a : pollard_rec(n)) {\n\
+    \        res[a]++;\n    }\n    return res;\n}\n"
   code: "/**\n * @brief factorization(pollard)\n * @docs pollard.md\n */\n#include\
     \ \"library/math/is_prime.cpp\"\n// In codeforces, delete __int128 in the second\
     \ line.\n// about O(N^1/4logN)\nll pollard_single(ll n) {\n    auto f = [&](ll\
     \ x) { return (__int128_t(x) * x + 1) % n; };\n    // auto f = [&](ll x) { return\
     \ (x * x + 1) % n; };\n    if (is_prime(n)) return n;\n    if (n % 2 == 0) return\
-    \ 2;\n    ll st = 0;\n    while (true) {\n        st = my_rand() % n;\n      \
-    \  ll x = st, y = f(x);\n        while (true) {\n            ll p = gcd((y - x\
-    \ + n), n);\n            if (p == 0 || p == n) break;\n            if (p != 1)\
-    \ return p;\n            x = f(x);\n            y = f(f(y));\n        }\n    }\n\
-    }\n\nvl pollard_rec(ll n) {\n    if (n == 1) return {};\n    ll x = pollard_single(n);\n\
+    \ 2;\n    ll st = 0;\n    while (true) {\n        st = xor64(n);\n        ll x\
+    \ = st, y = f(x);\n        while (true) {\n            ll p = gcd((y - x + n),\
+    \ n);\n            if (p == 0 || p == n) break;\n            if (p != 1) return\
+    \ p;\n            x = f(x);\n            y = f(f(y));\n        }\n    }\n}\n\n\
+    vl pollard_rec(ll n) {\n    if (n == 1) return {};\n    ll x = pollard_single(n);\n\
     \    if (x == n) return {x};\n    vl a = pollard_rec(x);\n    vl b = pollard_rec(n\
     \ / x);\n    a.insert(a.end(), b.begin(), b.end());\n    return a;\n}\n\nmap<ll,\
     \ int> pollard(ll n) {\n    map<ll, int> res;\n    for (ll a : pollard_rec(n))\
@@ -60,8 +60,8 @@ data:
   isVerificationFile: false
   path: library/math/pollard.cpp
   requiredBy: []
-  timestamp: '2020-11-15 12:33:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-09-23 22:15:23+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj-NTL_1_A.test.cpp
 documentation_of: library/math/pollard.cpp

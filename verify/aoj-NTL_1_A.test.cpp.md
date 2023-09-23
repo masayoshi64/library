@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/math/is_prime.cpp
     title: is_prime(miller-rabin)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: library/math/pollard.cpp
     title: factorization(pollard)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A
@@ -101,8 +101,8 @@ data:
     \ n) {\n    auto f = [&](ll x) { return (__int128_t(x) * x + 1) % n; };\n    //\
     \ auto f = [&](ll x) { return (x * x + 1) % n; };\n    if (is_prime(n)) return\
     \ n;\n    if (n % 2 == 0) return 2;\n    ll st = 0;\n    while (true) {\n    \
-    \    st = my_rand() % n;\n        ll x = st, y = f(x);\n        while (true) {\n\
-    \            ll p = gcd((y - x + n), n);\n            if (p == 0 || p == n) break;\n\
+    \    st = xor64(n);\n        ll x = st, y = f(x);\n        while (true) {\n  \
+    \          ll p = gcd((y - x + n), n);\n            if (p == 0 || p == n) break;\n\
     \            if (p != 1) return p;\n            x = f(x);\n            y = f(f(y));\n\
     \        }\n    }\n}\n\nvl pollard_rec(ll n) {\n    if (n == 1) return {};\n \
     \   ll x = pollard_single(n);\n    if (x == n) return {x};\n    vl a = pollard_rec(x);\n\
@@ -124,8 +124,8 @@ data:
   isVerificationFile: true
   path: verify/aoj-NTL_1_A.test.cpp
   requiredBy: []
-  timestamp: '2023-09-23 21:29:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-09-23 22:15:23+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj-NTL_1_A.test.cpp
 layout: document
