@@ -12,7 +12,7 @@ ll pollard_single(ll n) {
     if (n % 2 == 0) return 2;
     ll st = 0;
     while (true) {
-        st = my_rand() % n;
+        st = xor64(n);
         ll x = st, y = f(x);
         while (true) {
             ll p = gcd((y - x + n), n);
