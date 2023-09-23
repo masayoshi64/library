@@ -98,10 +98,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/math/extgcd.cpp
       title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/math/is_prime.cpp
       title: is_prime(miller-rabin)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: library/math/pollard.cpp
       title: factorization(pollard)
     - icon: ':warning:'
@@ -177,7 +177,7 @@ data:
       title: library/structure/wavelet/WaveletMatrix.cpp
   - name: library/template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: library/template/template.cpp
       title: library/template/template.cpp
   - name: library/utils
@@ -247,7 +247,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj-GRL_7_A.test.cpp
       title: verify/aoj-GRL_7_A.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/aoj-NTL_1_A.test.cpp
       title: verify/aoj-NTL_1_A.test.cpp
     - icon: ':heavy_check_mark:'

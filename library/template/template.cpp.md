@@ -72,7 +72,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj-GRL_7_A.test.cpp
     title: verify/aoj-GRL_7_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj-NTL_1_A.test.cpp
     title: verify/aoj-NTL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -120,9 +120,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yuki-FPS.power.test.cpp
     title: verify/yuki-FPS.power.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"library/template/template.cpp\"\n/* #region header */\n\
@@ -160,33 +160,33 @@ data:
     {\n    ll ret = 1;\n    while (n > 0)\n    {\n        if (n & 1)\n           \
     \ (ret *= x);\n        (x *= x);\n        n >>= 1;\n        x %= mod;\n      \
     \  ret %= mod;\n    }\n    return ret;\n}\nll safemod(ll x, ll mod) { return (x\
-    \ % mod + mod) % mod; }\nuint64_t my_rand(void)\n{\n    static uint64_t x = 88172645463325252ULL;\n\
-    \    x = x ^ (x << 13);\n    x = x ^ (x >> 7);\n    return x = x ^ (x << 17);\n\
-    }\nint popcnt(ull x) { return __builtin_popcountll(x); }\ntemplate <typename T>\n\
-    vector<int> IOTA(vector<T> a)\n{\n    int n = a.size();\n    vector<int> id(n);\n\
-    \    iota(all(id), 0);\n    sort(all(id), [&](int i, int j)\n         { return\
-    \ a[i] < a[j]; });\n    return id;\n}\nstruct Timer\n{\n    clock_t start_time;\n\
-    \    void start() { start_time = clock(); }\n    int lap()\n    {\n        //\
-    \ return x ms.\n        return (clock() - start_time) * 1000 / CLOCKS_PER_SEC;\n\
-    \    }\n};\ntemplate <typename T = int>\nstruct Edge\n{\n    int from, to;\n \
-    \   T cost;\n    int idx;\n\n    Edge() = default;\n\n    Edge(int from, int to,\
-    \ T cost = 1, int idx = -1)\n        : from(from), to(to), cost(cost), idx(idx)\
-    \ {}\n\n    operator int() const { return to; }\n};\n\ntemplate <typename T =\
-    \ int>\nstruct Graph\n{\n    vector<vector<Edge<T>>> g;\n    int es;\n\n    Graph()\
-    \ = default;\n\n    explicit Graph(int n) : g(n), es(0) {}\n\n    size_t size()\
-    \ const { return g.size(); }\n\n    void add_directed_edge(int from, int to, T\
-    \ cost = 1)\n    {\n        g[from].emplace_back(from, to, cost, es++);\n    }\n\
-    \n    void add_edge(int from, int to, T cost = 1)\n    {\n        g[from].emplace_back(from,\
-    \ to, cost, es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n\n\
-    \    void read(int M, int padding = -1, bool weighted = false,\n             \
-    \ bool directed = false)\n    {\n        for (int i = 0; i < M; i++)\n       \
-    \ {\n            int a, b;\n            cin >> a >> b;\n            a += padding;\n\
-    \            b += padding;\n            T c = T(1);\n            if (weighted)\n\
-    \                cin >> c;\n            if (directed)\n                add_directed_edge(a,\
-    \ b, c);\n            else\n                add_edge(a, b, c);\n        }\n  \
-    \  }\n};\n\n/* #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF\
-    \ 4000000004000000000LL\n#define endl '\\n'\nconst long double eps = 0.000000000000001;\n\
-    const long double PI = 3.141592653589793;\n"
+    \ % mod + mod) % mod; }\nint popcnt(ull x) { return __builtin_popcountll(x); }\n\
+    template <typename T>\nvector<int> IOTA(vector<T> a)\n{\n    int n = a.size();\n\
+    \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
+    \ j)\n         { return a[i] < a[j]; });\n    return id;\n}\nlong long xor64(long\
+    \ long range) {\n    static uint64_t x = 88172645463325252ULL;\n    x ^= x <<\
+    \ 13;\n    x ^= x >> 7;\n    return (x ^= x << 17) % range;\n}\nstruct Timer\n\
+    {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n    int\
+    \ lap()\n    {\n        // return x ms.\n        return (clock() - start_time)\
+    \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\ntemplate <typename T = int>\nstruct Edge\n\
+    {\n    int from, to;\n    T cost;\n    int idx;\n\n    Edge() = default;\n\n \
+    \   Edge(int from, int to, T cost = 1, int idx = -1)\n        : from(from), to(to),\
+    \ cost(cost), idx(idx) {}\n\n    operator int() const { return to; }\n};\n\ntemplate\
+    \ <typename T = int>\nstruct Graph\n{\n    vector<vector<Edge<T>>> g;\n    int\
+    \ es;\n\n    Graph() = default;\n\n    explicit Graph(int n) : g(n), es(0) {}\n\
+    \n    size_t size() const { return g.size(); }\n\n    void add_directed_edge(int\
+    \ from, int to, T cost = 1)\n    {\n        g[from].emplace_back(from, to, cost,\
+    \ es++);\n    }\n\n    void add_edge(int from, int to, T cost = 1)\n    {\n  \
+    \      g[from].emplace_back(from, to, cost, es);\n        g[to].emplace_back(to,\
+    \ from, cost, es++);\n    }\n\n    void read(int M, int padding = -1, bool weighted\
+    \ = false,\n              bool directed = false)\n    {\n        for (int i =\
+    \ 0; i < M; i++)\n        {\n            int a, b;\n            cin >> a >> b;\n\
+    \            a += padding;\n            b += padding;\n            T c = T(1);\n\
+    \            if (weighted)\n                cin >> c;\n            if (directed)\n\
+    \                add_directed_edge(a, b, c);\n            else\n             \
+    \   add_edge(a, b, c);\n        }\n    }\n};\n\n/* #endregion*/\n// constant\n\
+    #define inf 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\\
+    n'\nconst long double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n"
   code: "#pragma once\n/* #region header */\n#pragma GCC optimize(\"Ofast\")\n#include\
     \ <bits/stdc++.h>\nusing namespace std;\n// types\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\ntypedef pair<ll, ll> Pl;\n\
@@ -221,80 +221,79 @@ data:
     \ ret;\n}\nll modpow(ll x, ll n, const ll mod)\n{\n    ll ret = 1;\n    while\
     \ (n > 0)\n    {\n        if (n & 1)\n            (ret *= x);\n        (x *= x);\n\
     \        n >>= 1;\n        x %= mod;\n        ret %= mod;\n    }\n    return ret;\n\
-    }\nll safemod(ll x, ll mod) { return (x % mod + mod) % mod; }\nuint64_t my_rand(void)\n\
-    {\n    static uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n   \
-    \ x = x ^ (x >> 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return\
-    \ __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
+    }\nll safemod(ll x, ll mod) { return (x % mod + mod) % mod; }\nint popcnt(ull\
+    \ x) { return __builtin_popcountll(x); }\ntemplate <typename T>\nvector<int> IOTA(vector<T>\
     \ a)\n{\n    int n = a.size();\n    vector<int> id(n);\n    iota(all(id), 0);\n\
     \    sort(all(id), [&](int i, int j)\n         { return a[i] < a[j]; });\n   \
-    \ return id;\n}\nstruct Timer\n{\n    clock_t start_time;\n    void start() {\
-    \ start_time = clock(); }\n    int lap()\n    {\n        // return x ms.\n   \
-    \     return (clock() - start_time) * 1000 / CLOCKS_PER_SEC;\n    }\n};\ntemplate\
-    \ <typename T = int>\nstruct Edge\n{\n    int from, to;\n    T cost;\n    int\
-    \ idx;\n\n    Edge() = default;\n\n    Edge(int from, int to, T cost = 1, int\
-    \ idx = -1)\n        : from(from), to(to), cost(cost), idx(idx) {}\n\n    operator\
-    \ int() const { return to; }\n};\n\ntemplate <typename T = int>\nstruct Graph\n\
-    {\n    vector<vector<Edge<T>>> g;\n    int es;\n\n    Graph() = default;\n\n \
-    \   explicit Graph(int n) : g(n), es(0) {}\n\n    size_t size() const { return\
-    \ g.size(); }\n\n    void add_directed_edge(int from, int to, T cost = 1)\n  \
-    \  {\n        g[from].emplace_back(from, to, cost, es++);\n    }\n\n    void add_edge(int\
+    \ return id;\n}\nlong long xor64(long long range) {\n    static uint64_t x = 88172645463325252ULL;\n\
+    \    x ^= x << 13;\n    x ^= x >> 7;\n    return (x ^= x << 17) % range;\n}\n\
+    struct Timer\n{\n    clock_t start_time;\n    void start() { start_time = clock();\
+    \ }\n    int lap()\n    {\n        // return x ms.\n        return (clock() -\
+    \ start_time) * 1000 / CLOCKS_PER_SEC;\n    }\n};\ntemplate <typename T = int>\n\
+    struct Edge\n{\n    int from, to;\n    T cost;\n    int idx;\n\n    Edge() = default;\n\
+    \n    Edge(int from, int to, T cost = 1, int idx = -1)\n        : from(from),\
+    \ to(to), cost(cost), idx(idx) {}\n\n    operator int() const { return to; }\n\
+    };\n\ntemplate <typename T = int>\nstruct Graph\n{\n    vector<vector<Edge<T>>>\
+    \ g;\n    int es;\n\n    Graph() = default;\n\n    explicit Graph(int n) : g(n),\
+    \ es(0) {}\n\n    size_t size() const { return g.size(); }\n\n    void add_directed_edge(int\
     \ from, int to, T cost = 1)\n    {\n        g[from].emplace_back(from, to, cost,\
-    \ es);\n        g[to].emplace_back(to, from, cost, es++);\n    }\n\n    void read(int\
-    \ M, int padding = -1, bool weighted = false,\n              bool directed = false)\n\
-    \    {\n        for (int i = 0; i < M; i++)\n        {\n            int a, b;\n\
-    \            cin >> a >> b;\n            a += padding;\n            b += padding;\n\
-    \            T c = T(1);\n            if (weighted)\n                cin >> c;\n\
-    \            if (directed)\n                add_directed_edge(a, b, c);\n    \
-    \        else\n                add_edge(a, b, c);\n        }\n    }\n};\n\n/*\
-    \ #endregion*/\n// constant\n#define inf 1000000000ll\n#define INF 4000000004000000000LL\n\
-    #define endl '\\n'\nconst long double eps = 0.000000000000001;\nconst long double\
-    \ PI = 3.141592653589793;\n"
+    \ es++);\n    }\n\n    void add_edge(int from, int to, T cost = 1)\n    {\n  \
+    \      g[from].emplace_back(from, to, cost, es);\n        g[to].emplace_back(to,\
+    \ from, cost, es++);\n    }\n\n    void read(int M, int padding = -1, bool weighted\
+    \ = false,\n              bool directed = false)\n    {\n        for (int i =\
+    \ 0; i < M; i++)\n        {\n            int a, b;\n            cin >> a >> b;\n\
+    \            a += padding;\n            b += padding;\n            T c = T(1);\n\
+    \            if (weighted)\n                cin >> c;\n            if (directed)\n\
+    \                add_directed_edge(a, b, c);\n            else\n             \
+    \   add_edge(a, b, c);\n        }\n    }\n};\n\n/* #endregion*/\n// constant\n\
+    #define inf 1000000000ll\n#define INF 4000000004000000000LL\n#define endl '\\\
+    n'\nconst long double eps = 0.000000000000001;\nconst long double PI = 3.141592653589793;\n"
   dependsOn: []
   isVerificationFile: false
   path: library/template/template.cpp
   requiredBy:
-  - typical/others/cow_game.cpp
-  - typical/dp/sort.cpp
-  - typical/dp/hakone.cpp
-  - verify/aoj.cpp
-  - verify/yuki-1408.cpp
-  - test/atcoder-abc136_d.cpp
-  - library/graph/distance/bellman_ford.cpp
-  - library/graph/distance/bfs_dial.cpp
   - library/graph/distance/TSP.cpp
   - library/graph/distance/dijkstra.cpp
+  - library/graph/distance/bfs_dial.cpp
+  - library/graph/distance/bellman_ford.cpp
   - library/graph/connected-components/StronglyConnectedComponents.cpp
   - library/graph/connected-components/TwoSat.cpp
-  timestamp: '2021-08-24 21:28:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - test/atcoder-abc136_d.cpp
+  - verify/yuki-1408.cpp
+  - verify/aoj.cpp
+  - typical/dp/hakone.cpp
+  - typical/dp/sort.cpp
+  - typical/others/cow_game.cpp
+  timestamp: '2023-09-23 21:29:16+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/aoj-DPL_5_G.test.cpp
-  - verify/aoj-GRL_7_A.test.cpp
-  - verify/aoj-DSL_2_B.test.cpp
-  - verify/aoj-DSL_2_G.test.cpp
-  - verify/yosupo-two_sat.test.cpp
-  - verify/ArticulationPoint.test.cpp
-  - verify/aoj-single_source_shortest_path.test.cpp
-  - verify/range_arithmetic_progression_add.test.cpp
-  - verify/aoj-TSP.test.cpp
-  - verify/aoj-dsl-1-a.test.cpp
-  - verify/aoj-GRL_6_B.test.cpp
-  - verify/aoj-ALDS1_14_B.test.cpp
-  - verify/aoj-ALDS1_12_B.test.cpp
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
-  - verify/yuki-545.test.cpp
-  - verify/yuki-1301.test.cpp
-  - verify/aoj-single_source_shortest_path_negative_edges.test.cpp
-  - verify/yuki-650.test.cpp
-  - verify/aoj-max_flow.test.cpp
   - verify/aoj-1595.test.cpp
-  - verify/aoj-NTL_1_E.test.cpp
-  - verify/FZT.test.cpp
-  - verify/yuki-FPS.power.test.cpp
-  - verify/yuki-184.test.cpp
+  - verify/aoj-single_source_shortest_path.test.cpp
+  - verify/aoj-TSP.test.cpp
+  - verify/yuki-650.test.cpp
+  - verify/yosupo-two_sat.test.cpp
+  - verify/aoj-max_flow.test.cpp
+  - verify/aoj-dsl-1-a.test.cpp
+  - verify/yuki-1301.test.cpp
   - verify/yosupo-range_kth_smallest.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
+  - verify/aoj-DSL_2_B.test.cpp
+  - verify/aoj-DSL_2_G.test.cpp
+  - verify/aoj-GRL_7_A.test.cpp
+  - verify/aoj-NTL_1_E.test.cpp
+  - verify/FZT.test.cpp
+  - verify/aoj-DPL_5_G.test.cpp
+  - verify/ArticulationPoint.test.cpp
+  - verify/range_arithmetic_progression_add.test.cpp
+  - verify/aoj-ALDS1_14_B.test.cpp
+  - verify/yuki-545.test.cpp
+  - verify/aoj-ALDS1_12_B.test.cpp
+  - verify/aoj-single_source_shortest_path_negative_edges.test.cpp
+  - verify/yuki-184.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
+  - verify/aoj-GRL_6_B.test.cpp
+  - verify/yuki-FPS.power.test.cpp
 documentation_of: library/template/template.cpp
 layout: document
 redirect_from:

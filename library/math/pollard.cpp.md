@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: library/math/is_prime.cpp
     title: is_prime(miller-rabin)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj-NTL_1_A.test.cpp
     title: verify/aoj-NTL_1_A.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: pollard.md
     document_title: factorization(pollard)
@@ -61,7 +61,7 @@ data:
   path: library/math/pollard.cpp
   requiredBy: []
   timestamp: '2020-11-15 12:33:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj-NTL_1_A.test.cpp
 documentation_of: library/math/pollard.cpp

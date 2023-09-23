@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: library/template/template.cpp
     title: library/template/template.cpp
   _extendedRequiredBy:
@@ -56,13 +56,13 @@ data:
     \ n, const ll mod)\n{\n    ll ret = 1;\n    while (n > 0)\n    {\n        if (n\
     \ & 1)\n            (ret *= x);\n        (x *= x);\n        n >>= 1;\n       \
     \ x %= mod;\n        ret %= mod;\n    }\n    return ret;\n}\nll safemod(ll x,\
-    \ ll mod) { return (x % mod + mod) % mod; }\nuint64_t my_rand(void)\n{\n    static\
-    \ uint64_t x = 88172645463325252ULL;\n    x = x ^ (x << 13);\n    x = x ^ (x >>\
-    \ 7);\n    return x = x ^ (x << 17);\n}\nint popcnt(ull x) { return __builtin_popcountll(x);\
+    \ ll mod) { return (x % mod + mod) % mod; }\nint popcnt(ull x) { return __builtin_popcountll(x);\
     \ }\ntemplate <typename T>\nvector<int> IOTA(vector<T> a)\n{\n    int n = a.size();\n\
     \    vector<int> id(n);\n    iota(all(id), 0);\n    sort(all(id), [&](int i, int\
-    \ j)\n         { return a[i] < a[j]; });\n    return id;\n}\nstruct Timer\n{\n\
-    \    clock_t start_time;\n    void start() { start_time = clock(); }\n    int\
+    \ j)\n         { return a[i] < a[j]; });\n    return id;\n}\nlong long xor64(long\
+    \ long range) {\n    static uint64_t x = 88172645463325252ULL;\n    x ^= x <<\
+    \ 13;\n    x ^= x >> 7;\n    return (x ^= x << 17) % range;\n}\nstruct Timer\n\
+    {\n    clock_t start_time;\n    void start() { start_time = clock(); }\n    int\
     \ lap()\n    {\n        // return x ms.\n        return (clock() - start_time)\
     \ * 1000 / CLOCKS_PER_SEC;\n    }\n};\ntemplate <typename T = int>\nstruct Edge\n\
     {\n    int from, to;\n    T cost;\n    int idx;\n\n    Edge() = default;\n\n \
@@ -139,7 +139,7 @@ data:
   path: library/graph/connected-components/StronglyConnectedComponents.cpp
   requiredBy:
   - library/graph/connected-components/TwoSat.cpp
-  timestamp: '2021-08-26 18:17:29+09:00'
+  timestamp: '2023-09-23 21:29:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yosupo-two_sat.test.cpp
