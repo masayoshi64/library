@@ -73,6 +73,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: library/graph/tree/ReRooting.cpp
       title: library/graph/tree/ReRooting.cpp
+  - name: library/heuristic
+    pages:
+    - icon: ':warning:'
+      path: library/heuristic/annealing.cpp
+      title: "start_temp: \u4E00\u56DE\u306E\u9077\u79FB\u3067\u52D5\u304D\u3046\u308B\
+        \u30B9\u30B3\u30A2\u5E45\u306E\u6700\u5927\u5024\u7A0B\u5EA6, end_temp: \u4E00\
+        \u56DE\u306E\u9077\u79FB\u3067\u52D5\u304D\u3046\u308B\u30B9\u30B3\u30A2\u5E45\
+        \u306E\u6700\u5C0F\u5024\u7A0B\u5EA6"
+    - icon: ':warning:'
+      path: library/heuristic/beam_search.cpp
+      title: library/heuristic/beam_search.cpp
+    - icon: ':warning:'
+      path: library/heuristic/connection_number.cpp
+      title: "\u9023\u7D50\u6570: \u5468\u56F29\u30DE\u30B9\u306E\u3046\u3061\u5024\
+        \u304Cc\u3067\u3042\u308B\u3088\u3046\u306A\u9023\u7D50\u6210\u5206\u306E\u6570\
+        \uFF0E1\u306A\u3089\u9023\u7D50"
   - name: library/math
     pages:
     - icon: ':heavy_check_mark:'

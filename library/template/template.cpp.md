@@ -252,48 +252,48 @@ data:
   isVerificationFile: false
   path: library/template/template.cpp
   requiredBy:
-  - library/graph/distance/TSP.cpp
-  - library/graph/distance/dijkstra.cpp
-  - library/graph/distance/bfs_dial.cpp
-  - library/graph/distance/bellman_ford.cpp
-  - library/graph/connected-components/StronglyConnectedComponents.cpp
-  - library/graph/connected-components/TwoSat.cpp
-  - verify/atcoder-Doubling.cpp
-  - verify/yuki-1408.cpp
   - verify/aoj.cpp
+  - verify/yuki-1408.cpp
+  - verify/atcoder-Doubling.cpp
+  - typical/others/cow_game.cpp
   - typical/dp/hakone.cpp
   - typical/dp/sort.cpp
-  - typical/others/cow_game.cpp
+  - library/graph/connected-components/StronglyConnectedComponents.cpp
+  - library/graph/connected-components/TwoSat.cpp
+  - library/graph/distance/dijkstra.cpp
+  - library/graph/distance/bellman_ford.cpp
+  - library/graph/distance/bfs_dial.cpp
+  - library/graph/distance/TSP.cpp
   timestamp: '2023-09-23 21:29:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj-1595.test.cpp
   - verify/aoj-single_source_shortest_path.test.cpp
   - verify/aoj-TSP.test.cpp
-  - verify/yuki-650.test.cpp
-  - verify/yosupo-two_sat.test.cpp
-  - verify/aoj-max_flow.test.cpp
-  - verify/aoj-dsl-1-a.test.cpp
-  - verify/yuki-1301.test.cpp
-  - verify/yosupo-range_kth_smallest.test.cpp
   - verify/aoj-ALDS1_14_D.test.cpp
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
-  - verify/aoj-DSL_2_B.test.cpp
-  - verify/aoj-DSL_2_G.test.cpp
-  - verify/aoj-GRL_7_A.test.cpp
-  - verify/aoj-NTL_1_E.test.cpp
-  - verify/FZT.test.cpp
-  - verify/aoj-DPL_5_G.test.cpp
-  - verify/ArticulationPoint.test.cpp
-  - verify/range_arithmetic_progression_add.test.cpp
-  - verify/aoj-ALDS1_14_B.test.cpp
-  - verify/yuki-545.test.cpp
   - verify/aoj-ALDS1_12_B.test.cpp
-  - verify/aoj-single_source_shortest_path_negative_edges.test.cpp
-  - verify/yuki-184.test.cpp
+  - verify/yuki-650.test.cpp
   - verify/aoj-NTL_1_A.test.cpp
+  - verify/aoj-ALDS1_14_B.test.cpp
+  - verify/aoj-DSL_2_B.test.cpp
+  - verify/range_arithmetic_progression_add.test.cpp
+  - verify/ArticulationPoint.test.cpp
   - verify/aoj-GRL_6_B.test.cpp
+  - verify/aoj-max_flow.test.cpp
+  - verify/yosupo-range_kth_smallest.test.cpp
+  - verify/FZT.test.cpp
+  - verify/aoj-DSL_2_G.test.cpp
+  - verify/yuki-1301.test.cpp
+  - verify/yuki-545.test.cpp
+  - verify/yosupo-two_sat.test.cpp
+  - verify/aoj-1595.test.cpp
+  - verify/yuki-184.test.cpp
+  - verify/aoj-NTL_1_E.test.cpp
+  - verify/aoj-single_source_shortest_path_negative_edges.test.cpp
+  - verify/aoj-GRL_7_A.test.cpp
   - verify/yuki-FPS.power.test.cpp
+  - verify/aoj-dsl-1-a.test.cpp
+  - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/template/template.cpp
 layout: document
 redirect_from:

@@ -98,8 +98,8 @@ data:
   timestamp: '2021-08-25 10:10:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
   - verify/yuki-FPS.power.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/convolution/NTT.cpp
 layout: document
 redirect_from:

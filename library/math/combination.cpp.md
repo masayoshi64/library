@@ -84,8 +84,8 @@ data:
   timestamp: '2020-11-14 13:31:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj-DPL_5_G.test.cpp
   - verify/yuki-FPS.power.test.cpp
+  - verify/aoj-DPL_5_G.test.cpp
 documentation_of: library/math/combination.cpp
 layout: document
 redirect_from:

@@ -89,17 +89,17 @@ data:
   isVerificationFile: false
   path: library/mod/modint.cpp
   requiredBy:
-  - library/math/FormalPowerSeries.cpp
-  - library/convolution/FFT.cpp
   - typical/dp/hakone.cpp
   - typical/dp/sort.cpp
+  - library/math/FormalPowerSeries.cpp
+  - library/convolution/FFT.cpp
   timestamp: '2021-08-26 10:32:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yuki-650.test.cpp
-  - verify/yosupo-convolution_mod_1000000007.test.cpp
-  - verify/aoj-DPL_5_G.test.cpp
   - verify/yuki-FPS.power.test.cpp
+  - verify/aoj-DPL_5_G.test.cpp
+  - verify/yosupo-convolution_mod_1000000007.test.cpp
 documentation_of: library/mod/modint.cpp
 layout: document
 redirect_from:
